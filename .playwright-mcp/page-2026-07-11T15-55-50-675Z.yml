@@ -1,0 +1,179 @@
+- generic [active] [ref=f17e1]:
+  - generic [ref=f17e3]:
+    - complementary [ref=f17e4]:
+      - link "返回市场" [ref=f17e6] [cursor=pointer]:
+        - /url: /
+      - generic [ref=f17e13]:
+        - paragraph [ref=f17e14]: 奇安信AI
+        - paragraph [ref=f17e15]: 用户控制台
+      - navigation [ref=f17e16]:
+        - generic [ref=f17e17]:
+          - paragraph [ref=f17e18]: 核心功能
+          - generic [ref=f17e19]:
+            - link "使用看板" [ref=f17e20] [cursor=pointer]:
+              - /url: /console
+            - link "API Key" [ref=f17e23] [cursor=pointer]:
+              - /url: /console/keys
+            - link "调用统计" [ref=f17e26] [cursor=pointer]:
+              - /url: /console/stats
+            - link "充能包" [ref=f17e29] [cursor=pointer]:
+              - /url: /console/packs
+        - generic [ref=f17e32]:
+          - paragraph [ref=f17e33]: 账户管理
+          - generic [ref=f17e34]:
+            - link "账单中心" [ref=f17e35] [cursor=pointer]:
+              - /url: /console/billing
+            - link "企业空间" [ref=f17e38] [cursor=pointer]:
+              - /url: /console/workspace
+            - link "个人设置" [ref=f17e41] [cursor=pointer]:
+              - /url: /console/settings
+        - generic [ref=f17e44]:
+          - paragraph [ref=f17e45]: 开发资源
+          - generic [ref=f17e46]:
+            - link "API文档" [ref=f17e47] [cursor=pointer]:
+              - /url: /console/docs
+            - link "应用集成" [ref=f17e50] [cursor=pointer]:
+              - /url: /console/integrations
+      - button [ref=f17e56]:
+        - generic [ref=f17e59]:
+          - paragraph [ref=f17e60]: 张明
+          - paragraph [ref=f17e61]: 奇安信安全团队
+    - generic [ref=f17e63]:
+      - generic [ref=f17e64]:
+        - heading "应用集成" [level=1] [ref=f17e65]
+        - paragraph [ref=f17e66]: 管理应用集成、配置Webhook与接入指南
+      - generic [ref=f17e67]:
+        - heading "已集成应用" [level=2] [ref=f17e68]
+        - generic [ref=f17e69]:
+          - generic [ref=f17e70]:
+            - generic [ref=f17e71]:
+              - generic [ref=f17e75]:
+                - paragraph [ref=f17e76]: 智能安全运营中心
+                - paragraph [ref=f17e77]: 对话应用
+              - generic [ref=f17e78]: 运行中
+            - generic [ref=f17e80]:
+              - generic [ref=f17e81]:
+                - generic [ref=f17e82]: "最近同步: 2分钟前"
+                - generic [ref=f17e83]: "今日调用: 1,247"
+              - button "配置" [ref=f17e84]
+          - generic [ref=f17e85]:
+            - generic [ref=f17e86]:
+              - generic [ref=f17e90]:
+                - paragraph [ref=f17e91]: 威胁情报助手
+                - paragraph [ref=f17e92]: 对话应用
+              - generic [ref=f17e93]: 运行中
+            - generic [ref=f17e95]:
+              - generic [ref=f17e96]:
+                - generic [ref=f17e97]: "最近同步: 15分钟前"
+                - generic [ref=f17e98]: "今日调用: 856"
+              - button "配置" [ref=f17e99]
+          - generic [ref=f17e100]:
+            - generic [ref=f17e101]:
+              - generic [ref=f17e105]:
+                - paragraph [ref=f17e106]: 漏洞扫描工具
+                - paragraph [ref=f17e107]: 工具应用
+              - generic [ref=f17e108]: 已停止
+            - generic [ref=f17e110]:
+              - generic [ref=f17e111]:
+                - generic [ref=f17e112]: "最近同步: 3天前"
+                - generic [ref=f17e113]: "今日调用: 0"
+              - button "配置" [ref=f17e114]
+          - generic [ref=f17e115]:
+            - generic [ref=f17e116]:
+              - generic [ref=f17e120]:
+                - paragraph [ref=f17e121]: AI代码审计助手
+                - paragraph [ref=f17e122]: 对话应用
+              - generic [ref=f17e123]: 运行中
+            - generic [ref=f17e125]:
+              - generic [ref=f17e126]:
+                - generic [ref=f17e127]: "最近同步: 1小时前"
+                - generic [ref=f17e128]: "今日调用: 423"
+              - button "配置" [ref=f17e129]
+      - generic [ref=f17e130]:
+        - heading "Webhook 配置" [level=2] [ref=f17e133]
+        - generic [ref=f17e134]:
+          - generic [ref=f17e135]:
+            - generic [ref=f17e136]:
+              - generic [ref=f17e137]: Webhook URL
+              - textbox "https://your-app.com/webhook" [ref=f17e138]
+            - generic [ref=f17e139]:
+              - generic [ref=f17e140]: Secret Key
+              - generic [ref=f17e141]:
+                - textbox "用于验证Webhook签名" [ref=f17e142]
+                - button "生成" [ref=f17e143]
+              - paragraph [ref=f17e144]: 用于验证Webhook请求的签名密钥
+            - button "保存配置" [ref=f17e145]
+          - generic [ref=f17e146]:
+            - generic [ref=f17e147]: 事件类型
+            - generic [ref=f17e148]:
+              - generic [ref=f17e149] [cursor=pointer]:
+                - checkbox "调用成功 API调用成功完成时触发" [ref=f17e150]
+                - generic [ref=f17e151]:
+                  - paragraph [ref=f17e152]: 调用成功
+                  - paragraph [ref=f17e153]: API调用成功完成时触发
+              - generic [ref=f17e154] [cursor=pointer]:
+                - checkbox "调用失败 API调用失败时触发" [ref=f17e155]
+                - generic [ref=f17e156]:
+                  - paragraph [ref=f17e157]: 调用失败
+                  - paragraph [ref=f17e158]: API调用失败时触发
+              - generic [ref=f17e159] [cursor=pointer]:
+                - checkbox "余额不足 Token余额低于阈值时触发" [ref=f17e160]
+                - generic [ref=f17e161]:
+                  - paragraph [ref=f17e162]: 余额不足
+                  - paragraph [ref=f17e163]: Token余额低于阈值时触发
+              - generic [ref=f17e164] [cursor=pointer]:
+                - checkbox "Key创建 新API Key创建时触发" [ref=f17e165]
+                - generic [ref=f17e166]:
+                  - paragraph [ref=f17e167]: Key创建
+                  - paragraph [ref=f17e168]: 新API Key创建时触发
+              - generic [ref=f17e169] [cursor=pointer]:
+                - checkbox "Key禁用 API Key被禁用时触发" [ref=f17e170]
+                - generic [ref=f17e171]:
+                  - paragraph [ref=f17e172]: Key禁用
+                  - paragraph [ref=f17e173]: API Key被禁用时触发
+              - generic [ref=f17e174] [cursor=pointer]:
+                - checkbox "频率限制 触发API频率限制时触发" [ref=f17e175]
+                - generic [ref=f17e176]:
+                  - paragraph [ref=f17e177]: 频率限制
+                  - paragraph [ref=f17e178]: 触发API频率限制时触发
+      - generic [ref=f17e179]:
+        - heading "接入指南" [level=2] [ref=f17e182]
+        - generic [ref=f17e183]:
+          - generic [ref=f17e184]:
+            - generic [ref=f17e185]: "1"
+            - generic [ref=f17e189]:
+              - heading "获取API Key" [level=3] [ref=f17e190]
+              - paragraph [ref=f17e191]: 在API Key管理页面创建新的密钥，选择需要的模型权限
+              - generic [ref=f17e192]: "# 在开发者控制台创建API Key API_KEY=\"sk-qax-your-api-key\""
+          - generic [ref=f17e194]:
+            - generic [ref=f17e195]: "2"
+            - generic [ref=f17e199]:
+              - heading "安装SDK" [level=3] [ref=f17e200]
+              - paragraph [ref=f17e201]: 选择您常用的编程语言，安装对应的SDK
+              - generic [ref=f17e202]: pip install qax-ai-sdk
+          - generic [ref=f17e204]:
+            - generic [ref=f17e205]: "3"
+            - generic [ref=f17e209]:
+              - heading "初始化客户端" [level=3] [ref=f17e210]
+              - paragraph [ref=f17e211]: 使用API Key初始化客户端，配置基础参数
+              - generic [ref=f17e212]: from qax_ai import QAXClient client = QAXClient( api_key="sk-qax-your-api-key", base_url="https://api.qianxin.ai" )
+          - generic [ref=f17e214]:
+            - generic [ref=f17e215]: "4"
+            - generic [ref=f17e219]:
+              - heading "调用API" [level=3] [ref=f17e220]
+              - paragraph [ref=f17e221]: 根据业务需求调用对应的API接口
+              - generic [ref=f17e222]: "response = client.chat.completions.create( model=\"qax-security-llm\", messages=[ {\"role\": \"system\", \"content\": \"你是安全专家\"}, {\"role\": \"user\", \"content\": \"分析此安全事件\"} ], temperature=0.7 ) print(response.choices[0].message.content)"
+          - generic [ref=f17e224]:
+            - generic [ref=f17e225]: "5"
+            - generic [ref=f17e228]:
+              - heading "配置Webhook" [level=3] [ref=f17e229]
+              - paragraph [ref=f17e230]: 设置Webhook接收事件通知，实时监控API调用状态
+              - generic [ref=f17e231]: "# Webhook配置示例 webhook_config = { \"url\": \"https://your-app.com/webhook\", \"events\": [\"call.success\", \"call.failed\"], \"secret\": \"your-webhook-secret\" } client.webhooks.create(webhook_config)"
+  - region "Notifications (F8)":
+    - list
+  - generic [ref=f17e233]:
+    - button "Toggle Nuxt DevTools" [ref=f17e234] [cursor=pointer]
+    - generic "Page load time" [ref=f17e238]:
+      - generic [ref=f17e239]: "24"
+      - generic [ref=f17e240]: ms
+    - button "Toggle Component Inspector" [ref=f17e242] [cursor=pointer]

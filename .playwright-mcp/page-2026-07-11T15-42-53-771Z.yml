@@ -1,0 +1,129 @@
+- generic [active] [ref=f8e1]:
+  - generic [ref=f8e3]:
+    - complementary [ref=f8e4]:
+      - link "返回市场" [ref=f8e6] [cursor=pointer]:
+        - /url: /
+      - generic [ref=f8e13]:
+        - paragraph [ref=f8e14]: 奇安信AI
+        - paragraph [ref=f8e15]: 用户控制台
+      - navigation [ref=f8e16]:
+        - generic [ref=f8e17]:
+          - paragraph [ref=f8e18]: 核心功能
+          - generic [ref=f8e19]:
+            - link "使用看板" [ref=f8e20] [cursor=pointer]:
+              - /url: /console
+            - link "API Key" [ref=f8e23] [cursor=pointer]:
+              - /url: /console/keys
+            - link "调用统计" [ref=f8e26] [cursor=pointer]:
+              - /url: /console/stats
+            - link "充能包" [ref=f8e29] [cursor=pointer]:
+              - /url: /console/packs
+        - generic [ref=f8e32]:
+          - paragraph [ref=f8e33]: 账户管理
+          - generic [ref=f8e34]:
+            - link "账单中心" [ref=f8e35] [cursor=pointer]:
+              - /url: /console/billing
+            - link "企业空间" [ref=f8e38] [cursor=pointer]:
+              - /url: /console/workspace
+            - link "个人设置" [ref=f8e42] [cursor=pointer]:
+              - /url: /console/settings
+        - generic [ref=f8e45]:
+          - paragraph [ref=f8e46]: 开发资源
+          - generic [ref=f8e47]:
+            - link "API文档" [ref=f8e48] [cursor=pointer]:
+              - /url: /console/docs
+            - link "应用集成" [ref=f8e51] [cursor=pointer]:
+              - /url: /console/integrations
+      - button [ref=f8e56]:
+        - generic [ref=f8e59]:
+          - paragraph [ref=f8e60]: 张明
+          - paragraph [ref=f8e61]: 奇安信安全团队
+    - generic [ref=f8e63]:
+      - generic [ref=f8e64]:
+        - heading "企业空间" [level=1] [ref=f8e65]
+        - paragraph [ref=f8e66]: 管理企业信息、成员与资源
+      - generic [ref=f8e69]:
+        - generic [ref=f8e70]:
+          - heading "奇安信安全团队" [level=2] [ref=f8e71]
+          - generic [ref=f8e72]: 已认证
+        - generic [ref=f8e74]:
+          - generic [ref=f8e75]: 网络安全
+          - generic [ref=f8e76]: 200-500人
+          - generic [ref=f8e77]: 创建于 2025-08-15
+      - generic [ref=f8e80]:
+        - generic [ref=f8e81]:
+          - generic [ref=f8e82]: 成员数
+          - generic [ref=f8e86]:
+            - generic [ref=f8e87]: "6"
+            - generic [ref=f8e88]: 人
+        - generic [ref=f8e89]:
+          - generic [ref=f8e90]: 活跃Key数
+          - generic [ref=f8e94]:
+            - generic [ref=f8e95]: "12"
+            - generic [ref=f8e96]: 个
+        - generic [ref=f8e97]:
+          - generic [ref=f8e98]: 本月消耗
+          - generic [ref=f8e102]: ¥12,860
+        - generic [ref=f8e104]:
+          - generic [ref=f8e105]: 充能包余额
+          - generic [ref=f8e109]:
+            - generic [ref=f8e110]: "1850"
+            - generic [ref=f8e111]: 万 Token
+      - generic [ref=f8e112]:
+        - heading "快捷操作" [level=3] [ref=f8e113]
+        - generic [ref=f8e114]:
+          - link "邀请成员" [ref=f8e115] [cursor=pointer]:
+            - /url: /console/workspace/members
+          - link "购买充能包" [ref=f8e117] [cursor=pointer]:
+            - /url: /console/workspace/packs
+          - link "管理成员" [ref=f8e119] [cursor=pointer]:
+            - /url: /console/workspace/members
+      - generic [ref=f8e121]:
+        - generic [ref=f8e122]:
+          - heading "成员预览" [level=3] [ref=f8e123]
+          - link "查看全部成员" [ref=f8e124] [cursor=pointer]:
+            - /url: /console/workspace/members
+        - generic [ref=f8e126]:
+          - generic [ref=f8e127]:
+            - generic [ref=f8e128]: 张
+            - generic [ref=f8e129]:
+              - generic [ref=f8e130]:
+                - generic [ref=f8e131]: 张明
+                - generic [ref=f8e132]: 管理员
+              - paragraph [ref=f8e133]: zhangming@qianxin.com
+          - generic [ref=f8e134]:
+            - generic [ref=f8e135]: 李
+            - generic [ref=f8e136]:
+              - generic [ref=f8e137]:
+                - generic [ref=f8e138]: 李芳
+                - generic [ref=f8e139]: 开发者
+              - paragraph [ref=f8e140]: lifang@qianxin.com
+          - generic [ref=f8e141]:
+            - generic [ref=f8e142]: 王
+            - generic [ref=f8e143]:
+              - generic [ref=f8e144]:
+                - generic [ref=f8e145]: 王磊
+                - generic [ref=f8e146]: 开发者
+              - paragraph [ref=f8e147]: wanglei@qianxin.com
+          - generic [ref=f8e148]:
+            - generic [ref=f8e149]: 陈
+            - generic [ref=f8e150]:
+              - generic [ref=f8e151]:
+                - generic [ref=f8e152]: 陈静
+                - generic [ref=f8e153]: 财务
+              - paragraph [ref=f8e154]: chenjing@qianxin.com
+          - generic [ref=f8e155]:
+            - generic [ref=f8e156]: 赵
+            - generic [ref=f8e157]:
+              - generic [ref=f8e158]:
+                - generic [ref=f8e159]: 赵伟
+                - generic [ref=f8e160]: 只读
+              - paragraph [ref=f8e161]: zhaowei@qianxin.com
+  - region "Notifications (F8)":
+    - list
+  - generic [ref=f8e162]:
+    - button "Toggle Nuxt DevTools" [ref=f8e163] [cursor=pointer]
+    - generic "Page load time" [ref=f8e167]:
+      - generic [ref=f8e168]: "25"
+      - generic [ref=f8e169]: ms
+    - button "Toggle Component Inspector" [ref=f8e171] [cursor=pointer]

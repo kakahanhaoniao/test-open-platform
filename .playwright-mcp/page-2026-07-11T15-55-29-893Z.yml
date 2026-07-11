@@ -1,0 +1,154 @@
+- generic [active] [ref=f16e1]:
+  - generic [ref=f16e3]:
+    - complementary [ref=f16e4]:
+      - link "返回市场" [ref=f16e6] [cursor=pointer]:
+        - /url: /
+      - generic [ref=f16e13]:
+        - paragraph [ref=f16e14]: 奇安信AI
+        - paragraph [ref=f16e15]: 用户控制台
+      - navigation [ref=f16e16]:
+        - generic [ref=f16e17]:
+          - paragraph [ref=f16e18]: 核心功能
+          - generic [ref=f16e19]:
+            - link "使用看板" [ref=f16e20] [cursor=pointer]:
+              - /url: /console
+            - link "API Key" [ref=f16e23] [cursor=pointer]:
+              - /url: /console/keys
+            - link "调用统计" [ref=f16e27] [cursor=pointer]:
+              - /url: /console/stats
+            - link "充能包" [ref=f16e30] [cursor=pointer]:
+              - /url: /console/packs
+        - generic [ref=f16e33]:
+          - paragraph [ref=f16e34]: 账户管理
+          - generic [ref=f16e35]:
+            - link "账单中心" [ref=f16e36] [cursor=pointer]:
+              - /url: /console/billing
+            - link "企业空间" [ref=f16e39] [cursor=pointer]:
+              - /url: /console/workspace
+            - link "个人设置" [ref=f16e42] [cursor=pointer]:
+              - /url: /console/settings
+        - generic [ref=f16e45]:
+          - paragraph [ref=f16e46]: 开发资源
+          - generic [ref=f16e47]:
+            - link "API文档" [ref=f16e48] [cursor=pointer]:
+              - /url: /console/docs
+            - link "应用集成" [ref=f16e51] [cursor=pointer]:
+              - /url: /console/integrations
+      - button [ref=f16e56]:
+        - generic [ref=f16e59]:
+          - paragraph [ref=f16e60]: 张明
+          - paragraph [ref=f16e61]: 奇安信安全团队
+    - generic [ref=f16e63]:
+      - generic [ref=f16e64]:
+        - generic [ref=f16e65]:
+          - heading "API Key 管理" [level=1] [ref=f16e66]
+          - paragraph [ref=f16e67]: 管理您的API密钥，配置访问权限与安全策略
+        - link "创建API Key" [ref=f16e68] [cursor=pointer]:
+          - /url: /console/keys/create
+      - table [ref=f16e71]:
+        - rowgroup [ref=f16e72]:
+          - row [ref=f16e73]:
+            - columnheader "Key名称" [ref=f16e74]
+            - columnheader "Key值" [ref=f16e75]
+            - columnheader "关联模型/应用" [ref=f16e76]
+            - columnheader "创建时间" [ref=f16e77]
+            - columnheader "最后使用" [ref=f16e78]
+            - columnheader "状态" [ref=f16e79]
+            - columnheader "操作" [ref=f16e80]
+        - rowgroup [ref=f16e81]:
+          - row [ref=f16e82]:
+            - cell "生产环境密钥" [ref=f16e83]
+            - cell [ref=f16e87]:
+              - generic [ref=f16e88]:
+                - code [ref=f16e89]: sk-qax-a8f3e...e4d5
+                - button "复制Key" [ref=f16e90]
+            - cell "奇安信安全大模型 威胁检测模型 V3 +1 智能安全运营中心" [ref=f16e92]:
+              - generic [ref=f16e93]:
+                - generic [ref=f16e94]: 奇安信安全大模型
+                - generic [ref=f16e95]: 威胁检测模型 V3
+                - generic [ref=f16e96]: "+1"
+                - generic [ref=f16e97]: 智能安全运营中心
+            - cell "2026-05-15 10:23:45" [ref=f16e98]
+            - cell "2分钟前" [ref=f16e99]
+            - cell [ref=f16e100]
+            - cell [ref=f16e103]:
+              - generic [ref=f16e104]:
+                - button "禁用" [ref=f16e105]
+                - button "删除" [ref=f16e106]
+          - row [ref=f16e107]:
+            - cell "测试环境密钥" [ref=f16e108]
+            - cell [ref=f16e112]:
+              - generic [ref=f16e113]:
+                - code [ref=f16e114]: sk-qax-b7e6d...c3b2
+                - button "复制Key" [ref=f16e115]
+            - cell "奇安信安全大模型 漏洞分析专家 AI代码审计助手" [ref=f16e117]:
+              - generic [ref=f16e118]:
+                - generic [ref=f16e119]: 奇安信安全大模型
+                - generic [ref=f16e120]: 漏洞分析专家
+                - generic [ref=f16e121]: AI代码审计助手
+            - cell "2026-06-01 14:30:22" [ref=f16e122]
+            - cell "3小时前" [ref=f16e123]
+            - cell [ref=f16e124]
+            - cell [ref=f16e127]:
+              - generic [ref=f16e128]:
+                - button "禁用" [ref=f16e129]
+                - button "删除" [ref=f16e130]
+          - row [ref=f16e131]:
+            - cell "CI/CD 管道密钥" [ref=f16e132]
+            - cell [ref=f16e136]:
+              - generic [ref=f16e137]:
+                - code [ref=f16e138]: sk-qax-c6d5e...e2f1
+                - button "复制Key" [ref=f16e139]
+            - cell "代码安全扫描模型" [ref=f16e141]
+            - cell "2026-06-10 09:15:33" [ref=f16e144]
+            - cell "1天前" [ref=f16e145]
+            - cell [ref=f16e146]
+            - cell [ref=f16e149]:
+              - generic [ref=f16e150]:
+                - button "禁用" [ref=f16e151]
+                - button "删除" [ref=f16e152]
+          - row [ref=f16e153]:
+            - cell "数据分析密钥" [ref=f16e154]
+            - cell [ref=f16e158]:
+              - generic [ref=f16e159]:
+                - code [ref=f16e160]: sk-qax-d5c4b...b1a0
+                - button "复制Key" [ref=f16e161]
+            - cell "日志智能分析模型 数据安全卫士" [ref=f16e163]:
+              - generic [ref=f16e164]:
+                - generic [ref=f16e165]: 日志智能分析模型
+                - generic [ref=f16e166]: 数据安全卫士
+            - cell "2026-04-20 16:45:10" [ref=f16e167]
+            - cell "7天前" [ref=f16e168]
+            - cell [ref=f16e169]
+            - cell [ref=f16e172]:
+              - generic [ref=f16e173]:
+                - button "启用" [ref=f16e174]
+                - button "删除" [ref=f16e175]
+          - row [ref=f16e176]:
+            - cell "旧版集成密钥" [ref=f16e177]
+            - cell [ref=f16e181]:
+              - generic [ref=f16e182]:
+                - code [ref=f16e183]: sk-qax-e4f3d...d0c9
+                - button "复制Key" [ref=f16e184]
+            - cell "奇安信安全大模型 威胁情报助手" [ref=f16e186]:
+              - generic [ref=f16e187]:
+                - generic [ref=f16e188]: 奇安信安全大模型
+                - generic [ref=f16e189]: 威胁情报助手
+            - cell "2026-03-01 08:00:00" [ref=f16e190]
+            - cell "30天前" [ref=f16e191]
+            - cell [ref=f16e192]
+            - cell [ref=f16e195]:
+              - generic [ref=f16e196]:
+                - button "启用" [ref=f16e197]
+                - button "删除" [ref=f16e198]
+      - generic [ref=f16e201]:
+        - paragraph [ref=f16e202]: 安全提示
+        - paragraph [ref=f16e203]: 请妥善保管您的API Key，不要在客户端代码或公开仓库中暴露。如怀疑Key泄露，请立即禁用并创建新的Key。
+  - region "Notifications (F8)":
+    - list
+  - generic [ref=f16e204]:
+    - button "Toggle Nuxt DevTools" [ref=f16e205] [cursor=pointer]
+    - generic "Page load time" [ref=f16e209]:
+      - generic [ref=f16e210]: "29"
+      - generic [ref=f16e211]: ms
+    - button "Toggle Component Inspector" [ref=f16e213] [cursor=pointer]

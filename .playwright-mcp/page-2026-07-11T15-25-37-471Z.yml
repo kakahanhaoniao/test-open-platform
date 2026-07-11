@@ -1,0 +1,218 @@
+- generic [ref=e3]:
+  - complementary [ref=e4]:
+    - link "返回市场" [ref=e6] [cursor=pointer]:
+      - /url: /
+    - generic [ref=e13]:
+      - paragraph [ref=e14]: 奇安信AI
+      - paragraph [ref=e15]: 用户控制台
+    - navigation [ref=e16]:
+      - generic [ref=e17]:
+        - paragraph [ref=e18]: 核心功能
+        - generic [ref=e19]:
+          - link "使用看板" [ref=e20] [cursor=pointer]:
+            - /url: /console
+          - link "API Key" [ref=e24] [cursor=pointer]:
+            - /url: /console/keys
+          - link "调用统计" [ref=e27] [cursor=pointer]:
+            - /url: /console/stats
+          - link "充能包" [ref=e30] [cursor=pointer]:
+            - /url: /console/packs
+      - generic [ref=e33]:
+        - paragraph [ref=e34]: 账户管理
+        - generic [ref=e35]:
+          - link "账单中心" [ref=e36] [cursor=pointer]:
+            - /url: /console/billing
+          - link "企业空间" [ref=e39] [cursor=pointer]:
+            - /url: /console/workspace
+          - link "个人设置" [ref=e42] [cursor=pointer]:
+            - /url: /console/settings
+      - generic [ref=e45]:
+        - paragraph [ref=e46]: 开发资源
+        - generic [ref=e47]:
+          - link "API文档" [ref=e48] [cursor=pointer]:
+            - /url: /console/docs
+          - link "应用集成" [ref=e51] [cursor=pointer]:
+            - /url: /console/integrations
+    - button [ref=e56]:
+      - generic [ref=e59]:
+        - paragraph [ref=e60]: 张明
+        - paragraph [ref=e61]: 奇安信安全团队
+  - generic [ref=e64]:
+    - generic [ref=e65]:
+      - generic [ref=e69]:
+        - generic [ref=e70]:
+          - heading "欢迎回来，张明" [level=1] [ref=e71]
+          - generic [ref=e72]: · 奇安信安全团队
+        - generic [ref=e73]: 服务正常
+      - button "企业视图" [ref=e77]
+    - generic [ref=e81]:
+      - generic [ref=e82]:
+        - generic [ref=e83]: +12.5%
+        - paragraph [ref=e88]: API调用总量
+        - paragraph [ref=e89]: 284万+
+      - generic [ref=e90]:
+        - generic [ref=e91]: +8.3%
+        - paragraph [ref=e96]: Token消耗
+        - paragraph [ref=e97]: 485万
+      - generic [ref=e98]:
+        - generic [ref=e99]: +15.2%
+        - paragraph [ref=e104]: 本月费用
+        - paragraph [ref=e105]: ¥12,860
+      - generic [ref=e106]:
+        - generic [ref=e107]: 37%
+        - paragraph [ref=e111]: 充能包余额
+        - paragraph [ref=e112]: 1,850万
+    - generic [ref=e115]:
+      - generic [ref=e116]:
+        - generic [ref=e117]:
+          - heading "调用趋势" [level=3] [ref=e118]
+          - paragraph [ref=e119]: API每日调用量统计
+        - generic [ref=e120]:
+          - button "7天" [ref=e121]
+          - button "30天" [ref=e122]
+          - button "90天" [ref=e123]
+      - generic [ref=e124]:
+        - generic [ref=e125]:
+          - generic [ref=e126]: 3.8万
+          - generic [ref=e128]: 07/05
+        - generic [ref=e129]:
+          - generic [ref=e130]: 3.5万
+          - generic [ref=e132]: 07/06
+        - generic [ref=e133]:
+          - generic [ref=e134]: 4.3万
+          - generic [ref=e136]: 07/07
+        - generic [ref=e137]:
+          - generic [ref=e138]: 4.7万
+          - generic [ref=e140]: 07/08
+        - generic [ref=e141]:
+          - generic [ref=e142]: 4.4万
+          - generic [ref=e144]: 07/09
+        - generic [ref=e145]:
+          - generic [ref=e146]: 5.2万
+          - generic [ref=e148]: 07/10
+        - generic [ref=e149]:
+          - generic [ref=e150]: 2.6万
+          - generic [ref=e152]: 07/11
+    - generic [ref=e153]:
+      - generic [ref=e154]:
+        - generic [ref=e155]:
+          - generic [ref=e156]:
+            - heading "模型消耗排行" [level=3] [ref=e157]
+            - paragraph [ref=e158]: Token消耗Top 5
+          - link "查看详情" [ref=e159] [cursor=pointer]:
+            - /url: /console/stats
+        - generic [ref=e161]:
+          - generic [ref=e163]:
+            - generic [ref=e164]:
+              - generic [ref=e165]: "1"
+              - generic [ref=e166]: 奇安信安全大模型
+            - generic [ref=e167]: 524万 Token
+          - generic [ref=e171]:
+            - generic [ref=e172]:
+              - generic [ref=e173]: "2"
+              - generic [ref=e174]: 威胁检测模型 V3
+            - generic [ref=e175]: 289万 Token
+          - generic [ref=e179]:
+            - generic [ref=e180]:
+              - generic [ref=e181]: "3"
+              - generic [ref=e182]: 代码安全扫描模型
+            - generic [ref=e183]: 178万 Token
+          - generic [ref=e187]:
+            - generic [ref=e188]:
+              - generic [ref=e189]: "4"
+              - generic [ref=e190]: 漏洞分析专家
+            - generic [ref=e191]: 96万 Token
+          - generic [ref=e195]:
+            - generic [ref=e196]:
+              - generic [ref=e197]: "5"
+              - generic [ref=e198]: 合规卫士
+            - generic [ref=e199]: 48万 Token
+      - generic [ref=e202]:
+        - generic [ref=e203]:
+          - generic [ref=e204]:
+            - heading "异常告警" [level=3] [ref=e205]
+            - paragraph [ref=e206]: 最近服务异常与恢复通知
+          - generic [ref=e207]: 1 严重
+        - generic [ref=e208]:
+          - generic [ref=e211]:
+            - paragraph [ref=e212]: 合规卫士接口返回500错误
+            - paragraph [ref=e213]: 5分钟前
+          - generic [ref=e216]:
+            - paragraph [ref=e217]: 安全大模型触发频率限制(429)
+            - paragraph [ref=e218]: 23分钟前
+          - generic [ref=e221]:
+            - paragraph [ref=e222]: 威胁检测模型请求频率超限
+            - paragraph [ref=e223]: 1小时前
+          - generic [ref=e226]:
+            - paragraph [ref=e227]: 代码安全扫描模型服务已恢复
+            - paragraph [ref=e228]: 2小时前
+          - generic [ref=e231]:
+            - paragraph [ref=e232]: 漏洞分析专家服务已恢复
+            - paragraph [ref=e233]: 3小时前
+    - generic [ref=e234]:
+      - generic [ref=e235]:
+        - generic [ref=e236]:
+          - heading "成员消耗排行" [level=3] [ref=e237]
+          - paragraph [ref=e238]: 团队成员Token消耗Top 5
+        - link "成员管理" [ref=e239] [cursor=pointer]:
+          - /url: /console/workspace
+      - generic [ref=e241]:
+        - generic [ref=e243]:
+          - generic [ref=e244]:
+            - generic [ref=e245]: "1"
+            - generic [ref=e248]: 张明管理员
+          - generic [ref=e249]: 520万 Token¥4,780
+        - generic [ref=e253]:
+          - generic [ref=e254]:
+            - generic [ref=e255]: "2"
+            - generic [ref=e258]: 李芳开发者
+          - generic [ref=e259]: 380万 Token¥3,240
+        - generic [ref=e263]:
+          - generic [ref=e264]:
+            - generic [ref=e265]: "3"
+            - generic [ref=e268]: 王磊开发者
+          - generic [ref=e269]: 290万 Token¥2,580
+        - generic [ref=e273]:
+          - generic [ref=e274]:
+            - generic [ref=e275]: "4"
+            - generic [ref=e278]: 孙丽开发者
+          - generic [ref=e279]: 168万 Token¥1,880
+        - generic [ref=e283]:
+          - generic [ref=e284]:
+            - generic [ref=e285]: "5"
+            - generic [ref=e288]: 赵伟只读
+          - generic [ref=e289]: 42万 Token¥380
+    - generic [ref=e292]:
+      - heading "额度使用" [level=3] [ref=e293]
+      - generic [ref=e294]:
+        - generic [ref=e295]:
+          - generic [ref=e296]:
+            - generic [ref=e297]: 充能包
+            - generic [ref=e300]: 1,850万 / 5,000万 Token
+          - generic [ref=e303]:
+            - generic [ref=e304]: 已使用 3150万 Token
+            - generic [ref=e305]: 37%
+        - generic [ref=e306]:
+          - generic [ref=e307]:
+            - generic [ref=e308]: API频率
+            - generic [ref=e311]: 6,000 / 10,000 次/分
+          - generic [ref=e314]:
+            - generic [ref=e315]: 当前频率限制
+            - generic [ref=e316]: 60%
+    - generic [ref=e317]:
+      - link [ref=e318] [cursor=pointer]:
+        - /url: /console/keys/create
+        - paragraph [ref=e323]: 创建API Key
+        - paragraph [ref=e324]: 生成新的API访问密钥
+      - link [ref=e325] [cursor=pointer]:
+        - /url: /console/packs
+        - paragraph [ref=e330]: 购买充能包
+        - paragraph [ref=e331]: 补充Token调用额度
+      - link [ref=e332] [cursor=pointer]:
+        - /url: /console/docs
+        - paragraph [ref=e337]: API文档
+        - paragraph [ref=e338]: 查看接口调用指南
+      - link [ref=e339] [cursor=pointer]:
+        - /url: /console/stats
+        - paragraph [ref=e344]: 调用统计
+        - paragraph [ref=e345]: 查看详细调用数据

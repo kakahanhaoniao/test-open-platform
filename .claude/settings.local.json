@@ -25,7 +25,16 @@
       "mcp__plugin_playwright_playwright__browser_console_messages",
       "mcp__plugin_playwright_playwright__browser_find",
       "mcp__plugin_playwright_playwright__browser_click",
-      "mcp__plugin_playwright_playwright__browser_close"
+      "mcp__plugin_playwright_playwright__browser_close",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000/console)",
+      "Bash(curl -s http://localhost:3000/console/workspace 2>&1 | head -30)",
+      "Bash(which curl:*)",
+      "Bash(/usr/bin/curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3000/console/workspace/packs && /usr/bin/curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3000/console/workspace/settings && /usr/bin/curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:3000/console/settings)",
+      "Bash(npx nuxi:*)",
+      "Bash(lsof -ti:3000 2>/dev/null | xargs kill -9 2>/dev/null; sleep 1 && npx nuxi dev --port 3000 2>&1 | head -5)",
+      "Bash(/usr/bin/curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000/console)",
+      "Bash(/usr/bin/curl -s http://localhost:3000/console/integrations 2>&1 | tail -30)",
+      "Bash(sleep 3 && /usr/bin/curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000/console/integrations)"
     ]
   },
   "enabledPlugins": {

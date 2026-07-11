@@ -1,0 +1,218 @@
+- generic [ref=f6e3]:
+  - complementary [ref=f6e4]:
+    - link "返回市场" [ref=f6e6] [cursor=pointer]:
+      - /url: /
+    - generic [ref=f6e13]:
+      - paragraph [ref=f6e14]: 奇安信AI
+      - paragraph [ref=f6e15]: 用户控制台
+    - navigation [ref=f6e16]:
+      - generic [ref=f6e17]:
+        - paragraph [ref=f6e18]: 核心功能
+        - generic [ref=f6e19]:
+          - link "使用看板" [ref=f6e20] [cursor=pointer]:
+            - /url: /console
+          - link "API Key" [ref=f6e24] [cursor=pointer]:
+            - /url: /console/keys
+          - link "调用统计" [ref=f6e27] [cursor=pointer]:
+            - /url: /console/stats
+          - link "充能包" [ref=f6e30] [cursor=pointer]:
+            - /url: /console/packs
+      - generic [ref=f6e33]:
+        - paragraph [ref=f6e34]: 账户管理
+        - generic [ref=f6e35]:
+          - link "账单中心" [ref=f6e36] [cursor=pointer]:
+            - /url: /console/billing
+          - link "企业空间" [ref=f6e39] [cursor=pointer]:
+            - /url: /console/workspace
+          - link "个人设置" [ref=f6e42] [cursor=pointer]:
+            - /url: /console/settings
+      - generic [ref=f6e45]:
+        - paragraph [ref=f6e46]: 开发资源
+        - generic [ref=f6e47]:
+          - link "API文档" [ref=f6e48] [cursor=pointer]:
+            - /url: /console/docs
+          - link "应用集成" [ref=f6e51] [cursor=pointer]:
+            - /url: /console/integrations
+    - button [ref=f6e56]:
+      - generic [ref=f6e59]:
+        - paragraph [ref=f6e60]: 张明
+        - paragraph [ref=f6e61]: 奇安信安全团队
+  - generic [ref=f6e64]:
+    - generic [ref=f6e65]:
+      - generic [ref=f6e69]:
+        - generic [ref=f6e70]:
+          - heading "欢迎回来，张明" [level=1] [ref=f6e71]
+          - generic [ref=f6e72]: · 奇安信安全团队
+        - generic [ref=f6e73]: 服务正常
+      - button "企业视图" [ref=f6e77]
+    - generic [ref=f6e81]:
+      - generic [ref=f6e82]:
+        - generic [ref=f6e83]: +12.5%
+        - paragraph [ref=f6e88]: API调用总量
+        - paragraph [ref=f6e89]: 284万+
+      - generic [ref=f6e90]:
+        - generic [ref=f6e91]: +8.3%
+        - paragraph [ref=f6e96]: Token消耗
+        - paragraph [ref=f6e97]: 485万
+      - generic [ref=f6e98]:
+        - generic [ref=f6e99]: +15.2%
+        - paragraph [ref=f6e104]: 本月费用
+        - paragraph [ref=f6e105]: ¥12,860
+      - generic [ref=f6e106]:
+        - generic [ref=f6e107]: 37%
+        - paragraph [ref=f6e111]: 充能包余额
+        - paragraph [ref=f6e112]: 1,850万
+    - generic [ref=f6e115]:
+      - generic [ref=f6e116]:
+        - generic [ref=f6e117]:
+          - heading "调用趋势" [level=3] [ref=f6e118]
+          - paragraph [ref=f6e119]: API每日调用量统计
+        - generic [ref=f6e120]:
+          - button "7天" [ref=f6e121]
+          - button "30天" [ref=f6e122]
+          - button "90天" [ref=f6e123]
+      - generic [ref=f6e124]:
+        - generic [ref=f6e125]:
+          - generic [ref=f6e126]: 3.8万
+          - generic [ref=f6e128]: 07/05
+        - generic [ref=f6e129]:
+          - generic [ref=f6e130]: 3.5万
+          - generic [ref=f6e132]: 07/06
+        - generic [ref=f6e133]:
+          - generic [ref=f6e134]: 4.3万
+          - generic [ref=f6e136]: 07/07
+        - generic [ref=f6e137]:
+          - generic [ref=f6e138]: 4.7万
+          - generic [ref=f6e140]: 07/08
+        - generic [ref=f6e141]:
+          - generic [ref=f6e142]: 4.4万
+          - generic [ref=f6e144]: 07/09
+        - generic [ref=f6e145]:
+          - generic [ref=f6e146]: 5.2万
+          - generic [ref=f6e148]: 07/10
+        - generic [ref=f6e149]:
+          - generic [ref=f6e150]: 2.6万
+          - generic [ref=f6e152]: 07/11
+    - generic [ref=f6e153]:
+      - generic [ref=f6e154]:
+        - generic [ref=f6e155]:
+          - generic [ref=f6e156]:
+            - heading "模型消耗排行" [level=3] [ref=f6e157]
+            - paragraph [ref=f6e158]: Token消耗Top 5
+          - link "查看详情" [ref=f6e159] [cursor=pointer]:
+            - /url: /console/stats
+        - generic [ref=f6e161]:
+          - generic [ref=f6e163]:
+            - generic [ref=f6e164]:
+              - generic [ref=f6e165]: "1"
+              - generic [ref=f6e166]: 奇安信安全大模型
+            - generic [ref=f6e167]: 524万 Token
+          - generic [ref=f6e171]:
+            - generic [ref=f6e172]:
+              - generic [ref=f6e173]: "2"
+              - generic [ref=f6e174]: 威胁检测模型 V3
+            - generic [ref=f6e175]: 289万 Token
+          - generic [ref=f6e179]:
+            - generic [ref=f6e180]:
+              - generic [ref=f6e181]: "3"
+              - generic [ref=f6e182]: 代码安全扫描模型
+            - generic [ref=f6e183]: 178万 Token
+          - generic [ref=f6e187]:
+            - generic [ref=f6e188]:
+              - generic [ref=f6e189]: "4"
+              - generic [ref=f6e190]: 漏洞分析专家
+            - generic [ref=f6e191]: 96万 Token
+          - generic [ref=f6e195]:
+            - generic [ref=f6e196]:
+              - generic [ref=f6e197]: "5"
+              - generic [ref=f6e198]: 合规卫士
+            - generic [ref=f6e199]: 48万 Token
+      - generic [ref=f6e202]:
+        - generic [ref=f6e203]:
+          - generic [ref=f6e204]:
+            - heading "异常告警" [level=3] [ref=f6e205]
+            - paragraph [ref=f6e206]: 最近服务异常与恢复通知
+          - generic [ref=f6e207]: 1 严重
+        - generic [ref=f6e208]:
+          - generic [ref=f6e211]:
+            - paragraph [ref=f6e212]: 合规卫士接口返回500错误
+            - paragraph [ref=f6e213]: 5分钟前
+          - generic [ref=f6e216]:
+            - paragraph [ref=f6e217]: 安全大模型触发频率限制(429)
+            - paragraph [ref=f6e218]: 23分钟前
+          - generic [ref=f6e221]:
+            - paragraph [ref=f6e222]: 威胁检测模型请求频率超限
+            - paragraph [ref=f6e223]: 1小时前
+          - generic [ref=f6e226]:
+            - paragraph [ref=f6e227]: 代码安全扫描模型服务已恢复
+            - paragraph [ref=f6e228]: 2小时前
+          - generic [ref=f6e231]:
+            - paragraph [ref=f6e232]: 漏洞分析专家服务已恢复
+            - paragraph [ref=f6e233]: 3小时前
+    - generic [ref=f6e234]:
+      - generic [ref=f6e235]:
+        - generic [ref=f6e236]:
+          - heading "成员消耗排行" [level=3] [ref=f6e237]
+          - paragraph [ref=f6e238]: 团队成员Token消耗Top 5
+        - link "成员管理" [ref=f6e239] [cursor=pointer]:
+          - /url: /console/workspace
+      - generic [ref=f6e241]:
+        - generic [ref=f6e243]:
+          - generic [ref=f6e244]:
+            - generic [ref=f6e245]: "1"
+            - generic [ref=f6e248]: 张明管理员
+          - generic [ref=f6e249]: 520万 Token¥4,780
+        - generic [ref=f6e253]:
+          - generic [ref=f6e254]:
+            - generic [ref=f6e255]: "2"
+            - generic [ref=f6e258]: 李芳开发者
+          - generic [ref=f6e259]: 380万 Token¥3,240
+        - generic [ref=f6e263]:
+          - generic [ref=f6e264]:
+            - generic [ref=f6e265]: "3"
+            - generic [ref=f6e268]: 王磊开发者
+          - generic [ref=f6e269]: 290万 Token¥2,580
+        - generic [ref=f6e273]:
+          - generic [ref=f6e274]:
+            - generic [ref=f6e275]: "4"
+            - generic [ref=f6e278]: 孙丽开发者
+          - generic [ref=f6e279]: 168万 Token¥1,880
+        - generic [ref=f6e283]:
+          - generic [ref=f6e284]:
+            - generic [ref=f6e285]: "5"
+            - generic [ref=f6e288]: 赵伟只读
+          - generic [ref=f6e289]: 42万 Token¥380
+    - generic [ref=f6e292]:
+      - heading "额度使用" [level=3] [ref=f6e293]
+      - generic [ref=f6e294]:
+        - generic [ref=f6e295]:
+          - generic [ref=f6e296]:
+            - generic [ref=f6e297]: 充能包
+            - generic [ref=f6e300]: 1,850万 / 5,000万 Token
+          - generic [ref=f6e303]:
+            - generic [ref=f6e304]: 已使用 3150万 Token
+            - generic [ref=f6e305]: 37%
+        - generic [ref=f6e306]:
+          - generic [ref=f6e307]:
+            - generic [ref=f6e308]: API频率
+            - generic [ref=f6e311]: 6,000 / 10,000 次/分
+          - generic [ref=f6e314]:
+            - generic [ref=f6e315]: 当前频率限制
+            - generic [ref=f6e316]: 60%
+    - generic [ref=f6e317]:
+      - link [ref=f6e318] [cursor=pointer]:
+        - /url: /console/keys/create
+        - paragraph [ref=f6e323]: 创建API Key
+        - paragraph [ref=f6e324]: 生成新的API访问密钥
+      - link [ref=f6e325] [cursor=pointer]:
+        - /url: /console/packs
+        - paragraph [ref=f6e330]: 购买充能包
+        - paragraph [ref=f6e331]: 补充Token调用额度
+      - link [ref=f6e332] [cursor=pointer]:
+        - /url: /console/docs
+        - paragraph [ref=f6e337]: API文档
+        - paragraph [ref=f6e338]: 查看接口调用指南
+      - link [ref=f6e339] [cursor=pointer]:
+        - /url: /console/stats
+        - paragraph [ref=f6e344]: 调用统计
+        - paragraph [ref=f6e345]: 查看详细调用数据

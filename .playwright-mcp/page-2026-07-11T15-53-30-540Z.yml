@@ -1,0 +1,173 @@
+- generic [ref=f14e3]:
+  - complementary [ref=f14e4]:
+    - link "返回市场" [ref=f14e6] [cursor=pointer]:
+      - /url: /
+    - generic [ref=f14e13]:
+      - paragraph [ref=f14e14]: 奇安信AI
+      - paragraph [ref=f14e15]: 用户控制台
+    - navigation [ref=f14e16]:
+      - generic [ref=f14e17]:
+        - paragraph [ref=f14e18]: 核心功能
+        - generic [ref=f14e19]:
+          - link "使用看板" [ref=f14e20] [cursor=pointer]:
+            - /url: /console
+          - link "API Key" [ref=f14e23] [cursor=pointer]:
+            - /url: /console/keys
+          - link "调用统计" [ref=f14e26] [cursor=pointer]:
+            - /url: /console/stats
+          - link "充能包" [ref=f14e29] [cursor=pointer]:
+            - /url: /console/packs
+      - generic [ref=f14e32]:
+        - paragraph [ref=f14e33]: 账户管理
+        - generic [ref=f14e34]:
+          - link "账单中心" [ref=f14e35] [cursor=pointer]:
+            - /url: /console/billing
+          - link "企业空间" [ref=f14e38] [cursor=pointer]:
+            - /url: /console/workspace
+          - link "个人设置" [ref=f14e42] [cursor=pointer]:
+            - /url: /console/settings
+      - generic [ref=f14e45]:
+        - paragraph [ref=f14e46]: 开发资源
+        - generic [ref=f14e47]:
+          - link "API文档" [ref=f14e48] [cursor=pointer]:
+            - /url: /console/docs
+          - link "应用集成" [ref=f14e51] [cursor=pointer]:
+            - /url: /console/integrations
+    - button [ref=f14e56]:
+      - generic [ref=f14e59]:
+        - paragraph [ref=f14e60]: 张明
+        - paragraph [ref=f14e61]: 奇安信安全团队
+  - generic [ref=f14e63]:
+    - generic [ref=f14e64]:
+      - heading "企业充能包" [level=1] [ref=f14e65]
+      - paragraph [ref=f14e66]: 管理企业Token余额，购买充能包，查看成员消耗
+    - generic [ref=f14e69]:
+      - generic [ref=f14e70]:
+        - generic [ref=f14e71]:
+          - paragraph [ref=f14e72]: 企业充能包余额
+          - generic [ref=f14e73]:
+            - generic [ref=f14e74]: 1,850万
+            - generic [ref=f14e75]: Token
+        - generic [ref=f14e76]:
+          - generic [ref=f14e77]:
+            - paragraph [ref=f14e78]: 已使用
+            - paragraph [ref=f14e79]: 3,150万
+          - generic [ref=f14e81]:
+            - paragraph [ref=f14e82]: 累计购买
+            - paragraph [ref=f14e83]: 5,000万
+      - generic [ref=f14e85]:
+        - generic [ref=f14e86]: 使用进度
+        - generic [ref=f14e87]: 37.0%
+    - generic [ref=f14e90]:
+      - heading "购买企业充能包" [level=3] [ref=f14e91]
+      - generic [ref=f14e92]:
+        - generic [ref=f14e93]:
+          - generic [ref=f14e94]:
+            - generic [ref=f14e95]:
+              - paragraph [ref=f14e96]: 体验包
+              - paragraph [ref=f14e97]: 100万Token
+            - generic [ref=f14e98]:
+              - paragraph [ref=f14e99]: ¥99
+              - paragraph [ref=f14e100]: ¥0.099/千Token
+          - generic [ref=f14e101]:
+            - generic [ref=f14e102]: 基础模型调用
+            - generic [ref=f14e104]: 标准响应速度
+            - generic [ref=f14e106]: 社区技术支持
+          - button "企业购买" [ref=f14e108]
+        - generic [ref=f14e109]:
+          - generic [ref=f14e110]: 最受欢迎
+          - generic [ref=f14e111]:
+            - generic [ref=f14e112]:
+              - paragraph [ref=f14e113]: 专业包
+              - paragraph [ref=f14e114]: 500万Token
+            - generic [ref=f14e115]:
+              - paragraph [ref=f14e116]: ¥399
+              - paragraph [ref=f14e117]: ¥0.080/千Token
+          - generic [ref=f14e118]: ¥495
+          - generic [ref=f14e119]:
+            - generic [ref=f14e120]: 全模型调用
+            - generic [ref=f14e122]: 优先响应速度
+            - generic [ref=f14e124]: 工单技术支持
+            - generic [ref=f14e126]: API调用统计
+          - button "企业购买" [ref=f14e128]
+        - generic [ref=f14e129]:
+          - generic [ref=f14e130]:
+            - generic [ref=f14e131]:
+              - paragraph [ref=f14e132]: 企业包
+              - paragraph [ref=f14e133]: 2000万Token
+            - generic [ref=f14e134]:
+              - paragraph [ref=f14e135]: ¥1,499
+              - paragraph [ref=f14e136]: ¥0.075/千Token
+          - generic [ref=f14e137]: ¥1,980
+          - generic [ref=f14e138]:
+            - generic [ref=f14e139]: 全模型调用
+            - generic [ref=f14e141]: 最高响应速度
+            - generic [ref=f14e143]: 1对1技术支持
+            - generic [ref=f14e145]: API调用统计
+            - generic [ref=f14e147]: 专属模型实例
+            - generic [ref=f14e149]: SLA保障
+          - button "企业购买" [ref=f14e151]
+        - generic [ref=f14e152]:
+          - generic [ref=f14e153]:
+            - generic [ref=f14e154]:
+              - paragraph [ref=f14e155]: 无限包
+              - paragraph [ref=f14e156]: 无限Token
+            - generic [ref=f14e157]:
+              - paragraph [ref=f14e158]: ¥4,999/月
+              - paragraph [ref=f14e159]: 不限
+          - generic [ref=f14e160]:
+            - generic [ref=f14e161]: 全模型无限调用
+            - generic [ref=f14e163]: 最高响应速度
+            - generic [ref=f14e165]: 专属技术团队
+            - generic [ref=f14e167]: 高级API统计
+            - generic [ref=f14e169]: 专属模型实例
+            - generic [ref=f14e171]: 99.9% SLA
+            - generic [ref=f14e173]: 私有化部署选项
+          - button "企业购买" [ref=f14e175]
+    - generic [ref=f14e176]:
+      - heading "成员消耗明细" [level=3] [ref=f14e177]
+      - table [ref=f14e178]:
+        - rowgroup [ref=f14e179]:
+          - row [ref=f14e180]:
+            - columnheader "成员名" [ref=f14e181]
+            - columnheader "角色" [ref=f14e182]
+            - columnheader "本月Token消耗" [ref=f14e183]
+            - columnheader "本月费用" [ref=f14e184]
+            - columnheader "占比" [ref=f14e185]
+        - rowgroup [ref=f14e186]:
+          - row [ref=f14e187]:
+            - cell "张明" [ref=f14e188]
+            - cell "管理员" [ref=f14e193]
+            - cell "520万 Token" [ref=f14e195]
+            - cell "¥4,780" [ref=f14e196]
+            - cell "37.1%" [ref=f14e197]
+          - row [ref=f14e202]:
+            - cell "李芳" [ref=f14e203]
+            - cell "开发者" [ref=f14e208]
+            - cell "380万 Token" [ref=f14e210]
+            - cell "¥3,240" [ref=f14e211]
+            - cell "27.1%" [ref=f14e212]
+          - row [ref=f14e217]:
+            - cell "王磊" [ref=f14e218]
+            - cell "开发者" [ref=f14e223]
+            - cell "290万 Token" [ref=f14e225]
+            - cell "¥2,580" [ref=f14e226]
+            - cell "20.7%" [ref=f14e227]
+          - row [ref=f14e232]:
+            - cell "陈静" [ref=f14e233]
+            - cell "财务" [ref=f14e238]
+            - cell "0 Token" [ref=f14e240]
+            - cell "¥0" [ref=f14e241]
+            - cell "0%" [ref=f14e242]
+          - row [ref=f14e246]:
+            - cell "赵伟" [ref=f14e247]
+            - cell "只读" [ref=f14e252]
+            - cell "42万 Token" [ref=f14e254]
+            - cell "¥380" [ref=f14e255]
+            - cell "3%" [ref=f14e256]
+          - row [ref=f14e261]:
+            - cell "孙丽" [ref=f14e262]
+            - cell "开发者" [ref=f14e267]
+            - cell "168万 Token" [ref=f14e269]
+            - cell "¥1,880" [ref=f14e270]
+            - cell "12%" [ref=f14e271]

@@ -1,0 +1,212 @@
+- generic [ref=f7e3]:
+  - complementary [ref=f7e4]:
+    - link "返回市场" [ref=f7e6] [cursor=pointer]:
+      - /url: /
+    - generic [ref=f7e13]:
+      - paragraph [ref=f7e14]: 奇安信AI
+      - paragraph [ref=f7e15]: 用户控制台
+    - navigation [ref=f7e16]:
+      - generic [ref=f7e17]:
+        - paragraph [ref=f7e18]: 核心功能
+        - generic [ref=f7e19]:
+          - link "使用看板" [ref=f7e20] [cursor=pointer]:
+            - /url: /console
+          - link "API Key" [ref=f7e23] [cursor=pointer]:
+            - /url: /console/keys
+          - link "调用统计" [ref=f7e26] [cursor=pointer]:
+            - /url: /console/stats
+          - link "充能包" [ref=f7e29] [cursor=pointer]:
+            - /url: /console/packs
+      - generic [ref=f7e32]:
+        - paragraph [ref=f7e33]: 账户管理
+        - generic [ref=f7e34]:
+          - link "账单中心" [ref=f7e35] [cursor=pointer]:
+            - /url: /console/billing
+          - link "企业空间" [ref=f7e39] [cursor=pointer]:
+            - /url: /console/workspace
+          - link "个人设置" [ref=f7e42] [cursor=pointer]:
+            - /url: /console/settings
+      - generic [ref=f7e45]:
+        - paragraph [ref=f7e46]: 开发资源
+        - generic [ref=f7e47]:
+          - link "API文档" [ref=f7e48] [cursor=pointer]:
+            - /url: /console/docs
+          - link "应用集成" [ref=f7e51] [cursor=pointer]:
+            - /url: /console/integrations
+    - button [ref=f7e56]:
+      - generic [ref=f7e59]:
+        - paragraph [ref=f7e60]: 张明
+        - paragraph [ref=f7e61]: 奇安信安全团队
+  - generic [ref=f7e64]:
+    - generic [ref=f7e65]:
+      - heading "账单中心" [level=1] [ref=f7e66]
+      - paragraph [ref=f7e67]: 查看您的消费记录与账单明细
+    - generic [ref=f7e69]:
+      - button "企业账单" [ref=f7e70]
+      - button "我的消耗" [ref=f7e71]
+    - generic [ref=f7e72]:
+      - generic [ref=f7e73]:
+        - generic [ref=f7e74]:
+          - paragraph [ref=f7e75]: 企业本月消费
+          - paragraph [ref=f7e76]: ¥12,860
+          - paragraph [ref=f7e77]: 奇安信安全团队
+        - generic [ref=f7e78]:
+          - paragraph [ref=f7e79]: 成员数
+          - paragraph [ref=f7e80]: "6"
+          - paragraph [ref=f7e81]: 活跃成员 5 人
+        - generic [ref=f7e82]:
+          - paragraph [ref=f7e83]: 企业Token消耗
+          - paragraph [ref=f7e84]: 1.4千万
+          - paragraph [ref=f7e85]: 2026年7月
+      - generic [ref=f7e86]:
+        - heading "成员消耗分布" [level=3] [ref=f7e87]
+        - generic [ref=f7e88]:
+          - generic [ref=f7e89]:
+            - generic [ref=f7e90]: 张明
+            - generic [ref=f7e91]: 37%
+            - generic [ref=f7e94]: ¥4,780
+          - generic [ref=f7e95]:
+            - generic [ref=f7e96]: 李芳
+            - generic [ref=f7e97]: 25%
+            - generic [ref=f7e100]: ¥3,240
+          - generic [ref=f7e101]:
+            - generic [ref=f7e102]: 王磊
+            - generic [ref=f7e103]: 20%
+            - generic [ref=f7e106]: ¥2,580
+          - generic [ref=f7e107]:
+            - generic [ref=f7e108]: 孙丽
+            - generic [ref=f7e109]: 15%
+            - generic [ref=f7e112]: ¥1,880
+          - generic [ref=f7e113]:
+            - generic [ref=f7e114]: 其他
+            - generic [ref=f7e115]: 3%
+            - generic [ref=f7e118]: ¥380
+      - generic [ref=f7e119]:
+        - heading "企业账单明细" [level=3] [ref=f7e121]
+        - table [ref=f7e122]:
+          - rowgroup [ref=f7e123]:
+            - row [ref=f7e124]:
+              - columnheader "月份" [ref=f7e125]
+              - columnheader "金额" [ref=f7e126]
+              - columnheader "Token消耗" [ref=f7e127]
+              - columnheader "状态" [ref=f7e128]
+              - columnheader "操作" [ref=f7e129]
+          - rowgroup [ref=f7e130]:
+            - row [ref=f7e131]:
+              - cell "2026年7月" [ref=f7e132]
+              - cell "¥12,860" [ref=f7e133]
+              - cell "1.9千万" [ref=f7e134]
+              - cell [ref=f7e135]
+              - cell [ref=f7e138]:
+                - button "下载" [ref=f7e139]
+            - row [ref=f7e141]:
+              - cell "2026年6月" [ref=f7e142]
+              - cell "¥11,240" [ref=f7e143]
+              - cell "1.6千万" [ref=f7e144]
+              - cell [ref=f7e145]
+              - cell [ref=f7e148]:
+                - button "下载" [ref=f7e149]
+            - row [ref=f7e151]:
+              - cell "2026年5月" [ref=f7e152]
+              - cell "¥9,860" [ref=f7e153]
+              - cell "1.4千万" [ref=f7e154]
+              - cell [ref=f7e155]
+              - cell [ref=f7e158]:
+                - button "下载" [ref=f7e159]
+            - row [ref=f7e161]:
+              - cell "2026年4月" [ref=f7e162]
+              - cell "¥8,520" [ref=f7e163]
+              - cell "1.2千万" [ref=f7e164]
+              - cell [ref=f7e165]
+              - cell [ref=f7e168]:
+                - button "下载" [ref=f7e169]
+            - row [ref=f7e171]:
+              - cell "2026年3月" [ref=f7e172]
+              - cell "¥7,680" [ref=f7e173]
+              - cell "1.1千万" [ref=f7e174]
+              - cell [ref=f7e175]
+              - cell [ref=f7e178]:
+                - button "下载" [ref=f7e179]
+            - row [ref=f7e181]:
+              - cell "2026年2月" [ref=f7e182]
+              - cell "¥6,240" [ref=f7e183]
+              - cell "900万" [ref=f7e184]
+              - cell [ref=f7e185]
+              - cell [ref=f7e188]:
+                - button "下载" [ref=f7e189]
+      - generic [ref=f7e191]:
+        - heading "成员消耗明细" [level=3] [ref=f7e193]
+        - table [ref=f7e194]:
+          - rowgroup [ref=f7e195]:
+            - row [ref=f7e196]:
+              - columnheader "成员" [ref=f7e197]
+              - columnheader "角色" [ref=f7e198]
+              - columnheader "本月Token" [ref=f7e199]
+              - columnheader "本月费用" [ref=f7e200]
+              - columnheader "占比" [ref=f7e201]
+          - rowgroup [ref=f7e202]:
+            - row [ref=f7e203]:
+              - cell "张明" [ref=f7e204]
+              - cell "管理员" [ref=f7e209]
+              - cell "520万" [ref=f7e211]
+              - cell "¥4,780" [ref=f7e212]
+              - cell "37.2%" [ref=f7e213]
+            - row [ref=f7e218]:
+              - cell "李芳" [ref=f7e219]
+              - cell "开发者" [ref=f7e224]
+              - cell "380万" [ref=f7e226]
+              - cell "¥3,240" [ref=f7e227]
+              - cell "25.2%" [ref=f7e228]
+            - row [ref=f7e233]:
+              - cell "王磊" [ref=f7e234]
+              - cell "开发者" [ref=f7e239]
+              - cell "290万" [ref=f7e241]
+              - cell "¥2,580" [ref=f7e242]
+              - cell "20.1%" [ref=f7e243]
+            - row [ref=f7e248]:
+              - cell "陈静" [ref=f7e249]
+              - cell "财务" [ref=f7e254]
+              - cell "0" [ref=f7e256]
+              - cell "¥0" [ref=f7e257]
+              - cell "0.0%" [ref=f7e258]
+            - row [ref=f7e262]:
+              - cell "赵伟" [ref=f7e263]
+              - cell "只读" [ref=f7e268]
+              - cell "42万" [ref=f7e270]
+              - cell "¥380" [ref=f7e271]
+              - cell "3.0%" [ref=f7e272]
+            - row [ref=f7e277]:
+              - cell "孙丽" [ref=f7e278]
+              - cell "开发者" [ref=f7e283]
+              - cell "168万" [ref=f7e285]
+              - cell "¥1,880" [ref=f7e286]
+              - cell "14.6%" [ref=f7e287]
+    - generic [ref=f7e292]:
+      - heading "充值记录" [level=3] [ref=f7e294]
+      - table [ref=f7e295]:
+        - rowgroup [ref=f7e296]:
+          - row [ref=f7e297]:
+            - columnheader "时间" [ref=f7e298]
+            - columnheader "充能包名" [ref=f7e299]
+            - columnheader "Token数" [ref=f7e300]
+            - columnheader "金额" [ref=f7e301]
+            - columnheader "状态" [ref=f7e302]
+        - rowgroup [ref=f7e303]:
+          - row [ref=f7e304]:
+            - cell "2026-07-01 09:30:22" [ref=f7e305]
+            - cell "专业包" [ref=f7e306]
+            - cell "500万Token" [ref=f7e310]
+            - cell "¥399" [ref=f7e311]
+            - cell [ref=f7e312]
+          - row [ref=f7e315]:
+            - cell "2026-06-15 14:22:10" [ref=f7e316]
+            - cell "企业包" [ref=f7e317]
+            - cell "2000万Token" [ref=f7e321]
+            - cell "¥1,499" [ref=f7e322]
+            - cell [ref=f7e323]
+          - row [ref=f7e326]:
+            - cell "2026-05-20 11:08:33" [ref=f7e327]
+            - cell "体验包" [ref=f7e328]
+            - cell "100万Token" [ref=f7e332]
+            - cell "¥99" [ref=f7e333]
+            - cell [ref=f7e334]

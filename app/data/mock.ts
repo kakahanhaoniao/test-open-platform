@@ -663,3 +663,11 @@ export function getAppById(id: string): App | undefined {
 export function getActivityById(id: string): Activity | undefined {
   return activities.find(a => a.id === id)
 }
+
+export function getOrganization(): Organization | undefined {
+  return organization
+}
+
+export function getMembers(): Member[] {
+  return members
+}

@@ -1,0 +1,199 @@
+- generic [ref=f12e3]:
+  - banner [ref=f12e4]:
+    - generic [ref=f12e5]:
+      - link "奇安信 AI 开放平台" [ref=f12e6] [cursor=pointer]:
+        - /url: /portal
+        - generic [ref=f12e9]:
+          - generic [ref=f12e10]: 奇安信
+          - generic [ref=f12e11]: AI 开放平台
+      - navigation [ref=f12e12]:
+        - link "产品能力" [ref=f12e13] [cursor=pointer]:
+          - /url: /portal
+        - link "定价" [ref=f12e15] [cursor=pointer]:
+          - /url: /portal/pricing
+        - link "客户案例" [ref=f12e16] [cursor=pointer]:
+          - /url: /portal#customers
+        - link "文档" [ref=f12e17] [cursor=pointer]:
+          - /url: /portal#docs
+      - generic [ref=f12e18]:
+        - link "进入控制台" [ref=f12e19] [cursor=pointer]:
+          - /url: /console
+        - link "登录" [ref=f12e22] [cursor=pointer]:
+          - /url: /portal/login
+        - link "免费注册" [ref=f12e24] [cursor=pointer]:
+          - /url: /portal/register
+  - generic [ref=f12e44]:
+    - generic [ref=f12e45]: AI安全能力开放平台
+    - heading "以AI之力 守护数字世界安全" [level=1] [ref=f12e48]
+    - paragraph [ref=f12e49]: 奇安信AI开放平台汇聚安全大模型、智能应用与专业工具，为企业提供一站式AI安全能力服务，让安全防护更智能、更高效。
+    - generic [ref=f12e50]:
+      - link "免费体验" [ref=f12e51] [cursor=pointer]:
+        - /url: /
+      - link "查看定价" [ref=f12e54] [cursor=pointer]:
+        - /url: /portal/pricing
+    - generic [ref=f12e57]:
+      - generic [ref=f12e58]:
+        - paragraph [ref=f12e59]: 10+
+        - paragraph [ref=f12e60]: AI安全模型
+      - generic [ref=f12e61]:
+        - paragraph [ref=f12e62]: 8+
+        - paragraph [ref=f12e63]: 安全应用
+      - generic [ref=f12e64]:
+        - paragraph [ref=f12e65]: 5000万+
+        - paragraph [ref=f12e66]: 累计调用次数
+      - generic [ref=f12e67]:
+        - paragraph [ref=f12e68]: 99.9%
+        - paragraph [ref=f12e69]: 服务可用性
+  - generic [ref=f12e71]:
+    - generic [ref=f12e72]:
+      - generic [ref=f12e73]: 核心能力
+      - heading "全方位AI安全能力" [level=2] [ref=f12e76]
+      - paragraph [ref=f12e77]: 覆盖安全运营全场景的AI能力矩阵，从威胁检测到应急响应，为您的安全体系注入智能动力
+    - generic [ref=f12e78]:
+      - generic [ref=f12e79]:
+        - heading "安全大模型" [level=3] [ref=f12e82]
+        - paragraph [ref=f12e83]: 基于千亿参数的安全领域大语言模型，深度融合20年安全知识库，支持威胁分析、安全问答、报告生成
+      - generic [ref=f12e84]:
+        - heading "威胁检测" [level=3] [ref=f12e87]
+        - paragraph [ref=f12e88]: 专注高级威胁识别，支持APT攻击链分析、恶意流量检测与IOC自动提取，检测率达99.2%
+      - generic [ref=f12e89]:
+        - heading "漏洞分析" [level=3] [ref=f12e92]
+        - paragraph [ref=f12e93]: 深度漏洞分析模型，支持CVE解读、PoC生成、修复方案推荐与风险评估，覆盖OWASP Top 10全类别
+      - generic [ref=f12e94]:
+        - heading "代码安全" [level=3] [ref=f12e97]
+        - paragraph [ref=f12e98]: 源代码安全审计模型，支持SAST/DAST分析、安全编码建议与漏洞模式识别，覆盖主流编程语言
+      - generic [ref=f12e99]:
+        - heading "智能运营" [level=3] [ref=f12e102]
+        - paragraph [ref=f12e103]: AI驱动的安全运营中心，集成告警聚合、威胁研判、自动化响应，将MTTR从小时级缩短至分钟级
+      - generic [ref=f12e104]:
+        - heading "态势感知" [level=3] [ref=f12e107]
+        - paragraph [ref=f12e108]: 实时安全态势可视化，全球威胁地图、攻击链路追踪、资产风险热力图，一屏掌控全局安全态势
+  - generic [ref=f12e111]:
+    - generic [ref=f12e115]:
+      - paragraph [ref=f12e116]: 10+
+      - paragraph [ref=f12e117]: AI安全模型
+    - generic [ref=f12e121]:
+      - paragraph [ref=f12e122]: 8+
+      - paragraph [ref=f12e123]: 安全应用
+    - generic [ref=f12e127]:
+      - paragraph [ref=f12e128]: 5000万+
+      - paragraph [ref=f12e129]: 累计调用次数
+    - generic [ref=f12e133]:
+      - paragraph [ref=f12e134]: 99.9%
+      - paragraph [ref=f12e135]: 服务可用性
+  - generic [ref=f12e137]:
+    - generic [ref=f12e138]:
+      - generic [ref=f12e139]: 客户案例
+      - heading "深受行业领军者信赖" [level=2] [ref=f12e142]
+      - paragraph [ref=f12e143]: 从金融到能源，从政府到互联网，数百家企业选择奇安信AI开放平台
+    - generic [ref=f12e144]:
+      - generic [ref=f12e145]:
+        - paragraph [ref=f12e148]: 奇安信AI开放平台的安全大模型帮助我们实现了威胁研判自动化，安全运营效率提升了300%，MTTR从4小时缩短至30分钟。
+        - generic [ref=f12e152]:
+          - paragraph [ref=f12e153]: 张明
+          - paragraph [ref=f12e154]: 信息安全总监 · 某大型金融机构
+      - generic [ref=f12e155]:
+        - paragraph [ref=f12e158]: 威胁检测模型的APT攻击链分析能力非常强大，帮助我们发现了多起高级持续性威胁，有效保障了国家关键基础设施安全运行。
+        - generic [ref=f12e162]:
+          - paragraph [ref=f12e163]: 李伟
+          - paragraph [ref=f12e164]: 安全运营负责人 · 某能源企业
+      - generic [ref=f12e165]:
+        - paragraph [ref=f12e168]: 代码安全扫描模型深度集成到我们的DevSecOps流程中，上线前漏洞发现率提升了85%，大幅降低了安全风险和修复成本。
+        - generic [ref=f12e172]:
+          - paragraph [ref=f12e173]: 王芳
+          - paragraph [ref=f12e174]: 技术架构师 · 某政府单位
+  - generic [ref=f12e176]:
+    - generic [ref=f12e177]:
+      - generic [ref=f12e178]: 灵活定价
+      - heading "选择适合您的方案" [level=2] [ref=f12e181]
+      - paragraph [ref=f12e182]: 从个人开发者到大型企业，我们提供灵活的定价方案满足不同需求
+    - generic [ref=f12e183]:
+      - generic [ref=f12e184]:
+        - heading "体验包" [level=3] [ref=f12e185]
+        - paragraph [ref=f12e186]: 100万Token
+        - generic [ref=f12e187]: ¥99
+        - list [ref=f12e188]:
+          - listitem [ref=f12e189]: 基础模型调用
+          - listitem [ref=f12e191]: 标准响应速度
+          - listitem [ref=f12e193]: 社区技术支持
+        - link "选择方案" [ref=f12e195] [cursor=pointer]:
+          - /url: /portal/pricing
+      - generic [ref=f12e197]:
+        - generic [ref=f12e198]: 最受欢迎
+        - heading "专业包" [level=3] [ref=f12e200]
+        - paragraph [ref=f12e201]: 500万Token
+        - generic [ref=f12e202]: ¥399¥495
+        - list [ref=f12e203]:
+          - listitem [ref=f12e204]: 全模型调用
+          - listitem [ref=f12e206]: 优先响应速度
+          - listitem [ref=f12e208]: 工单技术支持
+          - listitem [ref=f12e210]: API调用统计
+        - link "立即购买" [ref=f12e212] [cursor=pointer]:
+          - /url: /portal/pricing
+      - generic [ref=f12e214]:
+        - heading "企业包" [level=3] [ref=f12e215]
+        - paragraph [ref=f12e216]: 2000万Token
+        - generic [ref=f12e217]: ¥1,499¥1,980
+        - list [ref=f12e218]:
+          - listitem [ref=f12e219]: 全模型调用
+          - listitem [ref=f12e221]: 最高响应速度
+          - listitem [ref=f12e223]: 1对1技术支持
+          - listitem [ref=f12e225]: API调用统计
+          - listitem [ref=f12e227]: 专属模型实例
+          - listitem [ref=f12e229]: SLA保障
+        - link "选择方案" [ref=f12e231] [cursor=pointer]:
+          - /url: /portal/pricing
+    - link "查看完整定价" [ref=f12e234] [cursor=pointer]:
+      - /url: /portal/pricing
+  - generic [ref=f12e243]:
+    - generic [ref=f12e244]:
+      - heading "立即开始使用" [level=2] [ref=f12e245]
+      - paragraph [ref=f12e246]: 注册即可获得1000万Token免费体验额度，探索全部安全AI能力。无需信用卡，即刻开启智能安全之旅。
+    - generic [ref=f12e247]:
+      - link "免费注册" [ref=f12e248] [cursor=pointer]:
+        - /url: /portal/register
+      - button "联系销售" [ref=f12e251]
+  - contentinfo [ref=f12e254]:
+    - generic [ref=f12e255]:
+      - generic [ref=f12e256]:
+        - generic [ref=f12e257]:
+          - generic [ref=f12e261]:
+            - generic [ref=f12e262]: 奇安信
+            - generic [ref=f12e263]: AI 开放平台
+          - paragraph [ref=f12e264]: 以AI之力，守护数字世界安全。奇安信AI开放平台提供一站式AI安全能力服务。
+        - generic [ref=f12e265]:
+          - heading "产品能力" [level=4] [ref=f12e266]
+          - list [ref=f12e267]:
+            - listitem [ref=f12e268]:
+              - link "安全大模型" [ref=f12e269] [cursor=pointer]:
+                - /url: /
+            - listitem [ref=f12e270]:
+              - link "威胁检测" [ref=f12e271] [cursor=pointer]:
+                - /url: /
+            - listitem [ref=f12e272]:
+              - link "漏洞分析" [ref=f12e273] [cursor=pointer]:
+                - /url: /
+            - listitem [ref=f12e274]:
+              - link "代码安全" [ref=f12e275] [cursor=pointer]:
+                - /url: /
+        - generic [ref=f12e276]:
+          - heading "资源与支持" [level=4] [ref=f12e277]
+          - list [ref=f12e278]:
+            - listitem [ref=f12e279]:
+              - link "定价方案" [ref=f12e280] [cursor=pointer]:
+                - /url: /portal/pricing
+            - listitem [ref=f12e281]: API文档
+            - listitem [ref=f12e282]: 开发者指南
+            - listitem [ref=f12e283]: 帮助中心
+        - generic [ref=f12e284]:
+          - heading "关于我们" [level=4] [ref=f12e285]
+          - list [ref=f12e286]:
+            - listitem [ref=f12e287]: 公司介绍
+            - listitem [ref=f12e288]: 隐私政策
+            - listitem [ref=f12e289]: 服务条款
+            - listitem [ref=f12e290]: 联系我们
+      - generic [ref=f12e291]:
+        - generic [ref=f12e292]: © 2026 奇安信科技集团股份有限公司. 保留所有权利.
+        - generic [ref=f12e293]:
+          - generic [ref=f12e294]: 京ICP备XXXXXXXX号
+          - generic [ref=f12e295]: 京公网安备XXXXXXXXXXXXXX号

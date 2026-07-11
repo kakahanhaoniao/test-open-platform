@@ -1,0 +1,227 @@
+- generic [active] [ref=f11e1]:
+  - generic [ref=f11e565]:
+    - complementary [ref=f11e566]:
+      - link "返回市场" [ref=f11e568] [cursor=pointer]:
+        - /url: /
+      - generic [ref=f11e575]:
+        - paragraph [ref=f11e576]: 奇安信AI
+        - paragraph [ref=f11e577]: 用户控制台
+      - navigation [ref=f11e578]:
+        - generic [ref=f11e579]:
+          - paragraph [ref=f11e580]: 核心功能
+          - generic [ref=f11e581]:
+            - link "使用看板" [ref=f11e582] [cursor=pointer]:
+              - /url: /console
+            - link "API Key" [ref=f11e586] [cursor=pointer]:
+              - /url: /console/keys
+            - link "调用统计" [ref=f11e589] [cursor=pointer]:
+              - /url: /console/stats
+            - link "充能包" [ref=f11e592] [cursor=pointer]:
+              - /url: /console/packs
+        - generic [ref=f11e595]:
+          - paragraph [ref=f11e596]: 账户管理
+          - generic [ref=f11e597]:
+            - link "账单中心" [ref=f11e598] [cursor=pointer]:
+              - /url: /console/billing
+            - link "企业空间" [ref=f11e601] [cursor=pointer]:
+              - /url: /console/workspace
+            - link "个人设置" [ref=f11e604] [cursor=pointer]:
+              - /url: /console/settings
+        - generic [ref=f11e607]:
+          - paragraph [ref=f11e608]: 开发资源
+          - generic [ref=f11e609]:
+            - link "API文档" [ref=f11e610] [cursor=pointer]:
+              - /url: /console/docs
+            - link "应用集成" [ref=f11e613] [cursor=pointer]:
+              - /url: /console/integrations
+      - button [ref=f11e618]:
+        - generic [ref=f11e621]:
+          - paragraph [ref=f11e622]: 张明
+          - paragraph [ref=f11e623]: 奇安信安全团队
+    - generic [ref=f11e626]:
+      - generic [ref=f11e627]:
+        - generic [ref=f11e631]:
+          - generic [ref=f11e632]:
+            - heading "欢迎回来，张明" [level=1] [ref=f11e633]
+            - generic [ref=f11e634]: · 奇安信安全团队
+          - generic [ref=f11e635]: 服务正常
+        - button "企业视图" [ref=f11e639]
+      - generic [ref=f11e643]:
+        - generic [ref=f11e644]:
+          - generic [ref=f11e645]: +12.5%
+          - paragraph [ref=f11e650]: API调用总量
+          - paragraph [ref=f11e651]: 284万+
+        - generic [ref=f11e652]:
+          - generic [ref=f11e653]: +8.3%
+          - paragraph [ref=f11e658]: Token消耗
+          - paragraph [ref=f11e659]: 485万
+        - generic [ref=f11e660]:
+          - generic [ref=f11e661]: +15.2%
+          - paragraph [ref=f11e666]: 本月费用
+          - paragraph [ref=f11e667]: ¥12,860
+        - generic [ref=f11e668]:
+          - generic [ref=f11e669]: 37%
+          - paragraph [ref=f11e673]: 充能包余额
+          - paragraph [ref=f11e674]: 1,850万
+      - generic [ref=f11e677]:
+        - generic [ref=f11e678]:
+          - generic [ref=f11e679]:
+            - heading "调用趋势" [level=3] [ref=f11e680]
+            - paragraph [ref=f11e681]: API每日调用量统计
+          - generic [ref=f11e682]:
+            - button "7天" [ref=f11e683]
+            - button "30天" [ref=f11e684]
+            - button "90天" [ref=f11e685]
+        - generic [ref=f11e686]:
+          - generic [ref=f11e687]:
+            - generic [ref=f11e688]: 3.8万
+            - generic [ref=f11e690]: 07/05
+          - generic [ref=f11e691]:
+            - generic [ref=f11e692]: 3.5万
+            - generic [ref=f11e694]: 07/06
+          - generic [ref=f11e695]:
+            - generic [ref=f11e696]: 4.3万
+            - generic [ref=f11e698]: 07/07
+          - generic [ref=f11e699]:
+            - generic [ref=f11e700]: 4.7万
+            - generic [ref=f11e702]: 07/08
+          - generic [ref=f11e703]:
+            - generic [ref=f11e704]: 4.4万
+            - generic [ref=f11e706]: 07/09
+          - generic [ref=f11e707]:
+            - generic [ref=f11e708]: 5.2万
+            - generic [ref=f11e710]: 07/10
+          - generic [ref=f11e711]:
+            - generic [ref=f11e712]: 2.6万
+            - generic [ref=f11e714]: 07/11
+      - generic [ref=f11e715]:
+        - generic [ref=f11e716]:
+          - generic [ref=f11e717]:
+            - generic [ref=f11e718]:
+              - heading "模型消耗排行" [level=3] [ref=f11e719]
+              - paragraph [ref=f11e720]: Token消耗Top 5
+            - link "查看详情" [ref=f11e721] [cursor=pointer]:
+              - /url: /console/stats
+          - generic [ref=f11e723]:
+            - generic [ref=f11e725]:
+              - generic [ref=f11e726]:
+                - generic [ref=f11e727]: "1"
+                - generic [ref=f11e728]: 奇安信安全大模型
+              - generic [ref=f11e729]: 524万 Token
+            - generic [ref=f11e733]:
+              - generic [ref=f11e734]:
+                - generic [ref=f11e735]: "2"
+                - generic [ref=f11e736]: 威胁检测模型 V3
+              - generic [ref=f11e737]: 289万 Token
+            - generic [ref=f11e741]:
+              - generic [ref=f11e742]:
+                - generic [ref=f11e743]: "3"
+                - generic [ref=f11e744]: 代码安全扫描模型
+              - generic [ref=f11e745]: 178万 Token
+            - generic [ref=f11e749]:
+              - generic [ref=f11e750]:
+                - generic [ref=f11e751]: "4"
+                - generic [ref=f11e752]: 漏洞分析专家
+              - generic [ref=f11e753]: 96万 Token
+            - generic [ref=f11e757]:
+              - generic [ref=f11e758]:
+                - generic [ref=f11e759]: "5"
+                - generic [ref=f11e760]: 合规卫士
+              - generic [ref=f11e761]: 48万 Token
+        - generic [ref=f11e764]:
+          - generic [ref=f11e765]:
+            - generic [ref=f11e766]:
+              - heading "异常告警" [level=3] [ref=f11e767]
+              - paragraph [ref=f11e768]: 最近服务异常与恢复通知
+            - generic [ref=f11e769]: 1 严重
+          - generic [ref=f11e770]:
+            - generic [ref=f11e773]:
+              - paragraph [ref=f11e774]: 合规卫士接口返回500错误
+              - paragraph [ref=f11e775]: 5分钟前
+            - generic [ref=f11e778]:
+              - paragraph [ref=f11e779]: 安全大模型触发频率限制(429)
+              - paragraph [ref=f11e780]: 23分钟前
+            - generic [ref=f11e783]:
+              - paragraph [ref=f11e784]: 威胁检测模型请求频率超限
+              - paragraph [ref=f11e785]: 1小时前
+            - generic [ref=f11e788]:
+              - paragraph [ref=f11e789]: 代码安全扫描模型服务已恢复
+              - paragraph [ref=f11e790]: 2小时前
+            - generic [ref=f11e793]:
+              - paragraph [ref=f11e794]: 漏洞分析专家服务已恢复
+              - paragraph [ref=f11e795]: 3小时前
+      - generic [ref=f11e796]:
+        - generic [ref=f11e797]:
+          - generic [ref=f11e798]:
+            - heading "成员消耗排行" [level=3] [ref=f11e799]
+            - paragraph [ref=f11e800]: 团队成员Token消耗Top 5
+          - link "成员管理" [ref=f11e801] [cursor=pointer]:
+            - /url: /console/workspace
+        - generic [ref=f11e803]:
+          - generic [ref=f11e805]:
+            - generic [ref=f11e806]:
+              - generic [ref=f11e807]: "1"
+              - generic [ref=f11e810]: 张明管理员
+            - generic [ref=f11e811]: 520万 Token¥4,780
+          - generic [ref=f11e815]:
+            - generic [ref=f11e816]:
+              - generic [ref=f11e817]: "2"
+              - generic [ref=f11e820]: 李芳开发者
+            - generic [ref=f11e821]: 380万 Token¥3,240
+          - generic [ref=f11e825]:
+            - generic [ref=f11e826]:
+              - generic [ref=f11e827]: "3"
+              - generic [ref=f11e830]: 王磊开发者
+            - generic [ref=f11e831]: 290万 Token¥2,580
+          - generic [ref=f11e835]:
+            - generic [ref=f11e836]:
+              - generic [ref=f11e837]: "4"
+              - generic [ref=f11e840]: 孙丽开发者
+            - generic [ref=f11e841]: 168万 Token¥1,880
+          - generic [ref=f11e845]:
+            - generic [ref=f11e846]:
+              - generic [ref=f11e847]: "5"
+              - generic [ref=f11e850]: 赵伟只读
+            - generic [ref=f11e851]: 42万 Token¥380
+      - generic [ref=f11e854]:
+        - heading "额度使用" [level=3] [ref=f11e855]
+        - generic [ref=f11e856]:
+          - generic [ref=f11e857]:
+            - generic [ref=f11e858]:
+              - generic [ref=f11e859]: 充能包
+              - generic [ref=f11e862]: 1,850万 / 5,000万 Token
+            - generic [ref=f11e865]:
+              - generic [ref=f11e866]: 已使用 3150万 Token
+              - generic [ref=f11e867]: 37%
+          - generic [ref=f11e868]:
+            - generic [ref=f11e869]:
+              - generic [ref=f11e870]: API频率
+              - generic [ref=f11e873]: 6,000 / 10,000 次/分
+            - generic [ref=f11e876]:
+              - generic [ref=f11e877]: 当前频率限制
+              - generic [ref=f11e878]: 60%
+      - generic [ref=f11e879]:
+        - link [ref=f11e880] [cursor=pointer]:
+          - /url: /console/keys/create
+          - paragraph [ref=f11e885]: 创建API Key
+          - paragraph [ref=f11e886]: 生成新的API访问密钥
+        - link [ref=f11e887] [cursor=pointer]:
+          - /url: /console/packs
+          - paragraph [ref=f11e892]: 购买充能包
+          - paragraph [ref=f11e893]: 补充Token调用额度
+        - link [ref=f11e894] [cursor=pointer]:
+          - /url: /console/docs
+          - paragraph [ref=f11e899]: API文档
+          - paragraph [ref=f11e900]: 查看接口调用指南
+        - link [ref=f11e901] [cursor=pointer]:
+          - /url: /console/stats
+          - paragraph [ref=f11e906]: 调用统计
+          - paragraph [ref=f11e907]: 查看详细调用数据
+  - region "Notifications (F8)":
+    - list
+  - generic [ref=f11e551]:
+    - button "Toggle Nuxt DevTools" [ref=f11e552] [cursor=pointer]
+    - generic "Page load time" [ref=f11e556]:
+      - generic [ref=f11e557]: "52"
+      - generic [ref=f11e558]: ms
+    - button "Toggle Component Inspector" [ref=f11e560] [cursor=pointer]

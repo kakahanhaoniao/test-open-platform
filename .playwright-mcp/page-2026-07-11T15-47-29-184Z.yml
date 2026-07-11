@@ -1,0 +1,367 @@
+- generic [active] [ref=f11e1]:
+  - generic [ref=f11e2]:
+    - banner [ref=f11e3]:
+      - generic [ref=f11e4]:
+        - link "奇安信 AI 开放平台" [ref=f11e5] [cursor=pointer]:
+          - /url: /
+          - generic [ref=f11e8]:
+            - generic [ref=f11e9]: 奇安信
+            - generic [ref=f11e10]: AI 开放平台
+        - navigation [ref=f11e11]:
+          - link "首页" [ref=f11e12] [cursor=pointer]:
+            - /url: /
+          - link "能力市场" [ref=f11e14] [cursor=pointer]:
+            - /url: /marketplace
+          - link "优惠活动" [ref=f11e15] [cursor=pointer]:
+            - /url: /promotions
+        - generic [ref=f11e16]:
+          - link [ref=f11e17] [cursor=pointer]:
+            - /url: /marketplace
+          - button [ref=f11e19]
+          - link "用户控制台" [ref=f11e22] [cursor=pointer]:
+            - /url: /console
+          - button [ref=f11e26] [cursor=pointer]
+    - main [ref=f11e28]:
+      - generic [ref=f11e29]:
+        - generic [ref=f11e34]:
+          - generic [ref=f11e35]:
+            - generic [ref=f11e36]: AI安全能力统一市场
+            - heading "安全AI能力 一站式获取" [level=1] [ref=f11e39]
+            - paragraph [ref=f11e40]: 奇安信AI开放平台汇聚安全大模型、智能应用与专业工具，统一市场、按需选用，让安全能力触手可及。
+            - generic [ref=f11e41]:
+              - link "探索能力市场" [ref=f11e42] [cursor=pointer]:
+                - /url: /marketplace
+              - link "查看优惠活动" [ref=f11e45] [cursor=pointer]:
+                - /url: /promotions
+          - generic [ref=f11e48]:
+            - generic [ref=f11e49]:
+              - generic [ref=f11e53]:
+                - paragraph [ref=f11e54]: 奇安信安全大模型
+                - paragraph [ref=f11e55]: 100B 参数
+              - generic [ref=f11e56]:
+                - generic [ref=f11e57]: 模型
+                - generic [ref=f11e58]: "4.9"
+            - generic [ref=f11e60]:
+              - generic [ref=f11e64]:
+                - paragraph [ref=f11e65]: 智能安全运营中心
+                - paragraph [ref=f11e66]: 对话应用
+              - generic [ref=f11e67]:
+                - generic [ref=f11e68]: 应用
+                - generic [ref=f11e69]: "4.9"
+            - generic [ref=f11e71]:
+              - generic [ref=f11e75]:
+                - paragraph [ref=f11e76]: 威胁检测模型 V3
+                - paragraph [ref=f11e77]: 7B 参数
+              - generic [ref=f11e78]:
+                - generic [ref=f11e79]: 模型
+                - generic [ref=f11e80]: HOT
+        - generic [ref=f11e83]:
+          - generic [ref=f11e87]:
+            - paragraph [ref=f11e88]: 18+
+            - paragraph [ref=f11e89]: AI安全能力
+          - generic [ref=f11e93]:
+            - paragraph [ref=f11e94]: 1亿+
+            - paragraph [ref=f11e95]: 累计调用
+          - generic [ref=f11e99]:
+            - paragraph [ref=f11e100]: 5000+
+            - paragraph [ref=f11e101]: 企业客户
+          - generic [ref=f11e105]:
+            - paragraph [ref=f11e106]: 100万+
+            - paragraph [ref=f11e107]: 安全事件处理
+        - generic [ref=f11e108]:
+          - generic [ref=f11e109]:
+            - generic [ref=f11e110]:
+              - heading "限时优惠" [level=2] [ref=f11e111]
+              - paragraph [ref=f11e112]: 精选优惠活动，不容错过
+            - link "查看全部" [ref=f11e113] [cursor=pointer]:
+              - /url: /promotions
+          - generic [ref=f11e117]:
+            - link "夏季安全嘉年华 限时5折 夏季安全嘉年华重磅来袭！奇安信AI开放平台推出限时优惠活动，安全大模型、威胁检测模型等核心能力全面降价，更有新用户专享礼包等你来领。" [ref=f11e118] [cursor=pointer]:
+              - /url: /promotions
+              - generic [ref=f11e125]:
+                - generic [ref=f11e126]:
+                  - generic [ref=f11e127]: 夏季安全嘉年华
+                  - generic [ref=f11e128]: 限时5折
+                - paragraph [ref=f11e129]: 夏季安全嘉年华重磅来袭！奇安信AI开放平台推出限时优惠活动，安全大模型、威胁检测模型等核心能力全面降价，更有新用户专享礼包等你来领。
+            - link "企业版首发优惠 首发8折 奇安信AI开放平台企业版正式发布！提供专属模型实例、SLA保障、私有化部署灵活、合规无忧。首发期间享受8折优惠，更有专属技术支持团队1对1服务。" [ref=f11e131] [cursor=pointer]:
+              - /url: /promotions
+              - generic [ref=f11e138]:
+                - generic [ref=f11e139]:
+                  - generic [ref=f11e140]: 企业版首发优惠
+                  - generic [ref=f11e141]: 首发8折
+                - paragraph [ref=f11e142]: 奇安信AI开放平台企业版正式发布！提供专属模型实例、SLA保障、私有化部署灵活、合规无忧。首发期间享受8折优惠，更有专属技术支持团队1对1服务。
+            - link "威胁检测模型免费体验 限时免费 限时开放威胁检测模型V3免费体验！无需充值即可使用APT攻击链分析、恶意流量检测等核心能力，每日赠送1000次免费调用额度。" [ref=f11e144] [cursor=pointer]:
+              - /url: /promotions
+              - generic [ref=f11e151]:
+                - generic [ref=f11e152]:
+                  - generic [ref=f11e153]: 威胁检测模型免费体验
+                  - generic [ref=f11e154]: 限时免费
+                - paragraph [ref=f11e155]: 限时开放威胁检测模型V3免费体验！无需充值即可使用APT攻击链分析、恶意流量检测等核心能力，每日赠送1000次免费调用额度。
+            - link "API集成挑战赛 奖金池 参与奇安信AI开放平台API集成挑战赛，使用平台API构建创新安全应用，赢取丰厚奖金与Token奖励！优秀作品将获得平台推荐与商业化支持。" [ref=f11e157] [cursor=pointer]:
+              - /url: /promotions
+              - generic [ref=f11e164]:
+                - generic [ref=f11e165]:
+                  - generic [ref=f11e166]: API集成挑战赛
+                  - generic [ref=f11e167]: 奖金池
+                - paragraph [ref=f11e168]: 参与奇安信AI开放平台API集成挑战赛，使用平台API构建创新安全应用，赢取丰厚奖金与Token奖励！优秀作品将获得平台推荐与商业化支持。
+        - generic [ref=f11e170]:
+          - generic [ref=f11e171]:
+            - generic [ref=f11e172]:
+              - heading "热门能力" [level=2] [ref=f11e173]
+              - paragraph [ref=f11e174]: 最受欢迎的安全AI能力
+            - link "浏览市场" [ref=f11e175] [cursor=pointer]:
+              - /url: /marketplace
+          - generic [ref=f11e178]:
+            - link "HOT 模型 4.9 奇安信安全大模型 安全大模型 基于千亿参数的安全领域大语言模型，深度融合奇安信20年安全知识库，支持威胁分析、安全问答、报告生成等多种安全场景 大语言模型 安全分析 威胁检测 1280万+ 调用 ¥0.06/千Token API文档 体验" [ref=f11e179] [cursor=pointer]:
+              - /url: /marketplace/qax-security-llm
+              - generic [ref=f11e180]:
+                - generic [ref=f11e181]: HOT
+                - generic [ref=f11e183]:
+                  - generic [ref=f11e184]: 模型
+                  - generic [ref=f11e185]: "4.9"
+                - generic [ref=f11e191]:
+                  - heading "奇安信安全大模型" [level=3] [ref=f11e192]
+                  - paragraph [ref=f11e193]: 安全大模型
+                - paragraph [ref=f11e194]: 基于千亿参数的安全领域大语言模型，深度融合奇安信20年安全知识库，支持威胁分析、安全问答、报告生成等多种安全场景
+                - generic [ref=f11e195]:
+                  - generic [ref=f11e196]: 大语言模型
+                  - generic [ref=f11e197]: 安全分析
+                  - generic [ref=f11e198]: 威胁检测
+                - generic [ref=f11e199]:
+                  - generic [ref=f11e200]:
+                    - generic [ref=f11e201]: 1280万+ 调用
+                    - generic [ref=f11e204]: ¥0.06/千Token
+                    - link "API文档" [ref=f11e207]:
+                      - /url: /dev/docs
+                  - button "体验" [ref=f11e209]
+            - link "HOT 模型 4.8 威胁检测模型 V3 威胁检测 专注高级威胁识别，支持APT攻击链分析、恶意流量检测与IOC自动提取，检测率达99.2% APT检测 流量分析 IOC提取 860万+ 调用 ¥0.03/千Token API文档 体验" [ref=f11e212] [cursor=pointer]:
+              - /url: /marketplace/threat-detect-v3
+              - generic [ref=f11e213]:
+                - generic [ref=f11e214]: HOT
+                - generic [ref=f11e216]:
+                  - generic [ref=f11e217]: 模型
+                  - generic [ref=f11e218]: "4.8"
+                - generic [ref=f11e224]:
+                  - heading "威胁检测模型 V3" [level=3] [ref=f11e225]
+                  - paragraph [ref=f11e226]: 威胁检测
+                - paragraph [ref=f11e227]: 专注高级威胁识别，支持APT攻击链分析、恶意流量检测与IOC自动提取，检测率达99.2%
+                - generic [ref=f11e228]:
+                  - generic [ref=f11e229]: APT检测
+                  - generic [ref=f11e230]: 流量分析
+                  - generic [ref=f11e231]: IOC提取
+                - generic [ref=f11e232]:
+                  - generic [ref=f11e233]:
+                    - generic [ref=f11e234]: 860万+ 调用
+                    - generic [ref=f11e237]: ¥0.03/千Token
+                    - link "API文档" [ref=f11e240]:
+                      - /url: /dev/docs
+                  - button "体验" [ref=f11e242]
+            - link "HOT 模型 4.8 代码安全扫描模型 代码安全 源代码安全审计模型，支持SAST/DAST分析、安全编码建议与漏洞模式识别 SAST 代码审计 安全编码 720万+ 调用 ¥0.03/千Token API文档 体验" [ref=f11e245] [cursor=pointer]:
+              - /url: /marketplace/threat-detect-v3
+              - generic [ref=f11e246]:
+                - generic [ref=f11e247]: HOT
+                - generic [ref=f11e249]:
+                  - generic [ref=f11e250]: 模型
+                  - generic [ref=f11e251]: "4.8"
+                - generic [ref=f11e257]:
+                  - heading "代码安全扫描模型" [level=3] [ref=f11e258]
+                  - paragraph [ref=f11e259]: 代码安全
+                - paragraph [ref=f11e260]: 源代码安全审计模型，支持SAST/DAST分析、安全编码建议与漏洞模式识别
+                - generic [ref=f11e261]:
+                  - generic [ref=f11e262]: SAST
+                  - generic [ref=f11e263]: 代码审计
+                  - generic [ref=f11e264]: 安全编码
+                - generic [ref=f11e265]:
+                  - generic [ref=f11e266]:
+                    - generic [ref=f11e267]: 720万+ 调用
+                    - generic [ref=f11e270]: ¥0.03/千Token
+                    - link "API文档" [ref=f11e273]:
+                      - /url: /dev/docs
+                  - button "体验" [ref=f11e275]
+            - link "HOT 对话助手 4.9 智能安全运营中心 对话应用 AI驱动的安全运营中心，集成告警聚合、威胁研判、自动化响应，将MTTR从小时级缩短至分钟级 SOC 告警研判 事件关联 56万+ 用户 对话" [ref=f11e278] [cursor=pointer]:
+              - /url: /marketplace/smart-soc
+              - generic [ref=f11e279]:
+                - generic [ref=f11e280]: HOT
+                - generic [ref=f11e282]:
+                  - generic [ref=f11e283]: 对话助手
+                  - generic [ref=f11e284]: "4.9"
+                - generic [ref=f11e290]:
+                  - heading "智能安全运营中心" [level=3] [ref=f11e291]
+                  - paragraph [ref=f11e292]: 对话应用
+                - paragraph [ref=f11e293]: AI驱动的安全运营中心，集成告警聚合、威胁研判、自动化响应，将MTTR从小时级缩短至分钟级
+                - generic [ref=f11e294]:
+                  - generic [ref=f11e295]: SOC
+                  - generic [ref=f11e296]: 告警研判
+                  - generic [ref=f11e297]: 事件关联
+                - generic [ref=f11e298]:
+                  - generic [ref=f11e299]: 56万+ 用户
+                  - button "对话" [ref=f11e303]
+            - link "HOT 对话助手 4.8 威胁情报助手 对话应用 基于安全大模型的威胁情报对话助手，支持IOC查询、威胁画像、情报关联分析 威胁情报 对话 IOC 38万+ 用户 对话" [ref=f11e306] [cursor=pointer]:
+              - /url: /marketplace/code-security-scan
+              - generic [ref=f11e307]:
+                - generic [ref=f11e308]: HOT
+                - generic [ref=f11e310]:
+                  - generic [ref=f11e311]: 对话助手
+                  - generic [ref=f11e312]: "4.8"
+                - generic [ref=f11e318]:
+                  - heading "威胁情报助手" [level=3] [ref=f11e319]
+                  - paragraph [ref=f11e320]: 对话应用
+                - paragraph [ref=f11e321]: 基于安全大模型的威胁情报对话助手，支持IOC查询、威胁画像、情报关联分析
+                - generic [ref=f11e322]:
+                  - generic [ref=f11e323]: 威胁情报
+                  - generic [ref=f11e324]: 对话
+                  - generic [ref=f11e325]: IOC
+                - generic [ref=f11e326]:
+                  - generic [ref=f11e327]: 38万+ 用户
+                  - button "对话" [ref=f11e331]
+            - link "HOT 展示 4.9 安全态势感知大屏 展示应用 实时安全态势可视化大屏，全球威胁地图、攻击链路追踪、资产风险热力图，一屏掌控全局安全态势 态势感知 可视化 大屏 28万+ 用户 查看" [ref=f11e334] [cursor=pointer]:
+              - /url: /marketplace/security-knowledge-base
+              - generic [ref=f11e335]:
+                - generic [ref=f11e336]: HOT
+                - generic [ref=f11e338]:
+                  - generic [ref=f11e339]: 展示
+                  - generic [ref=f11e340]: "4.9"
+                - generic [ref=f11e346]:
+                  - heading "安全态势感知大屏" [level=3] [ref=f11e347]
+                  - paragraph [ref=f11e348]: 展示应用
+                - paragraph [ref=f11e349]: 实时安全态势可视化大屏，全球威胁地图、攻击链路追踪、资产风险热力图，一屏掌控全局安全态势
+                - generic [ref=f11e350]:
+                  - generic [ref=f11e351]: 态势感知
+                  - generic [ref=f11e352]: 可视化
+                  - generic [ref=f11e353]: 大屏
+                - generic [ref=f11e354]:
+                  - generic [ref=f11e355]: 28万+ 用户
+                  - button "查看" [ref=f11e359]
+        - generic [ref=f11e362]:
+          - generic [ref=f11e364]:
+            - heading "最新上线" [level=2] [ref=f11e365]
+            - paragraph [ref=f11e366]: 刚刚上线的安全AI能力
+          - generic [ref=f11e367]:
+            - link "HOT 模型 4.8 威胁检测模型 V3 威胁检测 专注高级威胁识别，支持APT攻击链分析、恶意流量检测与IOC自动提取，检测率达99.2% APT检测 流量分析 IOC提取 860万+ 调用 ¥0.03/千Token API文档 体验" [ref=f11e368] [cursor=pointer]:
+              - /url: /marketplace/threat-detect-v3
+              - generic [ref=f11e369]:
+                - generic [ref=f11e370]: HOT
+                - generic [ref=f11e372]:
+                  - generic [ref=f11e373]: 模型
+                  - generic [ref=f11e374]: "4.8"
+                - generic [ref=f11e380]:
+                  - heading "威胁检测模型 V3" [level=3] [ref=f11e381]
+                  - paragraph [ref=f11e382]: 威胁检测
+                - paragraph [ref=f11e383]: 专注高级威胁识别，支持APT攻击链分析、恶意流量检测与IOC自动提取，检测率达99.2%
+                - generic [ref=f11e384]:
+                  - generic [ref=f11e385]: APT检测
+                  - generic [ref=f11e386]: 流量分析
+                  - generic [ref=f11e387]: IOC提取
+                - generic [ref=f11e388]:
+                  - generic [ref=f11e389]:
+                    - generic [ref=f11e390]: 860万+ 调用
+                    - generic [ref=f11e393]: ¥0.03/千Token
+                    - link "API文档" [ref=f11e396]:
+                      - /url: /dev/docs
+                  - button "体验" [ref=f11e398]
+            - link "NEW 模型 4.7 漏洞分析专家 漏洞分析 深度漏洞分析模型，支持CVE解读、PoC生成、修复方案推荐与风险评估，覆盖OWASP Top 10全类别 CVE分析 PoC生成 风险评估 520万+ 调用 ¥0.02/千Token API文档 体验" [ref=f11e401] [cursor=pointer]:
+              - /url: /marketplace/vuln-analyzer-pro
+              - generic [ref=f11e402]:
+                - generic [ref=f11e403]: NEW
+                - generic [ref=f11e405]:
+                  - generic [ref=f11e406]: 模型
+                  - generic [ref=f11e407]: "4.7"
+                - generic [ref=f11e413]:
+                  - heading "漏洞分析专家" [level=3] [ref=f11e414]
+                  - paragraph [ref=f11e415]: 漏洞分析
+                - paragraph [ref=f11e416]: 深度漏洞分析模型，支持CVE解读、PoC生成、修复方案推荐与风险评估，覆盖OWASP Top 10全类别
+                - generic [ref=f11e417]:
+                  - generic [ref=f11e418]: CVE分析
+                  - generic [ref=f11e419]: PoC生成
+                  - generic [ref=f11e420]: 风险评估
+                - generic [ref=f11e421]:
+                  - generic [ref=f11e422]:
+                    - generic [ref=f11e423]: 520万+ 调用
+                    - generic [ref=f11e426]: ¥0.02/千Token
+                    - link "API文档" [ref=f11e429]:
+                      - /url: /dev/docs
+                  - button "体验" [ref=f11e431]
+            - link "NEW 模型 4.8 恶意软件分析模型 恶意软件 深度恶意软件分析模型，支持静态/动态分析、家族分类、行为提取，覆盖500万+恶意样本知识库 恶意软件 沙箱分析 家族分类 670万+ 调用 ¥0.03/千Token API文档 体验" [ref=f11e434] [cursor=pointer]:
+              - /url: /marketplace/vuln-analyzer-pro
+              - generic [ref=f11e435]:
+                - generic [ref=f11e436]: NEW
+                - generic [ref=f11e438]:
+                  - generic [ref=f11e439]: 模型
+                  - generic [ref=f11e440]: "4.8"
+                - generic [ref=f11e446]:
+                  - heading "恶意软件分析模型" [level=3] [ref=f11e447]
+                  - paragraph [ref=f11e448]: 恶意软件
+                - paragraph [ref=f11e449]: 深度恶意软件分析模型，支持静态/动态分析、家族分类、行为提取，覆盖500万+恶意样本知识库
+                - generic [ref=f11e450]:
+                  - generic [ref=f11e451]: 恶意软件
+                  - generic [ref=f11e452]: 沙箱分析
+                  - generic [ref=f11e453]: 家族分类
+                - generic [ref=f11e454]:
+                  - generic [ref=f11e455]:
+                    - generic [ref=f11e456]: 670万+ 调用
+                    - generic [ref=f11e459]: ¥0.03/千Token
+                    - link "API文档" [ref=f11e462]:
+                      - /url: /dev/docs
+                  - button "体验" [ref=f11e464]
+            - link "HOT 对话助手 4.8 威胁情报助手 对话应用 基于安全大模型的威胁情报对话助手，支持IOC查询、威胁画像、情报关联分析 威胁情报 对话 IOC 38万+ 用户 对话" [ref=f11e467] [cursor=pointer]:
+              - /url: /marketplace/threat-intel-assistant
+              - generic [ref=f11e468]:
+                - generic [ref=f11e469]: HOT
+                - generic [ref=f11e471]:
+                  - generic [ref=f11e472]: 对话助手
+                  - generic [ref=f11e473]: "4.8"
+                - generic [ref=f11e479]:
+                  - heading "威胁情报助手" [level=3] [ref=f11e480]
+                  - paragraph [ref=f11e481]: 对话应用
+                - paragraph [ref=f11e482]: 基于安全大模型的威胁情报对话助手，支持IOC查询、威胁画像、情报关联分析
+                - generic [ref=f11e483]:
+                  - generic [ref=f11e484]: 威胁情报
+                  - generic [ref=f11e485]: 对话
+                  - generic [ref=f11e486]: IOC
+                - generic [ref=f11e487]:
+                  - generic [ref=f11e488]: 38万+ 用户
+                  - button "对话" [ref=f11e492]
+            - link "NEW 对话助手 4.7 AI代码审计助手 对话应用 智能代码安全审计对话助手，上传代码即可获得安全分析，支持多种编程语言，精准定位安全漏洞 代码审计 对话 SAST 63万+ 用户 对话" [ref=f11e495] [cursor=pointer]:
+              - /url: /marketplace/malware-analyzer
+              - generic [ref=f11e496]:
+                - generic [ref=f11e497]: NEW
+                - generic [ref=f11e499]:
+                  - generic [ref=f11e500]: 对话助手
+                  - generic [ref=f11e501]: "4.7"
+                - generic [ref=f11e507]:
+                  - heading "AI代码审计助手" [level=3] [ref=f11e508]
+                  - paragraph [ref=f11e509]: 对话应用
+                - paragraph [ref=f11e510]: 智能代码安全审计对话助手，上传代码即可获得安全分析，支持多种编程语言，精准定位安全漏洞
+                - generic [ref=f11e511]:
+                  - generic [ref=f11e512]: 代码审计
+                  - generic [ref=f11e513]: 对话
+                  - generic [ref=f11e514]: SAST
+                - generic [ref=f11e515]:
+                  - generic [ref=f11e516]: 63万+ 用户
+                  - button "对话" [ref=f11e520]
+        - generic [ref=f11e527]:
+          - generic [ref=f11e528]:
+            - heading "开始使用安全AI能力" [level=2] [ref=f11e529]
+            - paragraph [ref=f11e530]: 注册即可获得1000万Token免费体验额度，探索全部安全AI能力。
+          - generic [ref=f11e531]:
+            - button "免费注册" [ref=f11e532]
+            - link "获取API Key" [ref=f11e535] [cursor=pointer]:
+              - /url: /dev/keys
+        - generic [ref=f11e540]:
+          - generic [ref=f11e541]: 奇安信AI开放平台 © 2026
+          - generic [ref=f11e545]:
+            - link "API文档" [ref=f11e546] [cursor=pointer]:
+              - /url: /dev/docs
+            - link "开发者中心" [ref=f11e547] [cursor=pointer]:
+              - /url: /dev
+            - generic [ref=f11e548]: 隐私政策
+            - generic [ref=f11e549]: 服务条款
+            - generic [ref=f11e550]: 帮助中心
+  - region "Notifications (F8)":
+    - list
+  - generic [ref=f11e551]:
+    - button "Toggle Nuxt DevTools" [ref=f11e552] [cursor=pointer]
+    - generic "Page load time" [ref=f11e556]:
+      - generic [ref=f11e557]: "81"
+      - generic [ref=f11e558]: ms
+    - button "Toggle Component Inspector" [ref=f11e560] [cursor=pointer]

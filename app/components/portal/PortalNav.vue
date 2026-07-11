@@ -63,6 +63,14 @@ onMounted(() => {
       <!-- Right Actions -->
       <div class="flex items-center gap-3">
         <UButton
+          label="进入控制台"
+          icon="i-lucide-layout-dashboard"
+          variant="ghost"
+          color="primary"
+          size="sm"
+          to="/console"
+        />
+        <UButton
           label="登录"
           variant="ghost"
           color="neutral"

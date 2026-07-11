@@ -1,0 +1,159 @@
+- generic [ref=f10e3]:
+  - complementary [ref=f10e4]:
+    - link "返回市场" [ref=f10e6] [cursor=pointer]:
+      - /url: /
+    - generic [ref=f10e13]:
+      - paragraph [ref=f10e14]: 奇安信AI
+      - paragraph [ref=f10e15]: 用户控制台
+    - navigation [ref=f10e16]:
+      - generic [ref=f10e17]:
+        - paragraph [ref=f10e18]: 核心功能
+        - generic [ref=f10e19]:
+          - link "使用看板" [ref=f10e20] [cursor=pointer]:
+            - /url: /console
+          - link "API Key" [ref=f10e23] [cursor=pointer]:
+            - /url: /console/keys
+          - link "调用统计" [ref=f10e26] [cursor=pointer]:
+            - /url: /console/stats
+          - link "充能包" [ref=f10e29] [cursor=pointer]:
+            - /url: /console/packs
+      - generic [ref=f10e32]:
+        - paragraph [ref=f10e33]: 账户管理
+        - generic [ref=f10e34]:
+          - link "账单中心" [ref=f10e35] [cursor=pointer]:
+            - /url: /console/billing
+          - link "企业空间" [ref=f10e38] [cursor=pointer]:
+            - /url: /console/workspace
+          - link "个人设置" [ref=f10e41] [cursor=pointer]:
+            - /url: /console/settings
+      - generic [ref=f10e45]:
+        - paragraph [ref=f10e46]: 开发资源
+        - generic [ref=f10e47]:
+          - link "API文档" [ref=f10e48] [cursor=pointer]:
+            - /url: /console/docs
+          - link "应用集成" [ref=f10e51] [cursor=pointer]:
+            - /url: /console/integrations
+    - button [ref=f10e56]:
+      - generic [ref=f10e59]:
+        - paragraph [ref=f10e60]: 张明
+        - paragraph [ref=f10e61]: 奇安信安全团队
+  - generic [ref=f10e63]:
+    - generic [ref=f10e64]:
+      - heading "个人设置" [level=1] [ref=f10e65]
+      - paragraph [ref=f10e66]: 管理您的账户信息与偏好
+    - generic [ref=f10e67]:
+      - generic [ref=f10e68]:
+        - heading "个人信息" [level=2] [ref=f10e69]
+        - generic [ref=f10e70]:
+          - generic [ref=f10e71]: 张
+          - button "更换头像" [ref=f10e73]
+        - generic [ref=f10e74]:
+          - generic [ref=f10e75]:
+            - generic [ref=f10e76]: 姓名
+            - textbox [ref=f10e77]: 张明
+          - generic [ref=f10e78]:
+            - generic [ref=f10e79]: 邮箱
+            - textbox [ref=f10e80]: zhangming@qianxin.com
+          - generic [ref=f10e81]:
+            - generic [ref=f10e82]: 手机号
+            - generic [ref=f10e83]:
+              - generic [ref=f10e84]: "+86"
+              - textbox [ref=f10e85]: "13800138000"
+        - button "保存修改" [ref=f10e87]
+      - generic [ref=f10e88]:
+        - heading "安全设置" [level=2] [ref=f10e89]
+        - generic [ref=f10e90]:
+          - heading "修改密码" [level=3] [ref=f10e91]
+          - generic [ref=f10e92]:
+            - generic [ref=f10e93]:
+              - generic [ref=f10e94]: 当前密码
+              - textbox "请输入当前密码" [ref=f10e95]
+            - generic [ref=f10e96]:
+              - generic [ref=f10e97]: 新密码
+              - textbox "请输入新密码" [ref=f10e98]
+            - generic [ref=f10e99]:
+              - generic [ref=f10e100]: 确认新密码
+              - textbox "请再次输入新密码" [ref=f10e101]
+          - button "修改密码" [ref=f10e102]
+        - generic [ref=f10e103]:
+          - generic [ref=f10e104]:
+            - heading "两步验证" [level=3] [ref=f10e105]
+            - paragraph [ref=f10e106]: 通过手机验证码增强账户安全性
+          - checkbox [ref=f10e108]
+        - generic [ref=f10e111]:
+          - heading "登录设备管理" [level=3] [ref=f10e112]
+          - generic [ref=f10e113]:
+            - generic [ref=f10e114]:
+              - generic [ref=f10e117]:
+                - paragraph [ref=f10e118]: MacBook Pro - Chrome
+                - paragraph [ref=f10e119]: 北京
+              - generic [ref=f10e120]: 当前设备
+            - generic [ref=f10e122]:
+              - generic [ref=f10e125]:
+                - paragraph [ref=f10e126]: iPhone 15 - Safari
+                - paragraph [ref=f10e127]: 北京
+              - generic [ref=f10e128]:
+                - generic [ref=f10e129]: 2天前
+                - button "移除" [ref=f10e130]
+            - generic [ref=f10e131]:
+              - generic [ref=f10e134]:
+                - paragraph [ref=f10e135]: Windows PC - Edge
+                - paragraph [ref=f10e136]: 上海
+              - generic [ref=f10e137]:
+                - generic [ref=f10e138]: 1周前
+                - button "移除" [ref=f10e139]
+      - generic [ref=f10e140]:
+        - heading "通知偏好" [level=2] [ref=f10e141]
+        - generic [ref=f10e142]:
+          - generic [ref=f10e143]:
+            - generic [ref=f10e144]:
+              - heading "邮件通知" [level=3] [ref=f10e145]
+              - paragraph [ref=f10e146]: 接收平台重要通知与更新邮件
+            - checkbox [checked] [ref=f10e148]
+          - generic [ref=f10e151]:
+            - generic [ref=f10e152]:
+              - heading "余额不足告警" [level=3] [ref=f10e153]
+              - paragraph [ref=f10e154]: Token余额低于阈值时发送告警
+            - checkbox [checked] [ref=f10e156]
+          - generic [ref=f10e159]:
+            - generic [ref=f10e160]:
+              - heading "API异常告警" [level=3] [ref=f10e161]
+              - paragraph [ref=f10e162]: API调用异常或错误率升高时发送告警
+            - checkbox [ref=f10e164]
+      - generic [ref=f10e167]:
+        - heading "API偏好" [level=2] [ref=f10e168]
+        - generic [ref=f10e169]:
+          - generic [ref=f10e170]:
+            - generic [ref=f10e171]: 默认模型
+            - combobox [ref=f10e172]:
+              - option "奇安信安全大模型" [selected]
+              - option "威胁检测模型 V3"
+              - option "漏洞分析专家"
+              - option "合规卫士"
+              - option "代码安全扫描模型"
+              - option "数据安全卫士"
+              - option "恶意软件分析模型"
+              - option "应急响应模型"
+              - option "钓鱼识别模型"
+              - option "日志智能分析模型"
+          - generic [ref=f10e173]:
+            - generic [ref=f10e174]:
+              - generic [ref=f10e175]: 默认温度
+              - generic [ref=f10e176]: "0.7"
+            - slider [ref=f10e177] [cursor=pointer]: "0.7"
+            - generic [ref=f10e178]:
+              - generic [ref=f10e179]: 精确 (0)
+              - generic [ref=f10e180]: 创意 (1)
+      - generic [ref=f10e181]:
+        - heading "关联企业" [level=2] [ref=f10e182]
+        - generic [ref=f10e183]:
+          - generic [ref=f10e184]:
+            - generic [ref=f10e185]: 企业名称
+            - generic [ref=f10e186]: 奇安信安全团队
+          - generic [ref=f10e187]:
+            - generic [ref=f10e188]: 角色
+            - generic [ref=f10e189]: 管理员
+          - generic [ref=f10e190]:
+            - generic [ref=f10e191]: 加入时间
+            - generic [ref=f10e192]: 2025-08-15
+        - button "退出企业" [ref=f10e195]

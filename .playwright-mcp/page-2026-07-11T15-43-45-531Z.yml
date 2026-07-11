@@ -1,0 +1,181 @@
+- generic [active] [ref=f9e1]:
+  - generic [ref=f9e3]:
+    - complementary [ref=f9e4]:
+      - link "返回市场" [ref=f9e6] [cursor=pointer]:
+        - /url: /
+      - generic [ref=f9e13]:
+        - paragraph [ref=f9e14]: 奇安信AI
+        - paragraph [ref=f9e15]: 用户控制台
+      - navigation [ref=f9e16]:
+        - generic [ref=f9e17]:
+          - paragraph [ref=f9e18]: 核心功能
+          - generic [ref=f9e19]:
+            - link "使用看板" [ref=f9e20] [cursor=pointer]:
+              - /url: /console
+            - link "API Key" [ref=f9e23] [cursor=pointer]:
+              - /url: /console/keys
+            - link "调用统计" [ref=f9e26] [cursor=pointer]:
+              - /url: /console/stats
+            - link "充能包" [ref=f9e29] [cursor=pointer]:
+              - /url: /console/packs
+        - generic [ref=f9e32]:
+          - paragraph [ref=f9e33]: 账户管理
+          - generic [ref=f9e34]:
+            - link "账单中心" [ref=f9e35] [cursor=pointer]:
+              - /url: /console/billing
+            - link "企业空间" [ref=f9e38] [cursor=pointer]:
+              - /url: /console/workspace
+            - link "个人设置" [ref=f9e42] [cursor=pointer]:
+              - /url: /console/settings
+        - generic [ref=f9e45]:
+          - paragraph [ref=f9e46]: 开发资源
+          - generic [ref=f9e47]:
+            - link "API文档" [ref=f9e48] [cursor=pointer]:
+              - /url: /console/docs
+            - link "应用集成" [ref=f9e51] [cursor=pointer]:
+              - /url: /console/integrations
+      - button [ref=f9e56]:
+        - generic [ref=f9e59]:
+          - paragraph [ref=f9e60]: 张明
+          - paragraph [ref=f9e61]: 奇安信安全团队
+    - generic [ref=f9e63]:
+      - generic [ref=f9e64]:
+        - generic [ref=f9e65]:
+          - heading "成员管理" [level=1] [ref=f9e66]
+          - paragraph [ref=f9e67]: 管理企业成员、角色权限与邀请
+        - button "邀请成员" [ref=f9e68]
+      - generic [ref=f9e70]:
+        - heading "角色权限说明" [level=3] [ref=f9e71]
+        - generic [ref=f9e72]:
+          - generic [ref=f9e73]:
+            - generic [ref=f9e74]: 管理员
+            - generic [ref=f9e77]: 全部权限
+          - generic [ref=f9e80]:
+            - generic [ref=f9e81]: 开发者
+            - generic [ref=f9e84]:
+              - generic [ref=f9e85]: 创建Key
+              - generic [ref=f9e87]: 使用模型
+              - generic [ref=f9e89]: 查看自己消耗
+          - generic [ref=f9e91]:
+            - generic [ref=f9e92]: 财务
+            - generic [ref=f9e95]:
+              - generic [ref=f9e96]: 查看账单
+              - generic [ref=f9e98]: 购买充能包
+          - generic [ref=f9e100]:
+            - generic [ref=f9e101]: 只读
+            - generic [ref=f9e104]:
+              - generic [ref=f9e105]: 查看企业信息
+              - generic [ref=f9e107]: 查看自己消耗
+      - table [ref=f9e110]:
+        - rowgroup [ref=f9e111]:
+          - row [ref=f9e112]:
+            - columnheader "成员" [ref=f9e113]
+            - columnheader "角色" [ref=f9e114]
+            - columnheader "API Key数" [ref=f9e115]
+            - columnheader "本月消耗" [ref=f9e116]
+            - columnheader "状态" [ref=f9e117]
+            - columnheader "操作" [ref=f9e118]
+        - rowgroup [ref=f9e119]:
+          - row [ref=f9e120]:
+            - cell "张 张明 zhangming@qianxin.com" [ref=f9e121]:
+              - generic [ref=f9e122]:
+                - generic [ref=f9e123]: 张
+                - generic [ref=f9e124]:
+                  - paragraph [ref=f9e125]: 张明
+                  - paragraph [ref=f9e126]: zhangming@qianxin.com
+            - cell "管理员" [ref=f9e127]
+            - cell "3" [ref=f9e129]
+            - cell "¥4,780" [ref=f9e130]
+            - cell [ref=f9e131]
+            - cell [ref=f9e134]:
+              - generic [ref=f9e135]:
+                - button "修改角色" [ref=f9e137]
+                - button "禁用" [ref=f9e138]
+                - button "移除" [ref=f9e139]
+          - row [ref=f9e140]:
+            - cell "李 李芳 lifang@qianxin.com" [ref=f9e141]:
+              - generic [ref=f9e142]:
+                - generic [ref=f9e143]: 李
+                - generic [ref=f9e144]:
+                  - paragraph [ref=f9e145]: 李芳
+                  - paragraph [ref=f9e146]: lifang@qianxin.com
+            - cell "开发者" [ref=f9e147]
+            - cell "2" [ref=f9e149]
+            - cell "¥3,240" [ref=f9e150]
+            - cell [ref=f9e151]
+            - cell [ref=f9e154]:
+              - generic [ref=f9e155]:
+                - button "修改角色" [ref=f9e157]
+                - button "禁用" [ref=f9e158]
+                - button "移除" [ref=f9e159]
+          - row [ref=f9e160]:
+            - cell "王 王磊 wanglei@qianxin.com" [ref=f9e161]:
+              - generic [ref=f9e162]:
+                - generic [ref=f9e163]: 王
+                - generic [ref=f9e164]:
+                  - paragraph [ref=f9e165]: 王磊
+                  - paragraph [ref=f9e166]: wanglei@qianxin.com
+            - cell "开发者" [ref=f9e167]
+            - cell "2" [ref=f9e169]
+            - cell "¥2,580" [ref=f9e170]
+            - cell [ref=f9e171]
+            - cell [ref=f9e174]:
+              - generic [ref=f9e175]:
+                - button "修改角色" [ref=f9e177]
+                - button "禁用" [ref=f9e178]
+                - button "移除" [ref=f9e179]
+          - row [ref=f9e180]:
+            - cell "陈 陈静 chenjing@qianxin.com" [ref=f9e181]:
+              - generic [ref=f9e182]:
+                - generic [ref=f9e183]: 陈
+                - generic [ref=f9e184]:
+                  - paragraph [ref=f9e185]: 陈静
+                  - paragraph [ref=f9e186]: chenjing@qianxin.com
+            - cell "财务" [ref=f9e187]
+            - cell "0" [ref=f9e189]
+            - cell "¥0" [ref=f9e190]
+            - cell [ref=f9e191]
+            - cell [ref=f9e194]:
+              - generic [ref=f9e195]:
+                - button "修改角色" [ref=f9e197]
+                - button "禁用" [ref=f9e198]
+                - button "移除" [ref=f9e199]
+          - row [ref=f9e200]:
+            - cell "赵 赵伟 zhaowei@qianxin.com" [ref=f9e201]:
+              - generic [ref=f9e202]:
+                - generic [ref=f9e203]: 赵
+                - generic [ref=f9e204]:
+                  - paragraph [ref=f9e205]: 赵伟
+                  - paragraph [ref=f9e206]: zhaowei@qianxin.com
+            - cell "只读" [ref=f9e207]
+            - cell "1" [ref=f9e209]
+            - cell "¥380" [ref=f9e210]
+            - cell [ref=f9e211]
+            - cell [ref=f9e214]:
+              - generic [ref=f9e215]:
+                - button "修改角色" [ref=f9e217]
+                - button "禁用" [ref=f9e218]
+                - button "移除" [ref=f9e219]
+          - row [ref=f9e220]:
+            - cell "孙 孙丽 sunli@qianxin.com" [ref=f9e221]:
+              - generic [ref=f9e222]:
+                - generic [ref=f9e223]: 孙
+                - generic [ref=f9e224]:
+                  - paragraph [ref=f9e225]: 孙丽
+                  - paragraph [ref=f9e226]: sunli@qianxin.com
+            - cell "开发者" [ref=f9e227]
+            - cell "1" [ref=f9e229]
+            - cell "¥1,880" [ref=f9e230]
+            - cell [ref=f9e231]
+            - cell [ref=f9e234]:
+              - generic [ref=f9e235]:
+                - button "修改角色" [ref=f9e237]
+                - button "移除" [ref=f9e238]
+  - region "Notifications (F8)":
+    - list
+  - generic [ref=f9e239]:
+    - button "Toggle Nuxt DevTools" [ref=f9e240] [cursor=pointer]
+    - generic "Page load time" [ref=f9e244]:
+      - generic [ref=f9e245]: "28"
+      - generic [ref=f9e246]: ms
+    - button "Toggle Component Inspector" [ref=f9e248] [cursor=pointer]

@@ -25,7 +25,7 @@ onUnmounted(() => document.removeEventListener('click', onDocumentClick))
 
 const userMenuItems = [
   { label: '个人中心', icon: 'i-lucide-user', to: '/portal/profile' },
-  { label: '开发者控制台', icon: 'i-lucide-code-2', to: '/dev' },
+  { label: '用户控制台', icon: 'i-lucide-code-2', to: '/console' },
   { label: '运营后台', icon: 'i-lucide-settings', to: '/admin' },
   { label: 'Portal首页', icon: 'i-lucide-layout-dashboard', to: '/portal' },
 ]
@@ -100,14 +100,14 @@ const userMenuItems = [
 
         <div class="w-px h-5 bg-gray-200 mx-1" />
 
-        <!-- Dev Console Button -->
+        <!-- Console Button -->
         <UButton
-          label="开发者控制台"
+          label="用户控制台"
           icon="i-lucide-code-2"
           variant="subtle"
           color="primary"
           size="sm"
-          to="/dev"
+          to="/console"
         />
 
         <!-- User Avatar Dropdown -->
