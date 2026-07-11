@@ -1,0 +1,71 @@
+- generic [active] [ref=f26e1]:
+  - generic [ref=f26e3]:
+    - banner [ref=f26e4]:
+      - generic [ref=f26e5]:
+        - link "奇安信 AI 开放平台" [ref=f26e6] [cursor=pointer]:
+          - /url: /portal
+          - generic [ref=f26e9]:
+            - generic [ref=f26e10]: 奇安信
+            - generic [ref=f26e11]: AI 开放平台
+        - navigation [ref=f26e12]:
+          - link "产品能力" [ref=f26e13] [cursor=pointer]:
+            - /url: /portal
+          - link "定价" [ref=f26e14] [cursor=pointer]:
+            - /url: /portal/pricing
+          - link "客户案例" [ref=f26e15] [cursor=pointer]:
+            - /url: /portal#customers
+          - link "文档" [ref=f26e16] [cursor=pointer]:
+            - /url: /portal#docs
+        - generic [ref=f26e17]:
+          - link "登录" [ref=f26e18] [cursor=pointer]:
+            - /url: /portal/login
+          - link "免费注册" [ref=f26e20] [cursor=pointer]:
+            - /url: /portal/register
+    - generic [ref=f26e24]:
+      - generic [ref=f26e25]:
+        - generic [ref=f26e26]:
+          - heading "登录奇安信AI开放平台" [level=1] [ref=f26e29]
+          - paragraph [ref=f26e30]: 欢迎回来，请登录您的账号
+        - generic [ref=f26e31]:
+          - generic [ref=f26e32]:
+            - generic [ref=f26e33]: 邮箱地址
+            - textbox "请输入邮箱地址" [ref=f26e35]
+          - generic [ref=f26e38]:
+            - generic [ref=f26e39]:
+              - generic [ref=f26e40]: 密码
+              - link "忘记密码？" [ref=f26e41] [cursor=pointer]:
+                - /url: "#"
+            - textbox "请输入密码" [ref=f26e43]
+          - generic [ref=f26e46]:
+            - checkbox "记住我" [ref=f26e47]
+            - generic [ref=f26e48]: 记住我
+          - button "登录" [ref=f26e49]
+        - generic [ref=f26e51]: 或使用以下方式登录
+        - generic [ref=f26e56]:
+          - button "企业微信" [ref=f26e57]
+          - button "钉钉" [ref=f26e60]
+        - paragraph [ref=f26e63]:
+          - text: 还没有账号？
+          - link "注册新账号" [ref=f26e64] [cursor=pointer]:
+            - /url: /portal/register
+      - paragraph [ref=f26e65]:
+        - text: 登录即表示您同意我们的
+        - link "服务条款" [ref=f26e66] [cursor=pointer]:
+          - /url: "#"
+        - text: 和
+        - link "隐私政策" [ref=f26e67] [cursor=pointer]:
+          - /url: "#"
+    - contentinfo [ref=f26e68]:
+      - generic [ref=f26e70]:
+        - generic [ref=f26e71]: © 2026 奇安信科技集团
+        - generic [ref=f26e72]: 隐私政策
+        - generic [ref=f26e73]: 服务条款
+        - generic [ref=f26e74]: 帮助中心
+  - region "Notifications (F8)":
+    - list
+  - generic [ref=f26e75]:
+    - button "Toggle Nuxt DevTools" [ref=f26e76] [cursor=pointer]
+    - generic "Page load time" [ref=f26e80]:
+      - generic [ref=f26e81]: "30"
+      - generic [ref=f26e82]: ms
+    - button "Toggle Component Inspector" [ref=f26e84] [cursor=pointer]

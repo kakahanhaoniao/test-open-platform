@@ -1,0 +1,88 @@
+- generic [active] [ref=f4e1]:
+  - generic [ref=f4e2]:
+    - complementary [ref=f4e4]:
+      - generic [ref=f4e5]: 奇安信AI
+      - navigation [ref=f4e10]:
+        - link "首页" [ref=f4e11] [cursor=pointer]:
+          - /url: /
+        - link "模型中心" [ref=f4e14] [cursor=pointer]:
+          - /url: /models
+        - link "应用中心" [ref=f4e17] [cursor=pointer]:
+          - /url: /apps
+        - link "活动市场" [ref=f4e21] [cursor=pointer]:
+          - /url: /market
+        - link "定价" [ref=f4e24] [cursor=pointer]:
+          - /url: /pricing
+        - link "个人中心" [ref=f4e27] [cursor=pointer]:
+          - /url: /profile
+      - button "收起菜单" [ref=f4e31]
+      - generic [ref=f4e38]:
+        - paragraph [ref=f4e39]: 管理员
+        - paragraph [ref=f4e40]: admin@qianxin.com
+    - generic [ref=f4e42]:
+      - generic [ref=f4e43]:
+        - link "应用中心" [ref=f4e44] [cursor=pointer]:
+          - /url: /apps
+        - generic [ref=f4e46]: 智能安全运营中心
+      - generic [ref=f4e48]:
+        - generic [ref=f4e51]:
+          - generic [ref=f4e52]:
+            - heading "智能安全运营中心" [level=1] [ref=f4e53]
+            - generic [ref=f4e54]: 对话应用
+            - generic [ref=f4e56]: 热门
+          - paragraph [ref=f4e58]: AI驱动的安全运营中心，集成告警聚合、威胁研判、自动化响应，将MTTR从小时级缩短至分钟级
+          - generic [ref=f4e59]:
+            - generic [ref=f4e60]: "4.9"
+            - generic [ref=f4e63]: 56万+人使用
+        - button "开始对话" [ref=f4e65]
+      - generic [ref=f4e67]:
+        - generic [ref=f4e68]:
+          - generic [ref=f4e69]:
+            - generic [ref=f4e70]:
+              - generic [ref=f4e71]: 智能安全运营中心
+              - generic [ref=f4e74]: 在线
+            - generic [ref=f4e76]:
+              - paragraph [ref=f4e79]: 智能安全运营中心
+              - paragraph [ref=f4e80]: 输入问题开始对话
+            - generic [ref=f4e82]:
+              - textbox "输入消息..." [ref=f4e83]
+              - button [disabled] [ref=f4e84]
+          - generic [ref=f4e86]:
+            - heading "详细介绍" [level=2] [ref=f4e87]
+            - paragraph [ref=f4e88]: 智能安全运营中心将大模型能力深度融入SOC工作流，通过自然语言交互实现告警自动研判、安全事件关联分析、响应策略推荐与自动化编排。支持与主流SIEM/SOAR平台对接，大幅提升安全运营效率。将平均响应时间(MTTR)从小时级缩短至分钟级。
+        - generic [ref=f4e89]:
+          - generic [ref=f4e90]:
+            - heading "核心功能" [level=2] [ref=f4e91]
+            - list [ref=f4e92]:
+              - listitem [ref=f4e93]: 告警智能聚合
+              - listitem [ref=f4e95]: 威胁自动研判
+              - listitem [ref=f4e97]: SOAR自动化
+              - listitem [ref=f4e99]: 态势大屏
+              - listitem [ref=f4e101]: 协同处置
+          - generic [ref=f4e103]:
+            - heading "标签" [level=2] [ref=f4e104]
+            - generic [ref=f4e105]:
+              - generic [ref=f4e106]: SOC
+              - generic [ref=f4e107]: 告警研判
+              - generic [ref=f4e108]: 事件关联
+              - generic [ref=f4e109]: 响应编排
+          - generic [ref=f4e110]:
+            - heading "应用信息" [level=2] [ref=f4e111]
+            - generic [ref=f4e112]:
+              - generic [ref=f4e113]:
+                - generic [ref=f4e114]: 应用类型
+                - generic [ref=f4e115]: 对话应用
+              - generic [ref=f4e116]:
+                - generic [ref=f4e117]: 用户评分
+                - generic [ref=f4e118]: "4.9"
+              - generic [ref=f4e121]:
+                - generic [ref=f4e122]: 使用人数
+                - generic [ref=f4e123]: 56万+
+  - region "Notifications (F8)":
+    - list
+  - generic [ref=f4e124]:
+    - button "Toggle Nuxt DevTools" [ref=f4e125] [cursor=pointer]
+    - generic "Page load time" [ref=f4e129]:
+      - generic [ref=f4e130]: "27"
+      - generic [ref=f4e131]: ms
+    - button "Toggle Component Inspector" [ref=f4e133] [cursor=pointer]

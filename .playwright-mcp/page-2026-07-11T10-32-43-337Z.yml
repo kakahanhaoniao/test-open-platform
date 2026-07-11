@@ -1,0 +1,121 @@
+- generic [active] [ref=f13e1]:
+  - generic [ref=f13e2]:
+    - banner [ref=f13e3]:
+      - generic [ref=f13e4]:
+        - link "奇安信 AI 开放平台" [ref=f13e5] [cursor=pointer]:
+          - /url: /
+          - generic [ref=f13e8]:
+            - generic [ref=f13e9]: 奇安信
+            - generic [ref=f13e10]: AI 开放平台
+        - navigation [ref=f13e11]:
+          - link "首页" [ref=f13e12] [cursor=pointer]:
+            - /url: /
+          - link "能力市场" [ref=f13e13] [cursor=pointer]:
+            - /url: /marketplace
+          - link "优惠活动" [ref=f13e15] [cursor=pointer]:
+            - /url: /promotions
+        - generic [ref=f13e16]:
+          - link [ref=f13e17] [cursor=pointer]:
+            - /url: /marketplace
+          - button [ref=f13e19]
+          - link "开发者控制台" [ref=f13e22] [cursor=pointer]:
+            - /url: /dev
+          - button [ref=f13e26] [cursor=pointer]
+    - main [ref=f13e28]:
+      - generic [ref=f13e30]:
+        - generic [ref=f13e31]:
+          - link "首页" [ref=f13e32] [cursor=pointer]:
+            - /url: /
+          - link "能力市场" [ref=f13e34] [cursor=pointer]:
+            - /url: /marketplace
+          - generic [ref=f13e36]: 奇安信安全大模型
+        - generic [ref=f13e37]:
+          - generic [ref=f13e38]:
+            - generic [ref=f13e41]:
+              - generic [ref=f13e42]:
+                - heading "奇安信安全大模型" [level=1] [ref=f13e43]
+                - generic [ref=f13e44]: 模型
+                - generic [ref=f13e45]: HOT
+              - paragraph [ref=f13e46]: 安全大模型
+              - generic [ref=f13e47]:
+                - generic [ref=f13e48]: "4.9"
+                - generic [ref=f13e51]: 1280万+ 调用
+                - generic [ref=f13e54]: 100B 参数
+            - generic [ref=f13e57]:
+              - link "体验模型" [ref=f13e58] [cursor=pointer]:
+                - /url: /dev/playground
+              - button [ref=f13e61]
+          - generic [ref=f13e63]:
+            - generic [ref=f13e64]:
+              - generic [ref=f13e66]: 夏季安全嘉年华：限时5折
+              - link "了解详情" [ref=f13e67] [cursor=pointer]:
+                - /url: /promotions
+            - generic [ref=f13e68]:
+              - generic [ref=f13e70]: 企业版首发优惠：首发8折
+              - link "了解详情" [ref=f13e71] [cursor=pointer]:
+                - /url: /promotions
+          - generic [ref=f13e73]:
+            - button "概览" [ref=f13e74]
+            - button "体验" [ref=f13e76]
+            - button "定价" [ref=f13e78]
+            - button "文档" [ref=f13e80]
+          - generic [ref=f13e83]:
+            - generic [ref=f13e84]:
+              - generic [ref=f13e85]:
+                - heading "简介" [level=3] [ref=f13e86]
+                - paragraph [ref=f13e87]: 奇安信安全大模型是面向网络安全领域的旗舰级大语言模型，基于千亿参数规模，在安全领域数据上进行了深度训练。模型具备强大的安全知识理解与推理能力，可广泛应用于安全运营中心(SOC)、威胁情报分析、漏洞评估、合规审计等核心安全场景。深度融合奇安信20年安全知识库，覆盖百万级安全事件、漏洞库与威胁情报数据。
+              - generic [ref=f13e88]:
+                - heading "核心能力" [level=3] [ref=f13e89]
+                - generic [ref=f13e90]:
+                  - generic [ref=f13e91]: 千亿参数规模
+                  - generic [ref=f13e95]: 安全知识增强
+                  - generic [ref=f13e99]: 多轮对话
+                  - generic [ref=f13e103]: 代码分析
+                  - generic [ref=f13e107]: 报告生成
+              - generic [ref=f13e111]:
+                - heading "标签" [level=3] [ref=f13e112]
+                - generic [ref=f13e113]:
+                  - generic [ref=f13e114]: 大语言模型
+                  - generic [ref=f13e115]: 安全分析
+                  - generic [ref=f13e116]: 威胁检测
+                  - generic [ref=f13e117]: 报告生成
+            - generic [ref=f13e118]:
+              - generic [ref=f13e119]:
+                - heading "模型信息" [level=3] [ref=f13e120]
+                - generic [ref=f13e121]:
+                  - generic [ref=f13e122]:
+                    - generic [ref=f13e123]: 参数规模
+                    - generic [ref=f13e124]: 100B
+                  - generic [ref=f13e125]:
+                    - generic [ref=f13e126]: 输入定价
+                    - generic [ref=f13e127]: ¥0.06/千Token
+                  - generic [ref=f13e128]:
+                    - generic [ref=f13e129]: 输出定价
+                    - generic [ref=f13e130]: ¥0.12/千Token
+                  - generic [ref=f13e131]:
+                    - generic [ref=f13e132]: 调用次数
+                    - generic [ref=f13e133]: 1280万+
+                  - generic [ref=f13e134]:
+                    - generic [ref=f13e135]: API端点
+                    - generic [ref=f13e136]: /v1/chat/completions
+                - generic [ref=f13e137]:
+                  - link "获取API Key" [ref=f13e138] [cursor=pointer]:
+                    - /url: /dev/keys
+                  - link "立即体验" [ref=f13e141] [cursor=pointer]:
+                    - /url: /dev/playground
+              - generic [ref=f13e144]:
+                - heading "快速入口" [level=3] [ref=f13e145]
+                - link "API文档" [ref=f13e146] [cursor=pointer]:
+                  - /url: /dev/docs
+                - link "获取API Key" [ref=f13e150] [cursor=pointer]:
+                  - /url: /dev/keys
+                - link "购买充能包" [ref=f13e154] [cursor=pointer]:
+                  - /url: /dev/packs
+  - region "Notifications (F8)":
+    - list
+  - generic [ref=f13e158]:
+    - button "Toggle Nuxt DevTools" [ref=f13e159] [cursor=pointer]
+    - generic "Page load time" [ref=f13e163]:
+      - generic [ref=f13e164]: "38"
+      - generic [ref=f13e165]: ms
+    - button "Toggle Component Inspector" [ref=f13e167] [cursor=pointer]

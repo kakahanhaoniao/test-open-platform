@@ -1,0 +1,159 @@
+- generic [active] [ref=f16e1]:
+  - generic [ref=f16e3]:
+    - complementary [ref=f16e4]:
+      - link "返回市场" [ref=f16e6] [cursor=pointer]:
+        - /url: /
+      - generic [ref=f16e13]:
+        - paragraph [ref=f16e14]: 奇安信AI
+        - paragraph [ref=f16e15]: 开发者控制台
+      - navigation [ref=f16e16]:
+        - link "概览" [ref=f16e17] [cursor=pointer]:
+          - /url: /dev
+        - link "API Key管理" [ref=f16e21] [cursor=pointer]:
+          - /url: /dev/keys
+        - link "调用统计" [ref=f16e24] [cursor=pointer]:
+          - /url: /dev/stats
+        - link "充能包" [ref=f16e27] [cursor=pointer]:
+          - /url: /dev/packs
+        - link "API文档" [ref=f16e30] [cursor=pointer]:
+          - /url: /dev/docs
+        - link "应用集成" [ref=f16e33] [cursor=pointer]:
+          - /url: /dev/integrations
+      - generic [ref=f16e40]:
+        - paragraph [ref=f16e41]: 开发者
+        - paragraph [ref=f16e42]: dev@qianxin.com
+    - generic [ref=f16e43]:
+      - generic [ref=f16e45]:
+        - generic [ref=f16e46]:
+          - heading "欢迎回来，开发者" [level=1] [ref=f16e47]
+          - paragraph [ref=f16e48]: 您的API服务运行正常，以下是今日概览
+        - generic [ref=f16e49]: 服务正常
+      - generic [ref=f16e52]:
+        - generic [ref=f16e53]:
+          - generic [ref=f16e54]:
+            - generic [ref=f16e55]: +12.5%
+            - paragraph [ref=f16e59]: 2,847,520
+            - paragraph [ref=f16e60]: API调用总量
+          - generic [ref=f16e61]:
+            - generic [ref=f16e62]: +8.3%
+            - paragraph [ref=f16e66]: 22,940
+            - paragraph [ref=f16e67]: 本月调用
+          - generic [ref=f16e68]:
+            - generic [ref=f16e69]: "-5.2%"
+            - paragraph [ref=f16e73]: 4,850,000
+            - paragraph [ref=f16e74]: 充能包余额(Token)
+          - generic [ref=f16e75]:
+            - generic [ref=f16e76]: "+2"
+            - paragraph [ref=f16e80]: "5"
+            - paragraph [ref=f16e81]: 活跃Key数
+        - generic [ref=f16e82]:
+          - generic [ref=f16e83]:
+            - generic [ref=f16e84]:
+              - generic [ref=f16e85]:
+                - heading "近7日调用趋势" [level=3] [ref=f16e86]
+                - paragraph [ref=f16e87]: 每日API调用次数统计
+              - generic [ref=f16e88]: 调用量
+            - generic [ref=f16e91]:
+              - generic [ref=f16e92]:
+                - generic [ref=f16e93]: 2,840
+                - generic [ref=f16e95]: 周一
+              - generic [ref=f16e96]:
+                - generic [ref=f16e97]: 3,520
+                - generic [ref=f16e99]: 周二
+              - generic [ref=f16e100]:
+                - generic [ref=f16e101]: 4,120
+                - generic [ref=f16e103]: 周三
+              - generic [ref=f16e104]:
+                - generic [ref=f16e105]: 3,890
+                - generic [ref=f16e107]: 周四
+              - generic [ref=f16e108]:
+                - generic [ref=f16e109]: 4,650
+                - generic [ref=f16e111]: 周五
+              - generic [ref=f16e112]:
+                - generic [ref=f16e113]: 2,100
+                - generic [ref=f16e115]: 周六
+              - generic [ref=f16e116]:
+                - generic [ref=f16e117]: 1,820
+                - generic [ref=f16e119]: 周日
+          - generic [ref=f16e120]:
+            - heading "快速操作" [level=3] [ref=f16e121]
+            - link [ref=f16e122] [cursor=pointer]:
+              - /url: /dev/keys/create
+              - generic [ref=f16e125]:
+                - paragraph [ref=f16e126]: 创建API Key
+                - paragraph [ref=f16e127]: 生成新的API密钥
+            - link [ref=f16e128] [cursor=pointer]:
+              - /url: /dev/docs
+              - generic [ref=f16e131]:
+                - paragraph [ref=f16e132]: 查看文档
+                - paragraph [ref=f16e133]: API接入文档与SDK
+            - link [ref=f16e134] [cursor=pointer]:
+              - /url: /dev/packs
+              - generic [ref=f16e137]:
+                - paragraph [ref=f16e138]: 购买充能包
+                - paragraph [ref=f16e139]: 充值Token额度
+            - link [ref=f16e140] [cursor=pointer]:
+              - /url: /dev/stats
+              - generic [ref=f16e143]:
+                - paragraph [ref=f16e144]: 调用统计
+                - paragraph [ref=f16e145]: 查看详细调用数据
+        - generic [ref=f16e146]:
+          - generic [ref=f16e147]:
+            - generic [ref=f16e148]:
+              - heading "最近API调用" [level=3] [ref=f16e149]
+              - paragraph [ref=f16e150]: 最近5条API调用记录
+            - link "查看全部" [ref=f16e151] [cursor=pointer]:
+              - /url: /dev/stats
+          - table [ref=f16e153]:
+            - rowgroup [ref=f16e154]:
+              - row [ref=f16e155]:
+                - columnheader "模型" [ref=f16e156]
+                - columnheader "接口" [ref=f16e157]
+                - columnheader "状态" [ref=f16e158]
+                - columnheader "延迟" [ref=f16e159]
+                - columnheader "Token" [ref=f16e160]
+                - columnheader "时间" [ref=f16e161]
+            - rowgroup [ref=f16e162]:
+              - row [ref=f16e163]:
+                - cell "奇安信安全大模型" [ref=f16e164]
+                - cell "/v1/chat/completions" [ref=f16e165]
+                - cell "成功" [ref=f16e166]
+                - cell "234ms" [ref=f16e168]
+                - cell "1,520" [ref=f16e169]
+                - cell "2分钟前" [ref=f16e170]
+              - row [ref=f16e171]:
+                - cell "威胁检测模型 V3" [ref=f16e172]
+                - cell "/v1/threat/detect" [ref=f16e173]
+                - cell "成功" [ref=f16e174]
+                - cell "189ms" [ref=f16e176]
+                - cell "890" [ref=f16e177]
+                - cell "5分钟前" [ref=f16e178]
+              - row [ref=f16e179]:
+                - cell "漏洞分析专家" [ref=f16e180]
+                - cell "/v1/vuln/analyze" [ref=f16e181]
+                - cell "成功" [ref=f16e182]
+                - cell "312ms" [ref=f16e184]
+                - cell "2,340" [ref=f16e185]
+                - cell "12分钟前" [ref=f16e186]
+              - row [ref=f16e187]:
+                - cell "合规卫士" [ref=f16e188]
+                - cell "/v1/compliance/check" [ref=f16e189]
+                - cell "失败" [ref=f16e190]
+                - cell "5210ms" [ref=f16e192]
+                - cell "0" [ref=f16e193]
+                - cell "18分钟前" [ref=f16e194]
+              - row [ref=f16e195]:
+                - cell "代码安全扫描模型" [ref=f16e196]
+                - cell "/v1/code/scan" [ref=f16e197]
+                - cell "成功" [ref=f16e198]
+                - cell "276ms" [ref=f16e200]
+                - cell "1,870" [ref=f16e201]
+                - cell "25分钟前" [ref=f16e202]
+  - region "Notifications (F8)":
+    - list
+  - generic [ref=f16e203]:
+    - button "Toggle Nuxt DevTools" [ref=f16e204] [cursor=pointer]
+    - generic "Page load time" [ref=f16e208]:
+      - generic [ref=f16e209]: "23"
+      - generic [ref=f16e210]: ms
+    - button "Toggle Component Inspector" [ref=f16e212] [cursor=pointer]

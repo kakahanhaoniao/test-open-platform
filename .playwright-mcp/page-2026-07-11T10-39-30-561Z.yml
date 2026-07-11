@@ -1,0 +1,191 @@
+- generic [ref=f18e3]:
+  - complementary [ref=f18e4]:
+    - generic [ref=f18e5]: 奇安信AI · 运营后台
+    - link "返回前台" [ref=f18e11] [cursor=pointer]:
+      - /url: /
+    - navigation [ref=f18e14]:
+      - link "数据看板" [ref=f18e15] [cursor=pointer]:
+        - /url: /admin
+      - link "模型管理" [ref=f18e18] [cursor=pointer]:
+        - /url: /admin/models
+      - link "应用管理" [ref=f18e21] [cursor=pointer]:
+        - /url: /admin/apps
+      - link "活动管理" [ref=f18e25] [cursor=pointer]:
+        - /url: /admin/activities
+      - link "订单管理" [ref=f18e28] [cursor=pointer]:
+        - /url: /admin/orders
+      - link "模板配置" [ref=f18e31] [cursor=pointer]:
+        - /url: /admin/templates
+    - generic [ref=f18e38]:
+      - paragraph [ref=f18e39]: 运营管理员
+      - paragraph [ref=f18e40]: admin@qianxin.com
+  - generic [ref=f18e42]:
+    - generic [ref=f18e43]:
+      - link "应用管理" [ref=f18e44] [cursor=pointer]:
+        - /url: /admin/apps
+      - generic [ref=f18e46]: 智能安全运营中心
+      - generic [ref=f18e48]: 模板配置
+    - generic [ref=f18e49]:
+      - heading "应用详情页模板配置" [level=1] [ref=f18e50]
+      - generic [ref=f18e51]:
+        - button "预览" [ref=f18e52]
+        - button "保存配置" [ref=f18e53]
+    - generic [ref=f18e54]:
+      - generic [ref=f18e56]:
+        - generic [ref=f18e57]:
+          - heading "实时预览" [level=2] [ref=f18e58]
+          - generic [ref=f18e59]: Market 详情页效果
+        - generic [ref=f18e60]:
+          - generic [ref=f18e61]:
+            - generic [ref=f18e65]:
+              - heading "智能安全运营中心" [level=3] [ref=f18e66]
+              - generic [ref=f18e67]: 对话型
+            - paragraph [ref=f18e69]: AI驱动的安全运营中心，集成告警聚合、威胁研判、自动化响应，将MTTR从小时级缩短至分钟级
+          - generic [ref=f18e70]:
+            - paragraph [ref=f18e72]: 您好，我是安全助手，请问有什么可以帮助您的？
+            - generic [ref=f18e73]:
+              - generic [ref=f18e74]: 如何检测SQL注入攻击？
+              - generic [ref=f18e75]: OWASP Top 10有哪些？
+              - generic [ref=f18e76]: 如何进行安全合规审计？
+            - generic [ref=f18e77]:
+              - heading "功能特性" [level=4] [ref=f18e78]
+              - generic [ref=f18e79]:
+                - generic [ref=f18e80]: 告警智能聚合
+                - generic [ref=f18e83]: 威胁自动研判
+                - generic [ref=f18e86]: SOAR自动化
+                - generic [ref=f18e89]: 态势大屏
+      - generic [ref=f18e92]:
+        - generic [ref=f18e93]:
+          - heading "基本信息" [level=2] [ref=f18e94]
+          - paragraph [ref=f18e95]: 配置应用在详情页展示的基本信息
+          - generic [ref=f18e96]:
+            - generic [ref=f18e97]:
+              - generic [ref=f18e98]: 应用名称
+              - textbox [ref=f18e99]: 智能安全运营中心
+            - generic [ref=f18e100]:
+              - generic [ref=f18e101]: 应用描述
+              - textbox [ref=f18e102]: AI驱动的安全运营中心，集成告警聚合、威胁研判、自动化响应，将MTTR从小时级缩短至分钟级
+            - generic [ref=f18e103]:
+              - generic [ref=f18e104]:
+                - generic [ref=f18e105]: 图标
+                - textbox "i-lucide-layout-grid" [ref=f18e106]: i-lucide-monitor-dot
+              - generic [ref=f18e107]:
+                - generic [ref=f18e108]: 应用类型
+                - combobox [ref=f18e109]:
+                  - option "对话型" [selected]
+                  - option "工具型"
+                  - option "展示型"
+                  - option "外链型"
+        - generic [ref=f18e110]:
+          - heading "对话型配置" [level=2] [ref=f18e111]
+          - paragraph [ref=f18e112]: 配置对话应用特有的交互参数
+          - generic [ref=f18e113]:
+            - generic [ref=f18e114]:
+              - generic [ref=f18e115]: 欢迎语
+              - textbox [ref=f18e116]: 您好，我是安全助手，请问有什么可以帮助您的？
+            - generic [ref=f18e117]:
+              - generic [ref=f18e118]:
+                - generic [ref=f18e119]: 示例问题
+                - button "添加" [ref=f18e120]
+              - generic [ref=f18e122]:
+                - generic [ref=f18e123]:
+                  - textbox "示例问题 1" [ref=f18e124]: 如何检测SQL注入攻击？
+                  - button [ref=f18e125]
+                - generic [ref=f18e127]:
+                  - textbox "示例问题 2" [ref=f18e128]: OWASP Top 10有哪些？
+                  - button [ref=f18e129]
+                - generic [ref=f18e131]:
+                  - textbox "示例问题 3" [ref=f18e132]: 如何进行安全合规审计？
+                  - button [ref=f18e133]
+            - generic [ref=f18e135]:
+              - generic [ref=f18e136]: 关联模型
+              - combobox [ref=f18e137]:
+                - option "奇安信安全大模型" [selected]
+                - option "威胁检测模型 V3"
+                - option "漏洞分析专家"
+                - option "合规卫士"
+                - option "代码安全扫描模型"
+                - option "数据安全卫士"
+                - option "恶意软件分析模型"
+                - option "应急响应模型"
+                - option "钓鱼识别模型"
+                - option "日志智能分析模型"
+        - generic [ref=f18e138]:
+          - generic [ref=f18e139]:
+            - heading "功能特性" [level=2] [ref=f18e140]
+            - button "添加特性" [ref=f18e141]
+          - paragraph [ref=f18e143]: 拖拽排序，点击删除按钮移除
+          - generic [ref=f18e144]:
+            - generic [ref=f18e145]:
+              - textbox "特性 1" [ref=f18e147]: 告警智能聚合
+              - button [ref=f18e148]
+            - generic [ref=f18e150]:
+              - textbox "特性 2" [ref=f18e152]: 威胁自动研判
+              - button [ref=f18e153]
+            - generic [ref=f18e155]:
+              - textbox "特性 3" [ref=f18e157]: SOAR自动化
+              - button [ref=f18e158]
+            - generic [ref=f18e160]:
+              - textbox "特性 4" [ref=f18e162]: 态势大屏
+              - button [ref=f18e163]
+            - generic [ref=f18e165]:
+              - textbox "特性 5" [ref=f18e167]: 协同处置
+              - button [ref=f18e168]
+        - generic [ref=f18e170]:
+          - heading "关联模型" [level=2] [ref=f18e171]
+          - paragraph [ref=f18e172]: 选择该应用关联的AI模型
+          - generic [ref=f18e173]:
+            - generic [ref=f18e174] [cursor=pointer]:
+              - checkbox "奇安信安全大模型 安全大模型 · 100B" [checked] [ref=f18e175]
+              - generic [ref=f18e178]:
+                - paragraph [ref=f18e179]: 奇安信安全大模型
+                - paragraph [ref=f18e180]: 安全大模型 · 100B
+            - generic [ref=f18e181] [cursor=pointer]:
+              - checkbox "威胁检测模型 V3 威胁检测 · 7B" [ref=f18e182]
+              - generic [ref=f18e185]:
+                - paragraph [ref=f18e186]: 威胁检测模型 V3
+                - paragraph [ref=f18e187]: 威胁检测 · 7B
+            - generic [ref=f18e188] [cursor=pointer]:
+              - checkbox "漏洞分析专家 漏洞分析 · 13B" [ref=f18e189]
+              - generic [ref=f18e192]:
+                - paragraph [ref=f18e193]: 漏洞分析专家
+                - paragraph [ref=f18e194]: 漏洞分析 · 13B
+            - generic [ref=f18e195] [cursor=pointer]:
+              - checkbox "合规卫士 合规检查 · 7B" [ref=f18e196]
+              - generic [ref=f18e199]:
+                - paragraph [ref=f18e200]: 合规卫士
+                - paragraph [ref=f18e201]: 合规检查 · 7B
+            - generic [ref=f18e202] [cursor=pointer]:
+              - checkbox "代码安全扫描模型 代码安全 · 13B" [ref=f18e203]
+              - generic [ref=f18e206]:
+                - paragraph [ref=f18e207]: 代码安全扫描模型
+                - paragraph [ref=f18e208]: 代码安全 · 13B
+            - generic [ref=f18e209] [cursor=pointer]:
+              - checkbox "数据安全卫士 数据安全 · 3B" [ref=f18e210]
+              - generic [ref=f18e213]:
+                - paragraph [ref=f18e214]: 数据安全卫士
+                - paragraph [ref=f18e215]: 数据安全 · 3B
+            - generic [ref=f18e216] [cursor=pointer]:
+              - checkbox "恶意软件分析模型 恶意软件 · 5B" [ref=f18e217]
+              - generic [ref=f18e220]:
+                - paragraph [ref=f18e221]: 恶意软件分析模型
+                - paragraph [ref=f18e222]: 恶意软件 · 5B
+            - generic [ref=f18e223] [cursor=pointer]:
+              - checkbox "应急响应模型 应急响应 · 13B" [ref=f18e224]
+              - generic [ref=f18e227]:
+                - paragraph [ref=f18e228]: 应急响应模型
+                - paragraph [ref=f18e229]: 应急响应 · 13B
+            - generic [ref=f18e230] [cursor=pointer]:
+              - checkbox "钓鱼识别模型 钓鱼检测 · 1.5B" [ref=f18e231]
+              - generic [ref=f18e234]:
+                - paragraph [ref=f18e235]: 钓鱼识别模型
+                - paragraph [ref=f18e236]: 钓鱼检测 · 1.5B
+            - generic [ref=f18e237] [cursor=pointer]:
+              - checkbox "日志智能分析模型 日志分析 · 3B" [ref=f18e238]
+              - generic [ref=f18e241]:
+                - paragraph [ref=f18e242]: 日志智能分析模型
+                - paragraph [ref=f18e243]: 日志分析 · 3B
+        - generic [ref=f18e244]:
+          - button "取消" [ref=f18e245]
+          - button "预览" [ref=f18e246]
+          - button "保存配置" [ref=f18e247]

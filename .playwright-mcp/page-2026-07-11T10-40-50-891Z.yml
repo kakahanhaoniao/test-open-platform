@@ -1,0 +1,70 @@
+- generic [ref=f20e3]:
+  - complementary [ref=f20e4]:
+    - link "返回市场" [ref=f20e6] [cursor=pointer]:
+      - /url: /
+    - generic [ref=f20e13]:
+      - paragraph [ref=f20e14]: 奇安信AI
+      - paragraph [ref=f20e15]: 开发者控制台
+    - navigation [ref=f20e16]:
+      - link "概览" [ref=f20e17] [cursor=pointer]:
+        - /url: /dev
+      - link "API Key管理" [ref=f20e20] [cursor=pointer]:
+        - /url: /dev/keys
+      - link "调用统计" [ref=f20e23] [cursor=pointer]:
+        - /url: /dev/stats
+      - link "充能包" [ref=f20e26] [cursor=pointer]:
+        - /url: /dev/packs
+      - link "API文档" [ref=f20e29] [cursor=pointer]:
+        - /url: /dev/docs
+      - link "应用集成" [ref=f20e33] [cursor=pointer]:
+        - /url: /dev/integrations
+    - generic [ref=f20e40]:
+      - paragraph [ref=f20e41]: 开发者
+      - paragraph [ref=f20e42]: dev@qianxin.com
+  - generic [ref=f20e43]:
+    - generic [ref=f20e44]:
+      - heading "API列表" [level=3] [ref=f20e46]
+      - navigation [ref=f20e47]:
+        - button "奇安信安全大模型" [ref=f20e48]
+        - button "威胁检测模型 V3" [ref=f20e51]
+        - button "漏洞分析专家" [ref=f20e54]
+        - button "合规卫士" [ref=f20e57]
+    - generic [ref=f20e61]:
+      - generic [ref=f20e62]:
+        - heading "奇安信安全大模型" [level=1] [ref=f20e63]
+        - paragraph [ref=f20e64]: 基于千亿参数的安全领域大语言模型，深度融合奇安信20年安全知识库，支持威胁分析、安全问答、报告生成等多种安全场景
+      - generic [ref=f20e65]:
+        - heading "接口信息" [level=3] [ref=f20e66]
+        - generic [ref=f20e67]:
+          - generic [ref=f20e68]:
+            - generic [ref=f20e69]: POST
+            - code [ref=f20e70]: https://api.qianxin.ai/v1/chat/completions
+          - generic [ref=f20e71]:
+            - paragraph [ref=f20e72]: Request Headers
+            - generic [ref=f20e73]:
+              - paragraph [ref=f20e74]: "Content-Type: application/json"
+              - paragraph [ref=f20e75]: "Authorization: Bearer sk-qax-your-api-key"
+              - paragraph [ref=f20e76]: "X-Request-ID: optional-uuid"
+      - generic [ref=f20e77]:
+        - heading "Request Body" [level=3] [ref=f20e78]
+        - generic [ref=f20e79]: "{ \"model\": \"qax-security-llm\", \"messages\": [ { \"role\": \"system\", \"content\": \"你是一个安全专家助手\" }, { \"role\": \"user\", \"content\": \"请分析以下安全事件...\" } ], \"temperature\": 0.7, \"max_tokens\": 2048, \"stream\": false }"
+      - generic [ref=f20e81]:
+        - heading "Response Schema" [level=3] [ref=f20e82]
+        - generic [ref=f20e83]: "{ \"id\": \"resp-xxxxxx\", \"object\": \"chat.completion\", \"created\": 1720000000, \"model\": \"qax-security-llm\", \"choices\": [ { \"index\": 0, \"message\": { \"role\": \"assistant\", \"content\": \"分析结果...\" }, \"finish_reason\": \"stop\" } ], \"usage\": { \"prompt_tokens\": 128, \"completion_tokens\": 256, \"total_tokens\": 384 } }"
+      - generic [ref=f20e86]:
+        - heading "在线调试" [level=3] [ref=f20e87]
+        - button "打开调试器" [ref=f20e88]
+      - generic [ref=f20e89]:
+        - heading "SDK 接入" [level=3] [ref=f20e90]
+        - generic [ref=f20e91]:
+          - button "Python" [ref=f20e92]
+          - button "Java" [ref=f20e93]
+          - button "Go" [ref=f20e94]
+          - button "Node.js" [ref=f20e95]
+        - generic [ref=f20e96]:
+          - generic [ref=f20e97]:
+            - paragraph [ref=f20e98]: 安装
+            - code [ref=f20e100]: pip install qax-ai-sdk
+          - generic [ref=f20e101]:
+            - paragraph [ref=f20e102]: 示例代码
+            - generic [ref=f20e103]: "from qax_ai import QAXClient client = QAXClient(api_key=\"sk-qax-xxxxx\") response = client.chat.completions.create( model=\"qax-security-llm\", messages=[ {\"role\": \"user\", \"content\": \"分析此安全事件\"} ] ) print(response.choices[0].message.content)"

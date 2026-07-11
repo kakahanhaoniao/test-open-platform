@@ -1,0 +1,34 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:ai.qianxin.com)",
+      "WebSearch",
+      "WebFetch(domain:www.qianxin.com)",
+      "WebFetch(domain:en.wikipedia.org)",
+      "WebFetch(domain:baike.baidu.com)",
+      "WebFetch(domain:dribbble.com)",
+      "Bash(which node:*)",
+      "Bash(npx nuxi@latest init . --force --packageManager npm 2>&1 | tail -20)",
+      "Bash(npx nuxi@latest init . --template ui --force --packageManager npm --gitInit 2>&1 | tail -30)",
+      "Bash(npm install:*)",
+      "Bash(npm show:*)",
+      "Bash(npx nuxt:*)",
+      "Bash(sleep 10 && curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000/ 2>/dev/null)",
+      "mcp__plugin_playwright_playwright__browser_navigate",
+      "mcp__plugin_playwright_playwright__browser_take_screenshot",
+      "mcp__plugin_playwright_playwright__browser_snapshot",
+      "Bash(lsof -ti:3000 2>/dev/null | head -5)",
+      "Bash(kill 96343 96388 2>/dev/null; sleep 1; lsof -ti:3000 2>/dev/null | head -5)",
+      "Bash(sleep 15 && curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000/)",
+      "Bash(curl -s http://localhost:3000/ 2>&1 | head -50)",
+      "Bash(sleep 5 && curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000/)",
+      "mcp__plugin_playwright_playwright__browser_console_messages",
+      "mcp__plugin_playwright_playwright__browser_find",
+      "mcp__plugin_playwright_playwright__browser_click",
+      "mcp__plugin_playwright_playwright__browser_close"
+    ]
+  },
+  "enabledPlugins": {
+    "superpowers@claude-plugins-official": true
+  }
+}

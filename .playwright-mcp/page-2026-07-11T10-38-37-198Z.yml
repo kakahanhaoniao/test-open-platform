@@ -1,0 +1,254 @@
+- generic [active] [ref=f17e1]:
+  - generic [ref=f17e3]:
+    - complementary [ref=f17e4]:
+      - generic [ref=f17e5]: 奇安信AI · 运营后台
+      - link "返回前台" [ref=f17e11] [cursor=pointer]:
+        - /url: /
+      - navigation [ref=f17e14]:
+        - link "数据看板" [ref=f17e15] [cursor=pointer]:
+          - /url: /admin
+        - link "模型管理" [ref=f17e18] [cursor=pointer]:
+          - /url: /admin/models
+        - link "应用管理" [ref=f17e22] [cursor=pointer]:
+          - /url: /admin/apps
+        - link "活动管理" [ref=f17e25] [cursor=pointer]:
+          - /url: /admin/activities
+        - link "订单管理" [ref=f17e28] [cursor=pointer]:
+          - /url: /admin/orders
+        - link "模板配置" [ref=f17e31] [cursor=pointer]:
+          - /url: /admin/templates
+      - generic [ref=f17e38]:
+        - paragraph [ref=f17e39]: 运营管理员
+        - paragraph [ref=f17e40]: admin@qianxin.com
+    - generic [ref=f17e42]:
+      - generic [ref=f17e43]:
+        - link "模型管理" [ref=f17e44] [cursor=pointer]:
+          - /url: /admin/models
+        - generic [ref=f17e46]: 奇安信安全大模型
+        - generic [ref=f17e48]: 模板配置
+      - generic [ref=f17e49]:
+        - heading "模型详情页模板配置" [level=1] [ref=f17e50]
+        - generic [ref=f17e51]:
+          - button "预览" [ref=f17e52]
+          - button "保存配置" [ref=f17e53]
+      - generic [ref=f17e54]:
+        - generic [ref=f17e56]:
+          - generic [ref=f17e57]:
+            - heading "实时预览" [level=2] [ref=f17e58]
+            - generic [ref=f17e59]: Market 详情页效果
+          - generic [ref=f17e60]:
+            - generic [ref=f17e61]:
+              - generic [ref=f17e65]:
+                - heading "奇安信安全大模型" [level=3] [ref=f17e66]
+                - paragraph [ref=f17e67]: 奇安信
+              - paragraph [ref=f17e68]: 基于千亿参数的安全领域大语言模型，深度融合奇安信20年安全知识库，支持威胁分析、安全问答、报告生成等多种安全场景
+              - generic [ref=f17e69]:
+                - generic [ref=f17e70]: 大语言模型
+                - generic [ref=f17e71]: 安全分析
+                - generic [ref=f17e72]: 威胁检测
+            - generic [ref=f17e73]:
+              - generic [ref=f17e74]:
+                - heading "模型介绍" [level=4] [ref=f17e75]
+                - paragraph [ref=f17e76]: 奇安信安全大模型是面向网络安全领域的旗舰级大语言模型，基于千亿参数规模，在安全领域数据上进行了深度训练。模型具备强大的安全知识理解与推理能力，可广泛应用于安全运营中心(SOC)、威胁情报分析、漏洞评估、合规审计等核心安全场景。深度融合奇安信20年安全知识库，覆盖百万级安全事件、漏洞库与威胁情报数据。
+              - generic [ref=f17e77]:
+                - heading "功能特性" [level=4] [ref=f17e78]
+                - generic [ref=f17e79]:
+                  - generic [ref=f17e80]: 千亿参数规模
+                  - generic [ref=f17e83]: 安全知识增强
+                  - generic [ref=f17e86]: 多轮对话
+                  - generic [ref=f17e89]: 代码分析
+              - generic [ref=f17e92]:
+                - heading "定价" [level=4] [ref=f17e93]
+                - generic [ref=f17e94]:
+                  - generic [ref=f17e95]: "输入: ¥0.06/千Token"
+                  - generic [ref=f17e96]: "输出: ¥0.12/千Token"
+        - generic [ref=f17e97]:
+          - generic [ref=f17e98]:
+            - heading "基本信息" [level=2] [ref=f17e99]
+            - paragraph [ref=f17e100]: 配置模型在详情页展示的基本信息
+            - generic [ref=f17e101]:
+              - generic [ref=f17e102]:
+                - generic [ref=f17e103]: 模型名称
+                - textbox [ref=f17e104]: 奇安信安全大模型
+              - generic [ref=f17e105]:
+                - generic [ref=f17e106]: 模型描述
+                - textbox [ref=f17e107]: 基于千亿参数的安全领域大语言模型，深度融合奇安信20年安全知识库，支持威胁分析、安全问答、报告生成等多种安全场景
+              - generic [ref=f17e108]:
+                - generic [ref=f17e109]:
+                  - generic [ref=f17e110]: 图标
+                  - textbox "i-lucide-brain" [ref=f17e111]
+                - generic [ref=f17e112]:
+                  - generic [ref=f17e113]: 标签
+                  - textbox "用逗号分隔" [ref=f17e114]: 大语言模型, 安全分析, 威胁检测, 报告生成
+          - generic [ref=f17e115]:
+            - heading "模型介绍" [level=2] [ref=f17e116]
+            - paragraph [ref=f17e117]: 详情页展示的模型详细介绍内容
+            - textbox "输入模型详细介绍..." [ref=f17e118]: 奇安信安全大模型是面向网络安全领域的旗舰级大语言模型，基于千亿参数规模，在安全领域数据上进行了深度训练。模型具备强大的安全知识理解与推理能力，可广泛应用于安全运营中心(SOC)、威胁情报分析、漏洞评估、合规审计等核心安全场景。深度融合奇安信20年安全知识库，覆盖百万级安全事件、漏洞库与威胁情报数据。
+          - generic [ref=f17e119]:
+            - generic [ref=f17e120]:
+              - heading "功能特性" [level=2] [ref=f17e121]
+              - button "添加特性" [ref=f17e122]
+            - paragraph [ref=f17e124]: 拖拽排序，点击删除按钮移除
+            - generic [ref=f17e125]:
+              - generic [ref=f17e126]:
+                - textbox "特性 1" [ref=f17e128]: 千亿参数规模
+                - button [ref=f17e129]
+              - generic [ref=f17e131]:
+                - textbox "特性 2" [ref=f17e133]: 安全知识增强
+                - button [ref=f17e134]
+              - generic [ref=f17e136]:
+                - textbox "特性 3" [ref=f17e138]: 多轮对话
+                - button [ref=f17e139]
+              - generic [ref=f17e141]:
+                - textbox "特性 4" [ref=f17e143]: 代码分析
+                - button [ref=f17e144]
+              - generic [ref=f17e146]:
+                - textbox "特性 5" [ref=f17e148]: 报告生成
+                - button [ref=f17e149]
+          - generic [ref=f17e151]:
+            - generic [ref=f17e152]:
+              - heading "参数配置" [level=2] [ref=f17e153]
+              - button "添加参数" [ref=f17e154]
+            - paragraph [ref=f17e156]: API接口参数定义
+            - table [ref=f17e158]:
+              - rowgroup [ref=f17e159]:
+                - row [ref=f17e160]:
+                  - columnheader "名称" [ref=f17e161]
+                  - columnheader "类型" [ref=f17e162]
+                  - columnheader "默认值" [ref=f17e163]
+                  - columnheader "描述" [ref=f17e164]
+                  - columnheader [ref=f17e165]
+              - rowgroup [ref=f17e166]:
+                - row [ref=f17e167]:
+                  - cell [ref=f17e168]:
+                    - textbox [ref=f17e169]: messages
+                  - cell "array" [ref=f17e170]:
+                    - combobox [ref=f17e171]:
+                      - option "string"
+                      - option "integer"
+                      - option "number"
+                      - option "boolean"
+                      - option "array" [selected]
+                      - option "object"
+                  - cell [ref=f17e172]:
+                    - textbox [ref=f17e173]: "[]"
+                  - cell [ref=f17e174]:
+                    - textbox [ref=f17e175]: 对话消息列表
+                  - cell [ref=f17e176]:
+                    - button [ref=f17e177]
+                - row [ref=f17e179]:
+                  - cell [ref=f17e180]:
+                    - textbox [ref=f17e181]: model
+                  - cell "string" [ref=f17e182]:
+                    - combobox [ref=f17e183]:
+                      - option "string" [selected]
+                      - option "integer"
+                      - option "number"
+                      - option "boolean"
+                      - option "array"
+                      - option "object"
+                  - cell [ref=f17e184]:
+                    - textbox [ref=f17e185]: qax-security-llm
+                  - cell [ref=f17e186]:
+                    - textbox [ref=f17e187]: 模型标识
+                  - cell [ref=f17e188]:
+                    - button [ref=f17e189]
+                - row [ref=f17e191]:
+                  - cell [ref=f17e192]:
+                    - textbox [ref=f17e193]: temperature
+                  - cell "number" [ref=f17e194]:
+                    - combobox [ref=f17e195]:
+                      - option "string"
+                      - option "integer"
+                      - option "number" [selected]
+                      - option "boolean"
+                      - option "array"
+                      - option "object"
+                  - cell [ref=f17e196]:
+                    - textbox [ref=f17e197]: "0.7"
+                  - cell [ref=f17e198]:
+                    - textbox [ref=f17e199]: 生成温度
+                  - cell [ref=f17e200]:
+                    - button [ref=f17e201]
+                - row [ref=f17e203]:
+                  - cell [ref=f17e204]:
+                    - textbox [ref=f17e205]: max_tokens
+                  - cell "integer" [ref=f17e206]:
+                    - combobox [ref=f17e207]:
+                      - option "string"
+                      - option "integer" [selected]
+                      - option "number"
+                      - option "boolean"
+                      - option "array"
+                      - option "object"
+                  - cell [ref=f17e208]:
+                    - textbox [ref=f17e209]: "4096"
+                  - cell [ref=f17e210]:
+                    - textbox [ref=f17e211]: 最大生成Token数
+                  - cell [ref=f17e212]:
+                    - button [ref=f17e213]
+          - generic [ref=f17e215]:
+            - heading "API端点配置" [level=2] [ref=f17e216]
+            - paragraph [ref=f17e217]: 配置模型API接口信息
+            - generic [ref=f17e218]:
+              - generic [ref=f17e219]:
+                - generic [ref=f17e220]:
+                  - generic [ref=f17e221]: 请求方法
+                  - combobox [ref=f17e222]:
+                    - option "GET"
+                    - option "POST" [selected]
+                    - option "PUT"
+                - generic [ref=f17e223]:
+                  - generic [ref=f17e224]: 端点URL
+                  - textbox "/v1/chat/completions" [ref=f17e225]
+              - generic [ref=f17e226]:
+                - generic [ref=f17e227]: 参数说明
+                - 'textbox "{\"messages\": \"对话消息列表\", \"temperature\": \"生成温度\"}" [ref=f17e228]'
+          - generic [ref=f17e229]:
+            - heading "定价配置" [level=2] [ref=f17e230]
+            - paragraph [ref=f17e231]: 设置模型调用的Token计费价格
+            - generic [ref=f17e232]:
+              - generic [ref=f17e233]:
+                - generic [ref=f17e234]: 输入价格
+                - textbox "¥0.06/千Token" [ref=f17e235]
+              - generic [ref=f17e236]:
+                - generic [ref=f17e237]: 输出价格
+                - textbox "¥0.12/千Token" [ref=f17e238]
+          - generic [ref=f17e239]:
+            - heading "充能包关联" [level=2] [ref=f17e240]
+            - paragraph [ref=f17e241]: 选择该模型可使用的充能包
+            - generic [ref=f17e242]:
+              - generic [ref=f17e243] [cursor=pointer]:
+                - checkbox "体验包 100万Token · ¥99" [checked] [ref=f17e244]
+                - generic [ref=f17e245]:
+                  - generic [ref=f17e246]: 体验包
+                  - paragraph [ref=f17e248]: 100万Token · ¥99
+              - generic [ref=f17e249] [cursor=pointer]:
+                - checkbox "专业包 热门 500万Token · ¥399" [checked] [ref=f17e250]
+                - generic [ref=f17e251]:
+                  - generic [ref=f17e252]:
+                    - generic [ref=f17e253]: 专业包
+                    - generic [ref=f17e254]: 热门
+                  - paragraph [ref=f17e255]: 500万Token · ¥399
+              - generic [ref=f17e256] [cursor=pointer]:
+                - checkbox "企业包 2000万Token · ¥1,499" [checked] [ref=f17e257]
+                - generic [ref=f17e258]:
+                  - generic [ref=f17e259]: 企业包
+                  - paragraph [ref=f17e261]: 2000万Token · ¥1,499
+              - generic [ref=f17e262] [cursor=pointer]:
+                - checkbox "无限包 无限Token · ¥4,999/月" [checked] [ref=f17e263]
+                - generic [ref=f17e264]:
+                  - generic [ref=f17e265]: 无限包
+                  - paragraph [ref=f17e267]: 无限Token · ¥4,999/月
+          - generic [ref=f17e268]:
+            - button "取消" [ref=f17e269]
+            - button "预览" [ref=f17e270]
+            - button "保存配置" [ref=f17e271]
+  - region "Notifications (F8)":
+    - list
+  - generic [ref=f17e272]:
+    - button "Toggle Nuxt DevTools" [ref=f17e273] [cursor=pointer]
+    - generic "Page load time" [ref=f17e277]:
+      - generic [ref=f17e278]: "29"
+      - generic [ref=f17e279]: ms
+    - button "Toggle Component Inspector" [ref=f17e281] [cursor=pointer]

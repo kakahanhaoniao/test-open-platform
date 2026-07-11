@@ -1,0 +1,240 @@
+- generic [active] [ref=f22e1]:
+  - generic [ref=f22e3]:
+    - complementary [ref=f22e4]:
+      - generic [ref=f22e5]: 奇安信AI · 运营后台
+      - link "返回前台" [ref=f22e11] [cursor=pointer]:
+        - /url: /
+      - navigation [ref=f22e14]:
+        - link "数据看板" [ref=f22e15] [cursor=pointer]:
+          - /url: /admin
+        - link "模型管理" [ref=f22e18] [cursor=pointer]:
+          - /url: /admin/models
+        - link "应用管理" [ref=f22e21] [cursor=pointer]:
+          - /url: /admin/apps
+        - link "活动管理" [ref=f22e24] [cursor=pointer]:
+          - /url: /admin/activities
+        - link "订单管理" [ref=f22e28] [cursor=pointer]:
+          - /url: /admin/orders
+        - link "模板配置" [ref=f22e31] [cursor=pointer]:
+          - /url: /admin/templates
+      - generic [ref=f22e38]:
+        - paragraph [ref=f22e39]: 运营管理员
+        - paragraph [ref=f22e40]: admin@qianxin.com
+    - generic [ref=f22e42]:
+      - generic [ref=f22e43]:
+        - link "活动管理" [ref=f22e44] [cursor=pointer]:
+          - /url: /admin/activities
+        - generic [ref=f22e46]: 活动
+        - generic [ref=f22e48]: 模板配置
+      - generic [ref=f22e49]:
+        - heading "活动详情页模板配置" [level=1] [ref=f22e50]
+        - generic [ref=f22e51]:
+          - button "预览" [ref=f22e52]
+          - button "保存配置" [ref=f22e53]
+      - generic [ref=f22e54]:
+        - generic [ref=f22e56]:
+          - generic [ref=f22e57]:
+            - heading "实时预览" [level=2] [ref=f22e58]
+            - generic [ref=f22e59]: 活动卡片 + 详情页效果
+          - generic [ref=f22e61]:
+            - generic [ref=f22e62]: 活动名称
+            - paragraph [ref=f22e65]: 活动副标题
+            - generic [ref=f22e66]:
+              - generic [ref=f22e67]: 优惠
+              - generic [ref=f22e68]: 立即参与
+          - generic [ref=f22e69]:
+            - generic [ref=f22e70]:
+              - generic [ref=f22e71]: 活动名称
+              - paragraph
+            - generic [ref=f22e74]:
+              - generic [ref=f22e75]:
+                - heading "活动描述" [level=4] [ref=f22e76]
+                - paragraph [ref=f22e77]: 暂无描述
+              - heading "活动权益" [level=4] [ref=f22e79]
+              - heading "活动规则" [level=4] [ref=f22e81]
+        - generic [ref=f22e82]:
+          - generic [ref=f22e83]:
+            - heading "基本信息" [level=2] [ref=f22e84]
+            - paragraph [ref=f22e85]: 配置活动的基本展示信息
+            - generic [ref=f22e86]:
+              - generic [ref=f22e87]:
+                - generic [ref=f22e88]: 活动名称
+                - textbox [ref=f22e89]
+              - generic [ref=f22e90]:
+                - generic [ref=f22e91]: 副标题
+                - textbox [ref=f22e92]
+              - generic [ref=f22e93]:
+                - generic [ref=f22e94]: 活动描述
+                - textbox [ref=f22e95]
+              - generic [ref=f22e96]:
+                - generic [ref=f22e97]: 图标
+                - textbox "i-lucide-gift" [ref=f22e98]
+          - generic [ref=f22e99]:
+            - heading "优惠配置" [level=2] [ref=f22e100]
+            - paragraph [ref=f22e101]: 设置活动优惠类型与折扣值
+            - generic [ref=f22e102]:
+              - generic [ref=f22e103]:
+                - generic [ref=f22e104]: 折扣类型
+                - generic [ref=f22e105]:
+                  - generic [ref=f22e106] [cursor=pointer]:
+                    - radio "折扣" [checked] [ref=f22e107]
+                    - generic [ref=f22e108]: 折扣
+                  - generic [ref=f22e109] [cursor=pointer]:
+                    - radio "免费" [ref=f22e110]
+                    - generic [ref=f22e111]: 免费
+                  - generic [ref=f22e112] [cursor=pointer]:
+                    - radio "奖金" [ref=f22e113]
+                    - generic [ref=f22e114]: 奖金
+              - generic [ref=f22e115]:
+                - generic [ref=f22e116]: 折扣值
+                - 'textbox "如: 5折, 免费, ¥10万" [ref=f22e117]'
+          - generic [ref=f22e118]:
+            - heading "视觉配置" [level=2] [ref=f22e119]
+            - paragraph [ref=f22e120]: 配置活动卡片的视觉风格
+            - generic [ref=f22e121]:
+              - generic [ref=f22e122]:
+                - generic [ref=f22e123]: 渐变色选择
+                - generic [ref=f22e124]:
+                  - button [ref=f22e125]:
+                    - paragraph [ref=f22e127]: 紫蓝渐变
+                  - button [ref=f22e128]:
+                    - paragraph [ref=f22e130]: 深紫渐变
+                  - button [ref=f22e131]:
+                    - paragraph [ref=f22e133]: 红紫渐变
+                  - button [ref=f22e134]:
+                    - paragraph [ref=f22e136]: 青紫渐变
+                  - button [ref=f22e137]:
+                    - paragraph [ref=f22e139]: 蓝紫渐变
+                  - button [ref=f22e140]:
+                    - paragraph [ref=f22e142]: 橙紫渐变
+              - generic [ref=f22e143]:
+                - generic [ref=f22e144]: 背景图案
+                - generic [ref=f22e145]:
+                  - button "无" [ref=f22e146]
+                  - button "网格" [ref=f22e147]
+                  - button "圆点" [ref=f22e148]
+                  - button "波纹" [ref=f22e149]
+          - generic [ref=f22e150]:
+            - heading "关联内容" [level=2] [ref=f22e151]
+            - paragraph [ref=f22e152]: 选择活动关联的模型与应用
+            - generic [ref=f22e153]:
+              - generic [ref=f22e154]:
+                - generic [ref=f22e155]: 关联模型
+                - generic [ref=f22e156]:
+                  - generic [ref=f22e157] [cursor=pointer]:
+                    - checkbox "奇安信安全大模型" [checked] [ref=f22e158]
+                    - generic [ref=f22e159]: 奇安信安全大模型
+                  - generic [ref=f22e160] [cursor=pointer]:
+                    - checkbox "威胁检测模型 V3" [ref=f22e161]
+                    - generic [ref=f22e162]: 威胁检测模型 V3
+                  - generic [ref=f22e163] [cursor=pointer]:
+                    - checkbox "漏洞分析专家" [ref=f22e164]
+                    - generic [ref=f22e165]: 漏洞分析专家
+                  - generic [ref=f22e166] [cursor=pointer]:
+                    - checkbox "合规卫士" [ref=f22e167]
+                    - generic [ref=f22e168]: 合规卫士
+                  - generic [ref=f22e169] [cursor=pointer]:
+                    - checkbox "代码安全扫描模型" [ref=f22e170]
+                    - generic [ref=f22e171]: 代码安全扫描模型
+                  - generic [ref=f22e172] [cursor=pointer]:
+                    - checkbox "数据安全卫士" [ref=f22e173]
+                    - generic [ref=f22e174]: 数据安全卫士
+                  - generic [ref=f22e175] [cursor=pointer]:
+                    - checkbox "恶意软件分析模型" [ref=f22e176]
+                    - generic [ref=f22e177]: 恶意软件分析模型
+                  - generic [ref=f22e178] [cursor=pointer]:
+                    - checkbox "应急响应模型" [ref=f22e179]
+                    - generic [ref=f22e180]: 应急响应模型
+                  - generic [ref=f22e181] [cursor=pointer]:
+                    - checkbox "钓鱼识别模型" [ref=f22e182]
+                    - generic [ref=f22e183]: 钓鱼识别模型
+                  - generic [ref=f22e184] [cursor=pointer]:
+                    - checkbox "日志智能分析模型" [ref=f22e185]
+                    - generic [ref=f22e186]: 日志智能分析模型
+              - generic [ref=f22e187]:
+                - generic [ref=f22e188]: 关联应用
+                - generic [ref=f22e189]:
+                  - generic [ref=f22e190] [cursor=pointer]:
+                    - checkbox "智能安全运营中心" [checked] [ref=f22e191]
+                    - generic [ref=f22e192]: 智能安全运营中心
+                  - generic [ref=f22e193] [cursor=pointer]:
+                    - checkbox "威胁情报助手" [ref=f22e194]
+                    - generic [ref=f22e195]: 威胁情报助手
+                  - generic [ref=f22e196] [cursor=pointer]:
+                    - checkbox "漏洞扫描工具" [ref=f22e197]
+                    - generic [ref=f22e198]: 漏洞扫描工具
+                  - generic [ref=f22e199] [cursor=pointer]:
+                    - checkbox "安全态势感知大屏" [ref=f22e200]
+                    - generic [ref=f22e201]: 安全态势感知大屏
+                  - generic [ref=f22e202] [cursor=pointer]:
+                    - checkbox "AI代码审计助手" [ref=f22e203]
+                    - generic [ref=f22e204]: AI代码审计助手
+                  - generic [ref=f22e205] [cursor=pointer]:
+                    - checkbox "应急响应剧本" [ref=f22e206]
+                    - generic [ref=f22e207]: 应急响应剧本
+                  - generic [ref=f22e208] [cursor=pointer]:
+                    - checkbox "零信任网关" [ref=f22e209]
+                    - generic [ref=f22e210]: 零信任网关
+                  - generic [ref=f22e211] [cursor=pointer]:
+                    - checkbox "威胁情报平台" [ref=f22e212]
+                    - generic [ref=f22e213]: 威胁情报平台
+          - generic [ref=f22e214]:
+            - generic [ref=f22e215]:
+              - heading "活动规则" [level=2] [ref=f22e216]
+              - button "添加规则" [ref=f22e217]
+            - paragraph [ref=f22e219]: 配置活动参与规则说明
+            - generic [ref=f22e221]:
+              - generic [ref=f22e222]: "1."
+              - textbox "规则 1" [ref=f22e223]
+              - button [ref=f22e224]
+          - generic [ref=f22e226]:
+            - generic [ref=f22e227]:
+              - heading "活动权益" [level=2] [ref=f22e228]
+              - button "添加权益" [ref=f22e229]
+            - paragraph [ref=f22e231]: 配置活动可享受的权益列表
+            - generic [ref=f22e233]:
+              - textbox "权益 1" [ref=f22e235]
+              - button [ref=f22e236]
+          - generic [ref=f22e238]:
+            - heading "CTA配置" [level=2] [ref=f22e239]
+            - paragraph [ref=f22e240]: 配置活动行动号召按钮
+            - generic [ref=f22e241]:
+              - generic [ref=f22e242]:
+                - generic [ref=f22e243]: 按钮文字
+                - textbox "立即参与" [ref=f22e244]
+              - generic [ref=f22e245]:
+                - generic [ref=f22e246]: 跳转链接
+                - textbox "/market/xxx" [ref=f22e247]
+          - generic [ref=f22e248]:
+            - button "取消" [ref=f22e249]
+            - button "预览" [ref=f22e250]
+            - button "保存配置" [ref=f22e251]
+  - region "Notifications (F8)":
+    - list
+  - generic:
+    - generic:
+      - generic:
+        - generic [ref=f22e252]:
+          - button "Toggle Nuxt DevTools" [ref=f22e253] [cursor=pointer]
+          - generic "Page load time" [ref=f22e257]:
+            - generic [ref=f22e258]: "29"
+            - generic [ref=f22e259]: ms
+          - button "Toggle Component Inspector" [ref=f22e261] [cursor=pointer]
+        - iframe [ref=f22e273]:
+          - generic [ref=f23e7]:
+            - generic [ref=f23e8]:
+              - paragraph [ref=f23e9]: 👋 Hi there, welcome to Nuxt DevTools!
+              - paragraph [ref=f23e10]: is a set of visual tools that help you to know your Nuxt app better, and enhance your development experience with Nuxt. Enjoy!
+              - paragraph [ref=f23e18]:
+                - text: Learn more at
+                - link "devtools.nuxt.com" [ref=f23e19] [cursor=pointer]:
+                  - /url: https://devtools.nuxt.com/
+              - link "Get Started" [ref=f23e21] [cursor=pointer]:
+                - /url: /__nuxt_devtools__/client/modules/overview
+              - button "Always hide the floating panel" [ref=f23e23] [cursor=pointer]
+            - generic [ref=f23e27]:
+              - checkbox "Send anonymous statistics, help us improving DevToolsLearn more" [checked] [ref=f23e28]
+              - generic [ref=f23e31]:
+                - text: Send anonymous statistics, help us improving DevTools
+                - link "Learn more" [ref=f23e32] [cursor=pointer]:
+                  - /url: https://github.com/nuxt/devtools#anonymous-usage-analytics

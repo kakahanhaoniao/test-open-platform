@@ -1,0 +1,72 @@
+- generic [active] [ref=f3e1]:
+  - generic [ref=f3e2]:
+    - complementary [ref=f3e4]:
+      - generic [ref=f3e5]: 奇安信AI
+      - navigation [ref=f3e10]:
+        - link "首页" [ref=f3e11] [cursor=pointer]:
+          - /url: /
+        - link "模型中心" [ref=f3e14] [cursor=pointer]:
+          - /url: /models
+        - link "应用中心" [ref=f3e18] [cursor=pointer]:
+          - /url: /apps
+        - link "活动市场" [ref=f3e21] [cursor=pointer]:
+          - /url: /market
+        - link "定价" [ref=f3e24] [cursor=pointer]:
+          - /url: /pricing
+        - link "个人中心" [ref=f3e27] [cursor=pointer]:
+          - /url: /profile
+      - button "收起菜单" [ref=f3e31]
+      - generic [ref=f3e38]:
+        - paragraph [ref=f3e39]: 管理员
+        - paragraph [ref=f3e40]: admin@qianxin.com
+    - generic [ref=f3e42]:
+      - generic [ref=f3e43]:
+        - link "模型中心" [ref=f3e44] [cursor=pointer]:
+          - /url: /models
+        - generic [ref=f3e46]: 奇安信安全大模型
+      - generic [ref=f3e48]:
+        - generic [ref=f3e51]:
+          - generic [ref=f3e52]:
+            - heading "奇安信安全大模型" [level=1] [ref=f3e53]
+            - generic [ref=f3e54]: 热门
+          - paragraph [ref=f3e56]: 基于千亿参数的安全领域大语言模型，深度融合奇安信20年安全知识库，支持威胁分析、安全问答、报告生成等多种安全场景
+          - generic [ref=f3e57]:
+            - generic [ref=f3e58]: 安全大模型
+            - generic [ref=f3e59]: 100B参数
+            - generic [ref=f3e60]: "4.9"
+            - generic [ref=f3e63]: 1280万+次调用
+        - generic [ref=f3e64]:
+          - button "在线体验" [ref=f3e65]
+          - button "API接入" [ref=f3e67]
+      - generic [ref=f3e69]:
+        - button "介绍" [ref=f3e70]
+        - button "体验" [ref=f3e72]
+        - button "API" [ref=f3e74]
+        - button "定价" [ref=f3e76]
+      - generic [ref=f3e78]:
+        - generic [ref=f3e79]:
+          - heading "模型介绍" [level=2] [ref=f3e80]
+          - paragraph [ref=f3e81]: 奇安信安全大模型是面向网络安全领域的旗舰级大语言模型，基于千亿参数规模，在安全领域数据上进行了深度训练。模型具备强大的安全知识理解与推理能力，可广泛应用于安全运营中心(SOC)、威胁情报分析、漏洞评估、合规审计等核心安全场景。深度融合奇安信20年安全知识库，覆盖百万级安全事件、漏洞库与威胁情报数据。
+        - generic [ref=f3e82]:
+          - heading "核心能力" [level=2] [ref=f3e83]
+          - generic [ref=f3e84]:
+            - generic [ref=f3e85]: 千亿参数规模
+            - generic [ref=f3e89]: 安全知识增强
+            - generic [ref=f3e93]: 多轮对话
+            - generic [ref=f3e97]: 代码分析
+            - generic [ref=f3e101]: 报告生成
+        - generic [ref=f3e105]:
+          - heading "标签" [level=2] [ref=f3e106]
+          - generic [ref=f3e107]:
+            - generic [ref=f3e108]: 大语言模型
+            - generic [ref=f3e109]: 安全分析
+            - generic [ref=f3e110]: 威胁检测
+            - generic [ref=f3e111]: 报告生成
+  - region "Notifications (F8)":
+    - list
+  - generic [ref=f3e112]:
+    - button "Toggle Nuxt DevTools" [ref=f3e113] [cursor=pointer]
+    - generic "Page load time" [ref=f3e117]:
+      - generic [ref=f3e118]: "33"
+      - generic [ref=f3e119]: ms
+    - button "Toggle Component Inspector" [ref=f3e121] [cursor=pointer]
