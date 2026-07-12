@@ -21,7 +21,7 @@ const handleRegister = () => {
   // Demo: simulate register then redirect to dev console
   setTimeout(() => {
     loading.value = false
-    navigateTo('/dev')
+    navigateTo('/console')
   }, 1500)
 }
 </script>
@@ -161,7 +161,7 @@ const handleRegister = () => {
               color="neutral"
               block
               size="lg"
-              @click="navigateTo('/dev')"
+              @click="navigateTo('/console')"
             />
             <UButton
               label="钉钉"
@@ -170,7 +170,7 @@ const handleRegister = () => {
               color="neutral"
               block
               size="lg"
-              @click="navigateTo('/dev')"
+              @click="navigateTo('/console')"
             />
           </div>
 

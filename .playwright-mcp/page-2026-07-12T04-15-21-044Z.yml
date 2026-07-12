@@ -1,0 +1,228 @@
+- generic [active] [ref=f37e1]:
+  - generic [ref=f37e3]:
+    - complementary [ref=f37e4]:
+      - generic [ref=f37e5]: 奇安信AI · 运营后台
+      - link "返回前台" [ref=f37e11] [cursor=pointer]:
+        - /url: /
+      - navigation [ref=f37e14]:
+        - link "数据看板" [ref=f37e15] [cursor=pointer]:
+          - /url: /admin
+        - link "企业客户" [ref=f37e18] [cursor=pointer]:
+          - /url: /admin/enterprises
+        - link "模型管理" [ref=f37e22] [cursor=pointer]:
+          - /url: /admin/models
+        - link "应用管理" [ref=f37e25] [cursor=pointer]:
+          - /url: /admin/apps
+        - link "活动管理" [ref=f37e28] [cursor=pointer]:
+          - /url: /admin/activities
+        - link "订单管理" [ref=f37e31] [cursor=pointer]:
+          - /url: /admin/orders
+        - link "模板配置" [ref=f37e34] [cursor=pointer]:
+          - /url: /admin/templates
+      - generic [ref=f37e41]:
+        - paragraph [ref=f37e42]: 运营管理员
+        - paragraph [ref=f37e43]: admin@qianxin.com
+    - generic [ref=f37e45]:
+      - generic [ref=f37e47]:
+        - heading "企业客户管理" [level=1] [ref=f37e48]
+        - paragraph [ref=f37e49]: 管理平台企业客户、审核认证与用量监控
+      - generic [ref=f37e50]:
+        - generic [ref=f37e55]:
+          - paragraph [ref=f37e56]: 企业总数
+          - paragraph [ref=f37e57]: "8"
+        - generic [ref=f37e62]:
+          - paragraph [ref=f37e63]: 已认证
+          - paragraph [ref=f37e64]: "6"
+        - generic [ref=f37e69]:
+          - paragraph [ref=f37e70]: 本月新增
+          - paragraph [ref=f37e71]: "1"
+        - generic [ref=f37e76]:
+          - paragraph [ref=f37e77]: 待审核
+          - paragraph [ref=f37e78]: "2"
+      - generic [ref=f37e80]:
+        - textbox "搜索企业名、行业、联系人..." [ref=f37e83]
+        - combobox [ref=f37e84]:
+          - 'option "认证状态: 全部" [selected]'
+          - option "已认证"
+          - option "待认证"
+          - option "已禁用"
+        - combobox [ref=f37e85]:
+          - 'option "行业: 全部" [selected]'
+          - option "网络安全"
+          - option "金融"
+          - option "能源"
+          - option "政府"
+          - option "制造"
+          - option "通信"
+          - option "医疗"
+          - option "教育"
+        - combobox [ref=f37e86]:
+          - 'option "规模: 全部" [selected]'
+          - 'option "规模: 100人以下"'
+          - 'option "规模: 100-500人"'
+          - 'option "规模: 500人以上"'
+      - paragraph [ref=f37e88]: 共 8 家企业
+      - table [ref=f37e91]:
+        - rowgroup [ref=f37e92]:
+          - row [ref=f37e93]:
+            - columnheader "企业名称" [ref=f37e94]
+            - columnheader "行业" [ref=f37e95]
+            - columnheader "规模" [ref=f37e96]
+            - columnheader "成员数" [ref=f37e97]
+            - columnheader "月消耗" [ref=f37e98]
+            - columnheader "充能包余额" [ref=f37e99]
+            - columnheader "认证状态" [ref=f37e100]
+            - columnheader "操作" [ref=f37e101]
+        - rowgroup [ref=f37e102]:
+          - row [ref=f37e103]:
+            - cell [ref=f37e104]:
+              - link [ref=f37e105] [cursor=pointer]:
+                - /url: /admin/enterprises/ent-qianxin
+                - generic [ref=f37e108]:
+                  - paragraph [ref=f37e109]: 奇安信安全团队
+                  - paragraph [ref=f37e110]: 张明
+            - cell "网络安全" [ref=f37e111]
+            - cell "200-500人" [ref=f37e112]
+            - cell "6人" [ref=f37e113]
+            - cell "¥12,860" [ref=f37e114]
+            - cell "1850万" [ref=f37e115]
+            - cell "已认证" [ref=f37e116]
+            - cell [ref=f37e117]:
+              - generic [ref=f37e118]:
+                - link "查看" [ref=f37e119] [cursor=pointer]:
+                  - /url: /admin/enterprises/ent-qianxin
+                - button "禁用" [ref=f37e120]
+          - row [ref=f37e121]:
+            - cell [ref=f37e122]:
+              - link [ref=f37e123] [cursor=pointer]:
+                - /url: /admin/enterprises/ent-icbc
+                - generic [ref=f37e126]:
+                  - paragraph [ref=f37e127]: 工商银行安全中心
+                  - paragraph [ref=f37e128]: 周建国
+            - cell "金融" [ref=f37e129]
+            - cell "500-1000人" [ref=f37e130]
+            - cell "28人" [ref=f37e131]
+            - cell "¥86,500" [ref=f37e132]
+            - cell "9500万" [ref=f37e133]
+            - cell "已认证" [ref=f37e134]
+            - cell [ref=f37e135]:
+              - generic [ref=f37e136]:
+                - link "查看" [ref=f37e137] [cursor=pointer]:
+                  - /url: /admin/enterprises/ent-icbc
+                - button "禁用" [ref=f37e138]
+          - row [ref=f37e139]:
+            - cell [ref=f37e140]:
+              - link [ref=f37e141] [cursor=pointer]:
+                - /url: /admin/enterprises/ent-sinopec
+                - generic [ref=f37e144]:
+                  - paragraph [ref=f37e145]: 中石化网络安全部
+                  - paragraph [ref=f37e146]: 李伟
+            - cell "能源" [ref=f37e147]
+            - cell "100-200人" [ref=f37e148]
+            - cell "15人" [ref=f37e149]
+            - cell "¥42,300" [ref=f37e150]
+            - cell "3800万" [ref=f37e151]
+            - cell "已认证" [ref=f37e152]
+            - cell [ref=f37e153]:
+              - generic [ref=f37e154]:
+                - link "查看" [ref=f37e155] [cursor=pointer]:
+                  - /url: /admin/enterprises/ent-sinopec
+                - button "禁用" [ref=f37e156]
+          - row [ref=f37e157]:
+            - cell [ref=f37e158]:
+              - link [ref=f37e159] [cursor=pointer]:
+                - /url: /admin/enterprises/ent-gov-cyber
+                - generic [ref=f37e162]:
+                  - paragraph [ref=f37e163]: 某市网信办
+                  - paragraph [ref=f37e164]: 王志强
+            - cell "政府" [ref=f37e165]
+            - cell "50-100人" [ref=f37e166]
+            - cell "12人" [ref=f37e167]
+            - cell "¥28,900" [ref=f37e168]
+            - cell "2200万" [ref=f37e169]
+            - cell "已认证" [ref=f37e170]
+            - cell [ref=f37e171]:
+              - generic [ref=f37e172]:
+                - link "查看" [ref=f37e173] [cursor=pointer]:
+                  - /url: /admin/enterprises/ent-gov-cyber
+                - button "禁用" [ref=f37e174]
+          - row [ref=f37e175]:
+            - cell [ref=f37e176]:
+              - link [ref=f37e177] [cursor=pointer]:
+                - /url: /admin/enterprises/ent-haier
+                - generic [ref=f37e180]:
+                  - paragraph [ref=f37e181]: 海尔集团信息安全部
+                  - paragraph [ref=f37e182]: 赵鹏飞
+            - cell "制造" [ref=f37e183]
+            - cell "200-500人" [ref=f37e184]
+            - cell "22人" [ref=f37e185]
+            - cell "¥56,700" [ref=f37e186]
+            - cell "6400万" [ref=f37e187]
+            - cell "已认证" [ref=f37e188]
+            - cell [ref=f37e189]:
+              - generic [ref=f37e190]:
+                - link "查看" [ref=f37e191] [cursor=pointer]:
+                  - /url: /admin/enterprises/ent-haier
+                - button "禁用" [ref=f37e192]
+          - row [ref=f37e193]:
+            - cell [ref=f37e194]:
+              - link [ref=f37e195] [cursor=pointer]:
+                - /url: /admin/enterprises/ent-chinamobile
+                - generic [ref=f37e198]:
+                  - paragraph [ref=f37e199]: 中国移动安全运营中心
+                  - paragraph [ref=f37e200]: 陈晓东
+            - cell "通信" [ref=f37e201]
+            - cell "1000人以上" [ref=f37e202]
+            - cell "45人" [ref=f37e203]
+            - cell "¥156,000" [ref=f37e204]
+            - cell "1.8亿" [ref=f37e205]
+            - cell "已认证" [ref=f37e206]
+            - cell [ref=f37e207]:
+              - generic [ref=f37e208]:
+                - link "查看" [ref=f37e209] [cursor=pointer]:
+                  - /url: /admin/enterprises/ent-chinamobile
+                - button "禁用" [ref=f37e210]
+          - row [ref=f37e211]:
+            - cell [ref=f37e212]:
+              - link [ref=f37e213] [cursor=pointer]:
+                - /url: /admin/enterprises/ent-hospital
+                - generic [ref=f37e216]:
+                  - paragraph [ref=f37e217]: 协和医院信息科
+                  - paragraph [ref=f37e218]: 刘美华
+            - cell "医疗" [ref=f37e219]
+            - cell "50-100人" [ref=f37e220]
+            - cell "8人" [ref=f37e221]
+            - cell "¥15,600" [ref=f37e222]
+            - cell "1200万" [ref=f37e223]
+            - cell "待认证" [ref=f37e224]
+            - cell [ref=f37e225]:
+              - generic [ref=f37e226]:
+                - link "查看" [ref=f37e227] [cursor=pointer]:
+                  - /url: /admin/enterprises/ent-hospital
+                - button "审核" [ref=f37e228]
+          - row [ref=f37e229]:
+            - cell [ref=f37e230]:
+              - link [ref=f37e231] [cursor=pointer]:
+                - /url: /admin/enterprises/ent-tsinghua
+                - generic [ref=f37e234]:
+                  - paragraph [ref=f37e235]: 清华大学网络研究院
+                  - paragraph [ref=f37e236]: 孙立
+            - cell "教育" [ref=f37e237]
+            - cell "50人以下" [ref=f37e238]
+            - cell "5人" [ref=f37e239]
+            - cell "¥8,900" [ref=f37e240]
+            - cell "600万" [ref=f37e241]
+            - cell "待认证" [ref=f37e242]
+            - cell [ref=f37e243]:
+              - generic [ref=f37e244]:
+                - link "查看" [ref=f37e245] [cursor=pointer]:
+                  - /url: /admin/enterprises/ent-tsinghua
+                - button "审核" [ref=f37e246]
+  - region "Notifications (F8)":
+    - list
+  - generic [ref=f37e247]:
+    - button "Toggle Nuxt DevTools" [ref=f37e248] [cursor=pointer]
+    - generic "Page load time" [ref=f37e252]:
+      - generic [ref=f37e253]: "29"
+      - generic [ref=f37e254]: ms
+    - button "Toggle Component Inspector" [ref=f37e256] [cursor=pointer]

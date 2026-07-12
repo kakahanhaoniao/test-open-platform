@@ -35,9 +35,9 @@ const userMenuItems = computed(() => {
   if (currentUser.isEnterprise) {
     items.push({ label: '企业工作台', icon: 'i-lucide-building-2', to: '/enterprise' })
   }
-  items.push(
-    { label: '运营后台', icon: 'i-lucide-settings', to: '/admin' },
-  )
+  if (currentUser.role === 'admin') {
+    items.push({ label: '运营后台', icon: 'i-lucide-settings', to: '/admin' })
+  }
   return items
 })
 </script>
@@ -97,7 +97,6 @@ const userMenuItems = computed(() => {
           color="neutral"
           size="sm"
           class="text-gray-500"
-          to="/marketplace"
         />
 
         <!-- Unauthenticated: Login / Register -->

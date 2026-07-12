@@ -11,6 +11,36 @@ const refreshRates = [
   { value: '1min' as const, label: '1min' }
 ]
 
+// Simulated refresh: update QPS and latency with small random variations
+const liveQPS = ref(monitorMetrics.realtimeQPS)
+const liveLatency = ref(monitorMetrics.avgLatency)
+const lastUpdated = ref(new Date())
+
+function getRefreshInterval() {
+  if (refreshRate.value === '5s') return 5000
+  if (refreshRate.value === '30s') return 30000
+  return 60000
+}
+
+let refreshTimer: ReturnType<typeof setInterval> | null = null
+
+function startRefresh() {
+  stopRefresh()
+  refreshTimer = setInterval(() => {
+    liveQPS.value = Math.max(0, monitorMetrics.realtimeQPS + Math.floor((Math.random() - 0.5) * 40))
+    liveLatency.value = Math.max(10, monitorMetrics.avgLatency + Math.floor((Math.random() - 0.5) * 20))
+    lastUpdated.value = new Date()
+  }, getRefreshInterval())
+}
+
+function stopRefresh() {
+  if (refreshTimer) { clearInterval(refreshTimer); refreshTimer = null }
+}
+
+watch(refreshRate, () => startRefresh())
+onMounted(() => startRefresh())
+onUnmounted(() => stopRefresh)
+
 // Tooltip state for area chart
 const tooltipState = ref<{ show: boolean; x: number; y: number; time: string; calls: number; errors: number }>({
   show: false, x: 0, y: 0, time: '', calls: 0, errors: 0
@@ -91,7 +121,7 @@ function getAlertStyle(severity: 'red' | 'amber' | 'green') {
 }
 
 // Metric cards data
-const metricCards = [
+const metricCards = computed(() => [
   {
     label: '今日调用',
     value: '47,236',
@@ -104,7 +134,7 @@ const metricCards = [
   },
   {
     label: '实时QPS',
-    value: '347/s',
+    value: `${liveQPS.value}/s`,
     change: '',
     changeType: 'neutral' as const,
     changeLabel: '当前峰值',
@@ -124,7 +154,7 @@ const metricCards = [
   },
   {
     label: '平均延迟',
-    value: '128ms',
+    value: `${liveLatency.value}ms`,
     change: '-5ms',
     changeType: 'down-good' as const,
     changeLabel: '',
@@ -132,7 +162,7 @@ const metricCards = [
     iconBg: 'bg-green-50',
     iconColor: 'text-green-600'
   }
-]
+])
 
 // Chart hover handler
 function onChartHover(event: MouseEvent, pointIndex: number) {

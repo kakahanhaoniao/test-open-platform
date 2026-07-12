@@ -1,0 +1,152 @@
+- generic [ref=f32e3]:
+  - complementary [ref=f32e4]:
+    - generic [ref=f32e5]:
+      - generic [ref=f32e9]:
+        - paragraph [ref=f32e10]: 奇安信安全团队
+        - paragraph [ref=f32e11]: 管理员 · 6名成员
+      - link "个人空间" [ref=f32e12] [cursor=pointer]:
+        - /url: /console
+    - link "返回市场" [ref=f32e16] [cursor=pointer]:
+      - /url: /
+    - navigation [ref=f32e19]:
+      - generic [ref=f32e20]:
+        - paragraph [ref=f32e21]: 核心管理
+        - generic [ref=f32e22]:
+          - link "企业概览" [ref=f32e23] [cursor=pointer]:
+            - /url: /enterprise
+          - link "成员管理" [ref=f32e27] [cursor=pointer]:
+            - /url: /enterprise/members
+          - link "调用监控" [ref=f32e30] [cursor=pointer]:
+            - /url: /enterprise/monitor
+          - link "日志审计" [ref=f32e33] [cursor=pointer]:
+            - /url: /enterprise/logs
+      - generic [ref=f32e36]:
+        - paragraph [ref=f32e37]: 资源与账务
+        - generic [ref=f32e38]:
+          - link "企业充能包" [ref=f32e39] [cursor=pointer]:
+            - /url: /enterprise/packs
+          - link "企业账单" [ref=f32e42] [cursor=pointer]:
+            - /url: /enterprise/billing
+          - link "企业设置" [ref=f32e45] [cursor=pointer]:
+            - /url: /enterprise/settings
+    - button "退出登录" [ref=f32e49]
+  - generic [ref=f32e52]:
+    - generic [ref=f32e57]:
+      - generic [ref=f32e58]:
+        - heading "企业概览" [level=1] [ref=f32e59]
+        - generic [ref=f32e60]: · 奇安信安全团队
+      - generic [ref=f32e61]:
+        - generic [ref=f32e62]: 服务正常
+        - generic [ref=f32e64]: 已认证
+    - generic [ref=f32e66]:
+      - generic [ref=f32e67]:
+        - generic [ref=f32e68]: 成员数
+        - generic [ref=f32e72]:
+          - generic [ref=f32e73]: "6"
+          - generic [ref=f32e74]: 人
+        - paragraph [ref=f32e75]: 活跃5，待邀请1
+      - generic [ref=f32e76]:
+        - generic [ref=f32e77]: 活跃Key数
+        - generic [ref=f32e81]:
+          - generic [ref=f32e82]: "12"
+          - generic [ref=f32e83]: 个
+      - generic [ref=f32e84]:
+        - generic [ref=f32e85]: 本月调用
+        - generic [ref=f32e89]:
+          - generic [ref=f32e90]: 47,200
+          - generic [ref=f32e91]: 次
+      - generic [ref=f32e92]:
+        - generic [ref=f32e93]: 本月消耗
+        - generic [ref=f32e97]: ¥12,860
+    - generic [ref=f32e99]:
+      - link [ref=f32e100] [cursor=pointer]:
+        - /url: /enterprise/members
+        - paragraph [ref=f32e105]: 邀请成员
+        - paragraph [ref=f32e106]: 邀请新成员加入团队
+      - link [ref=f32e107] [cursor=pointer]:
+        - /url: /enterprise/packs
+        - paragraph [ref=f32e112]: 购买充能包
+        - paragraph [ref=f32e113]: 补充Token调用额度
+      - link [ref=f32e114] [cursor=pointer]:
+        - /url: /enterprise/monitor
+        - paragraph [ref=f32e119]: 查看监控
+        - paragraph [ref=f32e120]: 实时调用监控与告警
+      - link [ref=f32e121] [cursor=pointer]:
+        - /url: /enterprise/settings
+        - paragraph [ref=f32e126]: 管理设置
+        - paragraph [ref=f32e127]: 企业信息与告警配置
+    - generic [ref=f32e128]:
+      - generic [ref=f32e129]:
+        - generic [ref=f32e130]:
+          - generic [ref=f32e131]:
+            - heading "成员预览" [level=3] [ref=f32e132]
+            - paragraph [ref=f32e133]: 团队成员活跃度概览
+          - link "查看全部成员" [ref=f32e134] [cursor=pointer]:
+            - /url: /enterprise/members
+        - generic [ref=f32e136]:
+          - generic [ref=f32e137]:
+            - generic [ref=f32e138]: 张
+            - generic [ref=f32e139]:
+              - generic [ref=f32e140]:
+                - generic [ref=f32e141]: 张明
+                - generic [ref=f32e142]: 管理员
+              - paragraph [ref=f32e143]: zhangming@qianxin.com
+            - generic [ref=f32e144]:
+              - paragraph [ref=f32e145]: ¥4,780
+              - generic [ref=f32e146]: 活跃
+          - generic [ref=f32e148]:
+            - generic [ref=f32e149]: 李
+            - generic [ref=f32e150]:
+              - generic [ref=f32e151]:
+                - generic [ref=f32e152]: 李芳
+                - generic [ref=f32e153]: 开发者
+              - paragraph [ref=f32e154]: lifang@qianxin.com
+            - generic [ref=f32e155]:
+              - paragraph [ref=f32e156]: ¥3,240
+              - generic [ref=f32e157]: 活跃
+          - generic [ref=f32e159]:
+            - generic [ref=f32e160]: 王
+            - generic [ref=f32e161]:
+              - generic [ref=f32e162]:
+                - generic [ref=f32e163]: 王磊
+                - generic [ref=f32e164]: 开发者
+              - paragraph [ref=f32e165]: wanglei@qianxin.com
+            - generic [ref=f32e166]:
+              - paragraph [ref=f32e167]: ¥2,580
+              - generic [ref=f32e168]: 活跃
+          - generic [ref=f32e170]:
+            - generic [ref=f32e171]: 陈
+            - generic [ref=f32e172]:
+              - generic [ref=f32e173]:
+                - generic [ref=f32e174]: 陈静
+                - generic [ref=f32e175]: 财务
+              - paragraph [ref=f32e176]: chenjing@qianxin.com
+            - generic [ref=f32e177]:
+              - paragraph [ref=f32e178]: ¥0
+              - generic [ref=f32e179]: 活跃
+          - generic [ref=f32e181]:
+            - generic [ref=f32e182]: 赵
+            - generic [ref=f32e183]:
+              - generic [ref=f32e184]:
+                - generic [ref=f32e185]: 赵伟
+                - generic [ref=f32e186]: 只读
+              - paragraph [ref=f32e187]: zhaowei@qianxin.com
+            - generic [ref=f32e188]:
+              - paragraph [ref=f32e189]: ¥380
+              - generic [ref=f32e190]: 活跃
+      - generic [ref=f32e192]:
+        - generic [ref=f32e193]:
+          - generic [ref=f32e194]:
+            - heading "异常告警" [level=3] [ref=f32e195]
+            - paragraph [ref=f32e196]: 最近服务异常与恢复通知
+          - generic [ref=f32e197]: 1 严重
+        - generic [ref=f32e198]:
+          - generic [ref=f32e201]:
+            - paragraph [ref=f32e202]: 合规卫士接口返回500错误
+            - paragraph [ref=f32e203]: 5分钟前
+          - generic [ref=f32e206]:
+            - paragraph [ref=f32e207]: 安全大模型触发频率限制(429)
+            - paragraph [ref=f32e208]: 23分钟前
+          - generic [ref=f32e211]:
+            - paragraph [ref=f32e212]: 威胁检测模型请求频率超限
+            - paragraph [ref=f32e213]: 1小时前

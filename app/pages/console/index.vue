@@ -1,7 +1,13 @@
 <script setup lang="ts">
-import { currentUser, models } from '~/data/mock'
+import { currentUser, members, organization } from '~/data/mock'
 
 useHead({ title: '使用看板 - 奇安信AI开放平台' })
+
+// Personal data (current user only)
+const personalMember = members.find(m => m.id === 'm1')!
+const personalCalls = 12800
+const personalTokens = personalMember.monthlyTokens
+const personalCost = personalMember.monthlyCost
 
 const trendRange = ref('7d')
 
@@ -11,26 +17,26 @@ const trendRanges = [
   { value: '90d', label: '90天' }
 ]
 
-// Call trend data (7 days)
+// Personal call trend data (7 days)
 const callTrendData = [
-  { date: '07/05', calls: 38200 },
-  { date: '07/06', calls: 34800 },
-  { date: '07/07', calls: 42500 },
-  { date: '07/08', calls: 47200 },
-  { date: '07/09', calls: 43800 },
-  { date: '07/10', calls: 51600 },
-  { date: '07/11', calls: 25900 }
+  { date: '07/05', calls: 1680 },
+  { date: '07/06', calls: 1520 },
+  { date: '07/07', calls: 2100 },
+  { date: '07/08', calls: 2340 },
+  { date: '07/09', calls: 1980 },
+  { date: '07/10', calls: 2560 },
+  { date: '07/11', calls: 620 }
 ]
 
 const maxCalls = Math.max(...callTrendData.map(d => d.calls))
 
-// Model consumption ranking (top 5)
+// Model consumption ranking (personal top 5)
 const modelRanking = [
-  { name: '奇安信安全大模型', percentage: 45, tokens: '524万' },
-  { name: '威胁检测模型 V3', percentage: 30, tokens: '289万' },
-  { name: '代码安全扫描模型', percentage: 18, tokens: '178万' },
-  { name: '漏洞分析专家', percentage: 8, tokens: '96万' },
-  { name: '合规卫士', percentage: 4, tokens: '48万' }
+  { name: '奇安信安全大模型', percentage: 45, tokens: '234万' },
+  { name: '代码安全扫描模型', percentage: 25, tokens: '130万' },
+  { name: '威胁检测模型 V3', percentage: 15, tokens: '78万' },
+  { name: '应急响应模型', percentage: 10, tokens: '52万' },
+  { name: '其他模型', percentage: 5, tokens: '26万' }
 ]
 
 // Alerts
@@ -42,12 +48,12 @@ const alerts = [
   { id: 5, severity: 'green' as const, icon: 'i-lucide-check-circle', message: '漏洞分析专家服务已恢复', time: '3小时前' }
 ]
 
-// Quota data
-const packBalance = 1850 // 万
-const packTotal = 5000 // 万
+// Quota data (personal share)
+const packBalance = 370 // 万 (personal share of org pack)
+const packTotal = 1000 // 万
 const packPercent = Math.round((packBalance / packTotal) * 100)
-const apiUsed = 6000
-const apiTotal = 10000
+const apiUsed = 2400
+const apiTotal = 5000
 const apiPercent = Math.round((apiUsed / apiTotal) * 100)
 
 function getPackBarColor(percent: number) {
@@ -109,8 +115,8 @@ const quickActions = [
                 +12.5%
               </span>
             </div>
-            <p class="text-xs text-gray-400 mb-1">API调用总量</p>
-            <p class="text-2xl font-bold text-gray-900 font-mono">284<span class="text-base font-normal text-gray-400">万+</span></p>
+            <p class="text-xs text-gray-400 mb-1">本月调用</p>
+            <p class="text-2xl font-bold text-gray-900 font-mono">1.28<span class="text-base font-normal text-gray-400">万</span></p>
           </div>
 
           <!-- Token消耗 -->
@@ -125,7 +131,7 @@ const quickActions = [
               </span>
             </div>
             <p class="text-xs text-gray-400 mb-1">Token消耗</p>
-            <p class="text-2xl font-bold text-gray-900 font-mono">485<span class="text-base font-normal text-gray-400">万</span></p>
+            <p class="text-2xl font-bold text-gray-900 font-mono">520<span class="text-base font-normal text-gray-400">万</span></p>
           </div>
 
           <!-- 本月费用 -->
@@ -140,7 +146,7 @@ const quickActions = [
               </span>
             </div>
             <p class="text-xs text-gray-400 mb-1">本月费用</p>
-            <p class="text-2xl font-bold text-gray-900 font-mono">¥12,860</p>
+            <p class="text-2xl font-bold text-gray-900 font-mono">¥4,780</p>
           </div>
 
           <!-- 充能包余额 -->
@@ -152,7 +158,7 @@ const quickActions = [
               <span class="text-xs font-mono text-gray-400">37%</span>
             </div>
             <p class="text-xs text-gray-400 mb-1">充能包余额</p>
-            <p class="text-2xl font-bold text-gray-900 font-mono">1,850<span class="text-base font-normal text-gray-400">万</span></p>
+            <p class="text-2xl font-bold text-gray-900 font-mono">370<span class="text-base font-normal text-gray-400">万</span></p>
             <div class="mt-2 h-1.5 bg-gray-100 rounded-full overflow-hidden">
               <div class="h-full bg-primary-500 rounded-full" style="width: 37%" />
             </div>
@@ -273,7 +279,7 @@ const quickActions = [
                   <UIcon name="i-lucide-coins" class="w-4 h-4 text-primary-500" />
                   <span class="text-sm font-medium text-gray-900">充能包</span>
                 </div>
-                <span class="text-xs text-gray-500 font-mono">1,850万 / 5,000万 Token</span>
+                <span class="text-xs text-gray-500 font-mono">370万 / 1,000万 Token</span>
               </div>
               <div class="h-3 bg-gray-100 rounded-full overflow-hidden">
                 <div
@@ -298,7 +304,7 @@ const quickActions = [
                   <UIcon name="i-lucide-gauge" class="w-4 h-4 text-blue-500" />
                   <span class="text-sm font-medium text-gray-900">API频率</span>
                 </div>
-                <span class="text-xs text-gray-500 font-mono">6,000 / 10,000 次/分</span>
+                <span class="text-xs text-gray-500 font-mono">2,400 / 5,000 次/分</span>
               </div>
               <div class="h-3 bg-gray-100 rounded-full overflow-hidden">
                 <div

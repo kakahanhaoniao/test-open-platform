@@ -82,7 +82,7 @@ function isExpiringSoon(endDate: string) {
                   color="white"
                   size="sm"
                   trailing
-                  to="/dev/packs"
+                  to="/console/packs"
                 />
               </div>
             </div>
@@ -158,7 +158,7 @@ function isExpiringSoon(endDate: string) {
                     variant="subtle"
                     size="sm"
                     trailing
-                    to="/dev/packs"
+                    to="/console/packs"
                   />
                 </div>
               </div>

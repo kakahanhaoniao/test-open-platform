@@ -4,11 +4,11 @@ const route = useRoute()
 
 const navItems = [
   { label: '首页', icon: 'i-lucide-home', to: '/' },
-  { label: '模型中心', icon: 'i-lucide-brain', to: '/models' },
-  { label: '应用中心', icon: 'i-lucide-layout-grid', to: '/apps' },
-  { label: '活动市场', icon: 'i-lucide-flame', to: '/market' },
-  { label: '定价', icon: 'i-lucide-tag', to: '/pricing' },
-  { label: '个人中心', icon: 'i-lucide-user', to: '/profile' }
+  { label: '模型中心', icon: 'i-lucide-brain', to: '/marketplace' },
+  { label: '应用中心', icon: 'i-lucide-layout-grid', to: '/marketplace' },
+  { label: '活动市场', icon: 'i-lucide-flame', to: '/promotions' },
+  { label: '定价', icon: 'i-lucide-tag', to: '/portal/pricing' },
+  { label: '个人中心', icon: 'i-lucide-user', to: '/console/settings' }
 ]
 
 function isActive(to: string) {

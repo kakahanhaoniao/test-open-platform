@@ -88,7 +88,7 @@ const totalCount = computed(() => models.length + apps.length)
               variant="subtle"
               color="primary"
               size="sm"
-              to="/dev/keys"
+              to="/console/keys"
             />
             <USelect
               v-model="sortBy"

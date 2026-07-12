@@ -139,7 +139,7 @@ const hotOrNew = computed(() => {
             </div>
             <!-- API Docs link -->
             <NuxtLink
-              to="/dev/docs"
+              to="/console/docs"
               class="flex items-center gap-1 text-[11px] text-primary-500 hover:text-primary-700 transition-colors"
               @click.stop
             >

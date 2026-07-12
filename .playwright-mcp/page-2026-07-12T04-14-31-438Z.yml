@@ -1,0 +1,26 @@
+- generic [ref=f36e2]:
+  - banner [ref=f36e3]:
+    - generic [ref=f36e4]:
+      - link "奇安信 AI 开放平台" [ref=f36e5] [cursor=pointer]:
+        - /url: /
+        - generic [ref=f36e8]:
+          - generic [ref=f36e9]: 奇安信
+          - generic [ref=f36e10]: AI 开放平台
+      - navigation [ref=f36e11]:
+        - link "首页" [ref=f36e12] [cursor=pointer]:
+          - /url: /
+        - link "能力市场" [ref=f36e13] [cursor=pointer]:
+          - /url: /marketplace
+        - link "优惠活动" [ref=f36e15] [cursor=pointer]:
+          - /url: /promotions
+      - generic [ref=f36e16]:
+        - button [ref=f36e17]
+        - link "企业工作台" [ref=f36e20] [cursor=pointer]:
+          - /url: /enterprise
+        - button [ref=f36e24] [cursor=pointer]
+  - main [ref=f36e26]:
+    - generic [ref=f36e28]:
+      - heading "未找到该能力" [level=2] [ref=f36e30]
+      - paragraph [ref=f36e31]: 该能力可能已下线或ID不正确
+      - link "返回能力市场" [ref=f36e32] [cursor=pointer]:
+        - /url: /marketplace

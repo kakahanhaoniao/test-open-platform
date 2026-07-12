@@ -479,7 +479,7 @@ print(response.choices[0].message.content)`
       <div v-if="activeTab === 'integration' && !isModel" class="bg-white rounded-xl border border-gray-100 p-6">
         <h3 class="text-sm font-semibold text-gray-900 mb-4">集成方式</h3>
         <div class="grid grid-cols-2 gap-4">
-          <NuxtLink to="/dev/docs" class="p-4 rounded-xl border border-gray-100 hover:border-primary-200 transition-colors">
+          <NuxtLink to="/console/docs" class="p-4 rounded-xl border border-gray-100 hover:border-primary-200 transition-colors">
             <UIcon name="i-lucide-link" class="w-6 h-6 text-primary-500 mb-2" />
             <h4 class="text-sm font-semibold text-gray-900 mb-1">API 接入</h4>
             <p class="text-xs text-gray-500">RESTful API，快速集成到现有系统</p>
@@ -489,7 +489,7 @@ print(response.choices[0].message.content)`
             <h4 class="text-sm font-semibold text-gray-900 mb-1">Webhook</h4>
             <p class="text-xs text-gray-500">事件驱动，实时推送安全告警</p>
           </div>
-          <NuxtLink to="/dev/docs" class="p-4 rounded-xl border border-gray-100 hover:border-primary-200 transition-colors">
+          <NuxtLink to="/console/docs" class="p-4 rounded-xl border border-gray-100 hover:border-primary-200 transition-colors">
             <UIcon name="i-lucide-puzzle" class="w-6 h-6 text-primary-500 mb-2" />
             <h4 class="text-sm font-semibold text-gray-900 mb-1">SDK</h4>
             <p class="text-xs text-gray-500">Python/Java/Go SDK，开箱即用</p>
@@ -506,7 +506,7 @@ print(response.choices[0].message.content)`
       <div v-if="activeTab === 'docs'" class="bg-white rounded-xl border border-gray-100 p-6">
         <h3 class="text-sm font-semibold text-gray-900 mb-4">文档资源</h3>
         <div class="space-y-3">
-          <NuxtLink to="/dev/docs" class="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors">
+          <NuxtLink to="/console/docs" class="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors">
             <UIcon name="i-lucide-file-text" class="w-5 h-5 text-primary-500" />
             <div class="flex-1">
               <p class="text-sm font-medium text-gray-900">快速入门指南</p>
@@ -514,7 +514,7 @@ print(response.choices[0].message.content)`
             </div>
             <UIcon name="i-lucide-arrow-right" class="w-4 h-4 text-gray-400" />
           </NuxtLink>
-          <NuxtLink to="/dev/docs" class="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors">
+          <NuxtLink to="/console/docs" class="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors">
             <UIcon name="i-lucide-code-2" class="w-5 h-5 text-primary-500" />
             <div class="flex-1">
               <p class="text-sm font-medium text-gray-900">API 参考文档</p>
@@ -522,7 +522,7 @@ print(response.choices[0].message.content)`
             </div>
             <UIcon name="i-lucide-arrow-right" class="w-4 h-4 text-gray-400" />
           </NuxtLink>
-          <NuxtLink to="/dev/docs" class="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors">
+          <NuxtLink to="/console/docs" class="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors">
             <UIcon name="i-lucide-book-open" class="w-5 h-5 text-primary-500" />
             <div class="flex-1">
               <p class="text-sm font-medium text-gray-900">最佳实践</p>

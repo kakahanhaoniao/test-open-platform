@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { currentUser } from '~/data/mock'
+
 const route = useRoute()
 
 const navLinks = [
@@ -14,6 +16,9 @@ const isActive = (path: string) => {
 }
 
 const scrolled = ref(false)
+
+// Auth state for demo
+const isAuthenticated = ref(true)
 
 onMounted(() => {
   const handleScroll = () => {
@@ -62,29 +67,42 @@ onMounted(() => {
 
       <!-- Right Actions -->
       <div class="flex items-center gap-3">
-        <UButton
-          label="进入控制台"
-          icon="i-lucide-layout-dashboard"
-          variant="ghost"
-          color="primary"
-          size="sm"
-          to="/console"
-        />
-        <UButton
-          label="登录"
-          variant="ghost"
-          color="neutral"
-          size="sm"
-          class="text-gray-600"
-          to="/portal/login"
-        />
-        <UButton
-          label="免费注册"
-          icon="i-lucide-rocket"
-          color="primary"
-          size="sm"
-          to="/portal/register"
-        />
+        <!-- Unauthenticated: Login / Register -->
+        <template v-if="!isAuthenticated">
+          <UButton
+            label="登录"
+            variant="ghost"
+            color="neutral"
+            size="sm"
+            class="text-gray-600"
+            to="/portal/login"
+          />
+          <UButton
+            label="免费注册"
+            icon="i-lucide-rocket"
+            color="primary"
+            size="sm"
+            to="/portal/register"
+          />
+        </template>
+
+        <!-- Authenticated: Avatar + Name + Console -->
+        <template v-else>
+          <div class="flex items-center gap-2.5">
+            <div class="w-8 h-8 rounded-full bg-gradient-to-br from-primary-500 to-primary-700 flex items-center justify-center">
+              <UIcon name="i-lucide-user" class="w-4 h-4 text-white" />
+            </div>
+            <span class="text-sm font-medium text-gray-700 hidden sm:inline">{{ currentUser.name }}</span>
+          </div>
+          <UButton
+            label="进入控制台"
+            icon="i-lucide-layout-dashboard"
+            variant="subtle"
+            color="primary"
+            size="sm"
+            to="/console"
+          />
+        </template>
       </div>
     </div>
   </header>

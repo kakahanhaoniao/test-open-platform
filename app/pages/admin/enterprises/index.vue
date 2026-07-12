@@ -29,7 +29,7 @@ const industryOptions = [
 
 const scaleOptions = [
   { value: 'all', label: '全部' },
-  { value: '50人以下', label: '100人以下' },
+  { value: '100人以下', label: '100人以下' },
   { value: '100-500人', label: '100-500人' },
   { value: '500人以上', label: '500人以上' }
 ]
@@ -53,7 +53,7 @@ const filteredEnterprises = computed(() => {
   }
   if (selectedScale.value !== 'all') {
     result = result.filter(e => {
-      if (selectedScale.value === '50人以下') return e.scale === '50人以下' || e.scale === '50-100人'
+      if (selectedScale.value === '100人以下') return e.scale === '50人以下' || e.scale === '50-100人'
       if (selectedScale.value === '100-500人') return e.scale === '100-200人' || e.scale === '200-500人'
       if (selectedScale.value === '500人以上') return e.scale === '500-1000人' || e.scale === '1000人以上'
       return true
@@ -222,14 +222,14 @@ function formatTokens(tokens: number) {
             <table class="w-full">
               <thead>
                 <tr class="bg-gray-50/80">
-                  <th class="text-left py-3 px-4 text-xs font-medium text-gray-500 uppercase tracking-wider">企业名称</th>
-                  <th class="text-left py-3 px-4 text-xs font-medium text-gray-500 uppercase tracking-wider">行业</th>
-                  <th class="text-left py-3 px-4 text-xs font-medium text-gray-500 uppercase tracking-wider">规模</th>
-                  <th class="text-left py-3 px-4 text-xs font-medium text-gray-500 uppercase tracking-wider">成员数</th>
-                  <th class="text-left py-3 px-4 text-xs font-medium text-gray-500 uppercase tracking-wider">月消耗</th>
-                  <th class="text-left py-3 px-4 text-xs font-medium text-gray-500 uppercase tracking-wider">充能包余额</th>
-                  <th class="text-left py-3 px-4 text-xs font-medium text-gray-500 uppercase tracking-wider">认证状态</th>
-                  <th class="text-right py-3 px-4 text-xs font-medium text-gray-500 uppercase tracking-wider">操作</th>
+                  <th class="text-left py-3 px-4 text-xs font-medium text-gray-500">企业名称</th>
+                  <th class="text-left py-3 px-4 text-xs font-medium text-gray-500">行业</th>
+                  <th class="text-left py-3 px-4 text-xs font-medium text-gray-500">规模</th>
+                  <th class="text-left py-3 px-4 text-xs font-medium text-gray-500">成员数</th>
+                  <th class="text-left py-3 px-4 text-xs font-medium text-gray-500">月消耗</th>
+                  <th class="text-left py-3 px-4 text-xs font-medium text-gray-500">充能包余额</th>
+                  <th class="text-left py-3 px-4 text-xs font-medium text-gray-500">认证状态</th>
+                  <th class="text-right py-3 px-4 text-xs font-medium text-gray-500">操作</th>
                 </tr>
               </thead>
               <tbody>

@@ -18,7 +18,7 @@ const handleLogin = () => {
   // Demo: simulate login then redirect to dev console
   setTimeout(() => {
     loading.value = false
-    navigateTo('/dev')
+    navigateTo('/console')
   }, 1500)
 }
 </script>
@@ -111,7 +111,7 @@ const handleLogin = () => {
               color="neutral"
               block
               size="lg"
-              @click="navigateTo('/dev')"
+              @click="navigateTo('/console')"
             />
             <UButton
               label="钉钉"
@@ -120,7 +120,7 @@ const handleLogin = () => {
               color="neutral"
               block
               size="lg"
-              @click="navigateTo('/dev')"
+              @click="navigateTo('/console')"
             />
           </div>
 

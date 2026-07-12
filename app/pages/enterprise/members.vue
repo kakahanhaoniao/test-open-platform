@@ -67,6 +67,12 @@ function closeInviteDialog() {
   inviteLinkGenerated.value = false
 }
 
+function copyInviteLink() {
+  if (process.client && navigator.clipboard) {
+    navigator.clipboard.writeText(inviteLink.value)
+  }
+}
+
 function getRoleBadgeClass(role: string): string {
   switch (role) {
     case 'admin': return 'bg-primary-50 text-primary-700'
@@ -214,7 +220,7 @@ onUnmounted(() => document.removeEventListener('click', onDocumentClick))
                 <button
                   class="shrink-0 p-1.5 rounded-md hover:bg-green-100 transition-colors"
                   title="复制链接"
-                  @click="navigator.clipboard?.writeText(inviteLink)"
+                  @click="copyInviteLink"
                 >
                   <UIcon name="i-lucide-copy" class="w-4 h-4 text-green-600" />
                 </button>

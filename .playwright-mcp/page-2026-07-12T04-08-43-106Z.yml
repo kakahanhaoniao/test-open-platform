@@ -1,0 +1,181 @@
+- generic [ref=f31e3]:
+  - complementary [ref=f31e4]:
+    - generic [ref=f31e5]:
+      - generic [ref=f31e9]:
+        - paragraph [ref=f31e10]: 张明
+        - paragraph [ref=f31e11]: zhangming@qianxin.com
+      - link "企业空间" [ref=f31e12] [cursor=pointer]:
+        - /url: /enterprise
+    - link "返回市场" [ref=f31e16] [cursor=pointer]:
+      - /url: /
+    - navigation [ref=f31e19]:
+      - generic [ref=f31e20]:
+        - paragraph [ref=f31e21]: 核心功能
+        - generic [ref=f31e22]:
+          - link "使用看板" [ref=f31e23] [cursor=pointer]:
+            - /url: /console
+          - link "API Key" [ref=f31e27] [cursor=pointer]:
+            - /url: /console/keys
+          - link "调用日志" [ref=f31e30] [cursor=pointer]:
+            - /url: /console/logs
+          - link "调用统计" [ref=f31e33] [cursor=pointer]:
+            - /url: /console/stats
+          - link "充能包" [ref=f31e36] [cursor=pointer]:
+            - /url: /console/packs
+      - generic [ref=f31e39]:
+        - paragraph [ref=f31e40]: 账户管理
+        - generic [ref=f31e41]:
+          - link "账单中心" [ref=f31e42] [cursor=pointer]:
+            - /url: /console/billing
+          - link "个人设置" [ref=f31e45] [cursor=pointer]:
+            - /url: /console/settings
+      - generic [ref=f31e48]:
+        - paragraph [ref=f31e49]: 开发资源
+        - generic [ref=f31e50]:
+          - link "API文档" [ref=f31e51] [cursor=pointer]:
+            - /url: /console/docs
+          - link "应用集成" [ref=f31e54] [cursor=pointer]:
+            - /url: /console/integrations
+    - button "退出登录" [ref=f31e58]
+  - generic [ref=f31e62]:
+    - generic [ref=f31e67]:
+      - heading "欢迎回来，张明" [level=1] [ref=f31e69]
+      - generic [ref=f31e70]: 服务正常
+    - generic [ref=f31e73]:
+      - generic [ref=f31e74]:
+        - generic [ref=f31e75]: +12.5%
+        - paragraph [ref=f31e80]: API调用总量
+        - paragraph [ref=f31e81]: 284万+
+      - generic [ref=f31e82]:
+        - generic [ref=f31e83]: +8.3%
+        - paragraph [ref=f31e88]: Token消耗
+        - paragraph [ref=f31e89]: 485万
+      - generic [ref=f31e90]:
+        - generic [ref=f31e91]: +15.2%
+        - paragraph [ref=f31e96]: 本月费用
+        - paragraph [ref=f31e97]: ¥12,860
+      - generic [ref=f31e98]:
+        - generic [ref=f31e99]: 37%
+        - paragraph [ref=f31e103]: 充能包余额
+        - paragraph [ref=f31e104]: 1,850万
+    - generic [ref=f31e107]:
+      - generic [ref=f31e108]:
+        - generic [ref=f31e109]:
+          - heading "调用趋势" [level=3] [ref=f31e110]
+          - paragraph [ref=f31e111]: API每日调用量统计
+        - generic [ref=f31e112]:
+          - button "7天" [ref=f31e113]
+          - button "30天" [ref=f31e114]
+          - button "90天" [ref=f31e115]
+      - generic [ref=f31e116]:
+        - generic [ref=f31e117]:
+          - generic [ref=f31e118]: 3.8万
+          - generic [ref=f31e120]: 07/05
+        - generic [ref=f31e121]:
+          - generic [ref=f31e122]: 3.5万
+          - generic [ref=f31e124]: 07/06
+        - generic [ref=f31e125]:
+          - generic [ref=f31e126]: 4.3万
+          - generic [ref=f31e128]: 07/07
+        - generic [ref=f31e129]:
+          - generic [ref=f31e130]: 4.7万
+          - generic [ref=f31e132]: 07/08
+        - generic [ref=f31e133]:
+          - generic [ref=f31e134]: 4.4万
+          - generic [ref=f31e136]: 07/09
+        - generic [ref=f31e137]:
+          - generic [ref=f31e138]: 5.2万
+          - generic [ref=f31e140]: 07/10
+        - generic [ref=f31e141]:
+          - generic [ref=f31e142]: 2.6万
+          - generic [ref=f31e144]: 07/11
+    - generic [ref=f31e145]:
+      - generic [ref=f31e146]:
+        - generic [ref=f31e147]:
+          - generic [ref=f31e148]:
+            - heading "模型消耗排行" [level=3] [ref=f31e149]
+            - paragraph [ref=f31e150]: Token消耗Top 5
+          - link "查看详情" [ref=f31e151] [cursor=pointer]:
+            - /url: /console/stats
+        - generic [ref=f31e153]:
+          - generic [ref=f31e155]:
+            - generic [ref=f31e156]:
+              - generic [ref=f31e157]: "1"
+              - generic [ref=f31e158]: 奇安信安全大模型
+            - generic [ref=f31e159]: 524万 Token
+          - generic [ref=f31e163]:
+            - generic [ref=f31e164]:
+              - generic [ref=f31e165]: "2"
+              - generic [ref=f31e166]: 威胁检测模型 V3
+            - generic [ref=f31e167]: 289万 Token
+          - generic [ref=f31e171]:
+            - generic [ref=f31e172]:
+              - generic [ref=f31e173]: "3"
+              - generic [ref=f31e174]: 代码安全扫描模型
+            - generic [ref=f31e175]: 178万 Token
+          - generic [ref=f31e179]:
+            - generic [ref=f31e180]:
+              - generic [ref=f31e181]: "4"
+              - generic [ref=f31e182]: 漏洞分析专家
+            - generic [ref=f31e183]: 96万 Token
+          - generic [ref=f31e187]:
+            - generic [ref=f31e188]:
+              - generic [ref=f31e189]: "5"
+              - generic [ref=f31e190]: 合规卫士
+            - generic [ref=f31e191]: 48万 Token
+      - generic [ref=f31e194]:
+        - generic [ref=f31e195]:
+          - generic [ref=f31e196]:
+            - heading "异常告警" [level=3] [ref=f31e197]
+            - paragraph [ref=f31e198]: 最近服务异常与恢复通知
+          - generic [ref=f31e199]: 1 严重
+        - generic [ref=f31e200]:
+          - generic [ref=f31e203]:
+            - paragraph [ref=f31e204]: 合规卫士接口返回500错误
+            - paragraph [ref=f31e205]: 5分钟前
+          - generic [ref=f31e208]:
+            - paragraph [ref=f31e209]: 安全大模型触发频率限制(429)
+            - paragraph [ref=f31e210]: 23分钟前
+          - generic [ref=f31e213]:
+            - paragraph [ref=f31e214]: 威胁检测模型请求频率超限
+            - paragraph [ref=f31e215]: 1小时前
+          - generic [ref=f31e218]:
+            - paragraph [ref=f31e219]: 代码安全扫描模型服务已恢复
+            - paragraph [ref=f31e220]: 2小时前
+          - generic [ref=f31e223]:
+            - paragraph [ref=f31e224]: 漏洞分析专家服务已恢复
+            - paragraph [ref=f31e225]: 3小时前
+    - generic [ref=f31e226]:
+      - heading "额度使用" [level=3] [ref=f31e227]
+      - generic [ref=f31e228]:
+        - generic [ref=f31e229]:
+          - generic [ref=f31e230]:
+            - generic [ref=f31e231]: 充能包
+            - generic [ref=f31e234]: 1,850万 / 5,000万 Token
+          - generic [ref=f31e237]:
+            - generic [ref=f31e238]: 已使用 3150万 Token
+            - generic [ref=f31e239]: 37%
+        - generic [ref=f31e240]:
+          - generic [ref=f31e241]:
+            - generic [ref=f31e242]: API频率
+            - generic [ref=f31e245]: 6,000 / 10,000 次/分
+          - generic [ref=f31e248]:
+            - generic [ref=f31e249]: 当前频率限制
+            - generic [ref=f31e250]: 60%
+    - generic [ref=f31e251]:
+      - link [ref=f31e252] [cursor=pointer]:
+        - /url: /console/keys/create
+        - paragraph [ref=f31e257]: 创建API Key
+        - paragraph [ref=f31e258]: 生成新的API访问密钥
+      - link [ref=f31e259] [cursor=pointer]:
+        - /url: /console/packs
+        - paragraph [ref=f31e264]: 购买充能包
+        - paragraph [ref=f31e265]: 补充Token调用额度
+      - link [ref=f31e266] [cursor=pointer]:
+        - /url: /console/docs
+        - paragraph [ref=f31e271]: API文档
+        - paragraph [ref=f31e272]: 查看接口调用指南
+      - link [ref=f31e273] [cursor=pointer]:
+        - /url: /console/stats
+        - paragraph [ref=f31e278]: 调用统计
+        - paragraph [ref=f31e279]: 查看详细调用数据

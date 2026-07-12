@@ -107,11 +107,11 @@ function formatTokens(tokens: number) {
             <div class="w-9 h-9 rounded-lg bg-green-50 flex items-center justify-center">
               <UIcon name="i-lucide-trending-up" class="w-4.5 h-4.5 text-green-600" />
             </div>
-            <span class="text-sm text-gray-500">同比</span>
+            <span class="text-sm text-gray-500">环比</span>
           </div>
           <div class="flex items-baseline gap-1">
             <span class="text-2xl font-bold" :class="monthOverMonth > 0 ? 'text-amber-600' : 'text-green-600'">
-              +{{ monthOverMonth }}%
+              {{ monthOverMonth > 0 ? '+' : '' }}{{ monthOverMonth }}%
             </span>
           </div>
           <p class="text-xs text-gray-400 mt-2">较上月增长</p>
@@ -130,11 +130,9 @@ function formatTokens(tokens: number) {
             <p class="text-xs font-semibold text-gray-700 mb-2">&yen;{{ formatAmount(item.amount) }}</p>
             <div
               class="w-full rounded-t-lg transition-all duration-300"
+              :class="idx === monthlyTrend.length - 1 ? 'bg-gradient-to-t from-primary-600 to-primary-400' : 'bg-gradient-to-t from-primary-300 to-primary-100'"
               :style="{
                 height: (item.amount / maxAmount * 100) + '%',
-                background: idx === monthlyTrend.length - 1
-                  ? 'linear-gradient(180deg, #7C3AED, #A78BFA)'
-                  : 'linear-gradient(180deg, #A78BFA, #DDD6FE)',
                 minHeight: '16px'
               }"
             />
