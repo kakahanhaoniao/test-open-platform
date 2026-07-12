@@ -1,5 +1,18 @@
 <script setup lang="ts">
 import type { TemplateModule } from '~/data/mock'
+import ModuleBanner from '~/components/modules/ModuleBanner.vue'
+import ModuleHero from '~/components/modules/ModuleHero.vue'
+import ModuleIntro from '~/components/modules/ModuleIntro.vue'
+import ModuleFeatures from '~/components/modules/ModuleFeatures.vue'
+import ModuleAdvantages from '~/components/modules/ModuleAdvantages.vue'
+import ModuleScenarios from '~/components/modules/ModuleScenarios.vue'
+import ModuleTabs from '~/components/modules/ModuleTabs.vue'
+import ModuleCarousel from '~/components/modules/ModuleCarousel.vue'
+import ModuleCards from '~/components/modules/ModuleCards.vue'
+import ModuleSteps from '~/components/modules/ModuleSteps.vue'
+import ModulePricing from '~/components/modules/ModulePricing.vue'
+import ModuleIntegration from '~/components/modules/ModuleIntegration.vue'
+import ModuleRelated from '~/components/modules/ModuleRelated.vue'
 
 const props = defineProps<{
   modules: TemplateModule[]
@@ -12,20 +25,20 @@ const emit = defineEmits<{
   'select-module': [id: string]
 }>()
 
-const componentMap: Record<string, string> = {
-  banner: 'ModulesModuleBanner',
-  hero: 'ModulesModuleHero',
-  intro: 'ModulesModuleIntro',
-  features: 'ModulesModuleFeatures',
-  advantages: 'ModulesModuleAdvantages',
-  scenarios: 'ModulesModuleScenarios',
-  tabs: 'ModulesModuleTabs',
-  carousel: 'ModulesModuleCarousel',
-  cards: 'ModulesModuleCards',
-  steps: 'ModulesModuleSteps',
-  pricing: 'ModulesModulePricing',
-  integration: 'ModulesModuleIntegration',
-  related: 'ModulesModuleRelated'
+const componentMap: Record<string, any> = {
+  banner: ModuleBanner,
+  hero: ModuleHero,
+  intro: ModuleIntro,
+  features: ModuleFeatures,
+  advantages: ModuleAdvantages,
+  scenarios: ModuleScenarios,
+  tabs: ModuleTabs,
+  carousel: ModuleCarousel,
+  cards: ModuleCards,
+  steps: ModuleSteps,
+  pricing: ModulePricing,
+  integration: ModuleIntegration,
+  related: ModuleRelated
 }
 
 const visibleModules = computed(() =>
