@@ -1,7 +1,11 @@
 <script setup lang="ts">
 import { monitorMetrics, models, members } from '~/data/mock'
+import { useChartTheme } from '~/composables/useChartTheme'
 
 useHead({ title: '调用监控 - 奇安信AI开放平台' })
+
+const theme = useChartTheme()
+const router = useRouter()
 
 // Refresh rate selector
 const refreshRate = ref<'5s' | '30s' | '1min'>('30s')
@@ -41,67 +45,169 @@ watch(refreshRate, () => startRefresh())
 onMounted(() => startRefresh())
 onUnmounted(() => stopRefresh)
 
-// Tooltip state for area chart
-const tooltipState = ref<{ show: boolean; x: number; y: number; time: string; calls: number; errors: number }>({
-  show: false, x: 0, y: 0, time: '', calls: 0, errors: 0
-})
+// --- ECharts options ---
 
-// Process realtime series data for stacked area chart
-const seriesData = computed(() => monitorMetrics.realtimeSeries)
-const maxCalls = computed(() => Math.max(...seriesData.value.map(d => d.calls)))
-
-// Model colors for the stacked area chart segments
-const modelColors = monitorMetrics.modelDistribution.map(m => m.color)
-const modelNames = monitorMetrics.modelDistribution.map(m => m.name)
-
-// For each time point, distribute calls across models proportionally
-const stackedData = computed(() => {
+// 1. Stacked Area Chart - Real-time Call Flow
+const realtimeChartOption = computed(() => {
+  const times = monitorMetrics.realtimeSeries.map(d => d.time)
   const totalModelCalls = monitorMetrics.modelDistribution.reduce((s, m) => s + m.calls, 0)
-  return seriesData.value.map(point => {
-    const segments: { color: string; name: string; height: number; value: number }[] = []
-    let remaining = point.calls
-    monitorMetrics.modelDistribution.forEach((model, idx) => {
+
+  const series = monitorMetrics.modelDistribution.map((model) => {
+    const data = monitorMetrics.realtimeSeries.map(point => {
       const proportion = model.calls / totalModelCalls
-      const value = idx === monitorMetrics.modelDistribution.length - 1
-        ? remaining
-        : Math.round(point.calls * proportion)
-      remaining -= value
-      segments.push({
-        color: model.color,
-        name: model.name,
-        height: (value / maxCalls.value) * 100,
-        value
-      })
+      return Math.round(point.calls * proportion)
     })
-    return { ...point, segments }
+    return {
+      name: model.name,
+      type: 'line',
+      stack: 'total',
+      areaStyle: { opacity: 0.6 },
+      emphasis: { focus: 'series' },
+      smooth: true,
+      symbol: 'none',
+      lineStyle: { width: 1 },
+      data
+    }
   })
+
+  return {
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: { type: 'cross', label: { backgroundColor: '#6B7280' } }
+    },
+    legend: {
+      data: monitorMetrics.modelDistribution.map(m => m.name),
+      bottom: 0,
+      textStyle: { fontSize: 11, color: '#6B7280' },
+      itemWidth: 12,
+      itemHeight: 8
+    },
+    grid: { left: 50, right: 20, top: 10, bottom: 40 },
+    xAxis: {
+      type: 'category',
+      boundaryGap: false,
+      data: times,
+      axisLabel: { fontSize: 10, color: '#9CA3AF', interval: 9 },
+      axisLine: { lineStyle: { color: '#E5E7EB' } },
+      axisTick: { show: false }
+    },
+    yAxis: {
+      type: 'value',
+      axisLabel: { fontSize: 10, color: '#9CA3AF' },
+      splitLine: { lineStyle: { color: '#F3F4F6' } },
+      axisLine: { show: false },
+      axisTick: { show: false }
+    },
+    series
+  }
 })
 
-// Donut chart data
-const donutData = computed(() => {
-  const total = monitorMetrics.modelDistribution.reduce((s, m) => s + m.calls, 0)
-  let cumulativePercent = 0
-  return monitorMetrics.modelDistribution.map(m => {
-    const percent = (m.calls / total) * 100
-    const start = cumulativePercent
-    cumulativePercent += percent
-    return { ...m, percent, startPercent: start }
-  })
-})
-const donutGradient = computed(() => {
-  return donutData.value
-    .map(d => `${d.color} ${d.startPercent}% ${d.startPercent + d.percent}%`)
-    .join(', ')
-})
+// 2. Doughnut Chart - Model Distribution
+const modelDistChartOption = computed(() => ({
+  tooltip: {
+    trigger: 'item',
+    formatter: '{b}: {c} ({d}%)'
+  },
+  legend: {
+    orient: 'vertical',
+    right: 10,
+    top: 'center',
+    textStyle: { fontSize: 12, color: '#6B7280' },
+    itemWidth: 10,
+    itemHeight: 10,
+    itemGap: 12
+  },
+  series: [{
+    name: '模型调用分布',
+    type: 'pie',
+    radius: ['40%', '70%'],
+    center: ['35%', '50%'],
+    avoidLabelOverlap: false,
+    itemStyle: { borderRadius: 6, borderColor: '#fff', borderWidth: 2 },
+    label: {
+      show: true,
+      position: 'center',
+      formatter: () => `{total|${monitorMetrics.todayCalls.toLocaleString()}}\n{label|总调用}`,
+      rich: {
+        total: { fontSize: 22, fontWeight: 'bold', color: '#111827', lineHeight: 30 },
+        label: { fontSize: 12, color: '#9CA3AF', lineHeight: 20 }
+      }
+    },
+    emphasis: {
+      label: { show: true },
+      itemStyle: { shadowBlur: 10, shadowOffsetX: 0, shadowColor: 'rgba(0, 0, 0, 0.2)' }
+    },
+    data: monitorMetrics.modelDistribution.map(m => ({
+      name: m.name,
+      value: m.calls
+    }))
+  }]
+}))
 
-// Member ranking for bar chart (top 6)
-const memberBarData = computed(() => {
-  const maxCalls = Math.max(...monitorMetrics.memberRanking.map(m => m.calls))
-  return monitorMetrics.memberRanking.map(m => ({
-    ...m,
-    widthPercent: (m.calls / maxCalls) * 100
-  }))
-})
+// 3. Horizontal Bar Chart - Member Ranking
+const memberRankChartOption = computed(() => ({
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: { type: 'shadow' }
+  },
+  grid: { left: 80, right: 40, top: 10, bottom: 10 },
+  xAxis: {
+    type: 'value',
+    axisLabel: { fontSize: 10, color: '#9CA3AF' },
+    splitLine: { lineStyle: { color: '#F3F4F6' } },
+    axisLine: { show: false },
+    axisTick: { show: false }
+  },
+  yAxis: {
+    type: 'category',
+    data: [...monitorMetrics.memberRanking].reverse().map(m => m.name),
+    axisLabel: { fontSize: 12, color: '#374151' },
+    axisLine: { show: false },
+    axisTick: { show: false }
+  },
+  series: [{
+    name: '调用量',
+    type: 'bar',
+    data: [...monitorMetrics.memberRanking].reverse().map(m => m.calls),
+    barWidth: 16,
+    itemStyle: {
+      borderRadius: [0, 4, 4, 0],
+      color: (params: any) => {
+        const idx = monitorMetrics.memberRanking.length - 1 - params.dataIndex
+        if (idx === 0) return '#7C3AED'
+        if (idx === 1) return '#A78BFA'
+        if (idx === 2) return '#C4B5FD'
+        return '#DDD6FE'
+      }
+    },
+    label: {
+      show: true,
+      position: 'right',
+      formatter: (params: any) => params.value.toLocaleString() + ' 次',
+      fontSize: 10,
+      color: '#6B7280'
+    }
+  }]
+}))
+
+// Drilldown handlers
+function onRealtimeDrilldown(data: { chartType: string; field: string; value: any }) {
+  if (data.field) {
+    router.push(`/enterprise/logs?model=${encodeURIComponent(data.field)}&from=monitor`)
+  }
+}
+
+function onModelDistDrilldown(data: { chartType: string; field: string; value: any }) {
+  if (data.value) {
+    router.push(`/enterprise/logs?model=${encodeURIComponent(data.value)}&from=monitor`)
+  }
+}
+
+function onMemberRankDrilldown(data: { chartType: string; field: string; value: any }) {
+  if (data.value) {
+    router.push(`/enterprise/logs?member=${encodeURIComponent(data.value)}&from=monitor`)
+  }
+}
 
 // Alerts data
 const alerts = [
@@ -163,26 +269,6 @@ const metricCards = computed(() => [
     iconColor: 'text-green-600'
   }
 ])
-
-// Chart hover handler
-function onChartHover(event: MouseEvent, pointIndex: number) {
-  const point = seriesData.value[pointIndex]
-  const rect = (event.currentTarget as HTMLElement).getBoundingClientRect()
-  const x = event.clientX - rect.left
-  const y = event.clientY - rect.top
-  tooltipState.value = {
-    show: true,
-    x,
-    y,
-    time: point.time,
-    calls: point.calls,
-    errors: point.errors
-  }
-}
-
-function onChartLeave() {
-  tooltipState.value.show = false
-}
 
 // Format number with comma
 function formatNumber(n: number): string {
@@ -272,102 +358,16 @@ function formatNumber(n: number): string {
             </div>
           </div>
 
-          <!-- Stacked Area Chart -->
-          <div
-            class="relative h-48"
-            @mouseleave="onChartLeave"
-          >
-            <!-- Y-axis labels -->
-            <div class="absolute left-0 top-0 bottom-6 w-10 flex flex-col justify-between text-right">
-              <span class="text-[10px] text-gray-400 font-mono">{{ maxCalls }}</span>
-              <span class="text-[10px] text-gray-400 font-mono">{{ Math.round(maxCalls / 2) }}</span>
-              <span class="text-[10px] text-gray-400 font-mono">0</span>
-            </div>
-
-            <!-- Chart area -->
-            <div class="ml-12 h-full relative">
-              <!-- Grid lines -->
-              <div class="absolute inset-0 bottom-6 flex flex-col justify-between pointer-events-none">
-                <div class="border-b border-gray-50" />
-                <div class="border-b border-gray-50" />
-                <div class="border-b border-gray-100" />
-              </div>
-
-              <!-- Stacked columns (area chart effect) -->
-              <div class="flex items-end h-[calc(100%-24px)]">
-                <div
-                  v-for="(point, idx) in stackedData"
-                  :key="idx"
-                  class="flex-1 flex flex-col justify-end h-full relative group cursor-crosshair"
-                  @mouseenter="onChartHover($event, idx)"
-                >
-                  <!-- Stacked segments from bottom to top -->
-                  <div
-                    v-for="(seg, segIdx) in [...point.segments].reverse()"
-                    :key="segIdx"
-                    class="w-full"
-                    :style="{ height: seg.height + '%', backgroundColor: seg.color, opacity: 0.8 }"
-                  />
-                  <!-- Hover highlight line -->
-                  <div class="absolute inset-0 border-l border-r border-primary-400/30 bg-primary-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-100" />
-                </div>
-              </div>
-
-              <!-- X-axis labels -->
-              <div class="flex mt-1 h-5">
-                <div
-                  v-for="(point, idx) in stackedData"
-                  :key="idx"
-                  class="flex-1 text-center"
-                >
-                  <span
-                    v-if="idx % 10 === 0"
-                    class="text-[10px] text-gray-400 font-mono"
-                  >{{ point.time }}</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Tooltip -->
-            <Transition
-              enter-active-class="transition duration-100 ease-out"
-              enter-from-class="opacity-0"
-              enter-to-class="opacity-100"
-              leave-active-class="transition duration-75 ease-in"
-              leave-from-class="opacity-100"
-              leave-to-class="opacity-0"
-            >
-              <div
-                v-if="tooltipState.show"
-                class="absolute z-50 bg-gray-900 text-white rounded-lg px-3 py-2 text-xs pointer-events-none shadow-lg"
-                :style="{
-                  left: (tooltipState.x + 12) + 'px',
-                  top: (tooltipState.y - 40) + 'px'
-                }"
-              >
-                <p class="font-mono text-white font-medium mb-1">{{ tooltipState.time }}</p>
-                <p class="text-gray-300">调用: <span class="text-white font-mono font-medium">{{ formatNumber(tooltipState.calls) }}</span></p>
-                <p class="text-gray-300">错误: <span class="text-red-400 font-mono font-medium">{{ tooltipState.errors }}</span></p>
-              </div>
-            </Transition>
-          </div>
-
-          <!-- Chart legend -->
-          <div class="flex items-center gap-5 mt-4 pt-4 border-t border-gray-50">
-            <div
-              v-for="model in monitorMetrics.modelDistribution"
-              :key="model.name"
-              class="flex items-center gap-1.5"
-            >
-              <span class="w-2.5 h-2.5 rounded-sm" :style="{ backgroundColor: model.color }" />
-              <span class="text-xs text-gray-500">{{ model.name }}</span>
-            </div>
-          </div>
+          <ChartsBaseChart
+            :option="realtimeChartOption"
+            height="250px"
+            @drilldown="onRealtimeDrilldown"
+          />
         </div>
 
         <!-- Dual-column: Model Distribution + Member Ranking -->
         <div class="grid grid-cols-2 gap-6 mb-6">
-          <!-- Model Distribution - Donut Chart -->
+          <!-- Model Distribution - Doughnut Chart -->
           <div class="bg-white rounded-xl border border-gray-100 p-6">
             <div class="flex items-center justify-between mb-5">
               <div>
@@ -376,37 +376,11 @@ function formatNumber(n: number): string {
               </div>
             </div>
 
-            <!-- Donut Chart -->
-            <div class="flex items-center justify-center mb-5">
-              <div class="relative w-44 h-44">
-                <div
-                  class="w-full h-full rounded-full"
-                  :style="{ background: `conic-gradient(${donutGradient})` }"
-                />
-                <!-- White center circle -->
-                <div class="absolute inset-0 flex items-center justify-center">
-                  <div class="w-28 h-28 rounded-full bg-white flex flex-col items-center justify-center">
-                    <p class="text-2xl font-bold text-gray-900 font-mono">{{ formatNumber(monitorMetrics.todayCalls) }}</p>
-                    <p class="text-xs text-gray-400">总调用</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Legend -->
-            <div class="space-y-2.5">
-              <div
-                v-for="model in monitorMetrics.modelDistribution"
-                :key="model.name"
-                class="flex items-center justify-between"
-              >
-                <div class="flex items-center gap-2">
-                  <span class="w-2.5 h-2.5 rounded-full" :style="{ backgroundColor: model.color }" />
-                  <span class="text-sm text-gray-700">{{ model.name }}</span>
-                </div>
-                <span class="text-sm font-mono text-gray-500">{{ formatNumber(model.calls) }}</span>
-              </div>
-            </div>
+            <ChartsBaseChart
+              :option="modelDistChartOption"
+              height="280px"
+              @drilldown="onModelDistDrilldown"
+            />
           </div>
 
           <!-- Member Ranking - Horizontal Bar Chart -->
@@ -422,27 +396,11 @@ function formatNumber(n: number): string {
               </NuxtLink>
             </div>
 
-            <div class="space-y-4">
-              <div v-for="(member, idx) in memberBarData" :key="member.name">
-                <div class="flex items-center justify-between mb-1.5">
-                  <div class="flex items-center gap-2.5">
-                    <span
-                      class="w-5 h-5 rounded flex items-center justify-center text-xs font-bold"
-                      :class="idx < 3 ? 'bg-primary-50 text-primary-600' : 'bg-gray-50 text-gray-400'"
-                    >{{ idx + 1 }}</span>
-                    <span class="text-sm text-gray-900 font-medium">{{ member.name }}</span>
-                  </div>
-                  <span class="text-xs font-mono text-gray-500">{{ formatNumber(member.calls) }} 次</span>
-                </div>
-                <div class="h-2 bg-gray-100 rounded-full overflow-hidden">
-                  <div
-                    class="h-full rounded-full transition-all duration-500"
-                    :class="idx === 0 ? 'bg-primary-500' : idx === 1 ? 'bg-primary-400' : idx === 2 ? 'bg-primary-300' : 'bg-primary-200'"
-                    :style="{ width: member.widthPercent + '%' }"
-                  />
-                </div>
-              </div>
-            </div>
+            <ChartsBaseChart
+              :option="memberRankChartOption"
+              height="280px"
+              @drilldown="onMemberRankDrilldown"
+            />
           </div>
         </div>
 

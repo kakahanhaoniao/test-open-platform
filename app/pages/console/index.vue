@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import { currentUser, members, organization } from '~/data/mock'
+import { useChartTheme } from '~/composables/useChartTheme'
 
 useHead({ title: '使用看板 - 奇安信AI开放平台' })
+
+const theme = useChartTheme()
 
 // Personal data (current user only)
 const personalMember = members.find(m => m.id === 'm1')!
@@ -28,7 +31,57 @@ const callTrendData = [
   { date: '07/11', calls: 620 }
 ]
 
-const maxCalls = Math.max(...callTrendData.map(d => d.calls))
+// --- ECharts option ---
+
+// Area Line Chart - 7-day Call Trend
+const callTrendChartOption = computed(() => ({
+  tooltip: {
+    trigger: 'axis',
+    formatter: (params: any) => {
+      const p = params[0]
+      return `${p.axisValue}<br/>${p.marker} 调用量: ${p.value.toLocaleString()} 次`
+    }
+  },
+  grid: { left: 50, right: 20, top: 20, bottom: 30 },
+  xAxis: {
+    type: 'category',
+    boundaryGap: false,
+    data: callTrendData.map(d => d.date),
+    axisLabel: { fontSize: 11, color: '#9CA3AF' },
+    axisLine: { lineStyle: { color: '#E5E7EB' } },
+    axisTick: { show: false }
+  },
+  yAxis: {
+    type: 'value',
+    axisLabel: {
+      fontSize: 10,
+      color: '#9CA3AF',
+      formatter: (val: number) => val >= 10000 ? (val / 10000).toFixed(1) + '万' : String(val)
+    },
+    splitLine: { lineStyle: { color: '#F3F4F6' } },
+    axisLine: { show: false },
+    axisTick: { show: false }
+  },
+  series: [{
+    name: '调用量',
+    type: 'line',
+    smooth: true,
+    symbol: 'circle',
+    symbolSize: 6,
+    lineStyle: { width: 2, color: '#7C3AED' },
+    itemStyle: { color: '#7C3AED' },
+    areaStyle: {
+      color: {
+        type: 'linear', x: 0, y: 0, x2: 0, y2: 1,
+        colorStops: [
+          { offset: 0, color: 'rgba(124, 58, 237, 0.25)' },
+          { offset: 1, color: 'rgba(124, 58, 237, 0.02)' }
+        ]
+      }
+    },
+    data: callTrendData.map(d => d.calls)
+  }]
+}))
 
 // Model consumption ranking (personal top 5)
 const modelRanking = [
@@ -167,7 +220,7 @@ const quickActions = [
 
         <!-- Call Trend Chart -->
         <div class="bg-white rounded-xl border border-gray-100 p-6 mb-6">
-          <div class="flex items-center justify-between mb-6">
+          <div class="flex items-center justify-between mb-5">
             <div>
               <h3 class="font-semibold text-gray-900">调用趋势</h3>
               <p class="text-xs text-gray-400 mt-0.5">API每日调用量统计</p>
@@ -186,20 +239,7 @@ const quickActions = [
               </button>
             </div>
           </div>
-          <div class="flex items-end gap-4 h-44">
-            <div
-              v-for="item in callTrendData"
-              :key="item.date"
-              class="flex-1 flex flex-col items-center gap-2"
-            >
-              <span class="text-xs font-mono text-gray-500">{{ (item.calls / 10000).toFixed(1) }}万</span>
-              <div
-                class="w-full rounded-t-md bg-gradient-to-t from-primary-600 to-primary-400 transition-all duration-300"
-                :style="{ height: `${(item.calls / maxCalls) * 140}px` }"
-              />
-              <span class="text-xs text-gray-400">{{ item.date }}</span>
-            </div>
-          </div>
+          <ChartsBaseChart :option="callTrendChartOption" height="220px" />
         </div>
 
         <!-- Two-column: Model Ranking + Alerts -->

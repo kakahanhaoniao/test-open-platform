@@ -1,13 +1,16 @@
 <script setup lang="ts">
 import { billingRecords } from '~/data/mock'
+import { useChartTheme } from '~/composables/useChartTheme'
 
 useHead({ title: '账单中心 - 奇安信AI开放平台' })
+
+const theme = useChartTheme()
 
 // Current and last month records (with safety checks)
 const currentMonth = billingRecords[0]
 const lastMonth = billingRecords[1]
 
-// Monthly trend data for bar chart
+// Monthly trend data for bar+line combo chart
 const monthlyTrend = computed(() =>
   billingRecords.slice().reverse().map(r => ({
     month: r.month.replace('2026年', '').replace('月', '') + '月',
@@ -16,13 +19,93 @@ const monthlyTrend = computed(() =>
   }))
 )
 
-const maxAmount = computed(() => Math.max(...monthlyTrend.value.map(m => m.amount)))
-
 // Year-over-year change
 const yoyChange = computed(() => {
   if (!currentMonth || !lastMonth || lastMonth.amount === 0) return '0.0'
   return ((currentMonth.amount - lastMonth.amount) / lastMonth.amount * 100).toFixed(1)
 })
+
+// --- ECharts option ---
+
+// Bar+Line Combo Chart - Monthly Spending Trend
+const monthlyTrendChartOption = computed(() => ({
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: { type: 'cross' }
+  },
+  legend: {
+    data: ['消费金额', 'Token消耗'],
+    bottom: 0,
+    textStyle: { fontSize: 11, color: '#6B7280' },
+    itemWidth: 12,
+    itemHeight: 8
+  },
+  grid: { left: 70, right: 70, top: 20, bottom: 40 },
+  xAxis: {
+    type: 'category',
+    data: monthlyTrend.value.map(m => m.month),
+    axisLabel: { fontSize: 11, color: '#9CA3AF' },
+    axisLine: { lineStyle: { color: '#E5E7EB' } },
+    axisTick: { show: false }
+  },
+  yAxis: [
+    {
+      type: 'value',
+      name: '金额(¥)',
+      nameTextStyle: { fontSize: 10, color: '#9CA3AF' },
+      axisLabel: { fontSize: 10, color: '#9CA3AF', formatter: '¥{value}' },
+      splitLine: { lineStyle: { color: '#F3F4F6' } },
+      axisLine: { show: false },
+      axisTick: { show: false }
+    },
+    {
+      type: 'value',
+      name: 'Token',
+      nameTextStyle: { fontSize: 10, color: '#9CA3AF' },
+      axisLabel: {
+        fontSize: 10,
+        color: '#9CA3AF',
+        formatter: (val: number) => {
+          if (val >= 10000000) return (val / 10000000).toFixed(0) + '千万'
+          if (val >= 10000) return (val / 10000).toFixed(0) + '万'
+          return String(val)
+        }
+      },
+      splitLine: { show: false },
+      axisLine: { show: false },
+      axisTick: { show: false }
+    }
+  ],
+  series: [
+    {
+      name: '消费金额',
+      type: 'bar',
+      barWidth: 24,
+      itemStyle: {
+        borderRadius: [4, 4, 0, 0],
+        color: {
+          type: 'linear', x: 0, y: 0, x2: 0, y2: 1,
+          colorStops: [
+            { offset: 0, color: '#7C3AED' },
+            { offset: 1, color: '#A78BFA' }
+          ]
+        }
+      },
+      data: monthlyTrend.value.map(m => m.amount)
+    },
+    {
+      name: 'Token消耗',
+      type: 'line',
+      yAxisIndex: 1,
+      smooth: true,
+      symbol: 'circle',
+      symbolSize: 6,
+      lineStyle: { width: 2, color: '#F59E0B' },
+      itemStyle: { color: '#F59E0B' },
+      data: monthlyTrend.value.map(m => m.tokens)
+    }
+  ]
+}))
 
 // Purchase/recharge records
 const rechargeRecords = [
@@ -74,29 +157,10 @@ function formatTokens(tokens: number) {
           </div>
         </div>
 
-        <!-- Monthly Spending Trend -->
+        <!-- Monthly Spending Trend Chart -->
         <div class="bg-white rounded-xl border border-gray-100 p-6 mb-6">
           <h3 class="text-sm font-semibold text-gray-900 mb-5">月度消费趋势</h3>
-          <div class="flex items-end gap-3 h-48">
-            <div
-              v-for="(item, idx) in monthlyTrend"
-              :key="idx"
-              class="flex-1 flex flex-col items-center justify-end h-full"
-            >
-              <p class="text-xs font-semibold text-gray-700 mb-2">&yen;{{ formatAmount(item.amount) }}</p>
-              <div
-                class="w-full rounded-t-lg transition-all duration-300"
-                :style="{
-                  height: (item.amount / maxAmount * 100) + '%',
-                  background: idx === monthlyTrend.length - 1
-                    ? 'linear-gradient(180deg, #7C3AED, #A78BFA)'
-                    : 'linear-gradient(180deg, #A78BFA, #DDD6FE)',
-                  minHeight: '16px'
-                }"
-              />
-              <p class="text-xs text-gray-400 mt-2">{{ item.month }}</p>
-            </div>
-          </div>
+          <ChartsBaseChart :option="monthlyTrendChartOption" height="280px" />
         </div>
 
         <!-- Billing Table -->

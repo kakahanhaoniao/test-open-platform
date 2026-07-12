@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import { organization, members, currentUser } from '~/data/mock'
+import { useChartTheme } from '~/composables/useChartTheme'
 
 useHead({ title: '企业概览 - 奇安信AI开放平台' })
+
+const theme = useChartTheme()
 
 const previewMembers = members.slice(0, 5)
 
@@ -11,6 +14,69 @@ const pendingMembers = members.filter(m => m.status === 'pending').length
 function getInitials(name: string): string {
   return name.slice(0, 1)
 }
+
+// 7-day call trend data for enterprise
+const callTrendData = [
+  { date: '07/05', calls: 6800 },
+  { date: '07/06', calls: 5960 },
+  { date: '07/07', calls: 7350 },
+  { date: '07/08', calls: 8640 },
+  { date: '07/09', calls: 8120 },
+  { date: '07/10', calls: 9750 },
+  { date: '07/11', calls: 4724 }
+]
+
+// --- ECharts option ---
+
+// Area Line Chart - 7-day Call Trend
+const callTrendChartOption = computed(() => ({
+  tooltip: {
+    trigger: 'axis',
+    formatter: (params: any) => {
+      const p = params[0]
+      return `${p.axisValue}<br/>${p.marker} 调用量: ${p.value.toLocaleString()} 次`
+    }
+  },
+  grid: { left: 60, right: 20, top: 20, bottom: 30 },
+  xAxis: {
+    type: 'category',
+    boundaryGap: false,
+    data: callTrendData.map(d => d.date),
+    axisLabel: { fontSize: 11, color: '#9CA3AF' },
+    axisLine: { lineStyle: { color: '#E5E7EB' } },
+    axisTick: { show: false }
+  },
+  yAxis: {
+    type: 'value',
+    axisLabel: {
+      fontSize: 10,
+      color: '#9CA3AF',
+      formatter: (val: number) => val >= 10000 ? (val / 10000).toFixed(1) + '万' : String(val)
+    },
+    splitLine: { lineStyle: { color: '#F3F4F6' } },
+    axisLine: { show: false },
+    axisTick: { show: false }
+  },
+  series: [{
+    name: '调用量',
+    type: 'line',
+    smooth: true,
+    symbol: 'circle',
+    symbolSize: 6,
+    lineStyle: { width: 2, color: '#7C3AED' },
+    itemStyle: { color: '#7C3AED' },
+    areaStyle: {
+      color: {
+        type: 'linear', x: 0, y: 0, x2: 0, y2: 1,
+        colorStops: [
+          { offset: 0, color: 'rgba(124, 58, 237, 0.25)' },
+          { offset: 1, color: 'rgba(124, 58, 237, 0.02)' }
+        ]
+      }
+    },
+    data: callTrendData.map(d => d.calls)
+  }]
+}))
 
 // Alerts (same data as console dashboard)
 const alerts = [
@@ -145,6 +211,17 @@ const quickActions = [
             <span class="text-2xl font-bold text-gray-900 font-mono">&yen;{{ organization.monthlyCost.toLocaleString() }}</span>
           </div>
         </div>
+      </div>
+
+      <!-- 7-day Call Trend Chart -->
+      <div class="bg-white rounded-xl border border-gray-100 p-6 mb-6">
+        <div class="flex items-center justify-between mb-5">
+          <div>
+            <h3 class="font-semibold text-gray-900">调用趋势</h3>
+            <p class="text-xs text-gray-400 mt-0.5">近7天企业API调用量统计</p>
+          </div>
+        </div>
+        <ChartsBaseChart :option="callTrendChartOption" height="220px" />
       </div>
 
       <!-- Quick Actions -->

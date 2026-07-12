@@ -1,8 +1,12 @@
 <script setup lang="ts">
 import { callLogs, models, members } from '~/data/mock'
 import type { CallLog } from '~/data/mock'
+import { useChartTheme } from '~/composables/useChartTheme'
 
 useHead({ title: '日志审计 - 奇安信AI开放平台' })
+
+const theme = useChartTheme()
+const route = useRoute()
 
 // --- Search & Filter State ---
 const searchQuery = ref('')
@@ -16,6 +20,16 @@ const pageSize = 20
 const expandedRowId = ref<string | null>(null)
 const toastMessage = ref('')
 const toastVisible = ref(false)
+
+// Handle query params from drilldown (e.g., ?model=xxx&from=monitor)
+onMounted(() => {
+  if (route.query.model && typeof route.query.model === 'string') {
+    filterModel.value = route.query.model
+  }
+  if (route.query.member && typeof route.query.member === 'string') {
+    filterMember.value = route.query.member
+  }
+})
 
 // --- Filter Options ---
 const timeRangeOptions = [
@@ -128,11 +142,9 @@ watch([searchQuery, filterTimeRange, filterModel, filterMember, filterStatus], (
 const trendData = computed(() => {
   const logs = filteredLogs.value
   if (trendAggregation.value === 'hour') {
-    // Group by hour
     const groups: Record<string, { total: number; s200: number; s429: number; s500: number }> = {}
     logs.forEach(log => {
-      const hour = log.timestamp.substring(0, 13) // '2026-07-12 14'
-      const label = log.timestamp.substring(11, 16) // '14:32'
+      const hour = log.timestamp.substring(0, 13)
       const key = hour
       if (!groups[key]) groups[key] = { total: 0, s200: 0, s429: 0, s500: 0 }
       groups[key].total++
@@ -165,7 +177,6 @@ const trendData = computed(() => {
       }))
   }
   else {
-    // Week aggregation - just group all into one bar per week-ish
     const groups: Record<string, { total: number; s200: number; s429: number; s500: number }> = {}
     logs.forEach(log => {
       const day = log.timestamp.substring(0, 10)
@@ -187,10 +198,126 @@ const trendData = computed(() => {
   }
 })
 
-const maxTrendValue = computed(() => {
-  if (trendData.value.length === 0) return 1
-  return Math.max(...trendData.value.map(d => d.total), 1)
+// --- Status distribution data ---
+const statusDistData = computed(() => {
+  const counts: Record<string, number> = { '2xx': 0, '4xx': 0, '5xx': 0 }
+  for (const log of filteredLogs.value) {
+    if (log.status >= 200 && log.status < 300) counts['2xx']!++
+    else if (log.status >= 400 && log.status < 500) counts['4xx']!++
+    else if (log.status >= 500) counts['5xx']!++
+  }
+  return counts
 })
+
+// --- ECharts options ---
+
+// 1. Area Chart - Call Volume Trend
+const trendChartOption = computed(() => {
+  if (trendData.value.length === 0) return {}
+  return {
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: { type: 'cross' }
+    },
+    legend: {
+      data: ['200 成功', '429 限流', '500 错误'],
+      bottom: 0,
+      textStyle: { fontSize: 11, color: '#6B7280' },
+      itemWidth: 12,
+      itemHeight: 8
+    },
+    grid: { left: 50, right: 20, top: 20, bottom: 40 },
+    xAxis: {
+      type: 'category',
+      boundaryGap: false,
+      data: trendData.value.map(d => d.label),
+      axisLabel: { fontSize: 10, color: '#9CA3AF' },
+      axisLine: { lineStyle: { color: '#E5E7EB' } },
+      axisTick: { show: false }
+    },
+    yAxis: {
+      type: 'value',
+      axisLabel: { fontSize: 10, color: '#9CA3AF' },
+      splitLine: { lineStyle: { color: '#F3F4F6' } },
+      axisLine: { show: false },
+      axisTick: { show: false }
+    },
+    series: [
+      {
+        name: '200 成功',
+        type: 'line',
+        stack: 'total',
+        smooth: true,
+        symbol: 'none',
+        lineStyle: { width: 1, color: '#10B981' },
+        itemStyle: { color: '#10B981' },
+        areaStyle: { opacity: 0.4 },
+        data: trendData.value.map(d => d.s200)
+      },
+      {
+        name: '429 限流',
+        type: 'line',
+        stack: 'total',
+        smooth: true,
+        symbol: 'none',
+        lineStyle: { width: 1, color: '#F59E0B' },
+        itemStyle: { color: '#F59E0B' },
+        areaStyle: { opacity: 0.4 },
+        data: trendData.value.map(d => d.s429)
+      },
+      {
+        name: '500 错误',
+        type: 'line',
+        stack: 'total',
+        smooth: true,
+        symbol: 'none',
+        lineStyle: { width: 1, color: '#EF4444' },
+        itemStyle: { color: '#EF4444' },
+        areaStyle: { opacity: 0.4 },
+        data: trendData.value.map(d => d.s500)
+      }
+    ]
+  }
+})
+
+// 2. Doughnut Chart - Status Code Distribution
+const statusDistChartOption = computed(() => ({
+  tooltip: {
+    trigger: 'item',
+    formatter: '{b}: {c} ({d}%)'
+  },
+  legend: {
+    bottom: 0,
+    textStyle: { fontSize: 11, color: '#6B7280' },
+    itemWidth: 10,
+    itemHeight: 10
+  },
+  series: [{
+    name: '状态码分布',
+    type: 'pie',
+    radius: ['40%', '70%'],
+    center: ['50%', '45%'],
+    avoidLabelOverlap: false,
+    itemStyle: { borderRadius: 6, borderColor: '#fff', borderWidth: 2 },
+    label: { show: false },
+    emphasis: {
+      label: { show: true, fontSize: 14, fontWeight: 'bold' },
+      itemStyle: { shadowBlur: 10, shadowOffsetX: 0, shadowColor: 'rgba(0, 0, 0, 0.2)' }
+    },
+    data: [
+      { name: '2xx 成功', value: statusDistData.value['2xx'], itemStyle: { color: '#10B981' } },
+      { name: '4xx 客户端错误', value: statusDistData.value['4xx'], itemStyle: { color: '#F59E0B' } },
+      { name: '5xx 服务端错误', value: statusDistData.value['5xx'], itemStyle: { color: '#EF4444' } }
+    ]
+  }]
+}))
+
+// Drilldown: click status doughnut to filter
+function onStatusDistDrilldown(data: { chartType: string; field: string; value: any }) {
+  if (data.value === '2xx 成功') filterStatus.value = '200'
+  else if (data.value === '4xx 客户端错误') filterStatus.value = '400'
+  else if (data.value === '5xx 服务端错误') filterStatus.value = '500'
+}
 
 // --- Helper Functions ---
 function getStatusBadge(status: number) {
@@ -208,7 +335,6 @@ function getLatencyColor(latency: number) {
 }
 
 function maskApiKey(key: string) {
-  // Already masked in mock data, but ensure full display for detail
   return key
 }
 
@@ -268,6 +394,11 @@ function getMockResponseBody(log: CallLog) {
       total_tokens: log.totalTokens
     }
   }, null, 2)
+}
+
+// Format number with comma
+function formatNumber(n: number): string {
+  return n.toLocaleString()
 }
 </script>
 
@@ -374,56 +505,22 @@ function getMockResponseBody(log: CallLog) {
               </button>
             </div>
           </div>
+          <ChartsBaseChart :option="trendChartOption" height="220px" />
+        </div>
 
-          <!-- Legend -->
-          <div class="flex items-center gap-5 mb-4 text-xs text-gray-400">
-            <span class="flex items-center gap-1.5">
-              <span class="w-2.5 h-2.5 rounded-sm bg-green-500" />
-              200 成功
-            </span>
-            <span class="flex items-center gap-1.5">
-              <span class="w-2.5 h-2.5 rounded-sm bg-amber-500" />
-              429 限流
-            </span>
-            <span class="flex items-center gap-1.5">
-              <span class="w-2.5 h-2.5 rounded-sm bg-red-500" />
-              500 错误
-            </span>
-          </div>
-
-          <!-- Bar Chart -->
-          <div v-if="trendData.length > 0" class="flex items-end gap-2 h-44">
-            <div
-              v-for="(item, idx) in trendData"
-              :key="idx"
-              class="flex-1 flex flex-col items-center gap-1.5 min-w-0"
-            >
-              <span class="text-xs font-mono text-gray-500 truncate w-full text-center">{{ item.total }}</span>
-              <div class="w-full flex flex-col justify-end" style="height: 140px;">
-                <!-- Stacked bar: 500 (red) on top, 429 (amber) middle, 200 (green) bottom -->
-                <div
-                  v-if="item.s500 > 0"
-                  class="w-full bg-red-500 rounded-t-sm"
-                  :style="{ height: `${Math.max((item.s500 / maxTrendValue) * 140, 3)}px` }"
-                />
-                <div
-                  v-if="item.s429 > 0"
-                  class="w-full bg-amber-500"
-                  :class="item.s500 === 0 ? 'rounded-t-sm' : ''"
-                  :style="{ height: `${Math.max((item.s429 / maxTrendValue) * 140, 3)}px` }"
-                />
-                <div
-                  class="w-full bg-green-500 rounded-b-sm"
-                  :class="item.s429 === 0 && item.s500 === 0 ? 'rounded-t-sm' : ''"
-                  :style="{ height: `${Math.max((item.s200 / maxTrendValue) * 140, item.s200 > 0 ? 3 : 0)}px` }"
-                />
-              </div>
-              <span class="text-xs text-gray-400 truncate w-full text-center">{{ item.label }}</span>
+        <!-- Status Code Distribution -->
+        <div class="bg-white rounded-xl border border-gray-100 p-6 mb-6">
+          <div class="flex items-center justify-between mb-5">
+            <div>
+              <h3 class="font-semibold text-gray-900">状态码分布</h3>
+              <p class="text-xs text-gray-400 mt-0.5">点击扇区可筛选对应状态码</p>
             </div>
           </div>
-          <div v-else class="flex items-center justify-center h-44 text-sm text-gray-400">
-            暂无数据
-          </div>
+          <ChartsBaseChart
+            :option="statusDistChartOption"
+            height="220px"
+            @drilldown="onStatusDistDrilldown"
+          />
         </div>
 
         <!-- Log List Table -->

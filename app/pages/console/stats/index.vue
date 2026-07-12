@@ -1,4 +1,10 @@
 <script setup lang="ts">
+import { useChartTheme } from '~/composables/useChartTheme'
+
+useHead({ title: '调用统计 - 奇安信AI开放平台' })
+
+const theme = useChartTheme()
+
 const dateRange = ref('7d')
 const dateRanges = [
   { value: 'today', label: '今日' },
@@ -16,8 +22,6 @@ const dailyData = [
   { date: '07/10', calls: 4650, errors: 9 },
   { date: '07/11', calls: 2294, errors: 5 }
 ]
-
-const maxDailyCalls = Math.max(...dailyData.map(d => d.calls))
 
 const modelBreakdown = [
   { name: '奇安信安全大模型', calls: 12840, tokens: 5240000, cost: '¥478.32', percentage: 45 },
@@ -39,6 +43,194 @@ const errorLog = [
 const totalCalls = computed(() => dailyData.reduce((sum, d) => sum + d.calls, 0))
 const totalErrors = computed(() => dailyData.reduce((sum, d) => sum + d.errors, 0))
 const successRate = computed(() => ((1 - totalErrors.value / totalCalls.value) * 100).toFixed(2))
+
+// --- ECharts options ---
+
+// 1. Dual-Y Line Chart - Call Trend (calls on left, errors on right)
+const callTrendChartOption = computed(() => ({
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: { type: 'cross' }
+  },
+  legend: {
+    data: ['调用量', '错误数'],
+    bottom: 0,
+    textStyle: { fontSize: 11, color: '#6B7280' },
+    itemWidth: 12,
+    itemHeight: 8
+  },
+  grid: { left: 60, right: 60, top: 20, bottom: 40 },
+  xAxis: {
+    type: 'category',
+    data: dailyData.map(d => d.date),
+    axisLabel: { fontSize: 11, color: '#9CA3AF' },
+    axisLine: { lineStyle: { color: '#E5E7EB' } },
+    axisTick: { show: false }
+  },
+  yAxis: [
+    {
+      type: 'value',
+      name: '调用量',
+      nameTextStyle: { fontSize: 10, color: '#9CA3AF' },
+      axisLabel: { fontSize: 10, color: '#9CA3AF' },
+      splitLine: { lineStyle: { color: '#F3F4F6' } },
+      axisLine: { show: false },
+      axisTick: { show: false }
+    },
+    {
+      type: 'value',
+      name: '错误数',
+      nameTextStyle: { fontSize: 10, color: '#9CA3AF' },
+      axisLabel: { fontSize: 10, color: '#9CA3AF' },
+      splitLine: { show: false },
+      axisLine: { show: false },
+      axisTick: { show: false }
+    }
+  ],
+  series: [
+    {
+      name: '调用量',
+      type: 'line',
+      smooth: true,
+      symbol: 'circle',
+      symbolSize: 6,
+      lineStyle: { width: 2, color: '#7C3AED' },
+      itemStyle: { color: '#7C3AED' },
+      areaStyle: {
+        color: {
+          type: 'linear', x: 0, y: 0, x2: 0, y2: 1,
+          colorStops: [
+            { offset: 0, color: 'rgba(124, 58, 237, 0.2)' },
+            { offset: 1, color: 'rgba(124, 58, 237, 0.02)' }
+          ]
+        }
+      },
+      data: dailyData.map(d => d.calls)
+    },
+    {
+      name: '错误数',
+      type: 'line',
+      yAxisIndex: 1,
+      smooth: true,
+      symbol: 'circle',
+      symbolSize: 6,
+      lineStyle: { width: 2, color: '#EF4444' },
+      itemStyle: { color: '#EF4444' },
+      data: dailyData.map(d => d.errors)
+    }
+  ]
+}))
+
+// 2. Doughnut Chart - Token Distribution
+const tokenDistChartOption = computed(() => ({
+  tooltip: {
+    trigger: 'item',
+    formatter: '{b}<br/>Token: {c} ({d}%)'
+  },
+  legend: {
+    orient: 'vertical',
+    right: 10,
+    top: 'center',
+    textStyle: { fontSize: 11, color: '#6B7280' },
+    itemWidth: 10,
+    itemHeight: 10,
+    itemGap: 10
+  },
+  series: [{
+    name: 'Token分布',
+    type: 'pie',
+    radius: ['40%', '70%'],
+    center: ['35%', '50%'],
+    avoidLabelOverlap: false,
+    itemStyle: { borderRadius: 6, borderColor: '#fff', borderWidth: 2 },
+    label: { show: false },
+    emphasis: {
+      label: { show: true, fontSize: 14, fontWeight: 'bold' },
+      itemStyle: { shadowBlur: 10, shadowOffsetX: 0, shadowColor: 'rgba(0, 0, 0, 0.2)' }
+    },
+    data: modelBreakdown.map(m => ({
+      name: m.name,
+      value: m.tokens
+    }))
+  }]
+}))
+
+// 3. Latency Line Chart - P50/P95/P99
+const latencyData = {
+  times: ['07/05', '07/06', '07/07', '07/08', '07/09', '07/10', '07/11'],
+  p50: [180, 165, 195, 210, 188, 175, 160],
+  p95: [420, 380, 450, 490, 410, 395, 370],
+  p99: [780, 720, 830, 890, 760, 730, 680]
+}
+
+const latencyChartOption = computed(() => ({
+  tooltip: {
+    trigger: 'axis',
+    formatter: (params: any) => {
+      let s = params[0].axisValue + '<br/>'
+      params.forEach((p: any) => {
+        s += `${p.marker} ${p.seriesName}: ${p.value}ms<br/>`
+      })
+      return s
+    }
+  },
+  legend: {
+    data: ['P50', 'P95', 'P99'],
+    bottom: 0,
+    textStyle: { fontSize: 11, color: '#6B7280' },
+    itemWidth: 12,
+    itemHeight: 8
+  },
+  grid: { left: 60, right: 20, top: 20, bottom: 40 },
+  xAxis: {
+    type: 'category',
+    data: latencyData.times,
+    axisLabel: { fontSize: 11, color: '#9CA3AF' },
+    axisLine: { lineStyle: { color: '#E5E7EB' } },
+    axisTick: { show: false }
+  },
+  yAxis: {
+    type: 'value',
+    name: '延迟(ms)',
+    nameTextStyle: { fontSize: 10, color: '#9CA3AF' },
+    axisLabel: { fontSize: 10, color: '#9CA3AF', formatter: '{value}ms' },
+    splitLine: { lineStyle: { color: '#F3F4F6' } },
+    axisLine: { show: false },
+    axisTick: { show: false }
+  },
+  series: [
+    {
+      name: 'P50',
+      type: 'line',
+      smooth: true,
+      symbol: 'circle',
+      symbolSize: 6,
+      lineStyle: { width: 2, color: '#10B981' },
+      itemStyle: { color: '#10B981' },
+      data: latencyData.p50
+    },
+    {
+      name: 'P95',
+      type: 'line',
+      smooth: true,
+      symbol: 'circle',
+      symbolSize: 6,
+      lineStyle: { width: 2, color: '#F59E0B' },
+      itemStyle: { color: '#F59E0B' },
+      data: latencyData.p95
+    },
+    {
+      name: 'P99',
+      type: 'line',
+      smooth: true,
+      symbol: 'circle',
+      symbolSize: 6,
+      lineStyle: { width: 2, color: '#EF4444' },
+      itemStyle: { color: '#EF4444' },
+      data: latencyData.p99
+    }
+  ]
+}))
 </script>
 
 <template>
@@ -114,47 +306,43 @@ const successRate = computed(() => ((1 - totalErrors.value / totalCalls.value) *
         </div>
       </div>
 
-      <!-- Daily Chart -->
+      <!-- Call Trend Chart (Dual-Y) -->
       <div class="bg-white rounded-xl border border-gray-100 p-6 mb-6">
-        <div class="flex items-center justify-between mb-6">
+        <div class="flex items-center justify-between mb-5">
           <div>
             <h3 class="font-semibold text-gray-900">每日调用量</h3>
             <p class="text-xs text-gray-400 mt-0.5">过去7天的API调用统计</p>
           </div>
-          <div class="flex items-center gap-4 text-xs text-gray-400">
-            <span class="flex items-center gap-1.5">
-              <span class="w-2.5 h-2.5 rounded-sm bg-primary-500" />
-              调用量
-            </span>
-            <span class="flex items-center gap-1.5">
-              <span class="w-2.5 h-2.5 rounded-sm bg-red-400" />
-              错误数
-            </span>
-          </div>
         </div>
-        <div class="flex items-end gap-4 h-44">
-          <div
-            v-for="item in dailyData"
-            :key="item.date"
-            class="flex-1 flex flex-col items-center gap-2"
-          >
-            <span class="text-xs font-mono text-gray-500">{{ item.calls.toLocaleString() }}</span>
-            <div class="w-full relative">
-              <div
-                class="w-full rounded-t-md bg-gradient-to-t from-primary-600 to-primary-400"
-                :style="{ height: `${(item.calls / maxDailyCalls) * 140}px` }"
-              />
-              <div
-                class="absolute bottom-0 w-full rounded-t-sm bg-red-400/60"
-                :style="{ height: `${Math.max((item.errors / maxDailyCalls) * 140, 2)}px` }"
-              />
+        <ChartsBaseChart :option="callTrendChartOption" height="280px" />
+      </div>
+
+      <!-- Two-column: Token Distribution + Latency -->
+      <div class="grid grid-cols-2 gap-6 mb-6">
+        <!-- Token Distribution Doughnut -->
+        <div class="bg-white rounded-xl border border-gray-100 p-6">
+          <div class="flex items-center justify-between mb-5">
+            <div>
+              <h3 class="font-semibold text-gray-900">Token消耗分布</h3>
+              <p class="text-xs text-gray-400 mt-0.5">各模型Token消耗占比</p>
             </div>
-            <span class="text-xs text-gray-400">{{ item.date }}</span>
           </div>
+          <ChartsBaseChart :option="tokenDistChartOption" height="280px" />
+        </div>
+
+        <!-- Latency Line Chart -->
+        <div class="bg-white rounded-xl border border-gray-100 p-6">
+          <div class="flex items-center justify-between mb-5">
+            <div>
+              <h3 class="font-semibold text-gray-900">延迟分布</h3>
+              <p class="text-xs text-gray-400 mt-0.5">P50 / P95 / P99 延迟趋势</p>
+            </div>
+          </div>
+          <ChartsBaseChart :option="latencyChartOption" height="280px" />
         </div>
       </div>
 
-      <!-- Model Breakdown -->
+      <!-- Model Breakdown Table -->
       <div class="bg-white rounded-xl border border-gray-100 p-6 mb-6">
         <div class="flex items-center justify-between mb-5">
           <div>

@@ -1,17 +1,20 @@
 <script setup lang="ts">
 import { billingRecords, members, organization } from '~/data/mock'
+import { useChartTheme } from '~/composables/useChartTheme'
 
 useHead({ title: '企业账单 - 奇安信AI开放平台' })
 
+const theme = useChartTheme()
+
 // Summary calculations
-const currentMonth = billingRecords[0]
-const lastMonth = billingRecords[1]
+const currentMonth = billingRecords[0]!
+const lastMonth = billingRecords[1]!
 const monthOverMonth = computed(() => {
-  if (lastMonth.amount === 0) return 0
+  if (!lastMonth || lastMonth.amount === 0) return 0
   return Number(((currentMonth.amount - lastMonth.amount) / lastMonth.amount * 100).toFixed(1))
 })
 
-// Monthly trend data for bar chart
+// Monthly trend data for bar+line combo chart
 const monthlyTrend = computed(() =>
   billingRecords.slice().reverse().map(r => ({
     month: r.month.replace('2026年', '').replace('月', '') + '月',
@@ -19,8 +22,6 @@ const monthlyTrend = computed(() =>
     tokens: r.tokens
   }))
 )
-
-const maxAmount = computed(() => Math.max(...monthlyTrend.value.map(m => m.amount)))
 
 // Enterprise member cost distribution
 const memberCostDistribution = computed(() => {
@@ -42,6 +43,126 @@ const memberCostDistribution = computed(() => {
   }
   return { members: namedMembers, totalCost }
 })
+
+// --- ECharts options ---
+
+// 1. Bar+Line Combo Chart - Monthly Spending Trend
+const monthlyTrendChartOption = computed(() => ({
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: { type: 'cross' }
+  },
+  legend: {
+    data: ['消费金额', 'Token消耗'],
+    bottom: 0,
+    textStyle: { fontSize: 11, color: '#6B7280' },
+    itemWidth: 12,
+    itemHeight: 8
+  },
+  grid: { left: 70, right: 70, top: 20, bottom: 40 },
+  xAxis: {
+    type: 'category',
+    data: monthlyTrend.value.map(m => m.month),
+    axisLabel: { fontSize: 11, color: '#9CA3AF' },
+    axisLine: { lineStyle: { color: '#E5E7EB' } },
+    axisTick: { show: false }
+  },
+  yAxis: [
+    {
+      type: 'value',
+      name: '金额(¥)',
+      nameTextStyle: { fontSize: 10, color: '#9CA3AF' },
+      axisLabel: { fontSize: 10, color: '#9CA3AF', formatter: '¥{value}' },
+      splitLine: { lineStyle: { color: '#F3F4F6' } },
+      axisLine: { show: false },
+      axisTick: { show: false }
+    },
+    {
+      type: 'value',
+      name: 'Token',
+      nameTextStyle: { fontSize: 10, color: '#9CA3AF' },
+      axisLabel: {
+        fontSize: 10,
+        color: '#9CA3AF',
+        formatter: (val: number) => {
+          if (val >= 10000000) return (val / 10000000).toFixed(0) + '千万'
+          if (val >= 10000) return (val / 10000).toFixed(0) + '万'
+          return String(val)
+        }
+      },
+      splitLine: { show: false },
+      axisLine: { show: false },
+      axisTick: { show: false }
+    }
+  ],
+  series: [
+    {
+      name: '消费金额',
+      type: 'bar',
+      barWidth: 24,
+      itemStyle: {
+        borderRadius: [4, 4, 0, 0],
+        color: {
+          type: 'linear', x: 0, y: 0, x2: 0, y2: 1,
+          colorStops: [
+            { offset: 0, color: '#7C3AED' },
+            { offset: 1, color: '#A78BFA' }
+          ]
+        }
+      },
+      data: monthlyTrend.value.map(m => m.amount)
+    },
+    {
+      name: 'Token消耗',
+      type: 'line',
+      yAxisIndex: 1,
+      smooth: true,
+      symbol: 'circle',
+      symbolSize: 6,
+      lineStyle: { width: 2, color: '#F59E0B' },
+      itemStyle: { color: '#F59E0B' },
+      data: monthlyTrend.value.map(m => m.tokens)
+    }
+  ]
+}))
+
+// 2. Doughnut Chart - Member Cost Distribution
+const memberCostChartOption = computed(() => ({
+  tooltip: {
+    trigger: 'item',
+    formatter: '{b}: ¥{c} ({d}%)'
+  },
+  legend: {
+    orient: 'vertical',
+    right: 10,
+    top: 'center',
+    textStyle: { fontSize: 11, color: '#6B7280' },
+    itemWidth: 10,
+    itemHeight: 10,
+    itemGap: 10,
+    formatter: (name: string) => {
+      const m = memberCostDistribution.value.members.find(m => m.name === name)
+      return m ? `${name}  ¥${m.cost.toLocaleString()}` : name
+    }
+  },
+  series: [{
+    name: '成员消耗分布',
+    type: 'pie',
+    radius: ['40%', '70%'],
+    center: ['35%', '50%'],
+    avoidLabelOverlap: false,
+    itemStyle: { borderRadius: 6, borderColor: '#fff', borderWidth: 2 },
+    label: { show: false },
+    emphasis: {
+      label: { show: true, fontSize: 14, fontWeight: 'bold' },
+      itemStyle: { shadowBlur: 10, shadowOffsetX: 0, shadowColor: 'rgba(0, 0, 0, 0.2)' }
+    },
+    data: memberCostDistribution.value.members.map(m => ({
+      name: m.name,
+      value: m.cost
+    }))
+  }]
+}))
 
 // Recharge records
 const rechargeRecords = [
@@ -118,58 +239,16 @@ function formatTokens(tokens: number) {
         </div>
       </div>
 
-      <!-- Monthly Spending Trend -->
+      <!-- Monthly Spending Trend Chart -->
       <div class="bg-white rounded-xl border border-gray-100 p-6 mb-6">
         <h3 class="text-sm font-semibold text-gray-900 mb-5">月度消费趋势</h3>
-        <div class="flex items-end gap-3 h-48">
-          <div
-            v-for="(item, idx) in monthlyTrend"
-            :key="idx"
-            class="flex-1 flex flex-col items-center justify-end h-full"
-          >
-            <p class="text-xs font-semibold text-gray-700 mb-2">&yen;{{ formatAmount(item.amount) }}</p>
-            <div
-              class="w-full rounded-t-lg transition-all duration-300"
-              :class="idx === monthlyTrend.length - 1 ? 'bg-gradient-to-t from-primary-600 to-primary-400' : 'bg-gradient-to-t from-primary-300 to-primary-100'"
-              :style="{
-                height: (item.amount / maxAmount * 100) + '%',
-                minHeight: '16px'
-              }"
-            />
-            <p class="text-xs text-gray-400 mt-2">{{ item.month }}</p>
-          </div>
-        </div>
+        <ChartsBaseChart :option="monthlyTrendChartOption" height="280px" />
       </div>
 
-      <!-- Member Cost Distribution -->
+      <!-- Member Cost Distribution Doughnut -->
       <div class="bg-white rounded-xl border border-gray-100 p-6 mb-6">
         <h3 class="text-sm font-semibold text-gray-900 mb-5">成员消耗分布</h3>
-        <div class="space-y-4">
-          <div
-            v-for="member in memberCostDistribution.members"
-            :key="member.name"
-            class="flex items-center gap-4"
-          >
-            <span class="text-sm text-gray-700 w-12 shrink-0 font-medium">{{ member.name }}</span>
-            <div class="flex-1 bg-gray-50 rounded-full h-7 overflow-hidden relative">
-              <div
-                class="h-full rounded-full transition-all duration-500 flex items-center px-3"
-                :style="{ width: member.percent + '%' }"
-                :class="member.name === '其他' ? 'bg-gray-300' : 'bg-gradient-to-r from-primary-600 to-primary-400'"
-              >
-                <span v-if="member.percent >= 15" class="text-xs text-white font-medium">{{ member.percent }}%</span>
-              </div>
-              <span
-                v-if="member.percent < 15"
-                class="absolute top-1/2 -translate-y-1/2 text-xs text-gray-500 font-medium"
-                :style="{ left: member.percent + 2 + '%' }"
-              >
-                {{ member.percent }}%
-              </span>
-            </div>
-            <span class="text-xs text-gray-400 w-16 shrink-0 text-right">&yen;{{ formatAmount(member.cost) }}</span>
-          </div>
-        </div>
+        <ChartsBaseChart :option="memberCostChartOption" height="280px" />
       </div>
 
       <!-- Billing Table -->
