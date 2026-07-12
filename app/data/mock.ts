@@ -44,18 +44,23 @@ export interface Activity {
   title: string
   subtitle: string
   description: string
+  detailMd?: string
   discount: string
   discountText: string
   gradient: string
   startDate: string
   endDate: string
   tags: string[]
+  category: '限时折扣' | '免费体验' | '新客专享' | '企业优惠'
   hot: boolean
   new: boolean
   ctaText: string
   rules: string[]
   benefits: string[]
   icon: string
+  faq?: { question: string; answer: string }[]
+  relatedCapabilityIds?: string[]
+  discountPlans?: { planId: string; discountPrice: number }[]
 }
 
 export interface ChargingPack {
@@ -472,72 +477,176 @@ export const activities: Activity[] = [
     title: '夏季安全嘉年华',
     subtitle: 'AI安全能力全面升级',
     description: '夏季安全嘉年华重磅来袭！奇安信AI开放平台推出限时优惠活动，安全大模型、威胁检测模型等核心能力全面降价，更有新用户专享礼包等你来领。',
+    detailMd: `## 活动介绍\n\n夏季安全嘉年华重磅来袭！奇安信AI开放平台推出限时优惠活动，安全大模型、威胁检测模型等核心能力全面降价，更有新用户专享礼包等你来领。\n\n### 活动亮点\n\n- **安全大模型5折优惠**：奇安信安全大模型调用低至5折，千亿参数安全能力触手可及\n- **新用户1000万Token免费额度**：注册即送，零成本体验平台核心能力\n- **充值满赠**：充值满1000元赠200万Token，满5000元赠1200万Token\n- **推荐有礼**：推荐好友注册，双方各得500万Token\n\n### 适用范围\n\n本次活动适用于奇安信AI开放平台所有安全大模型及威胁检测模型，包括但不限于：\n- 奇安信安全大模型\n- 威胁检测模型V3\n- 代码安全扫描模型`,
     discount: '5折',
     discountText: '限时5折',
     gradient: 'from-primary-700 via-primary-600 to-accent-500',
     startDate: '2026-07-01',
     endDate: '2026-08-31',
     tags: ['限时优惠', '新用户专享', '模型降价'],
+    category: '限时折扣',
     hot: true,
     new: true,
     ctaText: '立即参与',
     rules: ['活动时间：2026年7月1日-8月31日', '新用户注册即送1000万Token体验额度', '安全大模型调用5折优惠', '活动期间充值满赠额外Token'],
     benefits: ['安全大模型5折优惠', '新用户1000万Token免费额度', '充值满1000元赠200万Token', '推荐好友双方各得500万Token'],
-    icon: 'i-lucide-gift'
+    icon: 'i-lucide-gift',
+    faq: [
+      { question: '新用户如何领取1000万Token？', answer: '注册成功后，系统将自动发放1000万Token到您的账户，可在控制台查看余额。' },
+      { question: '5折优惠是否适用于所有模型？', answer: '5折优惠适用于安全大模型和威胁检测模型V3，其他模型享受8折优惠。' },
+      { question: '充值满赠的Token有效期多久？', answer: '赠送的Token有效期为6个月，自发放之日起计算。' }
+    ],
+    relatedCapabilityIds: ['qax-security-llm', 'threat-detect-v3', 'code-security-scan'],
+    discountPlans: [
+      { planId: 'mp-security-pro', discountPrice: 499 },
+      { planId: 'mp-threat-pro', discountPrice: 299 },
+      { planId: 'mp-code-pro', discountPrice: 199 }
+    ]
   },
   {
     id: 'enterprise-launch-promo',
     title: '企业版首发优惠',
     subtitle: '企业级AI安全能力一站式接入',
     description: '奇安信AI开放平台企业版正式发布！提供专属模型实例、SLA保障、私有化部署灵活、合规无忧。首发期间享受8折优惠，更有专属技术支持团队1对1服务。',
+    detailMd: `## 企业版首发\n\n奇安信AI开放平台企业版正式发布！提供专属模型实例、SLA保障、私有化部署灵活、合规无忧。\n\n### 企业版专属权益\n\n- **专属模型实例**：独立GPU资源，性能稳定可靠\n- **99.9% SLA保障**：企业级服务等级协议，安心无忧\n- **私有化部署**：支持本地化部署，数据安全可控\n- **1对1技术支持**：专属技术团队全程护航\n- **年付赠2个月**：年付方案额外赠送2个月使用期\n- **合规审计报告**：自动生成合规审计报告，满足监管要求`,
     discount: '8折',
     discountText: '首发8折',
     gradient: 'from-deep-800 via-primary-800 to-primary-600',
     startDate: '2026-06-15',
     endDate: '2026-09-15',
     tags: ['企业版', '首发优惠', '专属支持'],
+    category: '企业优惠',
     hot: true,
     new: false,
     ctaText: '了解详情',
     rules: ['企业版首发优惠期：2026年6月15日-9月15日', '首发期间企业版套餐8折优惠', '签约即送专属技术支持', '年付方案额外赠送2个月'],
     benefits: ['专属模型实例', '99.9% SLA保障', '私有化部署选项', '1对1技术支持', '年付赠2个月', '合规审计报告'],
-    icon: 'i-lucide-building-2'
+    icon: 'i-lucide-building-2',
+    faq: [
+      { question: '企业版与标准版有何区别？', answer: '企业版提供专属模型实例、99.9% SLA保障、私有化部署选项及1对1技术支持，适合有高可用性要求的企业用户。' },
+      { question: '私有化部署需要多长时间？', answer: '通常在签约后2-4周内完成部署，具体时间视环境复杂度而定。' },
+      { question: '年付赠2个月如何计算？', answer: '年付方案按12个月计费，实际获得14个月使用权，相当于8.6折。' }
+    ],
+    relatedCapabilityIds: ['qax-security-llm', 'smart-soc', 'compliance-guard'],
+    discountPlans: [
+      { planId: 'mp-security-annual', discountPrice: 7672 },
+      { planId: 'ap-threat-assistant', discountPrice: 239 },
+      { planId: 'ap-compliance', discountPrice: 199 }
+    ]
   },
   {
     id: 'threat-model-free-trial',
     title: '威胁检测模型免费体验',
     subtitle: '零成本体验APT检测能力',
     description: '限时开放威胁检测模型V3免费体验！无需充值即可使用APT攻击链分析、恶意流量检测等核心能力，每日赠送1000次免费调用额度。',
+    detailMd: `## 免费体验威胁检测模型V3\n\n限时开放威胁检测模型V3免费体验！无需充值即可使用APT攻击链分析、恶意流量检测等核心能力。\n\n### 体验内容\n\n- **每日1000次免费调用**：每日自动赠送，即开即用\n- **APT攻击链分析**：深度还原攻击链路，识别APT组织TTP\n- **恶意流量检测**：实时检测恶意网络流量，识别C2通信\n- **IOC自动提取**：自动提取IOC指标，支持STIX格式导出\n- **零成本体验**：无需充值，注册即可使用`,
     discount: '免费',
     discountText: '限时免费',
     gradient: 'from-red-700 via-red-600 to-primary-500',
     startDate: '2026-07-10',
     endDate: '2026-07-31',
     tags: ['免费体验', '威胁检测', '每日赠送'],
+    category: '免费体验',
     hot: true,
     new: true,
     ctaText: '立即体验',
     rules: ['活动时间：2026年7月10日-7月31日', '每日赠送1000次免费调用', '单次调用Token上限4096', '活动期间不累计未使用额度'],
     benefits: ['每日1000次免费调用', 'APT攻击链分析', '恶意流量检测', 'IOC自动提取', '零成本体验', '即开即用'],
-    icon: 'i-lucide-shield-check'
+    icon: 'i-lucide-shield-check',
+    faq: [
+      { question: '免费额度每日何时发放？', answer: '每日0点自动发放1000次调用额度到您的账户。' },
+      { question: '未使用的额度可以累计吗？', answer: '不可以，每日额度当日有效，未使用部分不累计到次日。' },
+      { question: '免费体验结束后如何继续使用？', answer: '活动结束后可购买威胁检测专业版套餐，享受更高级功能。' }
+    ],
+    relatedCapabilityIds: ['threat-detect-v3', 'threat-intel-assistant', 'smart-soc'],
+    discountPlans: [
+      { planId: 'mp-threat-pro', discountPrice: 0 }
+    ]
   },
   {
     id: 'api-integration-challenge',
     title: 'API集成挑战赛',
     subtitle: '用AI安全API构建创新应用',
     description: '参与奇安信AI开放平台API集成挑战赛，使用平台API构建创新安全应用，赢取丰厚奖金与Token奖励！优秀作品将获得平台推荐与商业化支持。',
+    detailMd: `## API集成挑战赛\n\n参与奇安信AI开放平台API集成挑战赛，使用平台API构建创新安全应用，赢取丰厚奖金与Token奖励！\n\n### 奖项设置\n\n| 奖项 | 奖金 | 额外奖励 |\n| --- | --- | --- |\n| 一等奖 | ¥50,000 | 2000万Token + 平台推荐 |\n| 二等奖 | ¥30,000 | 1000万Token + 商业化支持 |\n| 三等奖 | ¥20,000 | 500万Token + 技术导师指导 |\n\n### 参赛要求\n\n1. 需使用奇安信AI开放平台至少1个API\n2. 作品需为原创，未在其他比赛中获奖\n3. 需提交完整的源代码与文档`,
     discount: '¥10万',
     discountText: '奖金池',
     gradient: 'from-accent-700 via-accent-600 to-primary-500',
     startDate: '2026-07-15',
     endDate: '2026-10-15',
     tags: ['开发者大赛', '奖金', 'API创新'],
+    category: '新客专享',
     hot: false,
     new: true,
     ctaText: '报名参赛',
     rules: ['报名截止：2026年8月15日', '作品提交截止：2026年9月30日', '评审期：2026年10月1日-15日', '需使用奇安信AI开放平台至少1个API'],
     benefits: ['一等奖5万元', '二等奖3万元', '三等奖2万元', '优秀作品平台推荐', '商业化支持', '技术导师指导'],
-    icon: 'i-lucide-trophy'
+    icon: 'i-lucide-trophy',
+    faq: [
+      { question: '如何报名参赛？', answer: '点击"报名参赛"按钮，填写报名信息即可。报名截止日期为2026年8月15日。' },
+      { question: '可以使用多个API吗？', answer: '可以，使用多个API会获得额外加分，但至少需使用1个平台API。' },
+      { question: '评审标准是什么？', answer: '评审主要考量创新性(30%)、实用性(30%)、技术难度(20%)和代码质量(20%)。' }
+    ],
+    relatedCapabilityIds: ['qax-security-llm', 'threat-detect-v3', 'code-security-scan', 'vuln-analyzer-pro'],
+    discountPlans: []
+  },
+  {
+    id: 'newcomer-welcome-pack',
+    title: '新客专享礼包',
+    subtitle: '首次注册即享专属优惠',
+    description: '新用户注册即享专属优惠礼包！包含免费Token额度、模型体验券及首单折扣，助您快速上手AI安全能力。',
+    detailMd: `## 新客专享礼包\n\n新用户注册即享专属优惠礼包！包含免费Token额度、模型体验券及首单折扣。\n\n### 礼包内容\n\n- **500万Token免费额度**：注册即送，全模型通用\n- **首单8折券**：首次购买任意套餐享8折优惠\n- **3天VIP体验**：免费体验专业版功能3天\n- **1对1入门指导**：专属客服引导快速上手`,
+    discount: '8折',
+    discountText: '新客8折',
+    gradient: 'from-emerald-600 via-teal-500 to-primary-500',
+    startDate: '2026-01-01',
+    endDate: '2026-12-31',
+    tags: ['新用户', '首单优惠', '免费Token'],
+    category: '新客专享',
+    hot: false,
+    new: false,
+    ctaText: '领取礼包',
+    rules: ['仅限新注册用户', '首单8折券有效期30天', '免费Token有效期90天', '每位用户限领一次'],
+    benefits: ['500万Token免费额度', '首单8折优惠', '3天VIP体验', '1对1入门指导'],
+    icon: 'i-lucide-user-plus',
+    faq: [
+      { question: '谁可以领取新客礼包？', answer: '仅限首次注册的新用户，每位用户限领一次。' },
+      { question: '首单8折券可以叠加使用吗？', answer: '首单8折券不可与其他优惠叠加使用。' }
+    ],
+    relatedCapabilityIds: ['qax-security-llm', 'threat-detect-v3', 'vuln-analyzer-pro'],
+    discountPlans: [
+      { planId: 'mp-security-pro', discountPrice: 799 },
+      { planId: 'mp-threat-pro', discountPrice: 479 }
+    ]
+  },
+  {
+    id: 'code-security-flash-sale',
+    title: '代码安全限时特惠',
+    subtitle: '代码审计能力限时7折',
+    description: '代码安全扫描模型限时7折优惠！支持SAST/DAST分析、安全编码建议与漏洞模式识别，助力DevSecOps落地。',
+    detailMd: `## 代码安全限时特惠\n\n代码安全扫描模型限时7折优惠！助力DevSecOps落地。\n\n### 优惠内容\n\n- **代码安全扫描模型7折**：SAST/DAST分析低至7折\n- **代码审计助手首月半价**：AI代码审计助手首月仅需¥99\n- **CI/CD集成免费配置**：专业技术团队协助集成`,
+    discount: '7折',
+    discountText: '限时7折',
+    gradient: 'from-blue-700 via-blue-500 to-primary-400',
+    startDate: '2026-07-20',
+    endDate: '2026-08-20',
+    tags: ['限时折扣', '代码安全', 'DevSecOps'],
+    category: '限时折扣',
+    hot: false,
+    new: true,
+    ctaText: '立即购买',
+    rules: ['活动时间：2026年7月20日-8月20日', '代码安全扫描模型调用7折优惠', '代码审计助手首月半价', 'CI/CD集成配置服务免费'],
+    benefits: ['代码安全扫描7折', '代码审计首月半价', 'CI/CD免费集成', '漏洞报告导出'],
+    icon: 'i-lucide-code-2',
+    faq: [
+      { question: '7折优惠是否支持按量计费？', answer: '是的，按量计费和套餐购买均享受7折优惠。' },
+      { question: '首月半价后如何续费？', answer: '首月半价后按原价续费，也可选择年付享8折优惠。' }
+    ],
+    relatedCapabilityIds: ['code-security-scan', 'code-audit-assistant'],
+    discountPlans: [
+      { planId: 'mp-code-pro', discountPrice: 279 },
+      { planId: 'ap-code-scan', discountPrice: 139 }
+    ]
   }
 ]
 

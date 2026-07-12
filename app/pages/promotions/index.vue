@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { activities } from '~/data/mock'
+import { activities, models, apps } from '~/data/mock'
 
 useHead({
   title: '优惠活动 - 奇安信AI开放平台',
@@ -8,8 +8,55 @@ useHead({
   ]
 })
 
-const hotActivities = computed(() => activities.filter(a => a.hot))
-const otherActivities = computed(() => activities.filter(a => !a.hot))
+const categories = ['全部', '限时折扣', '免费体验', '新客专享', '企业优惠'] as const
+type Category = typeof categories[number]
+const activeCategory = ref<Category>('全部')
+
+const filteredActivities = computed(() => {
+  if (activeCategory.value === '全部') return activities
+  return activities.filter(a => a.category === activeCategory.value)
+})
+
+const hotActivities = computed(() => filteredActivities.value.filter(a => a.hot))
+const otherActivities = computed(() => filteredActivities.value.filter(a => !a.hot))
+
+// Hottest activity for countdown banner
+const hottestActivity = computed(() => {
+  const hot = activities.filter(a => a.hot)
+  if (!hot.length) return null
+  // Pick the one ending soonest
+  return hot.sort((a, b) => new Date(a.endDate).getTime() - new Date(b.endDate).getTime())[0]
+})
+
+// Countdown logic
+const countdown = ref({ days: 0, hours: 0, minutes: 0, seconds: 0 })
+let timer: ReturnType<typeof setInterval> | null = null
+
+function updateCountdown() {
+  if (!hottestActivity.value) return
+  const end = new Date(hottestActivity.value.endDate).getTime()
+  const now = Date.now()
+  const diff = end - now
+  if (diff <= 0) {
+    countdown.value = { days: 0, hours: 0, minutes: 0, seconds: 0 }
+    return
+  }
+  countdown.value = {
+    days: Math.floor(diff / (1000 * 60 * 60 * 24)),
+    hours: Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+    minutes: Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)),
+    seconds: Math.floor((diff % (1000 * 60)) / 1000)
+  }
+}
+
+onMounted(() => {
+  updateCountdown()
+  timer = setInterval(updateCountdown, 1000)
+})
+
+onUnmounted(() => {
+  if (timer) clearInterval(timer)
+})
 
 function formatDate(dateStr: string) {
   const date = new Date(dateStr)
@@ -20,7 +67,29 @@ function isExpiringSoon(endDate: string) {
   const end = new Date(endDate)
   const now = new Date()
   const diff = end.getTime() - now.getTime()
-  return diff > 0 && diff < 30 * 24 * 60 * 60 * 1000 // 30 days
+  return diff > 0 && diff < 30 * 24 * 60 * 60 * 1000
+}
+
+// Get capability name by id (from models or apps)
+function getCapabilityName(id: string): string {
+  const model = models.find(m => m.id === id)
+  if (model) return model.name
+  const app = apps.find(a => a.id === id)
+  if (app) return app.name
+  return id
+}
+
+function getCapabilityIcon(id: string): string {
+  const model = models.find(m => m.id === id)
+  if (model) return model.icon
+  const app = apps.find(a => a.id === id)
+  if (app) return app.icon
+  return 'i-lucide-box'
+}
+
+function getCtaLabel(activity: typeof activities[0]): string {
+  if (activity.category === '免费体验' || activity.category === '新客专享') return '领取优惠'
+  return '购买套餐'
 }
 </script>
 
@@ -35,13 +104,93 @@ function isExpiringSoon(endDate: string) {
     </section>
 
     <div class="max-w-7xl mx-auto px-6 py-8 space-y-8">
+      <!-- Countdown Banner for Hottest Activity -->
+      <div v-if="hottestActivity" class="relative rounded-2xl overflow-hidden">
+        <div
+          class="relative p-8 flex items-center justify-between"
+          :class="`bg-gradient-to-r ${hottestActivity.gradient}`"
+        >
+          <!-- Decorative -->
+          <div class="absolute -right-8 -top-8 w-40 h-40 rounded-full bg-white/10" />
+          <div class="absolute -left-4 -bottom-4 w-28 h-28 rounded-full bg-white/5" />
+
+          <div class="relative z-10 flex-1">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="px-2 py-0.5 rounded text-xs font-bold bg-white/20 text-white animate-pulse">HOT</span>
+              <span class="text-white/80 text-sm">{{ hottestActivity.discountText }}</span>
+            </div>
+            <h2 class="text-white font-bold text-2xl mb-1">{{ hottestActivity.title }}</h2>
+            <p class="text-white/70 text-sm">{{ hottestActivity.subtitle }}</p>
+          </div>
+
+          <div class="relative z-10 flex items-center gap-6">
+            <!-- Countdown -->
+            <div class="flex items-center gap-2">
+              <div class="text-center">
+                <div class="w-14 h-14 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                  <span class="text-white font-bold text-xl">{{ String(countdown.days).padStart(2, '0') }}</span>
+                </div>
+                <span class="text-white/60 text-[10px] mt-1 block">天</span>
+              </div>
+              <span class="text-white/40 text-xl font-bold">:</span>
+              <div class="text-center">
+                <div class="w-14 h-14 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                  <span class="text-white font-bold text-xl">{{ String(countdown.hours).padStart(2, '0') }}</span>
+                </div>
+                <span class="text-white/60 text-[10px] mt-1 block">时</span>
+              </div>
+              <span class="text-white/40 text-xl font-bold">:</span>
+              <div class="text-center">
+                <div class="w-14 h-14 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                  <span class="text-white font-bold text-xl">{{ String(countdown.minutes).padStart(2, '0') }}</span>
+                </div>
+                <span class="text-white/60 text-[10px] mt-1 block">分</span>
+              </div>
+              <span class="text-white/40 text-xl font-bold">:</span>
+              <div class="text-center">
+                <div class="w-14 h-14 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                  <span class="text-white font-bold text-xl">{{ String(countdown.seconds).padStart(2, '0') }}</span>
+                </div>
+                <span class="text-white/60 text-[10px] mt-1 block">秒</span>
+              </div>
+            </div>
+
+            <NuxtLink :to="`/promotions/${hottestActivity.id}`">
+              <UButton
+                label="查看详情"
+                icon="i-lucide-arrow-right"
+                color="white"
+                size="lg"
+                trailing
+              />
+            </NuxtLink>
+          </div>
+        </div>
+      </div>
+
+      <!-- Category Filter -->
+      <div class="flex items-center gap-2">
+        <button
+          v-for="cat in categories"
+          :key="cat"
+          class="px-4 py-2 rounded-lg text-sm font-medium transition-all"
+          :class="activeCategory === cat
+            ? 'bg-primary-600 text-white shadow-sm'
+            : 'bg-gray-50 text-gray-600 hover:bg-gray-100'"
+          @click="activeCategory = cat"
+        >
+          {{ cat }}
+        </button>
+      </div>
+
       <!-- Hot Activities - Large Cards -->
       <div v-if="hotActivities.length">
         <h2 class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">热门活动</h2>
         <div class="grid grid-cols-2 gap-5">
-          <div
+          <NuxtLink
             v-for="activity in hotActivities"
             :key="activity.id"
+            :to="`/promotions/${activity.id}`"
             class="group relative rounded-2xl overflow-hidden"
           >
             <div
@@ -65,6 +214,17 @@ function isExpiringSoon(endDate: string) {
                 <p class="text-white/80 text-sm leading-relaxed mb-4 line-clamp-2">
                   {{ activity.description }}
                 </p>
+                <!-- Related Capability Tags -->
+                <div v-if="activity.relatedCapabilityIds?.length" class="flex flex-wrap gap-1.5 mb-3">
+                  <span
+                    v-for="capId in activity.relatedCapabilityIds.slice(0, 3)"
+                    :key="capId"
+                    class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-white/15 text-white/90 text-[11px]"
+                  >
+                    <UIcon :name="getCapabilityIcon(capId)" class="w-3 h-3" />
+                    {{ getCapabilityName(capId) }}
+                  </span>
+                </div>
               </div>
 
               <div class="relative z-10 flex items-center justify-between">
@@ -77,27 +237,29 @@ function isExpiringSoon(endDate: string) {
                   </span>
                 </div>
                 <UButton
-                  :label="activity.ctaText"
+                  :label="getCtaLabel(activity)"
                   icon="i-lucide-arrow-right"
                   color="white"
                   size="sm"
                   trailing
-                  to="/console/packs"
                 />
               </div>
             </div>
-          </div>
+          </NuxtLink>
         </div>
       </div>
 
       <!-- All Activities - List Cards -->
-      <div>
-        <h2 class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">全部活动</h2>
+      <div v-if="otherActivities.length || !hotActivities.length">
+        <h2 class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">
+          {{ hotActivities.length ? '更多活动' : '全部活动' }}
+        </h2>
         <div class="space-y-4">
-          <div
-            v-for="activity in activities"
+          <NuxtLink
+            v-for="activity in (hotActivities.length ? otherActivities : filteredActivities)"
             :key="activity.id"
-            class="bg-white rounded-xl border border-gray-100 p-6 card-hover"
+            :to="`/promotions/${activity.id}`"
+            class="block bg-white rounded-xl border border-gray-100 p-6 card-hover hover:border-primary-200 transition-colors"
           >
             <div class="flex items-start gap-5">
               <!-- Icon -->
@@ -119,8 +281,20 @@ function isExpiringSoon(endDate: string) {
                   <span v-if="activity.new" class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-primary-500 text-white">NEW</span>
                   <span v-if="isExpiringSoon(activity.endDate)" class="px-1.5 py-0.5 rounded text-[10px] font-bold bg-amber-500 text-white">即将结束</span>
                 </div>
-                <p class="text-sm text-gray-500 mb-3">{{ activity.subtitle }}</p>
-                <p class="text-sm text-gray-600 leading-relaxed mb-4">{{ activity.description }}</p>
+                <p class="text-sm text-gray-500 mb-1">{{ activity.subtitle }}</p>
+                <p class="text-sm text-gray-600 leading-relaxed mb-3 line-clamp-2">{{ activity.description }}</p>
+
+                <!-- Related Capability Tags -->
+                <div v-if="activity.relatedCapabilityIds?.length" class="flex flex-wrap gap-1.5 mb-3">
+                  <span
+                    v-for="capId in activity.relatedCapabilityIds"
+                    :key="capId"
+                    class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-primary-50/60 text-primary-700 text-[11px]"
+                  >
+                    <UIcon :name="getCapabilityIcon(capId)" class="w-3 h-3" />
+                    {{ getCapabilityName(capId) }}
+                  </span>
+                </div>
 
                 <!-- Benefits -->
                 <div class="flex flex-wrap gap-2 mb-4">
@@ -152,34 +326,24 @@ function isExpiringSoon(endDate: string) {
                     </div>
                   </div>
                   <UButton
-                    :label="activity.ctaText"
+                    :label="getCtaLabel(activity)"
                     icon="i-lucide-arrow-right"
                     color="primary"
                     variant="subtle"
                     size="sm"
                     trailing
-                    to="/console/packs"
                   />
                 </div>
               </div>
             </div>
-
-            <!-- Rules (expandable) -->
-            <div class="mt-4 pt-4 border-t border-gray-50">
-              <p class="text-xs text-gray-400 mb-2">活动规则：</p>
-              <ul class="space-y-1">
-                <li
-                  v-for="rule in activity.rules"
-                  :key="rule"
-                  class="text-xs text-gray-400 flex items-start gap-1.5"
-                >
-                  <span class="w-1 h-1 rounded-full bg-gray-300 mt-1.5 shrink-0" />
-                  {{ rule }}
-                </li>
-              </ul>
-            </div>
-          </div>
+          </NuxtLink>
         </div>
+      </div>
+
+      <!-- Empty State -->
+      <div v-if="!filteredActivities.length" class="text-center py-16">
+        <UIcon name="i-lucide-inbox" class="w-12 h-12 text-gray-300 mx-auto mb-3" />
+        <p class="text-gray-400 text-sm">暂无该分类的活动</p>
       </div>
     </div>
   </div>
