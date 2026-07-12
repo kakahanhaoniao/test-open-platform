@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { Model, App } from '~/data/mock'
-import { getModelById, getAppById, getDefaultTemplate, activities, chargingPacks, currentUser } from '~/data/mock'
+import { getModelById, getAppById, getDefaultTemplate, activities, currentUser } from '~/data/mock'
 
 const route = useRoute()
 const id = computed(() => route.params.id as string)
@@ -41,10 +41,8 @@ const relatedPromos = computed(() => {
 })
 
 // Modal states
-const showChargingPackModal = ref(false)
 const showIntegrationModal = ref(false)
 const showEnterpriseModal = ref(false)
-const purchaseSuccess = ref(false)
 const enterpriseSuccess = ref(false)
 
 // Copy feedback
@@ -61,21 +59,6 @@ function handleTryNow() {
 // Action: open integration guide modal
 function handleIntegration() {
   showIntegrationModal.value = true
-}
-
-// Action: open charging pack modal
-function handleBuyPack() {
-  showChargingPackModal.value = true
-  purchaseSuccess.value = false
-}
-
-// Action: purchase a specific pack
-function handlePurchasePack(packId: string) {
-  purchaseSuccess.value = true
-  setTimeout(() => {
-    purchaseSuccess.value = false
-    showChargingPackModal.value = false
-  }, 2000)
 }
 
 // Action: enterprise batch purchase
@@ -210,7 +193,6 @@ print(response.choices[0].message.content)`
               :capability-type="capabilityType"
               @try-now="handleTryNow"
               @integration="handleIntegration"
-              @buy-pack="handleBuyPack"
               @enterprise-purchase="showEnterpriseModal = true"
             />
           </div>
@@ -231,92 +213,6 @@ print(response.choices[0].message.content)`
         to="/marketplace"
       />
     </div>
-
-    <!-- ============================== -->
-    <!-- Modal: Charging Pack Selection -->
-    <!-- ============================== -->
-    <Teleport to="body">
-      <div
-        v-if="showChargingPackModal"
-        class="fixed inset-0 z-50 flex items-center justify-center"
-      >
-        <!-- Backdrop -->
-        <div class="absolute inset-0 bg-black/50" @click="showChargingPackModal = false" />
-
-        <!-- Modal Content -->
-        <div class="relative bg-white rounded-2xl shadow-2xl w-full max-w-2xl mx-4 max-h-[90vh] overflow-y-auto">
-          <!-- Header -->
-          <div class="flex items-center justify-between px-6 py-5 border-b border-gray-100">
-            <h2 class="text-lg font-bold text-gray-900">选择充能包</h2>
-            <button
-              class="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-gray-100 transition-colors"
-              @click="showChargingPackModal = false"
-            >
-              <UIcon name="i-lucide-x" class="w-5 h-5 text-gray-400" />
-            </button>
-          </div>
-
-          <!-- Success Alert -->
-          <div v-if="purchaseSuccess" class="mx-6 mt-4 px-4 py-3 rounded-xl bg-green-50 border border-green-200">
-            <div class="flex items-center gap-2">
-              <UIcon name="i-lucide-check-circle" class="w-5 h-5 text-green-500" />
-              <span class="text-sm font-medium text-green-700">购买成功！充能包已到账</span>
-            </div>
-          </div>
-
-          <!-- Pack Cards -->
-          <div class="p-6 space-y-4">
-            <div
-              v-for="pack in chargingPacks"
-              :key="pack.id"
-              class="relative rounded-xl border p-5 transition-all"
-              :class="pack.popular
-                ? 'border-primary-300 bg-primary-50/30 shadow-sm'
-                : 'border-gray-100 hover:border-gray-200'"
-            >
-              <!-- Popular Badge -->
-              <span
-                v-if="pack.popular"
-                class="absolute -top-2.5 left-4 px-2.5 py-0.5 rounded-full bg-primary-600 text-white text-[10px] font-bold"
-              >
-                最受欢迎
-              </span>
-
-              <div class="flex items-start justify-between">
-                <div class="flex-1">
-                  <h3 class="text-base font-bold text-gray-900">{{ pack.name }}</h3>
-                  <p class="text-2xl font-bold text-primary-600 mt-1">
-                    {{ pack.price }}
-                    <span v-if="pack.originalPrice" class="text-sm font-normal text-gray-400 line-through ml-2">{{ pack.originalPrice }}</span>
-                  </p>
-                  <p class="text-sm text-gray-500 mt-1">{{ pack.tokens }}</p>
-                  <p class="text-xs text-gray-400 mt-0.5">{{ pack.unitPrice }}</p>
-                </div>
-                <UButton
-                  label="购买"
-                  :color="pack.popular ? 'primary' : 'neutral'"
-                  :variant="pack.popular ? 'solid' : 'outline'"
-                  size="sm"
-                  @click="handlePurchasePack(pack.id)"
-                />
-              </div>
-
-              <!-- Features -->
-              <div class="mt-3 flex flex-wrap gap-2">
-                <span
-                  v-for="feature in pack.features"
-                  :key="feature"
-                  class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[11px] bg-gray-50 text-gray-600"
-                >
-                  <UIcon name="i-lucide-check" class="w-3 h-3 text-green-500" />
-                  {{ feature }}
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </Teleport>
 
     <!-- ============================== -->
     <!-- Modal: Integration Guide       -->

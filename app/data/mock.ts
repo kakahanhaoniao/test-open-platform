@@ -1063,14 +1063,14 @@ export function getAdminEnterprises(): AdminEnterprise[] {
   return adminEnterprises
 }
 
-function parsePrice(priceStr: string): number {
+export function parsePrice(priceStr: string): number {
   // Remove ¥, commas, and trailing /月 or similar suffixes
   const cleaned = priceStr.replace(/[¥,]/g, '').replace(/\/月$/, '')
   const num = Number(cleaned)
   return isNaN(num) ? 0 : num
 }
 
-function parseTokens(tokensStr: string): number {
+export function parseTokens(tokensStr: string): number {
   if (tokensStr.includes('无限')) return -1
   // Handle 亿 (100 million)
   const yiMatch = tokensStr.match(/([\d.]+)亿/)
@@ -1086,7 +1086,7 @@ export function getPlansForCapability(capabilityId: string): { packs: Plan[]; mo
     id: pack.id,
     type: 'pack' as const,
     name: pack.name,
-    description: pack.tokens,
+    description: '',
     billingCycle: 'one-time' as const,
     price: parsePrice(pack.price),
     originalPrice: pack.originalPrice ? parsePrice(pack.originalPrice) : undefined,
@@ -1094,7 +1094,7 @@ export function getPlansForCapability(capabilityId: string): { packs: Plan[]; mo
     features: pack.features,
     popular: pack.popular,
     icon: 'i-lucide-coins',
-    badge: pack.originalPrice || undefined
+    badge: pack.originalPrice ? '限时优惠' : undefined
   }))
   return {
     packs,

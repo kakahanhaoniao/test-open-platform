@@ -1,66 +1,61 @@
-# Task 7 Report: Personal Call Logs Page
+# Task 7 Report: Upgrade packs pages with three-tab plan system
 
-## Summary
+## Status: DONE
 
-Created the personal call logs page at `/console/logs` as specified in Section 4.3 of the dual-track redesign spec.
+## Changes Made
 
-## Files Created
+### New Components
+1. **`app/components/PlanCard.vue`** - Reusable plan card component
+   - Renders any `Plan` type (pack, model-plan, app-plan) with unified layout
+   - Shows icon, name, badge (popular/badge), included tokens/calls, price with billing cycle, original price strikethrough, features list, buy button
+   - Supports gradient backgrounds via `plan.gradient`
+   - Adaptive styling: gradient cards get white text, normal cards get dark text
+   - Formats tokens (wan/yi) and calls appropriately
 
-- **`app/pages/console/logs/index.vue`** -- Main page component (555 lines)
+2. **`app/components/PostPurchaseDialog.vue`** - Post-purchase guidance dialog
+   - **Model-plan**: Shows 3-step integration guide (Create API Key, SDK code sample, API endpoint)
+   - **App-plan**: Shows 3-step integration guide (Configure Webhook, SDK integration, iFrame embed)
+   - **Pack**: Shows balance confirmation + recommended next steps (API Key, docs, Playground)
+   - Uses UModal with close/CTA buttons
 
-## Files Modified
+### Modified Pages
+3. **`app/pages/console/packs/index.vue`** - Console packs page with three tabs
+   - UTabs with 3 tabs: 充能包 | 模型套餐 | 应用套餐
+   - Packs tab: converts `ChargingPack[]` to `Plan[]` for unified PlanCard rendering
+   - Model Plans tab: renders `modelPlans` from mock data
+   - App Plans tab: renders `appPlans` from mock data
+   - Empty state with icon when no plans available
+   - Balance card, usage trend chart, purchase history table retained
+   - Post-purchase dialog on buy click
 
-- **`app/components/console/ConsoleSidebar.vue`** -- Added "调用日志" navigation item with `i-lucide-scroll-text` icon, linking to `/console/logs`, placed between "API Key" and "调用统计" in the "核心功能" group.
+4. **`app/pages/enterprise/packs.vue`** - Enterprise packs page with three tabs
+   - Same three-tab layout as console
+   - Enterprise-specific features: balance card with usage ratio, batch purchase button, member usage breakdown table
+   - 4-column grid layout (wider enterprise layout)
+   - Post-purchase dialog on buy click
 
-## Implementation Details
+5. **`app/components/CapabilitySidebar.vue`** - Updated purchase modal
+   - "购买充能包" button changed to "购买套餐" with subtitle showing all plan types
+   - Opens UModal with capability-specific plans via `getPlansForCapability()`
+   - Dynamic tabs: shows model-plans/app-plans tabs only when plans exist for this capability, always shows packs tab
+   - Default tab auto-selects to first available
+   - Each plan rendered with PlanCard, buy triggers PostPurchaseDialog
+   - Removed `buyPack` emit (replaced by in-modal buy)
 
-### Page Structure
-- `<ConsoleSidebar />` + content area with `ml-60` class, matching existing console page patterns
-- `useHead({ title: '调用日志 - 奇安信AI开放平台' })`
+## Technical Details
+- Uses `UTabs` from `@nuxt/ui` v4 with `variant="pill"`, `color="primary"`, `:content="false"` for manual tab content rendering
+- ChargingPack-to-Plan conversion uses same parsing logic as `getPlansForCapability()` in mock.ts
+- PlanCard handles all three plan types with conditional rendering based on `plan.type`
+- PostPurchaseDialog uses `<pre>` tags with Vue interpolation for dynamic code samples
 
-### Search Bar
-- Full-width search input with `i-lucide-search` icon
-- Placeholder: "搜索关键词、API Key、模型名..."
-- `v-model` bound to `searchQuery` ref
-- Live result count displayed when search is active
+## Build Verification
+- `nuxi typecheck`: No errors in modified files (pre-existing errors in other files are unrelated)
+- `nuxi build`: Successful
 
-### Filter Row (simpler than enterprise -- no member filter)
-- **Time range**: 今天/7天/30天 segmented button group
-- **Model filter**: Custom dropdown dynamically populated from personal log data
-- **Status filter**: Custom dropdown with 全部/200/400/429/500 options
-- Both dropdowns use click-outside-to-close pattern consistent with existing codebase
+## Commit
+- `41e2308` feat: three-tab plan system on packs pages + updated purchase modal
 
-### Call Volume Trend Chart
-- CSS bar chart showing personal call volumes
-- Color-coded by status: green (all success), amber (some errors), red (majority errors)
-- Aggregation toggle: 按小时/按天 with segmented control
-- Legend showing color meanings
-- Empty state when no data
-
-### Log List Table
-- Columns: 时间 | 模型 | API Key | 状态码 | 延迟 | Token | 费用
-- No member column (all data is the current user's)
-- Click-to-expand rows showing:
-  - Request ID
-  - Token breakdown (input/output/total)
-  - Error message (when applicable)
-  - Request preview (syntax-highlighted mock HTTP request)
-  - Response preview (syntax-highlighted mock response, different for success vs error)
-- Status badges: 200=green, 400=amber, 429=orange, 500=red
-- Pagination: 20 per page with page number buttons and prev/next
-- Empty state with icon and guidance text
-
-### Export
-- "导出 CSV" and "导出 JSON" buttons in filter row
-- Mock implementation: `alert()` on click
-
-### Data Flow
-- `personalLogs` computed: filters `callLogs` to `memberName === currentUser.name` (张明)
-- `filteredLogs` computed: applies search + model + status filters to personalLogs
-- `paginatedLogs` computed: slices filteredLogs for current page
-- `currentPage` ref resets to 1 when any filter changes (via `watch`)
-
-### Mock Data
-- Imports `callLogs` and `currentUser` from `~/data/mock`
-- 张明 has 10 log entries in the mock data (cl-001, cl-007, cl-013, cl-019, cl-025, cl-031, cl-037, cl-043, cl-049, and one more)
-- Includes one 500 error (cl-043) for error state demonstration
+## Self-Review Notes
+- The `ChargingPack` to `Plan` conversion in console/packs and enterprise/packs duplicates the logic from `getPlansForCapability()`. This is intentional because packs pages show ALL packs (not filtered by capability), while the sidebar shows capability-specific plans.
+- Empty states shown when modelPlans/appPlans arrays are empty (which they currently are in the global view since these are capability-specific plans)
+- The purchase modal in CapabilitySidebar correctly filters plans by capability ID

@@ -17,3 +17,5 @@
 - Task 2: complete (Plan interface+mock data - Plan/modelPlans/appPlans/getPlansForCapability, fix: ChargingPack→Plan adapter with parsePrice/parseTokens, review approved after fix)
 - Task 3: complete (PageTemplate/TemplateModule interfaces + getDefaultTemplate + defaultTemplates, review approved, note: defaultTemplates only covers chat app type)
 - Task 4: complete (13 module components + ModuleRenderer dispatcher, review approved, minor: unused imports in ModulePricing, dynamic gradient JIT concern noted)
+- Task 5: complete (detail page template rendering - CapabilitySidebar+ModuleRenderer+two-column layout, fix: handleTryNow scroll, remove duplicate related, delete CapabilityDetail, fix ModuleRelated links)
+- Task 6: complete (ECharts replacement - 8 pages converted from CSS to BaseChart, review approved, minor: useChartTheme unused in pages, monitor chart not truly real-time, 4xx drilldown approximation)

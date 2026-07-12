@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { Plan } from '~/data/mock'
-import { chargingPacks, modelPlans, appPlans } from '~/data/mock'
+import { chargingPacks, modelPlans, appPlans, parsePrice, parseTokens } from '~/data/mock'
 
 useHead({ title: '套餐管理 - 奇安信AI开放平台' })
 
@@ -17,29 +17,16 @@ const packPlans: Plan[] = chargingPacks.map(pack => ({
   id: pack.id,
   type: 'pack' as const,
   name: pack.name,
-  description: pack.tokens,
+  description: '',
   billingCycle: 'one-time' as const,
-  price: parsePriceValue(pack.price),
-  originalPrice: pack.originalPrice ? parsePriceValue(pack.originalPrice) : undefined,
-  includedTokens: parseTokensValue(pack.tokens),
+  price: parsePrice(pack.price),
+  originalPrice: pack.originalPrice ? parsePrice(pack.originalPrice) : undefined,
+  includedTokens: parseTokens(pack.tokens),
   features: pack.features,
   popular: pack.popular,
   icon: 'i-lucide-coins',
   badge: pack.originalPrice ? '限时优惠' : undefined
 }))
-
-function parsePriceValue(priceStr: string): number {
-  const cleaned = priceStr.replace(/[¥,]/g, '').replace(/\/月$/, '')
-  const num = Number(cleaned)
-  return isNaN(num) ? 0 : num
-}
-
-function parseTokensValue(tokensStr: string): number {
-  if (tokensStr.includes('无限')) return -1
-  const wanMatch = tokensStr.match(/([\d.]+)万/)
-  if (wanMatch) return Math.round(Number(wanMatch[1]) * 10000)
-  return 0
-}
 
 const purchaseHistory = [
   { time: '2026-07-08 14:30', planName: '专业包', detail: '500万Token', amount: '¥399', status: 'success' as const },

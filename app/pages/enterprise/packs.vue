@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { Plan } from '~/data/mock'
-import { chargingPacks, modelPlans, appPlans, organization, members } from '~/data/mock'
+import { chargingPacks, modelPlans, appPlans, organization, members, parsePrice, parseTokens } from '~/data/mock'
 
 useHead({ title: '企业套餐管理 - 奇安信AI开放平台' })
 
@@ -12,34 +12,30 @@ const tabs = [
   { value: 'app-plans', label: '应用套餐', icon: 'i-lucide-puzzle' }
 ]
 
+// Pack gradient mapping
+const packGradients: Record<string, string> = {
+  'pack-starter': 'from-blue-50 to-indigo-50',
+  'pack-pro': 'from-primary-50 to-violet-50',
+  'pack-enterprise': 'from-amber-50 to-orange-50',
+  'pack-unlimited': 'from-emerald-50 to-teal-50'
+}
+
 // Convert ChargingPack[] to Plan[] for unified rendering
 const packPlans: Plan[] = chargingPacks.map(pack => ({
   id: pack.id,
   type: 'pack' as const,
   name: pack.name,
-  description: pack.tokens,
+  description: '',
   billingCycle: 'one-time' as const,
-  price: parsePriceValue(pack.price),
-  originalPrice: pack.originalPrice ? parsePriceValue(pack.originalPrice) : undefined,
-  includedTokens: parseTokensValue(pack.tokens),
+  price: parsePrice(pack.price),
+  originalPrice: pack.originalPrice ? parsePrice(pack.originalPrice) : undefined,
+  includedTokens: parseTokens(pack.tokens),
   features: pack.features,
   popular: pack.popular,
   icon: 'i-lucide-coins',
-  badge: pack.originalPrice ? '限时优惠' : undefined
+  badge: pack.originalPrice ? '限时优惠' : undefined,
+  gradient: packGradients[pack.id]
 }))
-
-function parsePriceValue(priceStr: string): number {
-  const cleaned = priceStr.replace(/[¥,]/g, '').replace(/\/月$/, '')
-  const num = Number(cleaned)
-  return isNaN(num) ? 0 : num
-}
-
-function parseTokensValue(tokensStr: string): number {
-  if (tokensStr.includes('无限')) return -1
-  const wanMatch = tokensStr.match(/([\d.]+)万/)
-  if (wanMatch) return Math.round(Number(wanMatch[1]) * 10000)
-  return 0
-}
 
 const balanceWan = Math.floor(organization.packBalance / 10000)
 const totalWan = Math.floor(organization.packTotal / 10000)
