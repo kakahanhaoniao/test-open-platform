@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { models, apps } from '~/data/mock'
+import { models, apps, chargingPacks, modelPlans, appPlans } from '~/data/mock'
 
 useHead({
   title: '奇安信AI开放平台 - 安全AI能力 一站式获取',
@@ -8,14 +8,212 @@ useHead({
   ]
 })
 
-// Hot capabilities for preview section (3-4 cards)
+// ─── 1. Hero Canvas Animation ───
+const heroCanvas = ref<HTMLCanvasElement | null>(null)
+let animationFrameId: number | null = null
+
+interface Node {
+  x: number
+  y: number
+  vx: number
+  vy: number
+  radius: number
+}
+
+function initCanvas() {
+  const canvas = heroCanvas.value
+  if (!canvas) return
+  const ctx = canvas.getContext('2d')
+  if (!ctx) return
+
+  const dpr = window.devicePixelRatio || 1
+  let width = canvas.parentElement?.offsetWidth || window.innerWidth
+  let height = canvas.parentElement?.offsetHeight || 600
+
+  canvas.width = width * dpr
+  canvas.height = height * dpr
+  canvas.style.width = `${width}px`
+  canvas.style.height = `${height}px`
+  ctx.scale(dpr, dpr)
+
+  const nodeCount = Math.min(Math.floor((width * height) / 25000), 60)
+  const nodes: Node[] = []
+
+  for (let i = 0; i < nodeCount; i++) {
+    nodes.push({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      vx: (Math.random() - 0.5) * 0.4,
+      vy: (Math.random() - 0.5) * 0.4,
+      radius: Math.random() * 2 + 1.5
+    })
+  }
+
+  const connectionDistance = 150
+
+  function animate() {
+    ctx!.clearRect(0, 0, width, height)
+
+    // Update positions
+    for (const node of nodes) {
+      node.x += node.vx
+      node.y += node.vy
+      if (node.x < 0 || node.x > width) node.vx *= -1
+      if (node.y < 0 || node.y > height) node.vy *= -1
+    }
+
+    // Draw connections
+    for (let i = 0; i < nodes.length; i++) {
+      for (let j = i + 1; j < nodes.length; j++) {
+        const dx = nodes[i]!.x - nodes[j]!.x
+        const dy = nodes[i]!.y - nodes[j]!.y
+        const dist = Math.sqrt(dx * dx + dy * dy)
+        if (dist < connectionDistance) {
+          const alpha = (1 - dist / connectionDistance) * 0.15
+          ctx!.beginPath()
+          ctx!.strokeStyle = `rgba(124, 58, 237, ${alpha})`
+          ctx!.lineWidth = 1
+          ctx!.moveTo(nodes[i]!.x, nodes[i]!.y)
+          ctx!.lineTo(nodes[j]!.x, nodes[j]!.y)
+          ctx!.stroke()
+        }
+      }
+    }
+
+    // Draw nodes
+    for (const node of nodes) {
+      ctx!.beginPath()
+      ctx!.arc(node.x, node.y, node.radius, 0, Math.PI * 2)
+      ctx!.fillStyle = 'rgba(124, 58, 237, 0.35)'
+      ctx!.fill()
+    }
+
+    animationFrameId = requestAnimationFrame(animate)
+  }
+
+  animate()
+
+  // Handle resize
+  const onResize = () => {
+    width = canvas.parentElement?.offsetWidth || window.innerWidth
+    height = canvas.parentElement?.offsetHeight || 600
+    canvas.width = width * dpr
+    canvas.height = height * dpr
+    canvas.style.width = `${width}px`
+    canvas.style.height = `${height}px`
+    ctx.scale(dpr, dpr)
+  }
+  window.addEventListener('resize', onResize)
+
+  // Return cleanup
+  return () => {
+    window.removeEventListener('resize', onResize)
+    if (animationFrameId !== null) cancelAnimationFrame(animationFrameId)
+  }
+}
+
+let cleanupCanvas: (() => void) | null = null
+
+onMounted(() => {
+  cleanupCanvas = initCanvas()
+})
+
+onUnmounted(() => {
+  cleanupCanvas?.()
+})
+
+// ─── 2. Capability Carousel ───
 const hotCapabilities = computed(() => {
   const hotModels = models.filter(m => m.hot).map(m => ({ ...m, _type: 'model' as const }))
   const hotApps = apps.filter(a => a.hot).map(a => ({ ...a, _type: 'app' as const }))
   return [...hotModels, ...hotApps].slice(0, 4)
 })
 
-// Stats
+const carouselIndex = ref(0)
+let carouselTimer: ReturnType<typeof setInterval> | null = null
+const isCarouselPaused = ref(false)
+
+function startCarouselTimer() {
+  stopCarouselTimer()
+  carouselTimer = setInterval(() => {
+    if (!isCarouselPaused.value) {
+      carouselIndex.value = (carouselIndex.value + 1) % hotCapabilities.value.length
+    }
+  }, 4000)
+}
+
+function stopCarouselTimer() {
+  if (carouselTimer) {
+    clearInterval(carouselTimer)
+    carouselTimer = null
+  }
+}
+
+function onCarouselHover() {
+  isCarouselPaused.value = true
+}
+
+function onCarouselLeave() {
+  isCarouselPaused.value = false
+}
+
+onMounted(() => {
+  startCarouselTimer()
+})
+
+onUnmounted(() => {
+  stopCarouselTimer()
+})
+
+// ─── 3. Security Capability Matrix ───
+const securityDomains = [
+  { name: '网络安全', icon: 'i-lucide-globe', type: 'network', count: 3, model: '日志智能分析模型' },
+  { name: '威胁检测', icon: 'i-lucide-shield-alert', type: 'threat', count: 5, model: '威胁检测模型 V3' },
+  { name: '漏洞分析', icon: 'i-lucide-bug', type: 'vulnerability', count: 4, model: '漏洞分析专家' },
+  { name: '合规审计', icon: 'i-lucide-clipboard-check', type: 'compliance', count: 3, model: '合规卫士' },
+  { name: '代码安全', icon: 'i-lucide-code-2', type: 'code', count: 4, model: '代码安全扫描模型' },
+  { name: '应急响应', icon: 'i-lucide-siren', type: 'incident', count: 3, model: '应急响应模型' }
+]
+
+// ─── 4. Enterprise Section ───
+const enterpriseFeatures = [
+  { icon: 'i-lucide-shopping-cart', number: '5000+', title: '企业客户', description: '集中采购AI安全能力，统一结算与管理，简化企业采购流程' },
+  { icon: 'i-lucide-users', number: '50万+', title: '开发者用户', description: '灵活的成员邀请与角色权限管理，支持管理员、开发者、财务等多种角色' },
+  { icon: 'i-lucide-gauge', number: '1亿+', title: 'API调用', description: '实时监控成员API调用量与Token消耗，设置用量上限与告警阈值' },
+  { icon: 'i-lucide-percent', number: '30%', title: '专属折扣', description: '企业客户享受专属批量折扣，充能包单价更低，性价比更高' }
+]
+
+// ─── 5. Pricing Tabs ───
+const pricingTab = ref<'pack' | 'model' | 'app'>('pack')
+
+const featuredPacks = computed(() => chargingPacks.slice(0, 3))
+const featuredModelPlans = computed(() => modelPlans.slice(0, 2))
+const featuredAppPlans = computed(() => appPlans.slice(0, 2))
+
+const pricingTabs = [
+  { key: 'pack' as const, label: '充能包' },
+  { key: 'model' as const, label: '模型套餐' },
+  { key: 'app' as const, label: '应用套餐' }
+]
+
+// ─── 6. Quick Start ───
+const quickSteps = [
+  { step: 1, title: '注册账号', description: '免费注册奇安信AI开放平台账号，即刻获得体验包', icon: 'i-lucide-user-plus' },
+  { step: 2, title: '获取Key', description: '在控制台创建API Key，一键获取调用凭证', icon: 'i-lucide-key' },
+  { step: 3, title: '调用API', description: '按照文档指引，快速集成安全AI能力', icon: 'i-lucide-terminal' }
+]
+
+const codeSnippet = `curl https://api.qianxin.ai/v1/chat/completions \\
+  -H "Authorization: Bearer YOUR_API_KEY" \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "model": "qax-security-llm",
+    "messages": [
+      {"role": "user", "content": "分析这段日志中的异常行为"}
+    ]
+  }'`
+
+// ─── Stats ───
 const stats = [
   { value: '18+', label: 'AI安全能力', icon: 'i-lucide-cpu' },
   { value: '1亿+', label: '累计调用', icon: 'i-lucide-activity' },
@@ -23,31 +221,7 @@ const stats = [
   { value: '100万+', label: '安全事件处理', icon: 'i-lucide-shield-check' }
 ]
 
-// Enterprise features
-const enterpriseFeatures = [
-  {
-    icon: 'i-lucide-shopping-cart',
-    title: '统一采购',
-    description: '集中采购AI安全能力，统一结算与管理，简化企业采购流程'
-  },
-  {
-    icon: 'i-lucide-users',
-    title: '成员管理',
-    description: '灵活的成员邀请与角色权限管理，支持管理员、开发者、财务等多种角色'
-  },
-  {
-    icon: 'i-lucide-gauge',
-    title: '用量管控',
-    description: '实时监控成员API调用量与Token消耗，设置用量上限与告警阈值'
-  },
-  {
-    icon: 'i-lucide-percent',
-    title: '专属折扣',
-    description: '企业客户享受专属批量折扣，充能包单价更低，性价比更高'
-  }
-]
-
-// Customer testimonials
+// ─── Testimonials ───
 const testimonials = [
   {
     quote: '奇安信AI开放平台的安全大模型帮助我们实现了威胁研判自动化，安全运营效率提升了300%，MTTR从4小时缩短至30分钟。',
@@ -71,54 +245,24 @@ const testimonials = [
     icon: 'i-lucide-building-2'
   }
 ]
-
-// Pricing tiers
-const pricingTiers = [
-  {
-    name: '个人版',
-    price: '¥99',
-    tokens: '100万Token',
-    unitPrice: '¥0.099/千Token',
-    description: '适合个人开发者和小团队体验AI安全能力',
-    features: ['基础模型调用', '标准响应速度', '社区技术支持', '每日1000次调用上限'],
-    popular: false
-  },
-  {
-    name: '团队版',
-    price: '¥399',
-    tokens: '500万Token',
-    unitPrice: '¥0.080/千Token',
-    originalPrice: '¥495',
-    description: '适合中小团队日常安全运营使用',
-    features: ['全模型调用', '优先响应速度', '工单技术支持', '每日10000次调用上限', '多API Key管理'],
-    popular: true
-  },
-  {
-    name: '企业版',
-    price: '¥1,499',
-    tokens: '2000万Token',
-    unitPrice: '¥0.075/千Token',
-    originalPrice: '¥1,980',
-    description: '适合大型企业安全团队深度使用',
-    features: ['全模型调用', '最高响应速度', '1对1专属技术支持', '无限调用次数', '专属模型实例', '99.9% SLA保障'],
-    popular: false
-  }
-]
 </script>
 
 <template>
   <div>
-    <!-- Hero Section -->
+    <!-- Hero Section with Canvas Animation -->
     <section class="relative overflow-hidden bg-gradient-to-br from-white via-primary-50/30 to-accent-50/20">
+      <!-- Canvas particle animation -->
+      <canvas ref="heroCanvas" class="absolute inset-0 pointer-events-none z-0" />
+
       <!-- Grid / Circuit pattern background -->
-      <div class="absolute inset-0 hero-grid pointer-events-none" />
+      <div class="absolute inset-0 hero-grid pointer-events-none z-0" />
 
       <!-- Decorative glows -->
       <div class="absolute top-20 right-20 w-80 h-80 bg-primary-200/20 rounded-full blur-3xl" />
       <div class="absolute bottom-10 left-10 w-96 h-96 bg-accent-100/15 rounded-full blur-3xl" />
       <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary-100/10 rounded-full blur-3xl" />
 
-      <div class="relative max-w-7xl mx-auto px-6 pt-28 pb-24">
+      <div class="relative z-10 max-w-7xl mx-auto px-6 pt-28 pb-24">
         <div class="max-w-3xl mx-auto text-center">
           <!-- Badge -->
           <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-50/80 border border-primary-200/60 mb-8">
@@ -198,7 +342,7 @@ const pricingTiers = [
       <div class="border-b border-gray-100" />
     </div>
 
-    <!-- Capability Preview -->
+    <!-- Capability Carousel -->
     <section class="py-20 md:py-24">
       <div class="max-w-7xl mx-auto px-6">
         <!-- Section Header -->
@@ -215,14 +359,104 @@ const pricingTiers = [
           </p>
         </div>
 
-        <!-- Capability Cards — 2x2 grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-4xl mx-auto">
-          <CapabilityCard
-            v-for="cap in hotCapabilities"
-            :key="cap.id"
-            :capability="cap"
-            :capability-type="cap._type"
-          />
+        <!-- Carousel Container -->
+        <div
+          class="relative max-w-4xl mx-auto"
+          @mouseenter="onCarouselHover"
+          @mouseleave="onCarouselLeave"
+        >
+          <!-- Carousel Track -->
+          <div class="overflow-hidden rounded-2xl">
+            <div
+              class="flex transition-transform duration-500 ease-in-out"
+              :style="{ transform: `translateX(-${carouselIndex * 100}%)` }"
+            >
+              <div
+                v-for="cap in hotCapabilities"
+                :key="cap.id"
+                class="w-full shrink-0 px-2"
+              >
+                <div class="bg-white rounded-2xl border border-gray-100 p-6 md:p-8 shadow-sm hover:shadow-lg hover:shadow-primary-500/10 transition-shadow duration-300">
+                  <div class="flex flex-col md:flex-row items-start gap-6">
+                    <!-- Icon -->
+                    <div
+                      class="w-14 h-14 rounded-xl flex items-center justify-center shrink-0"
+                      :class="cap._type === 'model' ? 'bg-primary-50' : 'bg-accent-50'"
+                    >
+                      <UIcon
+                        :name="cap.icon"
+                        class="w-7 h-7"
+                        :class="cap._type === 'model' ? 'text-primary-600' : 'text-accent-600'"
+                      />
+                    </div>
+
+                    <!-- Info -->
+                    <div class="flex-1 min-w-0">
+                      <div class="flex items-center gap-2 mb-1">
+                        <h3 class="text-lg font-bold text-gray-900">{{ cap.name }}</h3>
+                        <span
+                          class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold"
+                          :class="cap._type === 'model' ? 'bg-primary-100 text-primary-700' : 'bg-accent-100 text-accent-700'"
+                        >
+                          {{ cap._type === 'model' ? '模型' : '应用' }}
+                        </span>
+                        <span v-if="cap.hot" class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold bg-red-500 text-white">HOT</span>
+                      </div>
+
+                      <!-- Core params -->
+                      <div class="flex items-center gap-4 mb-3 text-sm text-gray-500">
+                        <span v-if="cap._type === 'model'" class="flex items-center gap-1">
+                          <UIcon name="i-lucide-cpu" class="w-3.5 h-3.5" />
+                          {{ (cap as any).parameters }} 参数
+                        </span>
+                        <span class="flex items-center gap-1">
+                          <UIcon name="i-lucide-star" class="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
+                          {{ cap.rating }}
+                        </span>
+                        <span class="flex items-center gap-1">
+                          <UIcon name="i-lucide-activity" class="w-3.5 h-3.5" />
+                          {{ cap._type === 'model' ? (cap as any).callCount : (cap as any).useCount }}
+                        </span>
+                      </div>
+
+                      <p class="text-sm text-gray-500 leading-relaxed mb-4">{{ cap.description }}</p>
+
+                      <!-- Tags -->
+                      <div class="flex flex-wrap gap-1.5 mb-4">
+                        <span
+                          v-for="tag in cap.tags.slice(0, 3)"
+                          :key="tag"
+                          class="px-2 py-0.5 rounded-md text-[10px] font-medium bg-gray-50 text-gray-500"
+                        >
+                          {{ tag }}
+                        </span>
+                      </div>
+
+                      <!-- CTA -->
+                      <UButton
+                        label="快速体验"
+                        icon="i-lucide-play"
+                        size="sm"
+                        color="primary"
+                        :to="`/marketplace/${cap.id}`"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Carousel Indicators -->
+          <div class="flex items-center justify-center gap-2 mt-6">
+            <button
+              v-for="(_, i) in hotCapabilities"
+              :key="i"
+              class="w-2 h-2 rounded-full transition-all duration-300"
+              :class="i === carouselIndex ? 'w-6 bg-primary-600' : 'bg-gray-300 hover:bg-gray-400'"
+              @click="carouselIndex = i"
+            />
+          </div>
         </div>
 
         <!-- View All Link -->
@@ -239,48 +473,95 @@ const pricingTiers = [
       </div>
     </section>
 
-    <!-- Enterprise Section — Dark premium treatment -->
-    <section id="enterprise" class="relative py-20 md:py-28 bg-gray-900 overflow-hidden">
-      <!-- Subtle grid pattern on dark bg -->
-      <div class="absolute inset-0 enterprise-grid pointer-events-none" />
+    <!-- Security Capability Matrix -->
+    <section class="py-20 md:py-24 bg-gray-50/50">
+      <div class="max-w-7xl mx-auto px-6">
+        <!-- Section Header -->
+        <div class="text-center mb-14">
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary-50 border border-primary-100 mb-4">
+            <UIcon name="i-lucide-layout-grid" class="w-3.5 h-3.5 text-primary-600" />
+            <span class="text-xs font-semibold text-primary-700">安全能力矩阵</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            全域<span class="gradient-text">安全能力</span>覆盖
+          </h2>
+          <p class="text-gray-500 max-w-2xl mx-auto text-lg">
+            六大安全领域，18+专业AI能力，构建全方位智能安全防护体系
+          </p>
+        </div>
 
-      <!-- Decorative glows -->
-      <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-primary-600/10 rounded-full blur-3xl" />
-      <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-primary-500/5 rounded-full blur-3xl" />
+        <!-- 2x3 Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
+          <NuxtLink
+            v-for="domain in securityDomains"
+            :key="domain.name"
+            :to="`/marketplace?type=${domain.type}`"
+            class="group bg-white rounded-2xl border border-gray-100 p-6 hover:-translate-y-1 hover:shadow-[0_12px_40px_-8px_rgba(109,40,217,0.18)] transition-all duration-300"
+          >
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-xl bg-primary-50 flex items-center justify-center shrink-0 group-hover:bg-primary-100 transition-colors">
+                <UIcon :name="domain.icon" class="w-6 h-6 text-primary-600" />
+              </div>
+              <div class="min-w-0 flex-1">
+                <h3 class="text-base font-bold text-gray-900 group-hover:text-primary-700 transition-colors mb-1">{{ domain.name }}</h3>
+                <div class="flex items-center gap-3 mb-2">
+                  <span class="text-sm font-semibold text-primary-600">{{ domain.count }} 项能力</span>
+                </div>
+                <p class="text-xs text-gray-500 leading-relaxed">代表模型：{{ domain.model }}</p>
+              </div>
+            </div>
+            <!-- Arrow indicator -->
+            <div class="mt-4 flex items-center gap-1 text-xs text-primary-600 opacity-0 group-hover:opacity-100 transition-opacity">
+              <span>查看能力</span>
+              <UIcon name="i-lucide-arrow-right" class="w-3.5 h-3.5" />
+            </div>
+          </NuxtLink>
+        </div>
+      </div>
+    </section>
 
-      <div class="relative max-w-7xl mx-auto px-6">
+    <!-- Enterprise Section — White cards with purple gradient border -->
+    <section id="enterprise" class="py-20 md:py-28 bg-white">
+      <div class="max-w-7xl mx-auto px-6">
         <!-- Section Header -->
         <div class="text-center mb-16">
-          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary-500/10 border border-primary-500/20 mb-5">
-            <UIcon name="i-lucide-building-2" class="w-3.5 h-3.5 text-primary-400" />
-            <span class="text-xs font-semibold text-primary-300">企业专属</span>
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary-50 border border-primary-100 mb-5">
+            <UIcon name="i-lucide-building-2" class="w-3.5 h-3.5 text-primary-600" />
+            <span class="text-xs font-semibold text-primary-700">企业专属</span>
           </div>
-          <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
-            企业专属<span class="text-primary-400">方案</span>
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            企业专属<span class="gradient-text">方案</span>
           </h2>
-          <p class="text-gray-400 max-w-2xl mx-auto text-lg">
+          <p class="text-gray-500 max-w-2xl mx-auto text-lg">
             为企业客户提供统一采购、成员管理、用量管控与专属折扣，让团队协作更高效
           </p>
 
           <!-- Trust indicator -->
-          <div class="mt-6 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10">
-            <UIcon name="i-lucide-badge-check" class="w-4 h-4 text-primary-400" />
-            <span class="text-sm font-medium text-gray-300">已服务5000+企业客户</span>
+          <div class="mt-6 inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-50/60 border border-primary-100">
+            <UIcon name="i-lucide-badge-check" class="w-4 h-4 text-primary-600" />
+            <span class="text-sm font-medium text-primary-700">已服务5000+企业客户</span>
           </div>
         </div>
 
-        <!-- Feature Cards — 2x2 on larger, stacked on mobile -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-4xl mx-auto">
+        <!-- Feature Cards — 2x2 with gradient border -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-4xl mx-auto">
           <div
             v-for="feature in enterpriseFeatures"
             :key="feature.title"
-            class="bg-white/[0.04] backdrop-blur-sm rounded-2xl border border-white/[0.08] p-8 hover:bg-white/[0.07] transition-colors duration-300"
+            class="relative bg-white rounded-2xl p-8 card-hover"
           >
-            <div class="w-12 h-12 rounded-xl bg-primary-500/15 flex items-center justify-center mb-5">
-              <UIcon :name="feature.icon" class="w-6 h-6 text-primary-400" />
+            <!-- Gradient border effect -->
+            <div class="absolute inset-0 rounded-2xl border-2 border-transparent bg-gradient-to-r from-primary-500 to-accent-400 opacity-20 hover:opacity-40 transition-opacity -z-10" style="margin: -2px; border-radius: 1rem;" />
+            <div class="absolute inset-[2px] bg-white rounded-[14px]" />
+
+            <div class="relative">
+              <div class="w-12 h-12 rounded-xl bg-primary-50 flex items-center justify-center mb-5">
+                <UIcon :name="feature.icon" class="w-6 h-6 text-primary-600" />
+              </div>
+              <p class="text-3xl font-extrabold text-primary-600 mb-1">{{ feature.number }}</p>
+              <h3 class="text-lg font-bold text-gray-900 mb-2">{{ feature.title }}</h3>
+              <p class="text-sm text-gray-500 leading-relaxed">{{ feature.description }}</p>
             </div>
-            <h3 class="text-lg font-bold text-white mb-2">{{ feature.title }}</h3>
-            <p class="text-sm text-gray-400 leading-relaxed">{{ feature.description }}</p>
           </div>
         </div>
 
@@ -299,7 +580,7 @@ const pricingTiers = [
     </section>
 
     <!-- Trust / Testimonials Section -->
-    <section class="py-20 md:py-24 bg-white">
+    <section class="py-20 md:py-24 bg-gray-50/50">
       <div class="max-w-7xl mx-auto px-6">
         <!-- Section Header -->
         <div class="text-center mb-14">
@@ -355,11 +636,11 @@ const pricingTiers = [
       <div class="border-b border-gray-100" />
     </div>
 
-    <!-- Pricing Preview -->
-    <section class="py-20 md:py-24 bg-gray-50/50">
+    <!-- Pricing Preview with Tabs -->
+    <section class="py-20 md:py-24 bg-white">
       <div class="max-w-7xl mx-auto px-6">
         <!-- Section Header -->
-        <div class="text-center mb-14">
+        <div class="text-center mb-10">
           <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary-50 border border-primary-100 mb-4">
             <UIcon name="i-lucide-tag" class="w-3.5 h-3.5 text-primary-600" />
             <span class="text-xs font-semibold text-primary-700">灵活定价</span>
@@ -372,40 +653,50 @@ const pricingTiers = [
           </p>
         </div>
 
-        <!-- Pricing Cards -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <!-- Tab Switcher -->
+        <div class="flex items-center justify-center gap-1 mb-10">
+          <button
+            v-for="tab in pricingTabs"
+            :key="tab.key"
+            class="px-5 py-2.5 rounded-lg text-sm font-semibold transition-all duration-200"
+            :class="pricingTab === tab.key
+              ? 'bg-primary-600 text-white shadow-md shadow-primary-500/20'
+              : 'bg-gray-100 text-gray-600 hover:bg-gray-200'"
+            @click="pricingTab = tab.key"
+          >
+            {{ tab.label }}
+          </button>
+        </div>
+
+        <!-- Tab Content: Charging Packs -->
+        <div v-if="pricingTab === 'pack'" class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
           <div
-            v-for="tier in pricingTiers"
-            :key="tier.name"
+            v-for="pack in featuredPacks"
+            :key="pack.id"
             class="relative bg-white rounded-2xl border p-7 card-hover shadow-sm"
-            :class="tier.popular ? 'border-primary-500 shadow-lg shadow-primary-500/10' : 'border-gray-100'"
+            :class="pack.popular ? 'border-primary-500 shadow-lg shadow-primary-500/10' : 'border-gray-100'"
           >
             <!-- Popular Badge -->
-            <div v-if="tier.popular" class="absolute -top-3 left-1/2 -translate-x-1/2">
+            <div v-if="pack.popular" class="absolute -top-3 left-1/2 -translate-x-1/2">
               <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-primary-600 text-white">
                 最受欢迎
               </span>
             </div>
 
-            <!-- Tier Name & Description -->
-            <h3 class="text-lg font-bold text-gray-900 mb-1">{{ tier.name }}</h3>
-            <p class="text-sm text-gray-500 mb-5">{{ tier.description }}</p>
+            <h3 class="text-lg font-bold text-gray-900 mb-1">{{ pack.name }}</h3>
+            <p class="text-sm text-gray-500 mb-5">{{ pack.tokens }}</p>
 
-            <!-- Price -->
             <div class="mb-2">
-              <span class="text-4xl font-bold text-gray-900">{{ tier.price }}</span>
-              <span v-if="tier.originalPrice" class="text-sm text-gray-400 line-through ml-2">{{ tier.originalPrice }}</span>
+              <span class="text-4xl font-bold text-gray-900">{{ pack.price }}</span>
+              <span v-if="pack.originalPrice" class="text-sm text-gray-400 line-through ml-2">{{ pack.originalPrice }}</span>
             </div>
-            <p class="text-sm text-gray-500 mb-1">{{ tier.tokens }}</p>
-            <p class="text-xs text-primary-600 font-medium mb-6">{{ tier.unitPrice }}</p>
+            <p class="text-xs text-primary-600 font-medium mb-6">{{ pack.unitPrice }}</p>
 
-            <!-- Divider -->
             <div class="border-t border-gray-100 mb-6" />
 
-            <!-- Features -->
             <ul class="space-y-3 mb-8">
               <li
-                v-for="feature in tier.features"
+                v-for="feature in pack.features"
                 :key="feature"
                 class="flex items-center gap-2.5 text-sm text-gray-600"
               >
@@ -414,11 +705,117 @@ const pricingTiers = [
               </li>
             </ul>
 
-            <!-- CTA Button — goes to marketplace for discovery -->
             <UButton
-              :label="tier.popular ? '立即购买' : '选择方案'"
-              :color="tier.popular ? 'primary' : 'neutral'"
-              :variant="tier.popular ? 'solid' : 'outline'"
+              :label="pack.popular ? '立即购买' : '选择方案'"
+              :color="pack.popular ? 'primary' : 'neutral'"
+              :variant="pack.popular ? 'solid' : 'outline'"
+              block
+              size="lg"
+              to="/console/packs"
+            />
+          </div>
+        </div>
+
+        <!-- Tab Content: Model Plans -->
+        <div v-if="pricingTab === 'model'" class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          <div
+            v-for="plan in featuredModelPlans"
+            :key="plan.id"
+            class="relative bg-white rounded-2xl border p-7 card-hover shadow-sm"
+            :class="plan.popular ? 'border-primary-500 shadow-lg shadow-primary-500/10' : 'border-gray-100'"
+          >
+            <div v-if="plan.popular" class="absolute -top-3 left-1/2 -translate-x-1/2">
+              <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-primary-600 text-white">
+                最受欢迎
+              </span>
+            </div>
+
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 rounded-xl bg-primary-50 flex items-center justify-center">
+                <UIcon :name="plan.icon" class="w-5 h-5 text-primary-600" />
+              </div>
+              <div>
+                <h3 class="text-base font-bold text-gray-900">{{ plan.name }}</h3>
+                <p class="text-xs text-gray-500">{{ plan.description }}</p>
+              </div>
+            </div>
+
+            <div class="mb-2">
+              <span class="text-3xl font-bold text-gray-900">¥{{ plan.price }}</span>
+              <span class="text-sm text-gray-500">/{{ plan.billingCycle === 'monthly' ? '月' : '年' }}</span>
+              <span v-if="plan.originalPrice" class="text-sm text-gray-400 line-through ml-2">¥{{ plan.originalPrice }}</span>
+            </div>
+
+            <div class="border-t border-gray-100 my-5" />
+
+            <ul class="space-y-2.5 mb-6">
+              <li
+                v-for="feature in plan.features"
+                :key="feature"
+                class="flex items-center gap-2.5 text-sm text-gray-600"
+              >
+                <UIcon name="i-lucide-check" class="w-4 h-4 text-primary-500 shrink-0" />
+                {{ feature }}
+              </li>
+            </ul>
+
+            <UButton
+              :label="plan.popular ? '立即购买' : '选择方案'"
+              :color="plan.popular ? 'primary' : 'neutral'"
+              :variant="plan.popular ? 'solid' : 'outline'"
+              block
+              size="lg"
+              to="/console/packs"
+            />
+          </div>
+        </div>
+
+        <!-- Tab Content: App Plans -->
+        <div v-if="pricingTab === 'app'" class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          <div
+            v-for="plan in featuredAppPlans"
+            :key="plan.id"
+            class="relative bg-white rounded-2xl border p-7 card-hover shadow-sm"
+            :class="plan.popular ? 'border-primary-500 shadow-lg shadow-primary-500/10' : 'border-gray-100'"
+          >
+            <div v-if="plan.popular" class="absolute -top-3 left-1/2 -translate-x-1/2">
+              <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-primary-600 text-white">
+                最受欢迎
+              </span>
+            </div>
+
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 rounded-xl bg-accent-50 flex items-center justify-center">
+                <UIcon :name="plan.icon" class="w-5 h-5 text-accent-600" />
+              </div>
+              <div>
+                <h3 class="text-base font-bold text-gray-900">{{ plan.name }}</h3>
+                <p class="text-xs text-gray-500">{{ plan.description }}</p>
+              </div>
+            </div>
+
+            <div class="mb-2">
+              <span class="text-3xl font-bold text-gray-900">¥{{ plan.price }}</span>
+              <span class="text-sm text-gray-500">/{{ plan.billingCycle === 'monthly' ? '月' : '年' }}</span>
+            </div>
+
+            <div class="border-t border-gray-100 my-5" />
+
+            <ul class="space-y-2.5 mb-6">
+              <li
+                v-for="feature in plan.features"
+                :key="feature"
+                class="flex items-center gap-2.5 text-sm text-gray-600"
+              >
+                <UIcon name="i-lucide-check" class="w-4 h-4 text-primary-500 shrink-0" />
+                {{ feature }}
+              </li>
+            </ul>
+
+            <UButton
+              :label="plan.popular ? '立即购买' : '选择方案'"
+              :color="plan.popular ? 'primary' : 'neutral'"
+              :variant="plan.popular ? 'solid' : 'outline'"
               block
               size="lg"
               to="/console/packs"
@@ -436,6 +833,79 @@ const pricingTiers = [
             trailing
             to="/portal/pricing"
           />
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Start Section -->
+    <section class="py-20 md:py-24 bg-gray-50/50">
+      <div class="max-w-7xl mx-auto px-6">
+        <!-- Section Header -->
+        <div class="text-center mb-14">
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary-50 border border-primary-100 mb-4">
+            <UIcon name="i-lucide-rocket" class="w-3.5 h-3.5 text-primary-600" />
+            <span class="text-xs font-semibold text-primary-700">快速接入</span>
+          </div>
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <span class="gradient-text">3步</span>开启安全AI之旅
+          </h2>
+          <p class="text-gray-500 max-w-2xl mx-auto text-lg">
+            简单三步，即刻接入专业安全AI能力
+          </p>
+        </div>
+
+        <div class="max-w-5xl mx-auto">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+            <!-- Steps -->
+            <div class="space-y-6">
+              <div
+                v-for="step in quickSteps"
+                :key="step.step"
+                class="flex items-start gap-4 bg-white rounded-xl border border-gray-100 p-5 card-hover"
+              >
+                <!-- Step Number -->
+                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-primary-600 to-primary-400 flex items-center justify-center shrink-0">
+                  <span class="text-sm font-bold text-white">{{ step.step }}</span>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <div class="flex items-center gap-2 mb-1">
+                    <UIcon :name="step.icon" class="w-4 h-4 text-primary-600" />
+                    <h3 class="text-sm font-bold text-gray-900">{{ step.title }}</h3>
+                  </div>
+                  <p class="text-xs text-gray-500 leading-relaxed">{{ step.description }}</p>
+                </div>
+              </div>
+
+              <!-- CTA -->
+              <div class="pt-2">
+                <UButton
+                  label="立即开始"
+                  icon="i-lucide-arrow-right"
+                  color="primary"
+                  size="lg"
+                  trailing
+                  to="/console/keys/create"
+                />
+              </div>
+            </div>
+
+            <!-- Code Snippet Preview -->
+            <div class="bg-gray-900 rounded-2xl overflow-hidden shadow-xl">
+              <!-- Code header -->
+              <div class="flex items-center gap-2 px-4 py-3 bg-gray-800/50 border-b border-gray-700/50">
+                <div class="flex items-center gap-1.5">
+                  <div class="w-3 h-3 rounded-full bg-red-500/80" />
+                  <div class="w-3 h-3 rounded-full bg-yellow-500/80" />
+                  <div class="w-3 h-3 rounded-full bg-green-500/80" />
+                </div>
+                <span class="text-xs text-gray-400 ml-2">Terminal</span>
+              </div>
+              <!-- Code content -->
+              <div class="p-5 overflow-x-auto">
+                <pre class="text-sm text-gray-300 leading-relaxed font-mono"><code>{{ codeSnippet }}</code></pre>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -552,16 +1022,6 @@ const pricingTiers = [
   background-size: 60px 60px;
   mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 30%, transparent 100%);
   -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 30%, transparent 100%);
-}
-
-/* Enterprise section grid pattern */
-.enterprise-grid {
-  background-image:
-    linear-gradient(rgba(124, 58, 237, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(124, 58, 237, 0.06) 1px, transparent 1px);
-  background-size: 80px 80px;
-  mask-image: radial-gradient(ellipse 60% 50% at 50% 50%, black 20%, transparent 100%);
-  -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 50%, black 20%, transparent 100%);
 }
 
 /* Stats fade-in animation */
