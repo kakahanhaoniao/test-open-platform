@@ -4,6 +4,7 @@ import { useChartTheme } from '~/composables/useChartTheme'
 useHead({ title: '调用统计 - 奇安信AI开放平台' })
 
 const theme = useChartTheme()
+const router = useRouter()
 
 const dateRange = ref('7d')
 const dateRanges = [
@@ -24,20 +25,20 @@ const dailyData = [
 ]
 
 const modelBreakdown = [
-  { name: '奇安信安全大模型', calls: 12840, tokens: 5240000, cost: '¥478.32', percentage: 45 },
-  { name: '威胁检测模型 V3', calls: 8650, tokens: 2890000, cost: '¥216.75', percentage: 30 },
-  { name: '代码安全扫描模型', calls: 5200, tokens: 1780000, cost: '¥142.40', percentage: 18 },
-  { name: '漏洞分析专家', calls: 2400, tokens: 960000, cost: '¥57.60', percentage: 8 },
-  { name: '合规卫士', calls: 1200, tokens: 480000, cost: '¥28.80', percentage: 4 },
-  { name: '日志智能分析模型', calls: 800, tokens: 320000, cost: '¥12.80', percentage: 3 }
+  { name: '奇安信安全大模型', modelId: 'qax-security-llm', calls: 12840, tokens: 5240000, cost: '¥478.32', percentage: 45 },
+  { name: '威胁检测模型 V3', modelId: 'threat-detect-v3', calls: 8650, tokens: 2890000, cost: '¥216.75', percentage: 30 },
+  { name: '代码安全扫描模型', modelId: 'code-security-scan', calls: 5200, tokens: 1780000, cost: '¥142.40', percentage: 18 },
+  { name: '漏洞分析专家', modelId: 'vuln-analyzer-pro', calls: 2400, tokens: 960000, cost: '¥57.60', percentage: 8 },
+  { name: '合规卫士', modelId: 'compliance-guard', calls: 1200, tokens: 480000, cost: '¥28.80', percentage: 4 },
+  { name: '日志智能分析模型', modelId: 'log-analyzer', calls: 800, tokens: 320000, cost: '¥12.80', percentage: 3 }
 ]
 
 const errorLog = [
-  { id: 1, time: '07/11 14:23:05', model: '合规卫士', endpoint: '/v1/compliance/check', errorCode: 500, message: 'Internal Server Error', requestId: 'req-8f3e2d1c' },
-  { id: 2, time: '07/11 13:45:12', model: '奇安信安全大模型', endpoint: '/v1/chat/completions', errorCode: 429, message: 'Rate limit exceeded', requestId: 'req-4b5a6f7e' },
-  { id: 3, time: '07/11 11:30:08', model: '威胁检测模型 V3', endpoint: '/v1/threat/detect', errorCode: 400, message: 'Invalid request body', requestId: 'req-c9b8a7f6' },
-  { id: 4, time: '07/10 22:15:33', model: '代码安全扫描模型', endpoint: '/v1/code/scan', errorCode: 401, message: 'Invalid API key', requestId: 'req-e5d4c3b2' },
-  { id: 5, time: '07/10 19:08:21', model: '漏洞分析专家', endpoint: '/v1/vuln/analyze', errorCode: 503, message: 'Service temporarily unavailable', requestId: 'req-a3f2e1d0' }
+  { id: 1, time: '07/11 14:23:05', model: '合规卫士', modelId: 'compliance-guard', endpoint: '/v1/compliance/check', errorCode: 500, message: 'Internal Server Error', requestId: 'req-8f3e2d1c' },
+  { id: 2, time: '07/11 13:45:12', model: '奇安信安全大模型', modelId: 'qax-security-llm', endpoint: '/v1/chat/completions', errorCode: 429, message: 'Rate limit exceeded', requestId: 'req-4b5a6f7e' },
+  { id: 3, time: '07/11 11:30:08', model: '威胁检测模型 V3', modelId: 'threat-detect-v3', endpoint: '/v1/threat/detect', errorCode: 400, message: 'Invalid request body', requestId: 'req-c9b8a7f6' },
+  { id: 4, time: '07/10 22:15:33', model: '代码安全扫描模型', modelId: 'code-security-scan', endpoint: '/v1/code/scan', errorCode: 401, message: 'Invalid API key', requestId: 'req-e5d4c3b2' },
+  { id: 5, time: '07/10 19:08:21', model: '漏洞分析专家', modelId: 'vuln-analyzer-pro', endpoint: '/v1/vuln/analyze', errorCode: 503, message: 'Service temporarily unavailable', requestId: 'req-a3f2e1d0' }
 ]
 
 const totalCalls = computed(() => dailyData.reduce((sum, d) => sum + d.calls, 0))
@@ -231,6 +232,19 @@ const latencyChartOption = computed(() => ({
     }
   ]
 }))
+
+// Drilldown handlers - chart clicks navigate to logs
+function onCallTrendDrilldown(data: { chartType: string; field: string; value: any }) {
+  if (data.field) {
+    router.push({ path: '/console/logs', query: { model: data.field, from: 'stats' } })
+  }
+}
+
+function onTokenDistDrilldown(data: { chartType: string; field: string; value: any }) {
+  if (data.value) {
+    router.push({ path: '/console/logs', query: { model: data.value, from: 'stats' } })
+  }
+}
 </script>
 
 <template>
@@ -314,7 +328,7 @@ const latencyChartOption = computed(() => ({
             <p class="text-xs text-gray-400 mt-0.5">过去7天的API调用统计</p>
           </div>
         </div>
-        <ChartsBaseChart :option="callTrendChartOption" height="280px" />
+        <ChartsBaseChart :option="callTrendChartOption" height="280px" @drilldown="onCallTrendDrilldown" />
       </div>
 
       <!-- Two-column: Token Distribution + Latency -->
@@ -327,7 +341,7 @@ const latencyChartOption = computed(() => ({
               <p class="text-xs text-gray-400 mt-0.5">各模型Token消耗占比</p>
             </div>
           </div>
-          <ChartsBaseChart :option="tokenDistChartOption" height="280px" />
+          <ChartsBaseChart :option="tokenDistChartOption" height="280px" @drilldown="onTokenDistDrilldown" />
         </div>
 
         <!-- Latency Line Chart -->
@@ -366,7 +380,9 @@ const latencyChartOption = computed(() => ({
               :key="idx"
               class="border-b border-gray-50 last:border-0 hover:bg-gray-50/50 transition-colors"
             >
-              <td class="py-3 text-sm font-medium text-gray-900">{{ item.name }}</td>
+              <td class="py-3 text-sm font-medium">
+                <NuxtLink :to="`/marketplace/${item.modelId}`" class="text-primary-600 hover:text-primary-700">{{ item.name }}</NuxtLink>
+              </td>
               <td class="py-3 text-sm font-mono text-gray-600">{{ item.calls.toLocaleString() }}</td>
               <td class="py-3 text-sm font-mono text-gray-600">{{ item.tokens.toLocaleString() }}</td>
               <td class="py-3 text-sm font-mono text-gray-900 font-medium">{{ item.cost }}</td>
@@ -413,7 +429,9 @@ const latencyChartOption = computed(() => ({
               class="border-b border-gray-50 last:border-0 hover:bg-gray-50/50 transition-colors"
             >
               <td class="py-3 text-xs font-mono text-gray-500">{{ err.time }}</td>
-              <td class="py-3 text-sm text-gray-900">{{ err.model }}</td>
+              <td class="py-3 text-sm">
+                <NuxtLink :to="`/marketplace/${err.modelId}`" class="text-primary-600 hover:text-primary-700">{{ err.model }}</NuxtLink>
+              </td>
               <td class="py-3 text-xs font-mono text-gray-500">{{ err.endpoint }}</td>
               <td class="py-3">
                 <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-mono font-medium bg-red-50 text-red-600">

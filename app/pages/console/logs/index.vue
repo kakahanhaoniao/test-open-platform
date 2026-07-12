@@ -5,6 +5,7 @@ import { useChartTheme } from '~/composables/useChartTheme'
 useHead({ title: '调用日志 - 奇安信AI开放平台' })
 
 const theme = useChartTheme()
+const route = useRoute()
 
 // --- State ---
 const searchQuery = ref('')
@@ -15,6 +16,18 @@ const aggregation = ref<'hour' | 'day'>('hour')
 const currentPage = ref(1)
 const pageSize = 20
 const expandedRow = ref<string | null>(null)
+const fromStats = ref(false)
+
+// Handle query params from drilldown (e.g., ?model=xxx&from=stats)
+onMounted(() => {
+  if (route.query.model && typeof route.query.model === 'string') {
+    modelFilter.value = route.query.model
+  }
+  if (route.query.from === 'stats') {
+    fromStats.value = true
+  }
+  document.addEventListener('click', onDocumentClick)
+})
 
 // --- Time range options ---
 const timeRanges = [
@@ -283,7 +296,6 @@ function onDocumentClick(e: MouseEvent) {
     statusDropdownOpen.value = false
   }
 }
-onMounted(() => document.addEventListener('click', onDocumentClick))
 onUnmounted(() => document.removeEventListener('click', onDocumentClick))
 </script>
 
@@ -294,7 +306,17 @@ onUnmounted(() => document.removeEventListener('click', onDocumentClick))
       <div class="p-8">
         <!-- Page Header -->
         <div class="mb-6">
-          <h1 class="text-xl font-bold text-gray-900">调用日志</h1>
+          <div class="flex items-center gap-3">
+            <h1 class="text-xl font-bold text-gray-900">调用日志</h1>
+            <NuxtLink
+              v-if="fromStats"
+              to="/console/stats"
+              class="inline-flex items-center gap-1 text-xs text-primary-600 hover:text-primary-700 font-medium"
+            >
+              <UIcon name="i-lucide-arrow-left" class="w-3.5 h-3.5" />
+              返回统计
+            </NuxtLink>
+          </div>
           <p class="text-sm text-gray-400 mt-1">查看您的API调用记录、状态与费用明细</p>
         </div>
 
@@ -510,7 +532,9 @@ onUnmounted(() => document.removeEventListener('click', onDocumentClick))
                   @click="toggleExpand(log.id)"
                 >
                   <td class="py-3 px-6 text-xs font-mono text-gray-500">{{ log.timestamp }}</td>
-                  <td class="py-3 px-4 text-sm text-gray-900 font-medium">{{ log.modelName }}</td>
+                  <td class="py-3 px-4 text-sm font-medium">
+                    <NuxtLink :to="`/marketplace/${log.model}`" class="text-primary-600 hover:text-primary-700" @click.stop>{{ log.modelName }}</NuxtLink>
+                  </td>
                   <td class="py-3 px-4 text-xs font-mono text-gray-500">{{ log.apiKey }}</td>
                   <td class="py-3 px-4">
                     <span

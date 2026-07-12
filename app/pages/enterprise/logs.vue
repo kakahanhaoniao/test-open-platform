@@ -22,12 +22,17 @@ const toastMessage = ref('')
 const toastVisible = ref(false)
 
 // Handle query params from drilldown (e.g., ?model=xxx&from=monitor)
+const fromMonitor = ref(false)
+
 onMounted(() => {
   if (route.query.model && typeof route.query.model === 'string') {
     filterModel.value = route.query.model
   }
   if (route.query.member && typeof route.query.member === 'string') {
     filterMember.value = route.query.member
+  }
+  if (route.query.from === 'monitor') {
+    fromMonitor.value = true
   }
 })
 
@@ -409,7 +414,17 @@ function formatNumber(n: number): string {
       <div class="p-8">
         <!-- Page Header -->
         <div class="mb-6">
-          <h1 class="text-xl font-bold text-gray-900">日志审计</h1>
+          <div class="flex items-center gap-3">
+            <h1 class="text-xl font-bold text-gray-900">日志审计</h1>
+            <NuxtLink
+              v-if="fromMonitor"
+              to="/enterprise/monitor"
+              class="inline-flex items-center gap-1 text-xs text-primary-600 hover:text-primary-700 font-medium"
+            >
+              <UIcon name="i-lucide-arrow-left" class="w-3.5 h-3.5" />
+              返回监控
+            </NuxtLink>
+          </div>
           <p class="text-sm text-gray-400 mt-1">全企业API调用日志、多维筛选与趋势分析</p>
         </div>
 
@@ -549,7 +564,9 @@ function formatNumber(n: number): string {
                   >
                     <td class="py-3 px-4 text-xs font-mono text-gray-500 whitespace-nowrap">{{ log.timestamp.substring(5) }}</td>
                     <td class="py-3 px-4 text-sm text-gray-900 whitespace-nowrap">{{ log.memberName }}</td>
-                    <td class="py-3 px-4 text-sm text-gray-700 whitespace-nowrap max-w-[180px] truncate">{{ log.modelName }}</td>
+                    <td class="py-3 px-4 text-sm whitespace-nowrap max-w-[180px] truncate">
+                      <NuxtLink :to="`/marketplace/${log.model}`" class="text-primary-600 hover:text-primary-700 font-medium" @click.stop>{{ log.modelName }}</NuxtLink>
+                    </td>
                     <td class="py-3 px-4 text-xs font-mono text-gray-500 whitespace-nowrap">{{ log.apiKey }}</td>
                     <td class="py-3 px-4 whitespace-nowrap">
                       <span

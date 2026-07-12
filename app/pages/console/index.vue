@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { currentUser, members, organization } from '~/data/mock'
+import { currentUser, members, organization, models } from '~/data/mock'
 import { useChartTheme } from '~/composables/useChartTheme'
 
 useHead({ title: '使用看板 - 奇安信AI开放平台' })
@@ -85,11 +85,11 @@ const callTrendChartOption = computed(() => ({
 
 // Model consumption ranking (personal top 5)
 const modelRanking = [
-  { name: '奇安信安全大模型', percentage: 45, tokens: '234万' },
-  { name: '代码安全扫描模型', percentage: 25, tokens: '130万' },
-  { name: '威胁检测模型 V3', percentage: 15, tokens: '78万' },
-  { name: '应急响应模型', percentage: 10, tokens: '52万' },
-  { name: '其他模型', percentage: 5, tokens: '26万' }
+  { name: '奇安信安全大模型', modelId: 'qax-security-llm', percentage: 45, tokens: '234万' },
+  { name: '代码安全扫描模型', modelId: 'code-security-scan', percentage: 25, tokens: '130万' },
+  { name: '威胁检测模型 V3', modelId: 'threat-detect-v3', percentage: 15, tokens: '78万' },
+  { name: '应急响应模型', modelId: 'incident-response', percentage: 10, tokens: '52万' },
+  { name: '其他模型', modelId: '', percentage: 5, tokens: '26万' }
 ]
 
 // Alerts
@@ -264,7 +264,10 @@ const quickActions = [
                       class="w-5 h-5 rounded flex items-center justify-center text-xs font-bold"
                       :class="idx < 3 ? 'bg-primary-50 text-primary-600' : 'bg-gray-50 text-gray-400'"
                     >{{ idx + 1 }}</span>
-                    <span class="text-sm text-gray-900 font-medium">{{ item.name }}</span>
+                    <span class="text-sm text-gray-900 font-medium">
+                      <NuxtLink v-if="item.modelId" :to="`/marketplace/${item.modelId}`" class="text-primary-600 hover:text-primary-700">{{ item.name }}</NuxtLink>
+                      <span v-else>{{ item.name }}</span>
+                    </span>
                   </div>
                   <span class="text-xs font-mono text-gray-500">{{ item.tokens }} Token</span>
                 </div>
