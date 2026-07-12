@@ -1,0 +1,308 @@
+- generic [active] [ref=f23e1]:
+  - generic [ref=f23e3]:
+    - complementary [ref=f23e4]:
+      - generic [ref=f23e5]:
+        - generic [ref=f23e9]:
+          - paragraph [ref=f23e10]: 奇安信安全团队
+          - paragraph [ref=f23e11]: 管理员 · 6名成员
+        - link "个人空间" [ref=f23e12] [cursor=pointer]:
+          - /url: /console
+      - link "返回市场" [ref=f23e16] [cursor=pointer]:
+        - /url: /
+      - navigation [ref=f23e19]:
+        - generic [ref=f23e20]:
+          - paragraph [ref=f23e21]: 核心管理
+          - generic [ref=f23e22]:
+            - link "企业概览" [ref=f23e23] [cursor=pointer]:
+              - /url: /enterprise
+            - link "成员管理" [ref=f23e26] [cursor=pointer]:
+              - /url: /enterprise/members
+            - link "调用监控" [ref=f23e29] [cursor=pointer]:
+              - /url: /enterprise/monitor
+            - link "日志审计" [ref=f23e32] [cursor=pointer]:
+              - /url: /enterprise/logs
+        - generic [ref=f23e36]:
+          - paragraph [ref=f23e37]: 资源与账务
+          - generic [ref=f23e38]:
+            - link "企业充能包" [ref=f23e39] [cursor=pointer]:
+              - /url: /enterprise/packs
+            - link "企业账单" [ref=f23e42] [cursor=pointer]:
+              - /url: /enterprise/billing
+            - link "企业设置" [ref=f23e45] [cursor=pointer]:
+              - /url: /enterprise/settings
+      - button "退出登录" [ref=f23e49]
+    - generic [ref=f23e53]:
+      - generic [ref=f23e54]:
+        - heading "日志审计" [level=1] [ref=f23e55]
+        - paragraph [ref=f23e56]: 全企业API调用日志、多维筛选与趋势分析
+      - textbox "搜索关键词、API Key、模型名、成员名..." [ref=f23e60]
+      - generic [ref=f23e61]:
+        - generic [ref=f23e62]:
+          - button "今天" [ref=f23e63]
+          - button "7天" [ref=f23e64]
+          - button "30天" [ref=f23e65]
+          - button "自定义" [ref=f23e66]
+        - combobox [ref=f23e68] [cursor=pointer]:
+          - option "全部模型" [selected]
+          - option "奇安信安全大模型"
+          - option "威胁检测模型 V3"
+          - option "代码安全扫描模型"
+          - option "漏洞分析专家"
+          - option "合规卫士"
+          - option "日志智能分析模型"
+          - option "恶意软件分析模型"
+          - option "应急响应模型"
+          - option "钓鱼识别模型"
+          - option "数据安全卫士"
+        - combobox [ref=f23e69] [cursor=pointer]:
+          - option "全部成员" [selected]
+          - option "张明"
+          - option "李芳"
+          - option "王磊"
+          - option "赵静"
+          - option "陈浩"
+          - option "刘洋"
+        - combobox [ref=f23e70] [cursor=pointer]:
+          - option "全部" [selected]
+          - option "200"
+          - option "400"
+          - option "429"
+          - option "500"
+      - generic [ref=f23e71]:
+        - generic [ref=f23e72]:
+          - generic [ref=f23e73]:
+            - heading "调用量趋势" [level=3] [ref=f23e74]
+            - paragraph [ref=f23e75]: 按筛选条件动态更新 · 共 50 条日志
+          - generic [ref=f23e76]:
+            - button "按小时" [ref=f23e77]
+            - button "按天" [ref=f23e78]
+            - button "按周" [ref=f23e79]
+        - generic [ref=f23e80]:
+          - generic [ref=f23e81]: 200 成功
+          - generic [ref=f23e83]: 429 限流
+          - generic [ref=f23e85]: 500 错误
+        - generic [ref=f23e87]:
+          - generic [ref=f23e88]:
+            - generic [ref=f23e89]: "3"
+            - generic [ref=f23e92]: "10"
+          - generic [ref=f23e93]:
+            - generic [ref=f23e94]: "4"
+            - generic [ref=f23e98]: "11"
+          - generic [ref=f23e99]:
+            - generic [ref=f23e100]: "14"
+            - generic [ref=f23e104]: "12"
+          - generic [ref=f23e105]:
+            - generic [ref=f23e106]: "18"
+            - generic [ref=f23e109]: "13"
+          - generic [ref=f23e110]:
+            - generic [ref=f23e111]: "11"
+            - generic [ref=f23e114]: "14"
+      - generic [ref=f23e115]:
+        - table [ref=f23e117]:
+          - rowgroup [ref=f23e118]:
+            - row [ref=f23e119]:
+              - columnheader "时间" [ref=f23e120]
+              - columnheader "成员" [ref=f23e121]
+              - columnheader "模型" [ref=f23e122]
+              - columnheader "API Key" [ref=f23e123]
+              - columnheader "状态码" [ref=f23e124]
+              - columnheader "延迟" [ref=f23e125]
+              - columnheader "Token" [ref=f23e126]
+              - columnheader "费用" [ref=f23e127]
+          - rowgroup [ref=f23e128]:
+            - row [ref=f23e129] [cursor=pointer]:
+              - cell "07-12 14:32:15" [ref=f23e130]
+              - cell "张明" [ref=f23e131]
+              - cell "奇安信安全大模型" [ref=f23e132]
+              - cell "sk-qax-***3a7f" [ref=f23e133]
+              - cell "200" [ref=f23e134]
+              - cell "156ms" [ref=f23e136]
+              - cell "4,270" [ref=f23e137]
+              - cell "¥0.3624" [ref=f23e138]
+            - row [ref=f23e139] [cursor=pointer]:
+              - cell "07-12 14:30:42" [ref=f23e140]
+              - cell "李芳" [ref=f23e141]
+              - cell "威胁检测模型 V3" [ref=f23e142]
+              - cell "sk-qax-***8b2c" [ref=f23e143]
+              - cell "200" [ref=f23e144]
+              - cell "89ms" [ref=f23e146]
+              - cell "1,880" [ref=f23e147]
+              - cell "¥0.0744" [ref=f23e148]
+            - row [ref=f23e149] [cursor=pointer]:
+              - cell "07-12 14:28:17" [ref=f23e150]
+              - cell "王磊" [ref=f23e151]
+              - cell "代码安全扫描模型" [ref=f23e152]
+              - cell "sk-qax-***5d1e" [ref=f23e153]
+              - cell "200" [ref=f23e154]
+              - cell "203ms" [ref=f23e156]
+              - cell "6,200" [ref=f23e157]
+              - cell "¥0.2580" [ref=f23e158]
+            - row [ref=f23e159] [cursor=pointer]:
+              - cell "07-12 14:25:33" [ref=f23e160]
+              - cell "赵静" [ref=f23e161]
+              - cell "漏洞分析专家" [ref=f23e162]
+              - cell "sk-qax-***9f3a" [ref=f23e163]
+              - cell "200" [ref=f23e164]
+              - cell "134ms" [ref=f23e166]
+              - cell "3,000" [ref=f23e167]
+              - cell "¥0.0840" [ref=f23e168]
+            - row [ref=f23e169] [cursor=pointer]:
+              - cell "07-12 14:22:08" [ref=f23e170]
+              - cell "陈浩" [ref=f23e171]
+              - cell "合规卫士" [ref=f23e172]
+              - cell "sk-qax-***2c8b" [ref=f23e173]
+              - cell "200" [ref=f23e174]
+              - cell "98ms" [ref=f23e176]
+              - cell "1,570" [ref=f23e177]
+              - cell "¥0.0438" [ref=f23e178]
+            - row [ref=f23e179] [cursor=pointer]:
+              - cell "07-12 14:18:45" [ref=f23e180]
+              - cell "刘洋" [ref=f23e181]
+              - cell "日志智能分析模型" [ref=f23e182]
+              - cell "sk-qax-***7e4d" [ref=f23e183]
+              - cell "200" [ref=f23e184]
+              - cell "112ms" [ref=f23e186]
+              - cell "5,000" [ref=f23e187]
+              - cell "¥0.1180" [ref=f23e188]
+            - row [ref=f23e189] [cursor=pointer]:
+              - cell "07-12 14:15:22" [ref=f23e190]
+              - cell "张明" [ref=f23e191]
+              - cell "威胁检测模型 V3" [ref=f23e192]
+              - cell "sk-qax-***3a7f" [ref=f23e193]
+              - cell "200" [ref=f23e194]
+              - cell "76ms" [ref=f23e196]
+              - cell "1,250" [ref=f23e197]
+              - cell "¥0.0510" [ref=f23e198]
+            - row [ref=f23e199] [cursor=pointer]:
+              - cell "07-12 14:12:37" [ref=f23e200]
+              - cell "李芳" [ref=f23e201]
+              - cell "奇安信安全大模型" [ref=f23e202]
+              - cell "sk-qax-***8b2c" [ref=f23e203]
+              - cell "200" [ref=f23e204]
+              - cell "189ms" [ref=f23e206]
+              - cell "5,300" [ref=f23e207]
+              - cell "¥0.4380" [ref=f23e208]
+            - row [ref=f23e209] [cursor=pointer]:
+              - cell "07-12 14:09:15" [ref=f23e210]
+              - cell "王磊" [ref=f23e211]
+              - cell "恶意软件分析模型" [ref=f23e212]
+              - cell "sk-qax-***5d1e" [ref=f23e213]
+              - cell "200" [ref=f23e214]
+              - cell "145ms" [ref=f23e216]
+              - cell "3,600" [ref=f23e217]
+              - cell "¥0.1530" [ref=f23e218]
+            - row [ref=f23e219] [cursor=pointer]:
+              - cell "07-12 14:05:48" [ref=f23e220]
+              - cell "赵静" [ref=f23e221]
+              - cell "应急响应模型" [ref=f23e222]
+              - cell "sk-qax-***9f3a" [ref=f23e223]
+              - cell "200" [ref=f23e224]
+              - cell "167ms" [ref=f23e226]
+              - cell "4,700" [ref=f23e227]
+              - cell "¥0.2600" [ref=f23e228]
+            - row [ref=f23e229] [cursor=pointer]:
+              - cell "07-12 14:02:33" [ref=f23e230]
+              - cell "陈浩" [ref=f23e231]
+              - cell "钓鱼识别模型" [ref=f23e232]
+              - cell "sk-qax-***2c8b" [ref=f23e233]
+              - cell "200" [ref=f23e234]
+              - cell "54ms" [ref=f23e236]
+              - cell "920" [ref=f23e237]
+              - cell "¥0.0124" [ref=f23e238]
+            - row [ref=f23e239] [cursor=pointer]:
+              - cell "07-12 13:58:19" [ref=f23e240]
+              - cell "刘洋" [ref=f23e241]
+              - cell "数据安全卫士" [ref=f23e242]
+              - cell "sk-qax-***7e4d" [ref=f23e243]
+              - cell "200" [ref=f23e244]
+              - cell "88ms" [ref=f23e246]
+              - cell "2,180" [ref=f23e247]
+              - cell "¥0.0604" [ref=f23e248]
+            - row [ref=f23e249] [cursor=pointer]:
+              - cell "07-12 13:55:02" [ref=f23e250]
+              - cell "张明" [ref=f23e251]
+              - cell "代码安全扫描模型" [ref=f23e252]
+              - cell "sk-qax-***3a7f" [ref=f23e253]
+              - cell "200" [ref=f23e254]
+              - cell "234ms" [ref=f23e256]
+              - cell "7,600" [ref=f23e257]
+              - cell "¥0.3210" [ref=f23e258]
+            - row [ref=f23e259] [cursor=pointer]:
+              - cell "07-12 13:51:47" [ref=f23e260]
+              - cell "李芳" [ref=f23e261]
+              - cell "漏洞分析专家" [ref=f23e262]
+              - cell "sk-qax-***8b2c" [ref=f23e263]
+              - cell "200" [ref=f23e264]
+              - cell "121ms" [ref=f23e266]
+              - cell "2,580" [ref=f23e267]
+              - cell "¥0.0724" [ref=f23e268]
+            - row [ref=f23e269] [cursor=pointer]:
+              - cell "07-12 13:48:22" [ref=f23e270]
+              - cell "王磊" [ref=f23e271]
+              - cell "奇安信安全大模型" [ref=f23e272]
+              - cell "sk-qax-***5d1e" [ref=f23e273]
+              - cell "200" [ref=f23e274]
+              - cell "178ms" [ref=f23e276]
+              - cell "5,000" [ref=f23e277]
+              - cell "¥0.4140" [ref=f23e278]
+            - row [ref=f23e279] [cursor=pointer]:
+              - cell "07-12 13:44:58" [ref=f23e280]
+              - cell "赵静" [ref=f23e281]
+              - cell "日志智能分析模型" [ref=f23e282]
+              - cell "sk-qax-***9f3a" [ref=f23e283]
+              - cell "200" [ref=f23e284]
+              - cell "95ms" [ref=f23e286]
+              - cell "2,760" [ref=f23e287]
+              - cell "¥0.0648" [ref=f23e288]
+            - row [ref=f23e289] [cursor=pointer]:
+              - cell "07-12 13:41:33" [ref=f23e290]
+              - cell "陈浩" [ref=f23e291]
+              - cell "威胁检测模型 V3" [ref=f23e292]
+              - cell "sk-qax-***2c8b" [ref=f23e293]
+              - cell "200" [ref=f23e294]
+              - cell "82ms" [ref=f23e296]
+              - cell "1,680" [ref=f23e297]
+              - cell "¥0.0666" [ref=f23e298]
+            - row [ref=f23e299] [cursor=pointer]:
+              - cell "07-12 13:38:15" [ref=f23e300]
+              - cell "刘洋" [ref=f23e301]
+              - cell "合规卫士" [ref=f23e302]
+              - cell "sk-qax-***7e4d" [ref=f23e303]
+              - cell "200" [ref=f23e304]
+              - cell "103ms" [ref=f23e306]
+              - cell "2,020" [ref=f23e307]
+              - cell "¥0.0564" [ref=f23e308]
+            - row [ref=f23e309] [cursor=pointer]:
+              - cell "07-12 13:34:42" [ref=f23e310]
+              - cell "张明" [ref=f23e311]
+              - cell "应急响应模型" [ref=f23e312]
+              - cell "sk-qax-***3a7f" [ref=f23e313]
+              - cell "200" [ref=f23e314]
+              - cell "192ms" [ref=f23e316]
+              - cell "5,700" [ref=f23e317]
+              - cell "¥0.3160" [ref=f23e318]
+            - row [ref=f23e319] [cursor=pointer]:
+              - cell "07-12 13:31:18" [ref=f23e320]
+              - cell "李芳" [ref=f23e321]
+              - cell "恶意软件分析模型" [ref=f23e322]
+              - cell "sk-qax-***8b2c" [ref=f23e323]
+              - cell "200" [ref=f23e324]
+              - cell "138ms" [ref=f23e326]
+              - cell "3,400" [ref=f23e327]
+              - cell "¥0.1440" [ref=f23e328]
+        - generic [ref=f23e329]:
+          - paragraph [ref=f23e330]: 共 50 条记录，第 1 / 3 页
+          - generic [ref=f23e331]:
+            - button "上一页" [disabled] [ref=f23e332]
+            - button "下一页" [ref=f23e333]
+      - generic [ref=f23e334]:
+        - button "导出 CSV" [ref=f23e335]
+        - button "导出 JSON" [ref=f23e337]
+  - region "Notifications (F8)":
+    - list
+  - generic [ref=f23e339]:
+    - button "Toggle Nuxt DevTools" [ref=f23e340] [cursor=pointer]
+    - generic "Page load time" [ref=f23e344]:
+      - generic [ref=f23e345]: "28"
+      - generic [ref=f23e346]: ms
+    - button "Toggle Component Inspector" [ref=f23e348] [cursor=pointer]

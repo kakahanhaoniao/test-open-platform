@@ -3,6 +3,7 @@ const route = useRoute()
 
 const navItems = [
   { label: '数据看板', icon: 'i-lucide-layout-dashboard', to: '/admin' },
+  { label: '企业客户', icon: 'i-lucide-building-2', to: '/admin/enterprises' },
   { label: '模型管理', icon: 'i-lucide-brain', to: '/admin/models' },
   { label: '应用管理', icon: 'i-lucide-layout-grid', to: '/admin/apps' },
   { label: '活动管理', icon: 'i-lucide-flame', to: '/admin/activities' },

@@ -5,7 +5,8 @@ useHead({ title: '企业充能包 - 奇安信AI开放平台' })
 
 const balanceWan = Math.floor(organization.packBalance / 10000)
 const totalWan = Math.floor(organization.packTotal / 10000)
-const balanceRatio = ((organization.packBalance / organization.packTotal) * 100).toFixed(1)
+const usedWan = totalWan - balanceWan
+const usageRatio = ((usedWan / totalWan) * 100).toFixed(1)
 
 const totalTokens = members.reduce((sum, m) => sum + m.monthlyTokens, 0)
 
@@ -20,11 +21,34 @@ function getPercentage(tokens: number): number {
   if (totalTokens === 0) return 0
   return Number(((tokens / totalTokens) * 100).toFixed(1))
 }
+
+// Progress bar color based on usage
+const progressColor = computed(() => {
+  const ratio = Number(usageRatio)
+  if (ratio > 95) return 'from-red-500 to-red-400'
+  if (ratio > 80) return 'from-amber-500 to-amber-400'
+  return 'from-primary-500 to-primary-400'
+})
+
+const progressBgColor = computed(() => {
+  const ratio = Number(usageRatio)
+  if (ratio > 95) return 'bg-red-500/10'
+  if (ratio > 80) return 'bg-amber-500/10'
+  return 'bg-primary-500/10'
+})
+
+// Pack gradient backgrounds
+const packGradients: Record<string, string> = {
+  'pack-starter': 'from-blue-50 to-indigo-50',
+  'pack-pro': 'from-primary-50 to-violet-50',
+  'pack-enterprise': 'from-amber-50 to-orange-50',
+  'pack-unlimited': 'from-emerald-50 to-teal-50'
+}
 </script>
 
 <template>
   <div>
-    <ConsoleSidebar />
+    <EnterpriseSidebar />
     <div class="ml-60 p-8 min-h-screen bg-[#FAFAFA]">
       <!-- Header -->
       <div class="mb-8">
@@ -34,7 +58,7 @@ function getPercentage(tokens: number): number {
 
       <!-- Balance Card -->
       <div class="deep-block rounded-xl p-6 mb-6 relative overflow-hidden">
-        <div class="absolute top-0 right-0 w-64 h-64 bg-primary-500/10 rounded-full -translate-y-1/2 translate-x-1/2" />
+        <div class="absolute top-0 right-0 w-64 h-64 rounded-full -translate-y-1/2 translate-x-1/2" :class="progressBgColor" />
         <div class="relative">
           <div class="flex items-start justify-between">
             <div>
@@ -47,7 +71,7 @@ function getPercentage(tokens: number): number {
             <div class="flex items-center gap-4">
               <div class="text-right">
                 <p class="text-white/40 text-xs mb-0.5">已使用</p>
-                <p class="text-white font-mono text-lg">{{ (totalWan - balanceWan).toLocaleString() }}万</p>
+                <p class="text-white font-mono text-lg">{{ usedWan.toLocaleString() }}万</p>
               </div>
               <div class="w-px h-10 bg-white/10" />
               <div class="text-right">
@@ -59,12 +83,13 @@ function getPercentage(tokens: number): number {
           <div class="mt-4">
             <div class="flex items-center justify-between text-xs text-white/40 mb-1.5">
               <span>使用进度</span>
-              <span class="font-mono">{{ balanceRatio }}%</span>
+              <span class="font-mono">{{ usageRatio }}%</span>
             </div>
             <div class="h-2 bg-white/10 rounded-full overflow-hidden">
               <div
-                class="h-full bg-gradient-to-r from-primary-400 to-primary-500 rounded-full transition-all duration-1000"
-                :style="{ width: balanceRatio + '%' }"
+                class="h-full bg-gradient-to-r rounded-full transition-all duration-1000"
+                :class="progressColor"
+                :style="{ width: usageRatio + '%' }"
               />
             </div>
           </div>
@@ -78,8 +103,11 @@ function getPercentage(tokens: number): number {
           <div
             v-for="pack in chargingPacks"
             :key="pack.id"
-            class="bg-white rounded-xl border p-5 card-hover relative"
-            :class="pack.popular ? 'border-primary-300 ring-1 ring-primary-100' : 'border-gray-100'"
+            class="bg-gradient-to-br rounded-xl border p-5 card-hover relative"
+            :class="[
+              packGradients[pack.id] || 'from-gray-50 to-gray-50',
+              pack.popular ? 'border-primary-300 ring-1 ring-primary-100' : 'border-gray-100'
+            ]"
           >
             <!-- Popular badge -->
             <div
@@ -118,7 +146,7 @@ function getPercentage(tokens: number): number {
             <button
               class="w-full py-2 rounded-lg text-sm font-medium transition-all duration-200 bg-primary-600 hover:bg-primary-700 text-white"
             >
-              企业购买
+              购买
             </button>
           </div>
         </div>
@@ -132,9 +160,9 @@ function getPercentage(tokens: number): number {
             <tr class="text-xs text-gray-400 border-b border-gray-100">
               <th class="text-left py-3 font-medium">成员名</th>
               <th class="text-left py-3 font-medium">角色</th>
-              <th class="text-left py-3 font-medium">本月Token消耗</th>
-              <th class="text-left py-3 font-medium">本月费用</th>
+              <th class="text-left py-3 font-medium">Token消耗</th>
               <th class="text-left py-3 font-medium">占比</th>
+              <th class="text-left py-3 font-medium">费用</th>
             </tr>
           </thead>
           <tbody>
@@ -165,7 +193,6 @@ function getPercentage(tokens: number): number {
                 </span>
               </td>
               <td class="py-3 text-sm font-mono text-gray-600">{{ formatTokens(member.monthlyTokens) }} Token</td>
-              <td class="py-3 text-sm font-mono text-gray-900 font-medium">¥{{ member.monthlyCost.toLocaleString() }}</td>
               <td class="py-3">
                 <div class="flex items-center gap-2">
                   <div class="w-24 h-1.5 bg-gray-100 rounded-full overflow-hidden">
@@ -177,6 +204,7 @@ function getPercentage(tokens: number): number {
                   <span class="text-xs font-mono text-gray-500">{{ getPercentage(member.monthlyTokens) }}%</span>
                 </div>
               </td>
+              <td class="py-3 text-sm font-mono text-gray-900 font-medium">¥{{ member.monthlyCost.toLocaleString() }}</td>
             </tr>
           </tbody>
         </table>

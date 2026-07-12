@@ -3,16 +3,18 @@ const route = useRoute()
 const { collapsed } = useSidebar()
 
 // Route-based layout detection:
-// /portal/*  → full-width layout (no sidebar, pages handle their own nav)
-// /admin/*   → admin handles its own layout
-// /console/* → console handles its own layout
-// /b/*       → legacy B variant (full-width, pages handle their own nav)
+// /portal/*     → full-width layout (no sidebar, pages handle their own nav)
+// /admin/*      → admin handles its own layout
+// /console/*    → console handles its own layout
+// /enterprise/* → enterprise handles its own layout
+// /b/*          → legacy B variant (full-width, pages handle their own nav)
 // Everything else (root /, /marketplace, /promotions) → Market layout with TopNav
 const isFullWidthRoute = computed(() => {
   const path = route.path
   return path.startsWith('/portal') ||
          path.startsWith('/admin') ||
          path.startsWith('/console') ||
+         path.startsWith('/enterprise') ||
          path.startsWith('/b')
 })
 
@@ -50,7 +52,7 @@ useSeoMeta({
 
 <template>
   <UApp>
-    <!-- Full-width routes: portal, admin, console, legacy /b -->
+    <!-- Full-width routes: portal, admin, console, enterprise, legacy /b -->
     <template v-if="isFullWidthRoute">
       <NuxtPage />
     </template>

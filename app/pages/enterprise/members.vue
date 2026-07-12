@@ -98,10 +98,6 @@ function toggleMemberStatus(member: typeof memberList.value[0]) {
   }
 }
 
-function removeMember(memberId: string) {
-  memberList.value = memberList.value.filter(m => m.id !== memberId)
-}
-
 // Role change dropdown state
 const openRoleDropdown = ref<string | null>(null)
 
@@ -133,7 +129,7 @@ onUnmounted(() => document.removeEventListener('click', onDocumentClick))
 
 <template>
   <div>
-    <ConsoleSidebar />
+    <EnterpriseSidebar />
     <div class="ml-60 p-8 min-h-screen bg-[#FAFAFA]">
       <!-- Header -->
       <div class="flex items-center justify-between mb-8">
@@ -196,13 +192,13 @@ onUnmounted(() => document.removeEventListener('click', onDocumentClick))
               </select>
             </div>
 
-            <!-- Generate Link -->
+            <!-- Send Invite -->
             <button
               class="w-full py-2.5 rounded-lg text-sm font-medium bg-primary-600 hover:bg-primary-700 text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               :disabled="!inviteEmail"
               @click="generateInviteLink"
             >
-              生成邀请链接
+              发送邀请
             </button>
 
             <!-- Generated Link -->
@@ -267,7 +263,8 @@ onUnmounted(() => document.removeEventListener('click', onDocumentClick))
             <tr class="text-xs text-gray-400 border-b border-gray-100 bg-gray-50/50">
               <th class="text-left py-3 px-5 font-medium">成员</th>
               <th class="text-left py-3 px-5 font-medium">角色</th>
-              <th class="text-left py-3 px-5 font-medium">API Key数</th>
+              <th class="text-left py-3 px-5 font-medium">Key数</th>
+              <th class="text-left py-3 px-5 font-medium">本月Token</th>
               <th class="text-left py-3 px-5 font-medium">本月消耗</th>
               <th class="text-left py-3 px-5 font-medium">状态</th>
               <th class="text-left py-3 px-5 font-medium">操作</th>
@@ -310,8 +307,11 @@ onUnmounted(() => document.removeEventListener('click', onDocumentClick))
                 </span>
               </td>
 
-              <!-- API Key Count -->
+              <!-- Key Count -->
               <td class="py-4 px-5 text-sm text-gray-600 font-mono">{{ member.keyCount }}</td>
+
+              <!-- Monthly Tokens -->
+              <td class="py-4 px-5 text-sm text-gray-600 font-mono">{{ (member.monthlyTokens / 10000).toFixed(0) }}万</td>
 
               <!-- Monthly Cost -->
               <td class="py-4 px-5 text-sm text-gray-900 font-medium font-mono">&yen;{{ member.monthlyCost.toLocaleString() }}</td>
@@ -367,14 +367,6 @@ onUnmounted(() => document.removeEventListener('click', onDocumentClick))
                     @click="toggleMemberStatus(member)"
                   >
                     {{ member.status === 'active' ? '禁用' : '启用' }}
-                  </button>
-
-                  <!-- Remove -->
-                  <button
-                    class="text-xs px-2.5 py-1 rounded-md text-red-500 hover:bg-red-50 transition-colors"
-                    @click="removeMember(member.id)"
-                  >
-                    移除
                   </button>
                 </div>
               </td>

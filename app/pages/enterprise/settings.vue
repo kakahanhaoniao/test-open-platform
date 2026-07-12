@@ -39,14 +39,13 @@ const roleOptions = [
 ]
 
 // API rate limits
-const dailyCallLimit = ref(10000)
-const monthlyTokenLimit = ref(5000000)
+const rateLimitPerMember = ref(60)
 
 // Notification settings
-const lowBalanceThreshold = ref(5000000)
-const emailNotification = ref(true)
-const balanceAlert = ref(true)
+const lowBalanceAlert = ref(true)
+const lowBalanceThreshold = ref(500)
 const apiErrorAlert = ref(true)
+const memberJoinNotify = ref(true)
 
 // Save handler
 const saving = ref(false)
@@ -59,7 +58,7 @@ async function handleSave() {
 
 <template>
   <div>
-    <ConsoleSidebar />
+    <EnterpriseSidebar />
     <div class="ml-60 p-8 min-h-screen bg-[#FAFAFA]">
       <!-- Non-admin access denied -->
       <template v-if="!isAdmin">
@@ -96,7 +95,7 @@ async function handleSave() {
 
             <!-- Industry -->
             <div>
-              <label class="block text-sm font-medium text-gray-700 mb-1.5">所属行业</label>
+              <label class="block text-sm font-medium text-gray-700 mb-1.5">行业</label>
               <select
                 v-model="orgIndustry"
                 class="w-full px-3.5 py-2.5 rounded-lg border border-gray-200 focus:border-primary-300 focus:ring-2 focus:ring-primary-100 text-sm text-gray-900 outline-none transition-all duration-200 bg-white appearance-none"
@@ -107,7 +106,7 @@ async function handleSave() {
 
             <!-- Scale -->
             <div>
-              <label class="block text-sm font-medium text-gray-700 mb-1.5">企业规模</label>
+              <label class="block text-sm font-medium text-gray-700 mb-1.5">规模</label>
               <select
                 v-model="orgScale"
                 class="w-full px-3.5 py-2.5 rounded-lg border border-gray-200 focus:border-primary-300 focus:ring-2 focus:ring-primary-100 text-sm text-gray-900 outline-none transition-all duration-200 bg-white appearance-none"
@@ -143,7 +142,7 @@ async function handleSave() {
                 :disabled="saving"
                 @click="handleSave"
               >
-                {{ saving ? '保存中...' : '保存修改' }}
+                {{ saving ? '保存中...' : '保存' }}
               </button>
             </div>
           </div>
@@ -153,41 +152,67 @@ async function handleSave() {
         <div class="bg-white rounded-xl border border-gray-100 p-6 mb-6">
           <h3 class="font-semibold text-gray-900 mb-1">新成员默认角色</h3>
           <p class="text-xs text-gray-400 mb-5">新加入企业的成员将自动分配此角色</p>
-          <div class="max-w-xs">
-            <select
-              v-model="defaultRole"
-              class="w-full px-3.5 py-2.5 rounded-lg border border-gray-200 focus:border-primary-300 focus:ring-2 focus:ring-primary-100 text-sm text-gray-900 outline-none transition-all duration-200 bg-white appearance-none"
+          <div class="space-y-3">
+            <label
+              v-for="opt in roleOptions"
+              :key="opt.value"
+              class="flex items-center gap-3 cursor-pointer"
             >
-              <option v-for="opt in roleOptions" :key="opt.value" :value="opt.value">{{ opt.label }}</option>
-            </select>
+              <div class="relative">
+                <input
+                  v-model="defaultRole"
+                  type="radio"
+                  :value="opt.value"
+                  class="sr-only"
+                />
+                <div
+                  class="w-5 h-5 rounded-full border-2 transition-all duration-200 flex items-center justify-center"
+                  :class="defaultRole === opt.value
+                    ? 'border-primary-600 bg-primary-600'
+                    : 'border-gray-300 bg-white'"
+                >
+                  <div
+                    v-if="defaultRole === opt.value"
+                    class="w-2 h-2 rounded-full bg-white"
+                  />
+                </div>
+              </div>
+              <span class="text-sm text-gray-700">{{ opt.label }}</span>
+            </label>
           </div>
         </div>
 
         <!-- API Rate Limits -->
         <div class="bg-white rounded-xl border border-gray-100 p-6 mb-6">
           <h3 class="font-semibold text-gray-900 mb-1">API调用限制</h3>
-          <p class="text-xs text-gray-400 mb-5">设置企业成员的API调用上限</p>
+          <p class="text-xs text-gray-400 mb-5">设置企业成员的API调用频率上限</p>
           <div class="space-y-5 max-w-md">
             <div>
-              <label class="block text-sm font-medium text-gray-700 mb-1.5">每人每日调用上限</label>
-              <div class="flex items-center gap-2">
+              <label class="block text-sm font-medium text-gray-700 mb-1.5">每人调用频率上限</label>
+              <div class="flex items-center gap-3">
                 <input
-                  v-model.number="dailyCallLimit"
+                  v-model.number="rateLimitPerMember"
                   type="number"
-                  class="w-48 px-3.5 py-2.5 rounded-lg border border-gray-200 focus:border-primary-300 focus:ring-2 focus:ring-primary-100 text-sm text-gray-900 outline-none transition-all duration-200 font-mono"
+                  min="10"
+                  max="300"
+                  class="w-32 px-3.5 py-2.5 rounded-lg border border-gray-200 focus:border-primary-300 focus:ring-2 focus:ring-primary-100 text-sm text-gray-900 outline-none transition-all duration-200 font-mono"
                 />
-                <span class="text-sm text-gray-400">次/天</span>
+                <span class="text-sm text-gray-400">次/分钟</span>
               </div>
-            </div>
-            <div>
-              <label class="block text-sm font-medium text-gray-700 mb-1.5">每人每月Token上限</label>
-              <div class="flex items-center gap-2">
+              <div class="mt-3">
                 <input
-                  v-model.number="monthlyTokenLimit"
-                  type="number"
-                  class="w-48 px-3.5 py-2.5 rounded-lg border border-gray-200 focus:border-primary-300 focus:ring-2 focus:ring-primary-100 text-sm text-gray-900 outline-none transition-all duration-200 font-mono"
+                  type="range"
+                  :value="rateLimitPerMember"
+                  min="10"
+                  max="300"
+                  step="10"
+                  class="w-full h-1.5 bg-gray-200 rounded-full appearance-none cursor-pointer accent-primary-600"
+                  @input="rateLimitPerMember = Number(($event.target as HTMLInputElement).value)"
                 />
-                <span class="text-sm text-gray-400">Token/月</span>
+                <div class="flex items-center justify-between text-xs text-gray-400 mt-1">
+                  <span>10</span>
+                  <span>300</span>
+                </div>
               </div>
             </div>
           </div>
@@ -198,71 +223,69 @@ async function handleSave() {
           <h3 class="font-semibold text-gray-900 mb-1">通知设置</h3>
           <p class="text-xs text-gray-400 mb-5">配置企业通知与告警策略</p>
           <div class="space-y-5 max-w-lg">
-            <!-- Low balance threshold -->
+            <!-- Low balance alert -->
             <div>
-              <label class="block text-sm font-medium text-gray-700 mb-1.5">余额不足告警阈值</label>
-              <div class="flex items-center gap-2">
+              <div class="flex items-center justify-between mb-3">
+                <div>
+                  <p class="text-sm font-medium text-gray-700">余额不足告警</p>
+                  <p class="text-xs text-gray-400 mt-0.5">余额低于阈值时发送告警通知</p>
+                </div>
+                <button
+                  class="relative w-11 h-6 rounded-full transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-100"
+                  :class="lowBalanceAlert ? 'bg-primary-600' : 'bg-gray-200'"
+                  @click="lowBalanceAlert = !lowBalanceAlert"
+                >
+                  <span
+                    class="absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow-sm transition-transform duration-200"
+                    :class="lowBalanceAlert ? 'translate-x-5' : 'translate-x-0'"
+                  />
+                </button>
+              </div>
+              <div v-if="lowBalanceAlert" class="flex items-center gap-2 pl-1">
+                <label class="text-xs text-gray-500">阈值</label>
                 <input
                   v-model.number="lowBalanceThreshold"
                   type="number"
-                  class="w-48 px-3.5 py-2.5 rounded-lg border border-gray-200 focus:border-primary-300 focus:ring-2 focus:ring-primary-100 text-sm text-gray-900 outline-none transition-all duration-200 font-mono"
+                  class="w-28 px-3 py-2 rounded-lg border border-gray-200 focus:border-primary-300 focus:ring-2 focus:ring-primary-100 text-sm text-gray-900 outline-none transition-all duration-200 font-mono"
                 />
-                <span class="text-sm text-gray-400">Token</span>
+                <span class="text-xs text-gray-400">万Token</span>
               </div>
             </div>
 
-            <!-- Toggle switches -->
-            <div class="space-y-4 pt-2">
-              <div class="flex items-center justify-between">
-                <div>
-                  <p class="text-sm font-medium text-gray-700">邮件通知</p>
-                  <p class="text-xs text-gray-400 mt-0.5">接收企业相关邮件通知</p>
-                </div>
-                <button
-                  class="relative w-11 h-6 rounded-full transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-100"
-                  :class="emailNotification ? 'bg-primary-600' : 'bg-gray-200'"
-                  @click="emailNotification = !emailNotification"
-                >
-                  <span
-                    class="absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow-sm transition-transform duration-200"
-                    :class="emailNotification ? 'translate-x-5' : 'translate-x-0'"
-                  />
-                </button>
+            <!-- API error alert -->
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-sm font-medium text-gray-700">API异常告警</p>
+                <p class="text-xs text-gray-400 mt-0.5">API调用异常时发送告警通知</p>
               </div>
+              <button
+                class="relative w-11 h-6 rounded-full transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-100"
+                :class="apiErrorAlert ? 'bg-primary-600' : 'bg-gray-200'"
+                @click="apiErrorAlert = !apiErrorAlert"
+              >
+                <span
+                  class="absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow-sm transition-transform duration-200"
+                  :class="apiErrorAlert ? 'translate-x-5' : 'translate-x-0'"
+                />
+              </button>
+            </div>
 
-              <div class="flex items-center justify-between">
-                <div>
-                  <p class="text-sm font-medium text-gray-700">余额告警</p>
-                  <p class="text-xs text-gray-400 mt-0.5">余额低于阈值时发送告警</p>
-                </div>
-                <button
-                  class="relative w-11 h-6 rounded-full transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-100"
-                  :class="balanceAlert ? 'bg-primary-600' : 'bg-gray-200'"
-                  @click="balanceAlert = !balanceAlert"
-                >
-                  <span
-                    class="absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow-sm transition-transform duration-200"
-                    :class="balanceAlert ? 'translate-x-5' : 'translate-x-0'"
-                  />
-                </button>
+            <!-- Member join notification -->
+            <div class="flex items-center justify-between">
+              <div>
+                <p class="text-sm font-medium text-gray-700">成员加入通知</p>
+                <p class="text-xs text-gray-400 mt-0.5">有新成员加入企业时发送通知</p>
               </div>
-
-              <div class="flex items-center justify-between">
-                <div>
-                  <p class="text-sm font-medium text-gray-700">API异常告警</p>
-                  <p class="text-xs text-gray-400 mt-0.5">API调用异常时发送告警</p>
-                </div>
-                <button
-                  class="relative w-11 h-6 rounded-full transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-100"
-                  :class="apiErrorAlert ? 'bg-primary-600' : 'bg-gray-200'"
-                  @click="apiErrorAlert = !apiErrorAlert"
-                >
-                  <span
-                    class="absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow-sm transition-transform duration-200"
-                    :class="apiErrorAlert ? 'translate-x-5' : 'translate-x-0'"
-                  />
-                </button>
-              </div>
+              <button
+                class="relative w-11 h-6 rounded-full transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-100"
+                :class="memberJoinNotify ? 'bg-primary-600' : 'bg-gray-200'"
+                @click="memberJoinNotify = !memberJoinNotify"
+              >
+                <span
+                  class="absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow-sm transition-transform duration-200"
+                  :class="memberJoinNotify ? 'translate-x-5' : 'translate-x-0'"
+                />
+              </button>
             </div>
           </div>
         </div>
@@ -274,7 +297,7 @@ async function handleSave() {
           <div class="flex items-center justify-between">
             <div>
               <p class="text-sm font-medium text-gray-900">解散企业</p>
-              <p class="text-xs text-gray-400 mt-0.5">解散后将删除所有企业数据，此操作不可恢复</p>
+              <p class="text-xs text-gray-400 mt-0.5">解散后将删除所有企业数据，此操作不可恢复。如需解散企业，请联系平台客服。</p>
             </div>
             <div class="relative group">
               <button

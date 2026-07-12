@@ -1,0 +1,192 @@
+- generic [active] [ref=f22e1]:
+  - generic [ref=f22e3]:
+    - complementary [ref=f22e4]:
+      - generic [ref=f22e5]:
+        - generic [ref=f22e9]:
+          - paragraph [ref=f22e10]: 奇安信安全团队
+          - paragraph [ref=f22e11]: 管理员 · 6名成员
+        - link "个人空间" [ref=f22e12] [cursor=pointer]:
+          - /url: /console
+      - link "返回市场" [ref=f22e16] [cursor=pointer]:
+        - /url: /
+      - navigation [ref=f22e19]:
+        - generic [ref=f22e20]:
+          - paragraph [ref=f22e21]: 核心管理
+          - generic [ref=f22e22]:
+            - link "企业概览" [ref=f22e23] [cursor=pointer]:
+              - /url: /enterprise
+            - link "成员管理" [ref=f22e26] [cursor=pointer]:
+              - /url: /enterprise/members
+            - link "调用监控" [ref=f22e29] [cursor=pointer]:
+              - /url: /enterprise/monitor
+            - link "日志审计" [ref=f22e33] [cursor=pointer]:
+              - /url: /enterprise/logs
+        - generic [ref=f22e36]:
+          - paragraph [ref=f22e37]: 资源与账务
+          - generic [ref=f22e38]:
+            - link "企业充能包" [ref=f22e39] [cursor=pointer]:
+              - /url: /enterprise/packs
+            - link "企业账单" [ref=f22e42] [cursor=pointer]:
+              - /url: /enterprise/billing
+            - link "企业设置" [ref=f22e45] [cursor=pointer]:
+              - /url: /enterprise/settings
+      - button "退出登录" [ref=f22e49]
+    - generic [ref=f22e53]:
+      - generic [ref=f22e54]:
+        - generic [ref=f22e55]:
+          - heading "调用监控" [level=1] [ref=f22e56]
+          - paragraph [ref=f22e57]: 全企业实时API调用监控与异常告警
+        - generic [ref=f22e58]: 实时监控中
+      - generic [ref=f22e61]:
+        - generic [ref=f22e62]:
+          - generic [ref=f22e63]: +12%
+          - paragraph [ref=f22e68]: 今日调用
+          - paragraph [ref=f22e69]: 47,236
+          - paragraph [ref=f22e70]: vs昨日
+        - generic [ref=f22e71]:
+          - paragraph [ref=f22e75]: 实时QPS
+          - paragraph [ref=f22e76]: 347/s
+          - paragraph [ref=f22e77]: 当前峰值
+        - generic [ref=f22e78]:
+          - generic [ref=f22e79]: "-0.1%"
+          - paragraph [ref=f22e84]: 错误率
+          - paragraph [ref=f22e85]: 0.3%
+        - generic [ref=f22e86]:
+          - generic [ref=f22e87]: "-5ms"
+          - paragraph [ref=f22e92]: 平均延迟
+          - paragraph [ref=f22e93]: 128ms
+      - generic [ref=f22e94]:
+        - generic [ref=f22e95]:
+          - generic [ref=f22e96]:
+            - heading "实时调用流量" [level=3] [ref=f22e97]
+            - generic [ref=f22e98]: LIVE
+          - generic [ref=f22e100]:
+            - button "5s" [ref=f22e101]
+            - button "30s" [ref=f22e102]
+            - button "1min" [ref=f22e103]
+        - generic [ref=f22e104]:
+          - generic [ref=f22e105]:
+            - generic [ref=f22e106]: "778"
+            - generic [ref=f22e107]: "389"
+            - generic [ref=f22e108]: "0"
+          - generic [ref=f22e531]:
+            - generic [ref=f22e532]: 13:00
+            - generic [ref=f22e542]: 13:10
+            - generic [ref=f22e552]: 13:20
+            - generic [ref=f22e562]: 13:30
+            - generic [ref=f22e572]: 13:40
+            - generic [ref=f22e582]: 13:50
+        - generic [ref=f22e592]:
+          - generic [ref=f22e593]: 奇安信安全大模型
+          - generic [ref=f22e596]: 威胁检测模型 V3
+          - generic [ref=f22e599]: 代码安全扫描模型
+          - generic [ref=f22e602]: 日志智能分析模型
+          - generic [ref=f22e605]: 其他模型
+      - generic [ref=f22e608]:
+        - generic [ref=f22e609]:
+          - generic [ref=f22e611]:
+            - heading "模型调用分布" [level=3] [ref=f22e612]
+            - paragraph [ref=f22e613]: 今日各模型调用量占比
+          - generic [ref=f22e618]:
+            - paragraph [ref=f22e619]: 47,236
+            - paragraph [ref=f22e620]: 总调用
+          - generic [ref=f22e621]:
+            - generic [ref=f22e622]:
+              - generic [ref=f22e623]: 奇安信安全大模型
+              - generic [ref=f22e626]: 18,500
+            - generic [ref=f22e627]:
+              - generic [ref=f22e628]: 威胁检测模型 V3
+              - generic [ref=f22e631]: 9,800
+            - generic [ref=f22e632]:
+              - generic [ref=f22e633]: 代码安全扫描模型
+              - generic [ref=f22e636]: 7,200
+            - generic [ref=f22e637]:
+              - generic [ref=f22e638]: 日志智能分析模型
+              - generic [ref=f22e641]: 6,100
+            - generic [ref=f22e642]:
+              - generic [ref=f22e643]: 其他模型
+              - generic [ref=f22e646]: 5,636
+        - generic [ref=f22e647]:
+          - generic [ref=f22e648]:
+            - generic [ref=f22e649]:
+              - heading "成员调用排行" [level=3] [ref=f22e650]
+              - paragraph [ref=f22e651]: 今日调用量Top 6
+            - link "成员管理" [ref=f22e652] [cursor=pointer]:
+              - /url: /enterprise/members
+          - generic [ref=f22e654]:
+            - generic [ref=f22e656]:
+              - generic [ref=f22e657]:
+                - generic [ref=f22e658]: "1"
+                - generic [ref=f22e659]: 张明
+              - generic [ref=f22e660]: 12,800 次
+            - generic [ref=f22e664]:
+              - generic [ref=f22e665]:
+                - generic [ref=f22e666]: "2"
+                - generic [ref=f22e667]: 李芳
+              - generic [ref=f22e668]: 9,600 次
+            - generic [ref=f22e672]:
+              - generic [ref=f22e673]:
+                - generic [ref=f22e674]: "3"
+                - generic [ref=f22e675]: 王磊
+              - generic [ref=f22e676]: 8,200 次
+            - generic [ref=f22e680]:
+              - generic [ref=f22e681]:
+                - generic [ref=f22e682]: "4"
+                - generic [ref=f22e683]: 刘洋
+              - generic [ref=f22e684]: 6,400 次
+            - generic [ref=f22e688]:
+              - generic [ref=f22e689]:
+                - generic [ref=f22e690]: "5"
+                - generic [ref=f22e691]: 赵静
+              - generic [ref=f22e692]: 5,800 次
+            - generic [ref=f22e696]:
+              - generic [ref=f22e697]:
+                - generic [ref=f22e698]: "6"
+                - generic [ref=f22e699]: 陈浩
+              - generic [ref=f22e700]: 4,436 次
+      - generic [ref=f22e703]:
+        - generic [ref=f22e704]:
+          - generic [ref=f22e705]:
+            - heading "异常告警" [level=3] [ref=f22e706]
+            - generic [ref=f22e707]: 1 严重
+          - link "查看全部" [ref=f22e708] [cursor=pointer]:
+            - /url: /enterprise/logs
+        - generic [ref=f22e710]:
+          - generic [ref=f22e711]:
+            - generic [ref=f22e713]:
+              - paragraph [ref=f22e714]: 合规卫士接口返回500错误
+              - paragraph [ref=f22e715]: 5分钟前
+            - link "查看详情" [ref=f22e716] [cursor=pointer]:
+              - /url: /enterprise/logs
+          - generic [ref=f22e717]:
+            - generic [ref=f22e719]:
+              - paragraph [ref=f22e720]: 安全大模型触发频率限制(429)
+              - paragraph [ref=f22e721]: 23分钟前
+            - link "查看详情" [ref=f22e722] [cursor=pointer]:
+              - /url: /enterprise/logs
+          - generic [ref=f22e723]:
+            - generic [ref=f22e725]:
+              - paragraph [ref=f22e726]: 威胁检测模型请求频率超限
+              - paragraph [ref=f22e727]: 1小时前
+            - link "查看详情" [ref=f22e728] [cursor=pointer]:
+              - /url: /enterprise/logs
+          - generic [ref=f22e729]:
+            - generic [ref=f22e731]:
+              - paragraph [ref=f22e732]: 代码安全扫描模型服务已恢复
+              - paragraph [ref=f22e733]: 2小时前
+            - link "查看详情" [ref=f22e734] [cursor=pointer]:
+              - /url: /enterprise/logs
+          - generic [ref=f22e735]:
+            - generic [ref=f22e737]:
+              - paragraph [ref=f22e738]: 漏洞分析专家服务已恢复
+              - paragraph [ref=f22e739]: 3小时前
+            - link "查看详情" [ref=f22e740] [cursor=pointer]:
+              - /url: /enterprise/logs
+  - region "Notifications (F8)":
+    - list
+  - generic [ref=f22e741]:
+    - button "Toggle Nuxt DevTools" [ref=f22e742] [cursor=pointer]
+    - generic "Page load time" [ref=f22e746]:
+      - generic [ref=f22e747]: "29"
+      - generic [ref=f22e748]: ms
+    - button "Toggle Component Inspector" [ref=f22e750] [cursor=pointer]

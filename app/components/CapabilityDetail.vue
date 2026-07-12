@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { Model, App, Activity } from '~/data/mock'
-import { activities } from '~/data/mock'
+import { activities, chargingPacks, currentUser } from '~/data/mock'
 
 const props = defineProps<{
   capability: Model | App
@@ -45,6 +45,85 @@ const appTypeLabel = computed(() => {
 
 const model = computed(() => isModel.value ? props.capability as Model : null)
 const app = computed(() => !isModel.value ? props.capability as App : null)
+
+// Modal states
+const showChargingPackModal = ref(false)
+const showIntegrationModal = ref(false)
+const showEnterpriseModal = ref(false)
+const purchaseSuccess = ref(false)
+const enterpriseSuccess = ref(false)
+
+// Copy feedback
+const copiedStep = ref<number | null>(null)
+
+// Action: open playground/chat tab
+function handleTryNow() {
+  if (isModel.value) {
+    activeTab.value = 'playground'
+  } else if (app.value?.type === 'chat') {
+    activeTab.value = 'chat'
+  } else if (app.value?.type === 'showcase') {
+    activeTab.value = 'demo'
+  }
+}
+
+// Action: open integration guide modal
+function handleIntegration() {
+  showIntegrationModal.value = true
+}
+
+// Action: open charging pack modal
+function handleBuyPack() {
+  showChargingPackModal.value = true
+  purchaseSuccess.value = false
+}
+
+// Action: purchase a specific pack
+function handlePurchasePack(packId: string) {
+  purchaseSuccess.value = true
+  setTimeout(() => {
+    purchaseSuccess.value = false
+    showChargingPackModal.value = false
+  }, 2000)
+}
+
+// Action: enterprise batch purchase
+function handleEnterpriseSubmit() {
+  enterpriseSuccess.value = true
+  setTimeout(() => {
+    enterpriseSuccess.value = false
+    showEnterpriseModal.value = false
+  }, 2000)
+}
+
+// Copy code to clipboard
+async function copyCode(step: number, code: string) {
+  try {
+    await navigator.clipboard.writeText(code)
+    copiedStep.value = step
+    setTimeout(() => { copiedStep.value = null }, 2000)
+  } catch {
+    // fallback: do nothing
+  }
+}
+
+// Integration code snippets
+const sdkInstallCode = 'pip install qax-ai-sdk'
+const apiCallCode = computed(() => {
+  const modelId = model.value?.id || app.value?.id || 'qax-security-llm'
+  return `from qax_ai import QAXClient
+
+client = QAXClient(api_key="your-api-key")
+
+response = client.chat(
+    model="${modelId}",
+    messages=[
+        {"role": "user", "content": "分析这段日志中的异常行为"}
+    ]
+)
+
+print(response.choices[0].message.content)`
+})
 </script>
 
 <template>
@@ -92,44 +171,6 @@ const app = computed(() => !isModel.value ? props.capability as App : null)
             </div>
           </template>
         </div>
-      </div>
-      <div class="flex items-center gap-2 shrink-0">
-        <UButton
-          v-if="isModel"
-          label="体验模型"
-          icon="i-lucide-play"
-          color="primary"
-          size="lg"
-          to="/dev/playground"
-        />
-        <UButton
-          v-else-if="app?.type === 'chat'"
-          label="开始对话"
-          icon="i-lucide-message-circle"
-          color="accent"
-          size="lg"
-        />
-        <UButton
-          v-else-if="app?.type === 'showcase'"
-          label="查看演示"
-          icon="i-lucide-eye"
-          color="accent"
-          size="lg"
-        />
-        <UButton
-          v-else
-          label="立即使用"
-          icon="i-lucide-arrow-right"
-          color="accent"
-          size="lg"
-          trailing
-        />
-        <UButton
-          icon="i-lucide-heart"
-          variant="outline"
-          color="neutral"
-          size="lg"
-        />
       </div>
     </div>
 
@@ -215,92 +256,130 @@ const app = computed(() => !isModel.value ? props.capability as App : null)
           </div>
         </div>
 
-        <!-- Sidebar -->
+        <!-- Right Sidebar — Direct Purchase Actions -->
         <div class="space-y-4">
-          <!-- Model Info Card -->
-          <div v-if="isModel && model" class="bg-white rounded-xl border border-gray-100 p-5 space-y-4">
-            <h3 class="text-sm font-semibold text-gray-900">模型信息</h3>
+          <!-- Capability Info Card -->
+          <div class="bg-white rounded-xl border border-gray-100 p-5 space-y-5">
+            <!-- Name + Rating + Call Count -->
+            <div class="space-y-2">
+              <h3 class="text-base font-bold text-gray-900">{{ capability.name }}</h3>
+              <div class="flex items-center gap-3">
+                <div class="flex items-center gap-1">
+                  <UIcon name="i-lucide-star" class="w-4 h-4 text-amber-400 fill-amber-400" />
+                  <span class="text-sm font-semibold text-gray-700">{{ capability.rating }}</span>
+                </div>
+                <div class="flex items-center gap-1">
+                  <UIcon name="i-lucide-activity" class="w-3.5 h-3.5 text-gray-400" />
+                  <span class="text-sm text-gray-500">
+                    {{ isModel ? model?.callCount + ' 调用' : app?.useCount + ' 用户' }}
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Divider -->
+            <div class="border-t border-gray-100" />
+
+            <!-- 3 Action Buttons -->
             <div class="space-y-3">
+              <!-- Button 1: Online Experience -->
+              <button
+                class="w-full flex items-center gap-3 px-4 py-3 rounded-xl bg-green-500 hover:bg-green-600 text-white transition-colors"
+                @click="handleTryNow"
+              >
+                <UIcon name="i-lucide-play" class="w-5 h-5 shrink-0" />
+                <div class="text-left">
+                  <div class="text-sm font-semibold">在线体验</div>
+                  <div class="text-[11px] text-green-100">打开Playground</div>
+                </div>
+              </button>
+
+              <!-- Button 2: Integration -->
+              <button
+                class="w-full flex items-center gap-3 px-4 py-3 rounded-xl bg-primary-600 hover:bg-primary-700 text-white transition-colors"
+                @click="handleIntegration"
+              >
+                <UIcon name="i-lucide-key" class="w-5 h-5 shrink-0" />
+                <div class="text-left">
+                  <div class="text-sm font-semibold">立即接入</div>
+                  <div class="text-[11px] text-primary-200">获取API Key+SDK</div>
+                </div>
+              </button>
+
+              <!-- Button 3: Buy Charging Pack -->
+              <button
+                class="w-full flex items-center gap-3 px-4 py-3 rounded-xl border-2 border-primary-200 hover:border-primary-300 bg-primary-50/50 hover:bg-primary-50 text-primary-700 transition-colors"
+                @click="handleBuyPack"
+              >
+                <UIcon name="i-lucide-package" class="w-5 h-5 shrink-0" />
+                <div class="text-left">
+                  <div class="text-sm font-semibold">购买充能包</div>
+                  <div class="text-[11px] text-primary-500">体验包 ¥99 起</div>
+                </div>
+              </button>
+            </div>
+
+            <!-- Divider -->
+            <div class="border-t border-gray-100" />
+
+            <!-- Pricing Info (directly visible) -->
+            <div v-if="isModel && model" class="space-y-2">
+              <h4 class="text-xs font-semibold text-gray-500 uppercase tracking-wide">定价信息</h4>
+              <div class="flex justify-between items-center">
+                <span class="text-xs text-gray-500">输入价格</span>
+                <span class="text-sm font-bold text-primary-600">{{ model.pricing.input }}</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-xs text-gray-500">输出价格</span>
+                <span class="text-sm font-bold text-primary-600">{{ model.pricing.output }}</span>
+              </div>
+            </div>
+
+            <!-- Divider (only if model has pricing) -->
+            <div v-if="isModel && model" class="border-t border-gray-100" />
+
+            <!-- Enterprise Batch Purchase (enterprise users only) -->
+            <div v-if="currentUser.isEnterprise">
+              <button
+                class="w-full flex items-center gap-3 px-4 py-3 rounded-xl border-2 border-primary-200 hover:border-primary-300 bg-white hover:bg-primary-50/30 text-primary-700 transition-colors"
+                @click="showEnterpriseModal = true"
+              >
+                <UIcon name="i-lucide-building-2" class="w-5 h-5 shrink-0" />
+                <div class="text-left">
+                  <div class="text-sm font-semibold">企业批量采购</div>
+                  <div class="text-[11px] text-primary-500">专属折扣+统一结算</div>
+                </div>
+              </button>
+            </div>
+
+            <!-- Divider (only if enterprise) -->
+            <div v-if="currentUser.isEnterprise" class="border-t border-gray-100" />
+
+            <!-- Tags and Related Info -->
+            <div class="space-y-2">
+              <h4 class="text-xs font-semibold text-gray-500 uppercase tracking-wide">标签</h4>
+              <div class="flex flex-wrap gap-1.5">
+                <span
+                  v-for="tag in capability.tags.slice(0, 4)"
+                  :key="tag"
+                  class="px-2 py-0.5 rounded-md text-[11px] font-medium bg-gray-50 text-gray-600"
+                >
+                  {{ tag }}
+                </span>
+              </div>
+            </div>
+
+            <!-- Model-specific info -->
+            <div v-if="isModel && model" class="space-y-2">
               <div class="flex justify-between">
                 <span class="text-xs text-gray-500">参数规模</span>
-                <span class="text-xs font-semibold text-gray-900">{{ model.parameters }}</span>
-              </div>
-              <div class="flex justify-between">
-                <span class="text-xs text-gray-500">输入定价</span>
-                <span class="text-xs font-semibold text-primary-600">{{ model.pricing.input }}</span>
-              </div>
-              <div class="flex justify-between">
-                <span class="text-xs text-gray-500">输出定价</span>
-                <span class="text-xs font-semibold text-primary-600">{{ model.pricing.output }}</span>
-              </div>
-              <div class="flex justify-between">
-                <span class="text-xs text-gray-500">调用次数</span>
-                <span class="text-xs font-semibold text-gray-900">{{ model.callCount }}</span>
+                <span class="text-xs font-semibold text-gray-700">{{ model.parameters }}</span>
               </div>
               <div class="flex justify-between">
                 <span class="text-xs text-gray-500">API端点</span>
-                <span class="text-xs font-mono text-gray-600">{{ model.apiEndpoint }}</span>
+                <span class="text-xs font-mono text-gray-600 truncate ml-2">{{ model.apiEndpoint }}</span>
               </div>
             </div>
-            <div class="space-y-2">
-              <UButton label="获取API Key" icon="i-lucide-key" color="primary" block size="sm" to="/dev/keys" />
-              <UButton label="立即体验" icon="i-lucide-play" color="primary" variant="outline" block size="sm" to="/dev/playground" />
-            </div>
-          </div>
-
-          <!-- App Info Card -->
-          <div v-else-if="app" class="bg-white rounded-xl border border-gray-100 p-5 space-y-4">
-            <h3 class="text-sm font-semibold text-gray-900">应用信息</h3>
-            <div class="space-y-3">
-              <div class="flex justify-between">
-                <span class="text-xs text-gray-500">类型</span>
-                <span class="text-xs font-semibold text-gray-900">{{ app.typeName }}</span>
-              </div>
-              <div class="flex justify-between">
-                <span class="text-xs text-gray-500">活跃用户</span>
-                <span class="text-xs font-semibold text-gray-900">{{ app.useCount }}</span>
-              </div>
-              <div class="flex justify-between">
-                <span class="text-xs text-gray-500">评分</span>
-                <span class="text-xs font-semibold text-gray-900">{{ app.rating }}/5.0</span>
-              </div>
-            </div>
-            <UButton
-              :label="app.type === 'chat' ? '开始对话' : '立即使用'"
-              :icon="app.type === 'chat' ? 'i-lucide-message-circle' : 'i-lucide-arrow-right'"
-              color="accent"
-              block
-              size="sm"
-            />
-          </div>
-
-          <!-- Cross-system links -->
-          <div class="bg-white rounded-xl border border-gray-100 p-5 space-y-3">
-            <h3 class="text-sm font-semibold text-gray-900">快速入口</h3>
-            <NuxtLink
-              to="/dev/docs"
-              class="flex items-center gap-2.5 p-2.5 rounded-lg hover:bg-gray-50 transition-colors"
-            >
-              <UIcon name="i-lucide-book-open" class="w-4 h-4 text-primary-500" />
-              <span class="text-sm text-gray-700">API文档</span>
-              <UIcon name="i-lucide-external-link" class="w-3 h-3 text-gray-400 ml-auto" />
-            </NuxtLink>
-            <NuxtLink
-              to="/dev/keys"
-              class="flex items-center gap-2.5 p-2.5 rounded-lg hover:bg-gray-50 transition-colors"
-            >
-              <UIcon name="i-lucide-key" class="w-4 h-4 text-primary-500" />
-              <span class="text-sm text-gray-700">获取API Key</span>
-              <UIcon name="i-lucide-external-link" class="w-3 h-3 text-gray-400 ml-auto" />
-            </NuxtLink>
-            <NuxtLink
-              to="/dev/packs"
-              class="flex items-center gap-2.5 p-2.5 rounded-lg hover:bg-gray-50 transition-colors"
-            >
-              <UIcon name="i-lucide-package" class="w-4 h-4 text-primary-500" />
-              <span class="text-sm text-gray-700">购买充能包</span>
-              <UIcon name="i-lucide-external-link" class="w-3 h-3 text-gray-400 ml-auto" />
-            </NuxtLink>
           </div>
         </div>
       </div>
@@ -391,8 +470,8 @@ const app = computed(() => !isModel.value ? props.capability as App : null)
           </div>
         </div>
         <div class="flex items-center justify-center gap-3 pt-2">
-          <UButton label="购买充能包" icon="i-lucide-package" color="primary" to="/dev/packs" />
-          <UButton label="获取API Key" icon="i-lucide-key" variant="outline" color="primary" to="/dev/keys" />
+          <UButton label="购买充能包" icon="i-lucide-package" color="primary" @click="handleBuyPack" />
+          <UButton label="获取API Key" icon="i-lucide-key" variant="outline" color="primary" @click="handleIntegration" />
         </div>
       </div>
 
@@ -454,5 +533,259 @@ const app = computed(() => !isModel.value ? props.capability as App : null)
         </div>
       </div>
     </div>
+
+    <!-- ============================== -->
+    <!-- Modal: Charging Pack Selection -->
+    <!-- ============================== -->
+    <Teleport to="body">
+      <div
+        v-if="showChargingPackModal"
+        class="fixed inset-0 z-50 flex items-center justify-center"
+      >
+        <!-- Backdrop -->
+        <div class="absolute inset-0 bg-black/50" @click="showChargingPackModal = false" />
+
+        <!-- Modal Content -->
+        <div class="relative bg-white rounded-2xl shadow-2xl w-full max-w-2xl mx-4 max-h-[90vh] overflow-y-auto">
+          <!-- Header -->
+          <div class="flex items-center justify-between px-6 py-5 border-b border-gray-100">
+            <h2 class="text-lg font-bold text-gray-900">选择充能包</h2>
+            <button
+              class="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-gray-100 transition-colors"
+              @click="showChargingPackModal = false"
+            >
+              <UIcon name="i-lucide-x" class="w-5 h-5 text-gray-400" />
+            </button>
+          </div>
+
+          <!-- Success Alert -->
+          <div v-if="purchaseSuccess" class="mx-6 mt-4 px-4 py-3 rounded-xl bg-green-50 border border-green-200">
+            <div class="flex items-center gap-2">
+              <UIcon name="i-lucide-check-circle" class="w-5 h-5 text-green-500" />
+              <span class="text-sm font-medium text-green-700">购买成功！充能包已到账</span>
+            </div>
+          </div>
+
+          <!-- Pack Cards -->
+          <div class="p-6 space-y-4">
+            <div
+              v-for="pack in chargingPacks"
+              :key="pack.id"
+              class="relative rounded-xl border p-5 transition-all"
+              :class="pack.popular
+                ? 'border-primary-300 bg-primary-50/30 shadow-sm'
+                : 'border-gray-100 hover:border-gray-200'"
+            >
+              <!-- Popular Badge -->
+              <span
+                v-if="pack.popular"
+                class="absolute -top-2.5 left-4 px-2.5 py-0.5 rounded-full bg-primary-600 text-white text-[10px] font-bold"
+              >
+                最受欢迎
+              </span>
+
+              <div class="flex items-start justify-between">
+                <div class="flex-1">
+                  <h3 class="text-base font-bold text-gray-900">{{ pack.name }}</h3>
+                  <p class="text-2xl font-bold text-primary-600 mt-1">
+                    {{ pack.price }}
+                    <span v-if="pack.originalPrice" class="text-sm font-normal text-gray-400 line-through ml-2">{{ pack.originalPrice }}</span>
+                  </p>
+                  <p class="text-sm text-gray-500 mt-1">{{ pack.tokens }}</p>
+                  <p class="text-xs text-gray-400 mt-0.5">{{ pack.unitPrice }}</p>
+                </div>
+                <UButton
+                  label="购买"
+                  :color="pack.popular ? 'primary' : 'neutral'"
+                  :variant="pack.popular ? 'solid' : 'outline'"
+                  size="sm"
+                  @click="handlePurchasePack(pack.id)"
+                />
+              </div>
+
+              <!-- Features -->
+              <div class="mt-3 flex flex-wrap gap-2">
+                <span
+                  v-for="feature in pack.features"
+                  :key="feature"
+                  class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[11px] bg-gray-50 text-gray-600"
+                >
+                  <UIcon name="i-lucide-check" class="w-3 h-3 text-green-500" />
+                  {{ feature }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Teleport>
+
+    <!-- ============================== -->
+    <!-- Modal: Integration Guide       -->
+    <!-- ============================== -->
+    <Teleport to="body">
+      <div
+        v-if="showIntegrationModal"
+        class="fixed inset-0 z-50 flex items-center justify-center"
+      >
+        <!-- Backdrop -->
+        <div class="absolute inset-0 bg-black/50" @click="showIntegrationModal = false" />
+
+        <!-- Modal Content -->
+        <div class="relative bg-white rounded-2xl shadow-2xl w-full max-w-xl mx-4 max-h-[90vh] overflow-y-auto">
+          <!-- Header -->
+          <div class="flex items-center justify-between px-6 py-5 border-b border-gray-100">
+            <h2 class="text-lg font-bold text-gray-900">接入引导</h2>
+            <button
+              class="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-gray-100 transition-colors"
+              @click="showIntegrationModal = false"
+            >
+              <UIcon name="i-lucide-x" class="w-5 h-5 text-gray-400" />
+            </button>
+          </div>
+
+          <!-- Steps -->
+          <div class="p-6 space-y-6">
+            <!-- Step 1: Create API Key -->
+            <div class="space-y-3">
+              <div class="flex items-center gap-3">
+                <div class="w-7 h-7 rounded-full bg-primary-600 text-white flex items-center justify-center text-xs font-bold shrink-0">1</div>
+                <h3 class="text-sm font-semibold text-gray-900">创建API Key</h3>
+              </div>
+              <p class="text-xs text-gray-500 pl-10">前往API Key管理页面创建您的专属密钥</p>
+              <div class="pl-10">
+                <NuxtLink
+                  to="/console/keys/create"
+                  class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary-600 hover:bg-primary-700 text-white text-sm font-medium transition-colors"
+                >
+                  <UIcon name="i-lucide-key" class="w-4 h-4" />
+                  前往创建
+                </NuxtLink>
+              </div>
+            </div>
+
+            <!-- Step 2: Install SDK -->
+            <div class="space-y-3">
+              <div class="flex items-center gap-3">
+                <div class="w-7 h-7 rounded-full bg-primary-600 text-white flex items-center justify-center text-xs font-bold shrink-0">2</div>
+                <h3 class="text-sm font-semibold text-gray-900">安装SDK</h3>
+              </div>
+              <p class="text-xs text-gray-500 pl-10">通过pip快速安装奇安信AI SDK</p>
+              <div class="pl-10 relative">
+                <div class="bg-gray-900 rounded-xl p-4 font-mono text-sm text-green-400 overflow-x-auto">
+                  {{ sdkInstallCode }}
+                </div>
+                <button
+                  class="absolute top-2 right-2 w-8 h-8 rounded-lg bg-gray-800 hover:bg-gray-700 flex items-center justify-center transition-colors"
+                  @click="copyCode(2, sdkInstallCode)"
+                >
+                  <UIcon
+                    :name="copiedStep === 2 ? 'i-lucide-check' : 'i-lucide-copy'"
+                    class="w-4 h-4"
+                    :class="copiedStep === 2 ? 'text-green-400' : 'text-gray-400'"
+                  />
+                </button>
+              </div>
+            </div>
+
+            <!-- Step 3: Call API -->
+            <div class="space-y-3">
+              <div class="flex items-center gap-3">
+                <div class="w-7 h-7 rounded-full bg-primary-600 text-white flex items-center justify-center text-xs font-bold shrink-0">3</div>
+                <h3 class="text-sm font-semibold text-gray-900">调用API</h3>
+              </div>
+              <p class="text-xs text-gray-500 pl-10">使用以下代码快速调用{{ capability.name }}</p>
+              <div class="pl-10 relative">
+                <div class="bg-gray-900 rounded-xl p-4 font-mono text-sm text-green-400 overflow-x-auto whitespace-pre">{{ apiCallCode }}</div>
+                <button
+                  class="absolute top-2 right-2 w-8 h-8 rounded-lg bg-gray-800 hover:bg-gray-700 flex items-center justify-center transition-colors"
+                  @click="copyCode(3, apiCallCode)"
+                >
+                  <UIcon
+                    :name="copiedStep === 3 ? 'i-lucide-check' : 'i-lucide-copy'"
+                    class="w-4 h-4"
+                    :class="copiedStep === 3 ? 'text-green-400' : 'text-gray-400'"
+                  />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Teleport>
+
+    <!-- ============================== -->
+    <!-- Modal: Enterprise Batch Purchase -->
+    <!-- ============================== -->
+    <Teleport to="body">
+      <div
+        v-if="showEnterpriseModal"
+        class="fixed inset-0 z-50 flex items-center justify-center"
+      >
+        <!-- Backdrop -->
+        <div class="absolute inset-0 bg-black/50" @click="showEnterpriseModal = false" />
+
+        <!-- Modal Content -->
+        <div class="relative bg-white rounded-2xl shadow-2xl w-full max-w-md mx-4">
+          <!-- Header -->
+          <div class="flex items-center justify-between px-6 py-5 border-b border-gray-100">
+            <h2 class="text-lg font-bold text-gray-900">企业批量采购</h2>
+            <button
+              class="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-gray-100 transition-colors"
+              @click="showEnterpriseModal = false"
+            >
+              <UIcon name="i-lucide-x" class="w-5 h-5 text-gray-400" />
+            </button>
+          </div>
+
+          <!-- Form -->
+          <div class="p-6 space-y-5">
+            <!-- Success Alert -->
+            <div v-if="enterpriseSuccess" class="px-4 py-3 rounded-xl bg-green-50 border border-green-200">
+              <div class="flex items-center gap-2">
+                <UIcon name="i-lucide-check-circle" class="w-5 h-5 text-green-500" />
+                <span class="text-sm font-medium text-green-700">提交成功！我们将在1个工作日内联系您</span>
+              </div>
+            </div>
+
+            <div class="space-y-4">
+              <!-- Estimated Monthly Calls -->
+              <div class="space-y-1.5">
+                <label class="text-sm font-medium text-gray-700">预估月调用量</label>
+                <UInput
+                  placeholder="例如：100万次/月"
+                  size="md"
+                />
+              </div>
+
+              <!-- Contact Info -->
+              <div class="space-y-1.5">
+                <label class="text-sm font-medium text-gray-700">联系方式</label>
+                <UInput
+                  placeholder="手机号或邮箱"
+                  size="md"
+                />
+              </div>
+            </div>
+
+            <!-- Note -->
+            <div class="flex items-start gap-2 px-3 py-2.5 rounded-xl bg-amber-50 border border-amber-100">
+              <UIcon name="i-lucide-info" class="w-4 h-4 text-amber-500 shrink-0 mt-0.5" />
+              <p class="text-xs text-amber-700 leading-relaxed">企业客户享受专属折扣，我们将在1个工作日内联系您</p>
+            </div>
+
+            <!-- Submit Button -->
+            <UButton
+              label="提交咨询"
+              icon="i-lucide-send"
+              color="primary"
+              block
+              size="lg"
+              @click="handleEnterpriseSubmit"
+            />
+          </div>
+        </div>
+      </div>
+    </Teleport>
   </div>
 </template>

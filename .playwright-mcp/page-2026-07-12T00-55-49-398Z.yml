@@ -1,0 +1,227 @@
+- generic [active] [ref=f25e1]:
+  - generic [ref=f25e3]:
+    - complementary [ref=f25e4]:
+      - generic [ref=f25e5]:
+        - generic [ref=f25e9]:
+          - paragraph [ref=f25e10]: 张明
+          - paragraph [ref=f25e11]: zhangming@qianxin.com
+        - link "企业空间" [ref=f25e12] [cursor=pointer]:
+          - /url: /enterprise
+      - link "返回市场" [ref=f25e16] [cursor=pointer]:
+        - /url: /
+      - navigation [ref=f25e19]:
+        - generic [ref=f25e20]:
+          - paragraph [ref=f25e21]: 核心功能
+          - generic [ref=f25e22]:
+            - link "使用看板" [ref=f25e23] [cursor=pointer]:
+              - /url: /console
+            - link "API Key" [ref=f25e27] [cursor=pointer]:
+              - /url: /console/keys
+            - link "调用日志" [ref=f25e30] [cursor=pointer]:
+              - /url: /console/logs
+            - link "调用统计" [ref=f25e33] [cursor=pointer]:
+              - /url: /console/stats
+            - link "充能包" [ref=f25e36] [cursor=pointer]:
+              - /url: /console/packs
+        - generic [ref=f25e39]:
+          - paragraph [ref=f25e40]: 账户管理
+          - generic [ref=f25e41]:
+            - link "账单中心" [ref=f25e42] [cursor=pointer]:
+              - /url: /console/billing
+            - link "个人设置" [ref=f25e45] [cursor=pointer]:
+              - /url: /console/settings
+        - generic [ref=f25e48]:
+          - paragraph [ref=f25e49]: 开发资源
+          - generic [ref=f25e50]:
+            - link "API文档" [ref=f25e51] [cursor=pointer]:
+              - /url: /console/docs
+            - link "应用集成" [ref=f25e54] [cursor=pointer]:
+              - /url: /console/integrations
+      - button "退出登录" [ref=f25e58]
+    - generic [ref=f25e62]:
+      - generic [ref=f25e63]:
+        - generic [ref=f25e67]:
+          - generic [ref=f25e68]:
+            - heading "欢迎回来，张明" [level=1] [ref=f25e69]
+            - generic [ref=f25e70]: · 奇安信安全团队
+          - generic [ref=f25e71]: 服务正常
+        - button "企业视图" [ref=f25e75]
+      - generic [ref=f25e79]:
+        - generic [ref=f25e80]:
+          - generic [ref=f25e81]: +12.5%
+          - paragraph [ref=f25e86]: API调用总量
+          - paragraph [ref=f25e87]: 284万+
+        - generic [ref=f25e88]:
+          - generic [ref=f25e89]: +8.3%
+          - paragraph [ref=f25e94]: Token消耗
+          - paragraph [ref=f25e95]: 485万
+        - generic [ref=f25e96]:
+          - generic [ref=f25e97]: +15.2%
+          - paragraph [ref=f25e102]: 本月费用
+          - paragraph [ref=f25e103]: ¥12,860
+        - generic [ref=f25e104]:
+          - generic [ref=f25e105]: 37%
+          - paragraph [ref=f25e109]: 充能包余额
+          - paragraph [ref=f25e110]: 1,850万
+      - generic [ref=f25e113]:
+        - generic [ref=f25e114]:
+          - generic [ref=f25e115]:
+            - heading "调用趋势" [level=3] [ref=f25e116]
+            - paragraph [ref=f25e117]: API每日调用量统计
+          - generic [ref=f25e118]:
+            - button "7天" [ref=f25e119]
+            - button "30天" [ref=f25e120]
+            - button "90天" [ref=f25e121]
+        - generic [ref=f25e122]:
+          - generic [ref=f25e123]:
+            - generic [ref=f25e124]: 3.8万
+            - generic [ref=f25e126]: 07/05
+          - generic [ref=f25e127]:
+            - generic [ref=f25e128]: 3.5万
+            - generic [ref=f25e130]: 07/06
+          - generic [ref=f25e131]:
+            - generic [ref=f25e132]: 4.3万
+            - generic [ref=f25e134]: 07/07
+          - generic [ref=f25e135]:
+            - generic [ref=f25e136]: 4.7万
+            - generic [ref=f25e138]: 07/08
+          - generic [ref=f25e139]:
+            - generic [ref=f25e140]: 4.4万
+            - generic [ref=f25e142]: 07/09
+          - generic [ref=f25e143]:
+            - generic [ref=f25e144]: 5.2万
+            - generic [ref=f25e146]: 07/10
+          - generic [ref=f25e147]:
+            - generic [ref=f25e148]: 2.6万
+            - generic [ref=f25e150]: 07/11
+      - generic [ref=f25e151]:
+        - generic [ref=f25e152]:
+          - generic [ref=f25e153]:
+            - generic [ref=f25e154]:
+              - heading "模型消耗排行" [level=3] [ref=f25e155]
+              - paragraph [ref=f25e156]: Token消耗Top 5
+            - link "查看详情" [ref=f25e157] [cursor=pointer]:
+              - /url: /console/stats
+          - generic [ref=f25e159]:
+            - generic [ref=f25e161]:
+              - generic [ref=f25e162]:
+                - generic [ref=f25e163]: "1"
+                - generic [ref=f25e164]: 奇安信安全大模型
+              - generic [ref=f25e165]: 524万 Token
+            - generic [ref=f25e169]:
+              - generic [ref=f25e170]:
+                - generic [ref=f25e171]: "2"
+                - generic [ref=f25e172]: 威胁检测模型 V3
+              - generic [ref=f25e173]: 289万 Token
+            - generic [ref=f25e177]:
+              - generic [ref=f25e178]:
+                - generic [ref=f25e179]: "3"
+                - generic [ref=f25e180]: 代码安全扫描模型
+              - generic [ref=f25e181]: 178万 Token
+            - generic [ref=f25e185]:
+              - generic [ref=f25e186]:
+                - generic [ref=f25e187]: "4"
+                - generic [ref=f25e188]: 漏洞分析专家
+              - generic [ref=f25e189]: 96万 Token
+            - generic [ref=f25e193]:
+              - generic [ref=f25e194]:
+                - generic [ref=f25e195]: "5"
+                - generic [ref=f25e196]: 合规卫士
+              - generic [ref=f25e197]: 48万 Token
+        - generic [ref=f25e200]:
+          - generic [ref=f25e201]:
+            - generic [ref=f25e202]:
+              - heading "异常告警" [level=3] [ref=f25e203]
+              - paragraph [ref=f25e204]: 最近服务异常与恢复通知
+            - generic [ref=f25e205]: 1 严重
+          - generic [ref=f25e206]:
+            - generic [ref=f25e209]:
+              - paragraph [ref=f25e210]: 合规卫士接口返回500错误
+              - paragraph [ref=f25e211]: 5分钟前
+            - generic [ref=f25e214]:
+              - paragraph [ref=f25e215]: 安全大模型触发频率限制(429)
+              - paragraph [ref=f25e216]: 23分钟前
+            - generic [ref=f25e219]:
+              - paragraph [ref=f25e220]: 威胁检测模型请求频率超限
+              - paragraph [ref=f25e221]: 1小时前
+            - generic [ref=f25e224]:
+              - paragraph [ref=f25e225]: 代码安全扫描模型服务已恢复
+              - paragraph [ref=f25e226]: 2小时前
+            - generic [ref=f25e229]:
+              - paragraph [ref=f25e230]: 漏洞分析专家服务已恢复
+              - paragraph [ref=f25e231]: 3小时前
+      - generic [ref=f25e232]:
+        - generic [ref=f25e233]:
+          - generic [ref=f25e234]:
+            - heading "成员消耗排行" [level=3] [ref=f25e235]
+            - paragraph [ref=f25e236]: 团队成员Token消耗Top 5
+          - link "成员管理" [ref=f25e237] [cursor=pointer]:
+            - /url: /enterprise/members
+        - generic [ref=f25e239]:
+          - generic [ref=f25e241]:
+            - generic [ref=f25e242]:
+              - generic [ref=f25e243]: "1"
+              - generic [ref=f25e246]: 张明管理员
+            - generic [ref=f25e247]: 520万 Token¥4,780
+          - generic [ref=f25e251]:
+            - generic [ref=f25e252]:
+              - generic [ref=f25e253]: "2"
+              - generic [ref=f25e256]: 李芳开发者
+            - generic [ref=f25e257]: 380万 Token¥3,240
+          - generic [ref=f25e261]:
+            - generic [ref=f25e262]:
+              - generic [ref=f25e263]: "3"
+              - generic [ref=f25e266]: 王磊开发者
+            - generic [ref=f25e267]: 290万 Token¥2,580
+          - generic [ref=f25e271]:
+            - generic [ref=f25e272]:
+              - generic [ref=f25e273]: "4"
+              - generic [ref=f25e276]: 孙丽开发者
+            - generic [ref=f25e277]: 168万 Token¥1,880
+          - generic [ref=f25e281]:
+            - generic [ref=f25e282]:
+              - generic [ref=f25e283]: "5"
+              - generic [ref=f25e286]: 赵伟只读
+            - generic [ref=f25e287]: 42万 Token¥380
+      - generic [ref=f25e290]:
+        - heading "额度使用" [level=3] [ref=f25e291]
+        - generic [ref=f25e292]:
+          - generic [ref=f25e293]:
+            - generic [ref=f25e294]:
+              - generic [ref=f25e295]: 充能包
+              - generic [ref=f25e298]: 1,850万 / 5,000万 Token
+            - generic [ref=f25e301]:
+              - generic [ref=f25e302]: 已使用 3150万 Token
+              - generic [ref=f25e303]: 37%
+          - generic [ref=f25e304]:
+            - generic [ref=f25e305]:
+              - generic [ref=f25e306]: API频率
+              - generic [ref=f25e309]: 6,000 / 10,000 次/分
+            - generic [ref=f25e312]:
+              - generic [ref=f25e313]: 当前频率限制
+              - generic [ref=f25e314]: 60%
+      - generic [ref=f25e315]:
+        - link [ref=f25e316] [cursor=pointer]:
+          - /url: /console/keys/create
+          - paragraph [ref=f25e321]: 创建API Key
+          - paragraph [ref=f25e322]: 生成新的API访问密钥
+        - link [ref=f25e323] [cursor=pointer]:
+          - /url: /console/packs
+          - paragraph [ref=f25e328]: 购买充能包
+          - paragraph [ref=f25e329]: 补充Token调用额度
+        - link [ref=f25e330] [cursor=pointer]:
+          - /url: /console/docs
+          - paragraph [ref=f25e335]: API文档
+          - paragraph [ref=f25e336]: 查看接口调用指南
+        - link [ref=f25e337] [cursor=pointer]:
+          - /url: /console/stats
+          - paragraph [ref=f25e342]: 调用统计
+          - paragraph [ref=f25e343]: 查看详细调用数据
+  - region "Notifications (F8)":
+    - list
+  - generic [ref=f25e344]:
+    - button "Toggle Nuxt DevTools" [ref=f25e345] [cursor=pointer]
+    - generic "Page load time" [ref=f25e349]:
+      - generic [ref=f25e350]: "32"
+      - generic [ref=f25e351]: ms
+    - button "Toggle Component Inspector" [ref=f25e353] [cursor=pointer]

@@ -573,8 +573,11 @@ export interface Organization {
   memberCount: number
   activeKeyCount: number
   monthlyCost: number
+  monthlyCalls: number
   packBalance: number
   packTotal: number
+  contactName: string
+  contactEmail: string
 }
 
 export interface Member {
@@ -598,6 +601,51 @@ export interface BillingRecord {
   tokens: number
   status: 'paid' | 'pending'
   items: { name: string; amount: number; tokens: number }[]
+}
+
+export interface CallLog {
+  id: string
+  timestamp: string
+  memberName: string
+  memberId: string
+  model: string
+  modelName: string
+  apiKey: string
+  status: number
+  latency: number
+  promptTokens: number
+  completionTokens: number
+  totalTokens: number
+  cost: number
+  errorMessage?: string
+  requestId: string
+}
+
+export interface MonitorMetrics {
+  todayCalls: number
+  realtimeQPS: number
+  errorRate: number
+  avgLatency: number
+  realtimeSeries: { time: string; calls: number; errors: number }[]
+  modelDistribution: { name: string; calls: number; color: string }[]
+  memberRanking: { name: string; calls: number; tokens: number }[]
+}
+
+export interface AdminEnterprise {
+  id: string
+  name: string
+  industry: string
+  scale: string
+  memberCount: number
+  monthlyCost: number
+  monthlyCalls: number
+  monthlyTokens: number
+  packBalance: number
+  verified: boolean
+  createdAt: string
+  contactName: string
+  contactEmail: string
+  status: 'active' | 'pending' | 'disabled'
 }
 
 export interface CurrentUser {
@@ -630,8 +678,11 @@ export const organization: Organization = {
   memberCount: 6,
   activeKeyCount: 12,
   monthlyCost: 12860,
+  monthlyCalls: 47200,
   packBalance: 18500000,
-  packTotal: 50000000
+  packTotal: 50000000,
+  contactName: '张明',
+  contactEmail: 'zhangming@qianxin.com'
 }
 
 export const members: Member[] = [
@@ -652,6 +703,274 @@ export const billingRecords: BillingRecord[] = [
   { id: 'bill-202602', month: '2026年2月', amount: 6240, tokens: 9000000, status: 'paid', items: [{ name: '安全大模型', amount: 2980, tokens: 4200000 }, { name: '其他模型', amount: 3260, tokens: 4800000 }] }
 ]
 
+export const callLogs: CallLog[] = [
+  { id: 'cl-001', timestamp: '2026-07-12 14:32:15', memberName: '张明', memberId: 'm1', model: 'qax-security-llm', modelName: '奇安信安全大模型', apiKey: 'sk-qax-***3a7f', status: 200, latency: 156, promptTokens: 2450, completionTokens: 1820, totalTokens: 4270, cost: 0.3624, requestId: 'req-a1b2c3d4e5' },
+  { id: 'cl-002', timestamp: '2026-07-12 14:30:42', memberName: '李芳', memberId: 'm2', model: 'threat-detect-v3', modelName: '威胁检测模型 V3', apiKey: 'sk-qax-***8b2c', status: 200, latency: 89, promptTokens: 1200, completionTokens: 680, totalTokens: 1880, cost: 0.0744, requestId: 'req-f6g7h8i9j0' },
+  { id: 'cl-003', timestamp: '2026-07-12 14:28:17', memberName: '王磊', memberId: 'm3', model: 'code-security-scan', modelName: '代码安全扫描模型', apiKey: 'sk-qax-***5d1e', status: 200, latency: 203, promptTokens: 3800, completionTokens: 2400, totalTokens: 6200, cost: 0.258, requestId: 'req-k1l2m3n4o5' },
+  { id: 'cl-004', timestamp: '2026-07-12 14:25:33', memberName: '赵静', memberId: 'm4', model: 'vuln-analyzer-pro', modelName: '漏洞分析专家', apiKey: 'sk-qax-***9f3a', status: 200, latency: 134, promptTokens: 1800, completionTokens: 1200, totalTokens: 3000, cost: 0.084, requestId: 'req-p6q7r8s9t0' },
+  { id: 'cl-005', timestamp: '2026-07-12 14:22:08', memberName: '陈浩', memberId: 'm5', model: 'compliance-guard', modelName: '合规卫士', apiKey: 'sk-qax-***2c8b', status: 200, latency: 98, promptTokens: 950, completionTokens: 620, totalTokens: 1570, cost: 0.0438, requestId: 'req-u1v2w3x4y5' },
+  { id: 'cl-006', timestamp: '2026-07-12 14:18:45', memberName: '刘洋', memberId: 'm6', model: 'log-analyzer', modelName: '日志智能分析模型', apiKey: 'sk-qax-***7e4d', status: 200, latency: 112, promptTokens: 3200, completionTokens: 1800, totalTokens: 5000, cost: 0.118, requestId: 'req-z6a7b8c9d0' },
+  { id: 'cl-007', timestamp: '2026-07-12 14:15:22', memberName: '张明', memberId: 'm1', model: 'threat-detect-v3', modelName: '威胁检测模型 V3', apiKey: 'sk-qax-***3a7f', status: 200, latency: 76, promptTokens: 800, completionTokens: 450, totalTokens: 1250, cost: 0.051, requestId: 'req-e1f2g3h4i5' },
+  { id: 'cl-008', timestamp: '2026-07-12 14:12:37', memberName: '李芳', memberId: 'm2', model: 'qax-security-llm', modelName: '奇安信安全大模型', apiKey: 'sk-qax-***8b2c', status: 200, latency: 189, promptTokens: 3100, completionTokens: 2200, totalTokens: 5300, cost: 0.438, requestId: 'req-j6k7l8m9n0' },
+  { id: 'cl-009', timestamp: '2026-07-12 14:09:15', memberName: '王磊', memberId: 'm3', model: 'malware-analyzer', modelName: '恶意软件分析模型', apiKey: 'sk-qax-***5d1e', status: 200, latency: 145, promptTokens: 2100, completionTokens: 1500, totalTokens: 3600, cost: 0.153, requestId: 'req-o1p2q3r4s5' },
+  { id: 'cl-010', timestamp: '2026-07-12 14:05:48', memberName: '赵静', memberId: 'm4', model: 'incident-response', modelName: '应急响应模型', apiKey: 'sk-qax-***9f3a', status: 200, latency: 167, promptTokens: 2800, completionTokens: 1900, totalTokens: 4700, cost: 0.26, requestId: 'req-t6u7v8w9x0' },
+  { id: 'cl-011', timestamp: '2026-07-12 14:02:33', memberName: '陈浩', memberId: 'm5', model: 'phishing-detect', modelName: '钓鱼识别模型', apiKey: 'sk-qax-***2c8b', status: 200, latency: 54, promptTokens: 600, completionTokens: 320, totalTokens: 920, cost: 0.0124, requestId: 'req-y1z2a3b4c5' },
+  { id: 'cl-012', timestamp: '2026-07-12 13:58:19', memberName: '刘洋', memberId: 'm6', model: 'data-guard-llm', modelName: '数据安全卫士', apiKey: 'sk-qax-***7e4d', status: 200, latency: 88, promptTokens: 1400, completionTokens: 780, totalTokens: 2180, cost: 0.0604, requestId: 'req-d6e7f8g9h0' },
+  { id: 'cl-013', timestamp: '2026-07-12 13:55:02', memberName: '张明', memberId: 'm1', model: 'code-security-scan', modelName: '代码安全扫描模型', apiKey: 'sk-qax-***3a7f', status: 200, latency: 234, promptTokens: 4500, completionTokens: 3100, totalTokens: 7600, cost: 0.321, requestId: 'req-i1j2k3l4m5' },
+  { id: 'cl-014', timestamp: '2026-07-12 13:51:47', memberName: '李芳', memberId: 'm2', model: 'vuln-analyzer-pro', modelName: '漏洞分析专家', apiKey: 'sk-qax-***8b2c', status: 200, latency: 121, promptTokens: 1600, completionTokens: 980, totalTokens: 2580, cost: 0.0724, requestId: 'req-n6o7p8q9r0' },
+  { id: 'cl-015', timestamp: '2026-07-12 13:48:22', memberName: '王磊', memberId: 'm3', model: 'qax-security-llm', modelName: '奇安信安全大模型', apiKey: 'sk-qax-***5d1e', status: 200, latency: 178, promptTokens: 2900, completionTokens: 2100, totalTokens: 5000, cost: 0.414, requestId: 'req-s1t2u3v4w5' },
+  { id: 'cl-016', timestamp: '2026-07-12 13:44:58', memberName: '赵静', memberId: 'm4', model: 'log-analyzer', modelName: '日志智能分析模型', apiKey: 'sk-qax-***9f3a', status: 200, latency: 95, promptTokens: 1800, completionTokens: 960, totalTokens: 2760, cost: 0.0648, requestId: 'req-x6y7z8a9b0' },
+  { id: 'cl-017', timestamp: '2026-07-12 13:41:33', memberName: '陈浩', memberId: 'm5', model: 'threat-detect-v3', modelName: '威胁检测模型 V3', apiKey: 'sk-qax-***2c8b', status: 200, latency: 82, promptTokens: 1100, completionTokens: 580, totalTokens: 1680, cost: 0.0666, requestId: 'req-c1d2e3f4g5' },
+  { id: 'cl-018', timestamp: '2026-07-12 13:38:15', memberName: '刘洋', memberId: 'm6', model: 'compliance-guard', modelName: '合规卫士', apiKey: 'sk-qax-***7e4d', status: 200, latency: 103, promptTokens: 1300, completionTokens: 720, totalTokens: 2020, cost: 0.0564, requestId: 'req-h6i7j8k9l0' },
+  { id: 'cl-019', timestamp: '2026-07-12 13:34:42', memberName: '张明', memberId: 'm1', model: 'incident-response', modelName: '应急响应模型', apiKey: 'sk-qax-***3a7f', status: 200, latency: 192, promptTokens: 3400, completionTokens: 2300, totalTokens: 5700, cost: 0.316, requestId: 'req-m1n2o3p4q5' },
+  { id: 'cl-020', timestamp: '2026-07-12 13:31:18', memberName: '李芳', memberId: 'm2', model: 'malware-analyzer', modelName: '恶意软件分析模型', apiKey: 'sk-qax-***8b2c', status: 200, latency: 138, promptTokens: 2000, completionTokens: 1400, totalTokens: 3400, cost: 0.144, requestId: 'req-r6s7t8u9v0' },
+  { id: 'cl-021', timestamp: '2026-07-12 13:27:55', memberName: '王磊', memberId: 'm3', model: 'phishing-detect', modelName: '钓鱼识别模型', apiKey: 'sk-qax-***5d1e', status: 200, latency: 62, promptTokens: 700, completionTokens: 380, totalTokens: 1080, cost: 0.0146, requestId: 'req-w1x2y3z4a5' },
+  { id: 'cl-022', timestamp: '2026-07-12 13:24:30', memberName: '赵静', memberId: 'm4', model: 'data-guard-llm', modelName: '数据安全卫士', apiKey: 'sk-qax-***9f3a', status: 200, latency: 91, promptTokens: 1500, completionTokens: 840, totalTokens: 2340, cost: 0.0648, requestId: 'req-b6c7d8e9f0' },
+  { id: 'cl-023', timestamp: '2026-07-12 13:21:07', memberName: '陈浩', memberId: 'm5', model: 'qax-security-llm', modelName: '奇安信安全大模型', apiKey: 'sk-qax-***2c8b', status: 200, latency: 165, promptTokens: 2600, completionTokens: 1800, totalTokens: 4400, cost: 0.372, requestId: 'req-g1h2i3j4k5' },
+  { id: 'cl-024', timestamp: '2026-07-12 13:17:44', memberName: '刘洋', memberId: 'm6', model: 'code-security-scan', modelName: '代码安全扫描模型', apiKey: 'sk-qax-***7e4d', status: 200, latency: 218, promptTokens: 4200, completionTokens: 2800, totalTokens: 7000, cost: 0.294, requestId: 'req-l6m7n8o9p0' },
+  { id: 'cl-025', timestamp: '2026-07-12 13:14:22', memberName: '张明', memberId: 'm1', model: 'log-analyzer', modelName: '日志智能分析模型', apiKey: 'sk-qax-***3a7f', status: 200, latency: 108, promptTokens: 2800, completionTokens: 1600, totalTokens: 4400, cost: 0.104, requestId: 'req-q1r2s3t4u5' },
+  { id: 'cl-026', timestamp: '2026-07-12 13:10:58', memberName: '李芳', memberId: 'm2', model: 'incident-response', modelName: '应急响应模型', apiKey: 'sk-qax-***8b2c', status: 200, latency: 175, promptTokens: 3000, completionTokens: 2000, totalTokens: 5000, cost: 0.28, requestId: 'req-v6w7x8y9z0' },
+  { id: 'cl-027', timestamp: '2026-07-12 13:07:33', memberName: '王磊', memberId: 'm3', model: 'compliance-guard', modelName: '合规卫士', apiKey: 'sk-qax-***5d1e', status: 200, latency: 94, promptTokens: 1100, completionTokens: 640, totalTokens: 1740, cost: 0.0486, requestId: 'req-a1b2c3d4e6' },
+  { id: 'cl-028', timestamp: '2026-07-12 13:04:10', memberName: '赵静', memberId: 'm4', model: 'qax-security-llm', modelName: '奇安信安全大模型', apiKey: 'sk-qax-***9f3a', status: 200, latency: 152, promptTokens: 2300, completionTokens: 1600, totalTokens: 3900, cost: 0.33, requestId: 'req-f7g8h9i0j1' },
+  { id: 'cl-029', timestamp: '2026-07-12 13:00:47', memberName: '陈浩', memberId: 'm5', model: 'data-guard-llm', modelName: '数据安全卫士', apiKey: 'sk-qax-***2c8b', status: 200, latency: 86, promptTokens: 1200, completionTokens: 680, totalTokens: 1880, cost: 0.052, requestId: 'req-k2l3m4n5o6' },
+  { id: 'cl-030', timestamp: '2026-07-12 12:57:22', memberName: '刘洋', memberId: 'm6', model: 'vuln-analyzer-pro', modelName: '漏洞分析专家', apiKey: 'sk-qax-***7e4d', status: 200, latency: 128, promptTokens: 1700, completionTokens: 1100, totalTokens: 2800, cost: 0.078, requestId: 'req-p7q8r9s0t1' },
+  { id: 'cl-031', timestamp: '2026-07-12 12:53:58', memberName: '张明', memberId: 'm1', model: 'malware-analyzer', modelName: '恶意软件分析模型', apiKey: 'sk-qax-***3a7f', status: 200, latency: 142, promptTokens: 2200, completionTokens: 1500, totalTokens: 3700, cost: 0.156, requestId: 'req-u2v3w4x5y6' },
+  { id: 'cl-032', timestamp: '2026-07-12 12:50:33', memberName: '李芳', memberId: 'm2', model: 'phishing-detect', modelName: '钓鱼识别模型', apiKey: 'sk-qax-***8b2c', status: 200, latency: 58, promptTokens: 650, completionTokens: 340, totalTokens: 990, cost: 0.0133, requestId: 'req-z7a8b9c0d1' },
+  { id: 'cl-033', timestamp: '2026-07-12 12:47:10', memberName: '王磊', memberId: 'm3', model: 'threat-detect-v3', modelName: '威胁检测模型 V3', apiKey: 'sk-qax-***5d1e', status: 200, latency: 79, promptTokens: 900, completionTokens: 520, totalTokens: 1420, cost: 0.0564, requestId: 'req-e2f3g4h5i6' },
+  { id: 'cl-034', timestamp: '2026-07-12 12:43:45', memberName: '赵静', memberId: 'm4', model: 'code-security-scan', modelName: '代码安全扫描模型', apiKey: 'sk-qax-***9f3a', status: 200, latency: 196, promptTokens: 3600, completionTokens: 2400, totalTokens: 6000, cost: 0.252, requestId: 'req-j7k8l9m0n1' },
+  { id: 'cl-035', timestamp: '2026-07-12 12:40:20', memberName: '陈浩', memberId: 'm5', model: 'incident-response', modelName: '应急响应模型', apiKey: 'sk-qax-***2c8b', status: 200, latency: 183, promptTokens: 3200, completionTokens: 2100, totalTokens: 5300, cost: 0.296, requestId: 'req-o2p3q4r5s6' },
+  { id: 'cl-036', timestamp: '2026-07-12 12:36:55', memberName: '刘洋', memberId: 'm6', model: 'qax-security-llm', modelName: '奇安信安全大模型', apiKey: 'sk-qax-***7e4d', status: 200, latency: 171, promptTokens: 2700, completionTokens: 1900, totalTokens: 4600, cost: 0.39, requestId: 'req-t7u8v9w0x1' },
+  { id: 'cl-037', timestamp: '2026-07-12 12:33:30', memberName: '张明', memberId: 'm1', model: 'vuln-analyzer-pro', modelName: '漏洞分析专家', apiKey: 'sk-qax-***3a7f', status: 200, latency: 115, promptTokens: 1500, completionTokens: 920, totalTokens: 2420, cost: 0.0668, requestId: 'req-y2z3a4b5c6' },
+  { id: 'cl-038', timestamp: '2026-07-12 12:30:05', memberName: '李芳', memberId: 'm2', model: 'log-analyzer', modelName: '日志智能分析模型', apiKey: 'sk-qax-***8b2c', status: 200, latency: 101, promptTokens: 2400, completionTokens: 1300, totalTokens: 3700, cost: 0.087, requestId: 'req-d7e8f9g0h1' },
+  { id: 'cl-039', timestamp: '2026-07-12 12:26:42', memberName: '王磊', memberId: 'm3', model: 'data-guard-llm', modelName: '数据安全卫士', apiKey: 'sk-qax-***5d1e', status: 200, latency: 93, promptTokens: 1300, completionTokens: 740, totalTokens: 2040, cost: 0.0564, requestId: 'req-i2j3k4l5m6' },
+  { id: 'cl-040', timestamp: '2026-07-12 12:23:18', memberName: '赵静', memberId: 'm4', model: 'malware-analyzer', modelName: '恶意软件分析模型', apiKey: 'sk-qax-***9f3a', status: 200, latency: 149, promptTokens: 2300, completionTokens: 1600, totalTokens: 3900, cost: 0.165, requestId: 'req-n7o8p9q0r1' },
+  { id: 'cl-041', timestamp: '2026-07-12 12:19:55', memberName: '陈浩', memberId: 'm5', model: 'compliance-guard', modelName: '合规卫士', apiKey: 'sk-qax-***2c8b', status: 200, latency: 97, promptTokens: 1050, completionTokens: 600, totalTokens: 1650, cost: 0.046, requestId: 'req-s2t3u4v5w6' },
+  { id: 'cl-042', timestamp: '2026-07-12 12:16:30', memberName: '刘洋', memberId: 'm6', model: 'phishing-detect', modelName: '钓鱼识别模型', apiKey: 'sk-qax-***7e4d', status: 200, latency: 61, promptTokens: 720, completionTokens: 360, totalTokens: 1080, cost: 0.0144, requestId: 'req-x7y8z9a0b1' },
+  { id: 'cl-043', timestamp: '2026-07-12 12:13:07', memberName: '张明', memberId: 'm1', model: 'qax-security-llm', modelName: '奇安信安全大模型', apiKey: 'sk-qax-***3a7f', status: 500, latency: 5200, promptTokens: 2800, completionTokens: 0, totalTokens: 2800, cost: 0.168, errorMessage: '内部服务错误：模型推理超时，请稍后重试', requestId: 'req-c2d3e4f5g6' },
+  { id: 'cl-044', timestamp: '2026-07-12 11:58:33', memberName: '李芳', memberId: 'm2', model: 'threat-detect-v3', modelName: '威胁检测模型 V3', apiKey: 'sk-qax-***8b2c', status: 429, latency: 45, promptTokens: 0, completionTokens: 0, totalTokens: 0, cost: 0, errorMessage: '请求频率超限：当前QPS已达上限，请降低调用频率', requestId: 'req-h7i8j9k0l1' },
+  { id: 'cl-045', timestamp: '2026-07-12 11:42:18', memberName: '王磊', memberId: 'm3', model: 'code-security-scan', modelName: '代码安全扫描模型', apiKey: 'sk-qax-***5d1e', status: 500, latency: 4800, promptTokens: 3500, completionTokens: 0, totalTokens: 3500, cost: 0.105, errorMessage: '内部服务错误：GPU资源分配失败，请联系管理员', requestId: 'req-m2n3o4p5q6' },
+  { id: 'cl-046', timestamp: '2026-07-12 11:25:44', memberName: '赵静', memberId: 'm4', model: 'vuln-analyzer-pro', modelName: '漏洞分析专家', apiKey: 'sk-qax-***9f3a', status: 429, latency: 38, promptTokens: 0, completionTokens: 0, totalTokens: 0, cost: 0, errorMessage: '请求频率超限：API Key调用配额已耗尽，请升级套餐', requestId: 'req-r7s8t9u0v1' },
+  { id: 'cl-047', timestamp: '2026-07-12 11:08:22', memberName: '陈浩', memberId: 'm5', model: 'compliance-guard', modelName: '合规卫士', apiKey: 'sk-qax-***2c8b', status: 400, latency: 22, promptTokens: 0, completionTokens: 0, totalTokens: 0, cost: 0, errorMessage: '请求参数错误：prompt字段不能为空，请检查请求体格式', requestId: 'req-w2x3y4z5a6' },
+  { id: 'cl-048', timestamp: '2026-07-12 10:52:15', memberName: '刘洋', memberId: 'm6', model: 'log-analyzer', modelName: '日志智能分析模型', apiKey: 'sk-qax-***7e4d', status: 200, latency: 116, promptTokens: 2600, completionTokens: 1400, totalTokens: 4000, cost: 0.094, requestId: 'req-b7c8d9e0f1' },
+  { id: 'cl-049', timestamp: '2026-07-12 10:35:48', memberName: '张明', memberId: 'm1', model: 'incident-response', modelName: '应急响应模型', apiKey: 'sk-qax-***3a7f', status: 200, latency: 185, promptTokens: 3100, completionTokens: 2200, totalTokens: 5300, cost: 0.296, requestId: 'req-g2h3i4j5k6' },
+  { id: 'cl-050', timestamp: '2026-07-12 10:18:33', memberName: '李芳', memberId: 'm2', model: 'data-guard-llm', modelName: '数据安全卫士', apiKey: 'sk-qax-***8b2c', status: 200, latency: 84, promptTokens: 1100, completionTokens: 620, totalTokens: 1720, cost: 0.0476, requestId: 'req-l7m8n9o0p1' }
+]
+
+export const monitorMetrics: MonitorMetrics = {
+  todayCalls: 47236,
+  realtimeQPS: 347,
+  errorRate: 0.3,
+  avgLatency: 128,
+  realtimeSeries: [
+    { time: '13:00', calls: 680, errors: 2 },
+    { time: '13:01', calls: 712, errors: 1 },
+    { time: '13:02', calls: 695, errors: 3 },
+    { time: '13:03', calls: 734, errors: 1 },
+    { time: '13:04', calls: 708, errors: 2 },
+    { time: '13:05', calls: 756, errors: 1 },
+    { time: '13:06', calls: 723, errors: 4 },
+    { time: '13:07', calls: 689, errors: 2 },
+    { time: '13:08', calls: 745, errors: 1 },
+    { time: '13:09', calls: 767, errors: 3 },
+    { time: '13:10', calls: 712, errors: 1 },
+    { time: '13:11', calls: 698, errors: 2 },
+    { time: '13:12', calls: 734, errors: 1 },
+    { time: '13:13', calls: 756, errors: 3 },
+    { time: '13:14', calls: 723, errors: 2 },
+    { time: '13:15', calls: 689, errors: 1 },
+    { time: '13:16', calls: 745, errors: 2 },
+    { time: '13:17', calls: 778, errors: 1 },
+    { time: '13:18', calls: 734, errors: 3 },
+    { time: '13:19', calls: 712, errors: 2 },
+    { time: '13:20', calls: 756, errors: 1 },
+    { time: '13:21', calls: 723, errors: 2 },
+    { time: '13:22', calls: 689, errors: 1 },
+    { time: '13:23', calls: 745, errors: 3 },
+    { time: '13:24', calls: 767, errors: 2 },
+    { time: '13:25', calls: 734, errors: 1 },
+    { time: '13:26', calls: 712, errors: 2 },
+    { time: '13:27', calls: 756, errors: 1 },
+    { time: '13:28', calls: 723, errors: 3 },
+    { time: '13:29', calls: 689, errors: 2 },
+    { time: '13:30', calls: 745, errors: 1 },
+    { time: '13:31', calls: 778, errors: 2 },
+    { time: '13:32', calls: 734, errors: 1 },
+    { time: '13:33', calls: 712, errors: 3 },
+    { time: '13:34', calls: 756, errors: 2 },
+    { time: '13:35', calls: 723, errors: 1 },
+    { time: '13:36', calls: 689, errors: 2 },
+    { time: '13:37', calls: 745, errors: 1 },
+    { time: '13:38', calls: 767, errors: 3 },
+    { time: '13:39', calls: 734, errors: 2 },
+    { time: '13:40', calls: 712, errors: 1 },
+    { time: '13:41', calls: 756, errors: 2 },
+    { time: '13:42', calls: 723, errors: 1 },
+    { time: '13:43', calls: 689, errors: 3 },
+    { time: '13:44', calls: 745, errors: 2 },
+    { time: '13:45', calls: 778, errors: 1 },
+    { time: '13:46', calls: 734, errors: 2 },
+    { time: '13:47', calls: 712, errors: 1 },
+    { time: '13:48', calls: 756, errors: 3 },
+    { time: '13:49', calls: 723, errors: 2 },
+    { time: '13:50', calls: 689, errors: 1 },
+    { time: '13:51', calls: 745, errors: 2 },
+    { time: '13:52', calls: 767, errors: 1 },
+    { time: '13:53', calls: 734, errors: 3 },
+    { time: '13:54', calls: 712, errors: 2 },
+    { time: '13:55', calls: 756, errors: 1 },
+    { time: '13:56', calls: 723, errors: 2 },
+    { time: '13:57', calls: 689, errors: 1 },
+    { time: '13:58', calls: 745, errors: 3 },
+    { time: '13:59', calls: 734, errors: 2 }
+  ],
+  modelDistribution: [
+    { name: '奇安信安全大模型', calls: 18500, color: '#7C3AED' },
+    { name: '威胁检测模型 V3', calls: 9800, color: '#EF4444' },
+    { name: '代码安全扫描模型', calls: 7200, color: '#3B82F6' },
+    { name: '日志智能分析模型', calls: 6100, color: '#6366F1' },
+    { name: '其他模型', calls: 5636, color: '#10B981' }
+  ],
+  memberRanking: [
+    { name: '张明', calls: 12800, tokens: 5200000 },
+    { name: '李芳', calls: 9600, tokens: 3800000 },
+    { name: '王磊', calls: 8200, tokens: 2900000 },
+    { name: '刘洋', calls: 6400, tokens: 2400000 },
+    { name: '赵静', calls: 5800, tokens: 1800000 },
+    { name: '陈浩', calls: 4436, tokens: 1600000 }
+  ]
+}
+
+export const adminEnterprises: AdminEnterprise[] = [
+  {
+    id: 'ent-qianxin',
+    name: '奇安信安全团队',
+    industry: '网络安全',
+    scale: '200-500人',
+    memberCount: 6,
+    monthlyCost: 12860,
+    monthlyCalls: 47200,
+    monthlyTokens: 18500000,
+    packBalance: 18500000,
+    verified: true,
+    createdAt: '2025-08-15',
+    contactName: '张明',
+    contactEmail: 'zhangming@qianxin.com',
+    status: 'active'
+  },
+  {
+    id: 'ent-icbc',
+    name: '工商银行安全中心',
+    industry: '金融',
+    scale: '500-1000人',
+    memberCount: 28,
+    monthlyCost: 86500,
+    monthlyCalls: 312000,
+    monthlyTokens: 128000000,
+    packBalance: 95000000,
+    verified: true,
+    createdAt: '2025-06-20',
+    contactName: '周建国',
+    contactEmail: 'zhoujianguo@icbc.com.cn',
+    status: 'active'
+  },
+  {
+    id: 'ent-sinopec',
+    name: '中石化网络安全部',
+    industry: '能源',
+    scale: '100-200人',
+    memberCount: 15,
+    monthlyCost: 42300,
+    monthlyCalls: 156000,
+    monthlyTokens: 62000000,
+    packBalance: 38000000,
+    verified: true,
+    createdAt: '2025-09-10',
+    contactName: '李伟',
+    contactEmail: 'liwei@sinopec.com',
+    status: 'active'
+  },
+  {
+    id: 'ent-gov-cyber',
+    name: '某市网信办',
+    industry: '政府',
+    scale: '50-100人',
+    memberCount: 12,
+    monthlyCost: 28900,
+    monthlyCalls: 98000,
+    monthlyTokens: 42000000,
+    packBalance: 22000000,
+    verified: true,
+    createdAt: '2025-11-05',
+    contactName: '王志强',
+    contactEmail: 'wangzhiqiang@gov.cn',
+    status: 'active'
+  },
+  {
+    id: 'ent-haier',
+    name: '海尔集团信息安全部',
+    industry: '制造',
+    scale: '200-500人',
+    memberCount: 22,
+    monthlyCost: 56700,
+    monthlyCalls: 203000,
+    monthlyTokens: 86000000,
+    packBalance: 64000000,
+    verified: true,
+    createdAt: '2026-01-18',
+    contactName: '赵鹏飞',
+    contactEmail: 'zhaopengfei@haier.com',
+    status: 'active'
+  },
+  {
+    id: 'ent-chinamobile',
+    name: '中国移动安全运营中心',
+    industry: '通信',
+    scale: '1000人以上',
+    memberCount: 45,
+    monthlyCost: 156000,
+    monthlyCalls: 580000,
+    monthlyTokens: 240000000,
+    packBalance: 180000000,
+    verified: true,
+    createdAt: '2025-07-22',
+    contactName: '陈晓东',
+    contactEmail: 'chenxiaodong@chinamobile.com',
+    status: 'active'
+  },
+  {
+    id: 'ent-hospital',
+    name: '协和医院信息科',
+    industry: '医疗',
+    scale: '50-100人',
+    memberCount: 8,
+    monthlyCost: 15600,
+    monthlyCalls: 52000,
+    monthlyTokens: 21000000,
+    packBalance: 12000000,
+    verified: false,
+    createdAt: '2026-06-28',
+    contactName: '刘美华',
+    contactEmail: 'liumeihua@pumch.cn',
+    status: 'pending'
+  },
+  {
+    id: 'ent-tsinghua',
+    name: '清华大学网络研究院',
+    industry: '教育',
+    scale: '50人以下',
+    memberCount: 5,
+    monthlyCost: 8900,
+    monthlyCalls: 28000,
+    monthlyTokens: 11000000,
+    packBalance: 6000000,
+    verified: false,
+    createdAt: '2026-07-03',
+    contactName: '孙立',
+    contactEmail: 'sunli@tsinghua.edu.cn',
+    status: 'pending'
+  }
+]
+
 export function getModelById(id: string): Model | undefined {
   return models.find(m => m.id === id)
 }
@@ -670,4 +989,16 @@ export function getOrganization(): Organization | undefined {
 
 export function getMembers(): Member[] {
   return members
+}
+
+export function getCallLogs(): CallLog[] {
+  return callLogs
+}
+
+export function getMonitorMetrics(): MonitorMetrics {
+  return monitorMetrics
+}
+
+export function getAdminEnterprises(): AdminEnterprise[] {
+  return adminEnterprises
 }

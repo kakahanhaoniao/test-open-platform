@@ -5,33 +5,26 @@ const route = useRoute()
 
 const navGroups = [
   {
-    label: '核心功能',
+    label: '核心管理',
     items: [
-      { label: '使用看板', icon: 'i-lucide-layout-dashboard', to: '/console' },
-      { label: 'API Key', icon: 'i-lucide-key', to: '/console/keys' },
-      { label: '调用日志', icon: 'i-lucide-scroll-text', to: '/console/logs' },
-      { label: '调用统计', icon: 'i-lucide-bar-chart-3', to: '/console/stats' },
-      { label: '充能包', icon: 'i-lucide-coins', to: '/console/packs' }
+      { label: '企业概览', icon: 'i-lucide-building-2', to: '/enterprise' },
+      { label: '成员管理', icon: 'i-lucide-users', to: '/enterprise/members' },
+      { label: '调用监控', icon: 'i-lucide-activity', to: '/enterprise/monitor' },
+      { label: '日志审计', icon: 'i-lucide-scroll-text', to: '/enterprise/logs' }
     ]
   },
   {
-    label: '账户管理',
+    label: '资源与账务',
     items: [
-      { label: '账单中心', icon: 'i-lucide-receipt', to: '/console/billing' },
-      { label: '个人设置', icon: 'i-lucide-settings', to: '/console/settings' }
-    ]
-  },
-  {
-    label: '开发资源',
-    items: [
-      { label: 'API文档', icon: 'i-lucide-book-open', to: '/console/docs' },
-      { label: '应用集成', icon: 'i-lucide-puzzle', to: '/console/integrations' }
+      { label: '企业充能包', icon: 'i-lucide-coins', to: '/enterprise/packs' },
+      { label: '企业账单', icon: 'i-lucide-receipt', to: '/enterprise/billing' },
+      { label: '企业设置', icon: 'i-lucide-settings', to: '/enterprise/settings' }
     ]
   }
 ]
 
 function isActive(to: string) {
-  if (to === '/console') return route.path === '/console'
+  if (to === '/enterprise') return route.path === '/enterprise'
   return route.path.startsWith(to)
 }
 </script>
@@ -40,23 +33,22 @@ function isActive(to: string) {
   <aside
     class="fixed left-0 top-0 h-full z-[60] flex flex-col w-60 bg-white border-r border-gray-100"
   >
-    <!-- User identity block (top, prominent) -->
+    <!-- Enterprise identity block (top, prominent) -->
     <div class="px-4 pt-4 pb-3 border-b border-gray-100">
       <div class="flex items-center gap-3 mb-2">
-        <div class="w-9 h-9 rounded-full bg-primary-100 flex items-center justify-center shrink-0">
-          <UIcon name="i-lucide-user" class="text-primary-600 w-5 h-5" />
+        <div class="w-9 h-9 rounded-lg bg-primary-100 flex items-center justify-center shrink-0">
+          <UIcon name="i-lucide-building-2" class="text-primary-600 w-5 h-5" />
         </div>
         <div class="overflow-hidden">
-          <p class="text-gray-900 font-bold text-sm whitespace-nowrap">{{ currentUser.name }}</p>
-          <p class="text-gray-400 text-xs whitespace-nowrap">{{ currentUser.email }}</p>
+          <p class="text-gray-900 font-bold text-sm whitespace-nowrap">{{ organization.name }}</p>
+          <p class="text-gray-400 text-xs whitespace-nowrap">{{ currentUser.role === 'admin' ? '管理员' : currentUser.role }} · {{ organization.memberCount }}名成员</p>
         </div>
       </div>
       <NuxtLink
-        v-if="currentUser.isEnterprise"
-        to="/enterprise"
+        to="/console"
         class="flex items-center gap-1 text-primary-600 hover:text-primary-700 text-xs font-medium transition-colors duration-200"
       >
-        <span>企业空间</span>
+        <span>个人空间</span>
         <UIcon name="i-lucide-arrow-right" class="w-3.5 h-3.5" />
       </NuxtLink>
     </div>

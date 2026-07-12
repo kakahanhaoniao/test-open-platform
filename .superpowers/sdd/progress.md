@@ -1,14 +1,14 @@
 # SDD Progress Ledger
 
-## Plan: 2026-07-11-console-enterprise-redesign
+## Plan: 2026-07-12-dual-track-redesign
 
-- Task 1: complete (mock data extended with Organization/Member/BillingRecord/CurrentUser types and data)
-- Task 2: complete (ConsoleSidebar.vue created with light theme)
-- Task 3: complete (dev pages migrated to console, app.vue/TopNav/PortalNav updated)
-- Task 4: complete (使用看板 - /console with stats, trends, ranking, alerts, quotas, enterprise view)
-- Task 5: complete (账单中心 - /console/billing with personal/enterprise views, billing table, purchase records)
-- Task 6: complete (企业空间概览+成员管理 - /console/workspace + /console/workspace/members with invite, roles, table)
-- Task 7: complete (企业充能包+企业设置 - /console/workspace/packs + /console/workspace/settings with admin guard)
-- Task 8: complete (个人设置 - /console/settings with profile, security, notifications, API prefs, linked enterprise)
-- Task 9: complete (跨系统导航 - Market→Console, Portal→Console, Console→Market/Admin all verified)
-- Task 10: complete (最终验证 - all 13 console pages HTTP 200, browser verified, fixed integrations SSR bug)
+- Task 1: complete (Mock数据扩展 - CallLog/MonitorMetrics/AdminEnterprise + 现有数据调整)
+- Task 2: complete (架构重构 - EnterpriseSidebar+ConsoleSidebar重构+AdminSidebar+app.vue)
+- Task 3: complete (企业概览+成员管理 - /enterprise + /enterprise/members)
+- Task 4: complete (调用监控 - /enterprise/monitor 实时流量图+QPS+错误率+延迟+分布+告警)
+- Task 5: complete (日志审计 - /enterprise/logs 搜索+筛选+趋势图+日志列表+导出)
+- Task 6: complete (企业充能包+账单+设置 - /enterprise/packs + /enterprise/billing + /enterprise/settings)
+- Task 7: complete (个人调用日志 - /console/logs 搜索+趋势图+日志列表)
+- Task 8: complete (能力市场直购 - 详情页3按钮+充能包弹窗+接入引导弹窗)
+- Task 9: complete (Admin企业客户 - /admin/enterprises + /admin/enterprises/[id])
+- Task 10: complete (Portal首页重构+清理 - index.vue合并Portal+TopNav双状态+billing简化+workspace删除)

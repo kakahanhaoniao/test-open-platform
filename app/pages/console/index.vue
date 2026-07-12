@@ -1,11 +1,8 @@
 <script setup lang="ts">
-import { currentUser, organization, models, members } from '~/data/mock'
+import { currentUser, models } from '~/data/mock'
 
 useHead({ title: '使用看板 - 奇安信AI开放平台' })
 
-const viewMode = ref<'personal' | 'enterprise'>(currentUser.isEnterprise ? 'enterprise' : 'personal')
-const viewModeDropdownOpen = ref(false)
-const viewModeDropdownRef = ref<HTMLElement | null>(null)
 const trendRange = ref('7d')
 
 const trendRanges = [
@@ -13,14 +10,6 @@ const trendRanges = [
   { value: '30d', label: '30天' },
   { value: '90d', label: '90天' }
 ]
-
-function onDocumentClick(e: MouseEvent) {
-  if (viewModeDropdownRef.value && !viewModeDropdownRef.value.contains(e.target as Node)) {
-    viewModeDropdownOpen.value = false
-  }
-}
-onMounted(() => document.addEventListener('click', onDocumentClick))
-onUnmounted(() => document.removeEventListener('click', onDocumentClick))
 
 // Call trend data (7 days)
 const callTrendData = [
@@ -73,22 +62,6 @@ function getAlertColor(severity: 'red' | 'amber' | 'green') {
   return { bg: 'bg-green-50', icon: 'text-green-500', border: 'border-green-100' }
 }
 
-// Enterprise: member ranking
-const memberRanking = computed(() => {
-  if (viewMode.value !== 'enterprise') return []
-  return [...members]
-    .filter(m => m.monthlyTokens > 0)
-    .sort((a, b) => b.monthlyTokens - a.monthlyTokens)
-    .slice(0, 5)
-    .map(m => ({
-      name: m.name,
-      role: m.roleLabel,
-      tokens: m.monthlyTokens,
-      cost: m.monthlyCost,
-      percentage: Math.round((m.monthlyTokens / members.reduce((s, x) => s + x.monthlyTokens, 0)) * 100)
-    }))
-})
-
 // Quick actions
 const quickActions = [
   { label: '创建API Key', desc: '生成新的API访问密钥', icon: 'i-lucide-key', to: '/console/keys/create', color: 'bg-primary-50 text-primary-600' },
@@ -112,10 +85,6 @@ const quickActions = [
             <div>
               <div class="flex items-center gap-2">
                 <h1 class="text-lg font-bold text-gray-900">欢迎回来，{{ currentUser.name }}</h1>
-                <span
-                  v-if="viewMode === 'enterprise' && currentUser.isEnterprise"
-                  class="text-xs text-gray-400 font-normal"
-                >· {{ organization.name }}</span>
               </div>
               <div class="flex items-center gap-2 mt-1">
                 <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium bg-green-50 text-green-600">
@@ -124,51 +93,6 @@ const quickActions = [
                 </span>
               </div>
             </div>
-          </div>
-          <!-- View Mode Switcher -->
-          <div v-if="currentUser.isEnterprise" ref="viewModeDropdownRef" class="relative">
-            <button
-              class="flex items-center gap-2 px-3 py-2 rounded-lg border border-gray-200 bg-white text-sm text-gray-700 hover:border-gray-300 transition-colors"
-              @click="viewModeDropdownOpen = !viewModeDropdownOpen"
-            >
-              <UIcon name="i-lucide-eye" class="w-4 h-4 text-gray-400" />
-              <span class="font-medium">{{ viewMode === 'enterprise' ? '企业' : '个人' }}视图</span>
-              <UIcon
-                name="i-lucide-chevron-down"
-                class="w-4 h-4 text-gray-400 transition-transform duration-200"
-                :class="viewModeDropdownOpen ? 'rotate-180' : ''"
-              />
-            </button>
-            <Transition
-              enter-active-class="transition duration-150 ease-out"
-              enter-from-class="opacity-0 scale-95 -translate-y-1"
-              enter-to-class="opacity-100 scale-100 translate-y-0"
-              leave-active-class="transition duration-100 ease-in"
-              leave-from-class="opacity-100 scale-100 translate-y-0"
-              leave-to-class="opacity-0 scale-95 -translate-y-1"
-            >
-              <div
-                v-if="viewModeDropdownOpen"
-                class="absolute right-0 mt-2 w-40 bg-white rounded-xl border border-gray-100 shadow-lg shadow-gray-200/50 py-1.5 z-50"
-              >
-                <button
-                  class="w-full flex items-center gap-2 px-4 py-2.5 text-sm transition-colors"
-                  :class="viewMode === 'personal' ? 'text-primary-700 bg-primary-50' : 'text-gray-700 hover:bg-gray-50'"
-                  @click="viewMode = 'personal'; viewModeDropdownOpen = false"
-                >
-                  <UIcon name="i-lucide-user" class="w-4 h-4" />
-                  个人
-                </button>
-                <button
-                  class="w-full flex items-center gap-2 px-4 py-2.5 text-sm transition-colors"
-                  :class="viewMode === 'enterprise' ? 'text-primary-700 bg-primary-50' : 'text-gray-700 hover:bg-gray-50'"
-                  @click="viewMode = 'enterprise'; viewModeDropdownOpen = false"
-                >
-                  <UIcon name="i-lucide-building-2" class="w-4 h-4" />
-                  企业
-                </button>
-              </div>
-            </Transition>
           </div>
         </div>
 
@@ -333,49 +257,6 @@ const quickActions = [
                   <p class="text-sm text-gray-900">{{ alert.message }}</p>
                   <p class="text-xs text-gray-400 mt-0.5">{{ alert.time }}</p>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Enterprise: Member Ranking -->
-        <div v-if="viewMode === 'enterprise' && memberRanking.length" class="bg-white rounded-xl border border-gray-100 p-6 mb-6">
-          <div class="flex items-center justify-between mb-5">
-            <div>
-              <h3 class="font-semibold text-gray-900">成员消耗排行</h3>
-              <p class="text-xs text-gray-400 mt-0.5">团队成员Token消耗Top 5</p>
-            </div>
-            <NuxtLink to="/console/workspace" class="text-xs text-primary-600 hover:text-primary-700 font-medium flex items-center gap-1">
-              成员管理
-              <UIcon name="i-lucide-arrow-right" class="w-3.5 h-3.5" />
-            </NuxtLink>
-          </div>
-          <div class="space-y-4">
-            <div v-for="(m, idx) in memberRanking" :key="m.name">
-              <div class="flex items-center justify-between mb-1.5">
-                <div class="flex items-center gap-3">
-                  <span
-                    class="w-5 h-5 rounded flex items-center justify-center text-xs font-bold"
-                    :class="idx < 3 ? 'bg-primary-50 text-primary-600' : 'bg-gray-50 text-gray-400'"
-                  >{{ idx + 1 }}</span>
-                  <div class="w-7 h-7 rounded-full bg-primary-100 flex items-center justify-center">
-                    <UIcon name="i-lucide-user" class="w-3.5 h-3.5 text-primary-600" />
-                  </div>
-                  <div>
-                    <span class="text-sm text-gray-900 font-medium">{{ m.name }}</span>
-                    <span class="text-xs text-gray-400 ml-2">{{ m.role }}</span>
-                  </div>
-                </div>
-                <div class="text-right">
-                  <span class="text-xs font-mono text-gray-500">{{ (m.tokens / 10000).toFixed(0) }}万 Token</span>
-                  <span class="text-xs text-gray-400 ml-2">¥{{ m.cost.toLocaleString() }}</span>
-                </div>
-              </div>
-              <div class="h-2 bg-gray-100 rounded-full overflow-hidden">
-                <div
-                  class="h-full bg-primary-400 rounded-full transition-all duration-500"
-                  :style="{ width: m.percentage + '%' }"
-                />
               </div>
             </div>
           </div>
