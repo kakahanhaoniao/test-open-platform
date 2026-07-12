@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { Model, App } from '~/data/mock'
-import { chargingPacks, currentUser } from '~/data/mock'
+import type { Model, App, Plan } from '~/data/mock'
+import { getPlansForCapability, currentUser } from '~/data/mock'
 
 const props = defineProps<{
   capability: Model | App
@@ -10,13 +10,50 @@ const props = defineProps<{
 const emit = defineEmits<{
   tryNow: []
   integration: []
-  buyPack: []
   enterprisePurchase: []
 }>()
 
 const isModel = computed(() => props.capabilityType === 'model')
 const model = computed(() => isModel.value ? props.capability as Model : null)
 const app = computed(() => !isModel.value ? props.capability as App : null)
+
+// Purchase modal state
+const showPurchaseModal = ref(false)
+const purchaseTab = ref('model-plans')
+const purchasedPlan = ref<Plan | null>(null)
+const showPostPurchase = ref(false)
+
+// Get plans for this capability
+const capabilityPlans = computed(() => getPlansForCapability(props.capability.id))
+
+const purchaseTabs = computed(() => {
+  const tabs = []
+  if (capabilityPlans.value.modelPlans.length > 0) {
+    tabs.push({ value: 'model-plans', label: '模型套餐', icon: 'i-lucide-brain' })
+  }
+  if (capabilityPlans.value.appPlans.length > 0) {
+    tabs.push({ value: 'app-plans', label: '应用套餐', icon: 'i-lucide-puzzle' })
+  }
+  tabs.push({ value: 'packs', label: '充能包', icon: 'i-lucide-coins' })
+  return tabs
+})
+
+// Set default tab to first available
+watch(purchaseTabs, (tabs) => {
+  if (tabs.length > 0 && !tabs.find(t => t.value === purchaseTab.value)) {
+    purchaseTab.value = tabs[0]!.value
+  }
+}, { immediate: true })
+
+function openPurchaseModal() {
+  showPurchaseModal.value = true
+}
+
+function handleBuyPlan(plan: Plan) {
+  showPurchaseModal.value = false
+  purchasedPlan.value = plan
+  showPostPurchase.value = true
+}
 </script>
 
 <template>
@@ -69,15 +106,15 @@ const app = computed(() => !isModel.value ? props.capability as App : null)
           </div>
         </button>
 
-        <!-- Button 3: Buy Charging Pack -->
+        <!-- Button 3: Buy Plan (opens modal with all plan types) -->
         <button
           class="w-full flex items-center gap-3 px-4 py-3 rounded-xl border-2 border-primary-200 hover:border-primary-300 bg-primary-50/50 hover:bg-primary-50 text-primary-700 transition-colors"
-          @click="emit('buyPack')"
+          @click="openPurchaseModal"
         >
           <UIcon name="i-lucide-package" class="w-5 h-5 shrink-0" />
           <div class="text-left">
-            <div class="text-sm font-semibold">购买充能包</div>
-            <div class="text-[11px] text-primary-500">体验包 ¥99 起</div>
+            <div class="text-sm font-semibold">购买套餐</div>
+            <div class="text-[11px] text-primary-500">充能包/模型套餐/应用套餐</div>
           </div>
         </button>
       </div>
@@ -144,5 +181,63 @@ const app = computed(() => !isModel.value ? props.capability as App : null)
         </div>
       </div>
     </div>
+
+    <!-- Purchase Modal -->
+    <UModal v-model:open="showPurchaseModal" :ui="{ content: 'sm:max-w-2xl' }">
+      <template #content>
+        <div class="p-6">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="font-bold text-gray-900">购买套餐 - {{ capability.name }}</h3>
+          </div>
+
+          <UTabs
+            v-model="purchaseTab"
+            :items="purchaseTabs"
+            color="primary"
+            variant="pill"
+            :content="false"
+            class="mb-4"
+          />
+
+          <!-- Model Plans -->
+          <div v-if="purchaseTab === 'model-plans'" class="grid grid-cols-2 gap-3 max-h-[400px] overflow-y-auto">
+            <PlanCard
+              v-for="plan in capabilityPlans.modelPlans"
+              :key="plan.id"
+              :plan="plan"
+              @buy="handleBuyPlan"
+            />
+          </div>
+
+          <!-- App Plans -->
+          <div v-if="purchaseTab === 'app-plans'" class="grid grid-cols-2 gap-3 max-h-[400px] overflow-y-auto">
+            <PlanCard
+              v-for="plan in capabilityPlans.appPlans"
+              :key="plan.id"
+              :plan="plan"
+              @buy="handleBuyPlan"
+            />
+          </div>
+
+          <!-- Packs -->
+          <div v-if="purchaseTab === 'packs'" class="grid grid-cols-2 gap-3 max-h-[400px] overflow-y-auto">
+            <PlanCard
+              v-for="plan in capabilityPlans.packs"
+              :key="plan.id"
+              :plan="plan"
+              @buy="handleBuyPlan"
+            />
+          </div>
+        </div>
+      </template>
+    </UModal>
+
+    <!-- Post-purchase guidance dialog -->
+    <PostPurchaseDialog
+      v-if="purchasedPlan"
+      :plan="purchasedPlan"
+      :open="showPostPurchase"
+      @close="showPostPurchase = false"
+    />
   </div>
 </template>

@@ -1,12 +1,52 @@
 <script setup lang="ts">
-import { chargingPacks } from '~/data/mock'
+import type { Plan } from '~/data/mock'
+import { chargingPacks, modelPlans, appPlans } from '~/data/mock'
+
+useHead({ title: '套餐管理 - 奇安信AI开放平台' })
+
+const activeTab = ref('packs')
+
+const tabs = [
+  { value: 'packs', label: '充能包', icon: 'i-lucide-coins' },
+  { value: 'model-plans', label: '模型套餐', icon: 'i-lucide-brain' },
+  { value: 'app-plans', label: '应用套餐', icon: 'i-lucide-puzzle' }
+]
+
+// Convert ChargingPack[] to Plan[] for unified rendering
+const packPlans: Plan[] = chargingPacks.map(pack => ({
+  id: pack.id,
+  type: 'pack' as const,
+  name: pack.name,
+  description: pack.tokens,
+  billingCycle: 'one-time' as const,
+  price: parsePriceValue(pack.price),
+  originalPrice: pack.originalPrice ? parsePriceValue(pack.originalPrice) : undefined,
+  includedTokens: parseTokensValue(pack.tokens),
+  features: pack.features,
+  popular: pack.popular,
+  icon: 'i-lucide-coins',
+  badge: pack.originalPrice ? '限时优惠' : undefined
+}))
+
+function parsePriceValue(priceStr: string): number {
+  const cleaned = priceStr.replace(/[¥,]/g, '').replace(/\/月$/, '')
+  const num = Number(cleaned)
+  return isNaN(num) ? 0 : num
+}
+
+function parseTokensValue(tokensStr: string): number {
+  if (tokensStr.includes('无限')) return -1
+  const wanMatch = tokensStr.match(/([\d.]+)万/)
+  if (wanMatch) return Math.round(Number(wanMatch[1]) * 10000)
+  return 0
+}
 
 const purchaseHistory = [
-  { time: '2026-07-08 14:30', packName: '专业包', tokens: '500万Token', amount: '¥399', status: 'success' as const },
-  { time: '2026-06-15 10:20', packName: '体验包', tokens: '100万Token', amount: '¥99', status: 'success' as const },
-  { time: '2026-05-22 09:15', packName: '企业包', tokens: '2000万Token', amount: '¥1,499', status: 'success' as const },
-  { time: '2026-04-10 16:45', packName: '专业包', tokens: '500万Token', amount: '¥399', status: 'success' as const },
-  { time: '2026-03-01 11:30', packName: '体验包', tokens: '100万Token', amount: '¥99', status: 'expired' as const }
+  { time: '2026-07-08 14:30', planName: '专业包', detail: '500万Token', amount: '¥399', status: 'success' as const },
+  { time: '2026-06-15 10:20', planName: '体验包', detail: '100万Token', amount: '¥99', status: 'success' as const },
+  { time: '2026-05-22 09:15', planName: '安全大模型专业版', detail: '月度订阅', amount: '¥999', status: 'success' as const },
+  { time: '2026-04-10 16:45', planName: '威胁检测助手专业版', detail: '月度订阅', amount: '¥299', status: 'success' as const },
+  { time: '2026-03-01 11:30', planName: '体验包', detail: '100万Token', amount: '¥99', status: 'expired' as const }
 ]
 
 const usageTrend = [
@@ -19,6 +59,15 @@ const usageTrend = [
 ]
 
 const maxUsage = Math.max(...usageTrend.map(d => d.used))
+
+// Post-purchase dialog
+const purchasedPlan = ref<Plan | null>(null)
+const showPostPurchase = ref(false)
+
+function handleBuy(plan: Plan) {
+  purchasedPlan.value = plan
+  showPostPurchase.value = true
+}
 </script>
 
 <template>
@@ -27,8 +76,8 @@ const maxUsage = Math.max(...usageTrend.map(d => d.used))
     <div class="ml-60 p-8">
       <!-- Header -->
       <div class="mb-8">
-        <h1 class="text-xl font-bold text-gray-900">充能包管理</h1>
-        <p class="text-sm text-gray-400 mt-1">管理Token余额，购买充能包，查看使用记录</p>
+        <h1 class="text-xl font-bold text-gray-900">套餐管理</h1>
+        <p class="text-sm text-gray-400 mt-1">管理Token余额，购买套餐，查看使用记录</p>
       </div>
 
       <!-- Balance Card -->
@@ -67,7 +116,7 @@ const maxUsage = Math.max(...usageTrend.map(d => d.used))
         </div>
       </div>
 
-      <!-- Usage Trend + Purchase -->
+      <!-- Usage Trend + Tabs -->
       <div class="grid grid-cols-3 gap-6 mb-6">
         <!-- Usage Trend Chart -->
         <div class="col-span-1 bg-white rounded-xl border border-gray-100 p-6">
@@ -89,61 +138,55 @@ const maxUsage = Math.max(...usageTrend.map(d => d.used))
           </div>
         </div>
 
-        <!-- Purchase Section -->
+        <!-- Three-tab Plan Section -->
         <div class="col-span-2">
-          <div class="flex items-center justify-between mb-4">
-            <h3 class="font-semibold text-gray-900">购买充能包</h3>
+          <UTabs
+            v-model="activeTab"
+            :items="tabs"
+            color="primary"
+            variant="pill"
+            :content="false"
+            class="mb-4"
+          />
+
+          <!-- Packs Tab -->
+          <div v-if="activeTab === 'packs'" class="grid grid-cols-2 gap-4">
+            <PlanCard
+              v-for="plan in packPlans"
+              :key="plan.id"
+              :plan="plan"
+              @buy="handleBuy"
+            />
           </div>
-          <div class="grid grid-cols-2 gap-4">
-            <div
-              v-for="pack in chargingPacks"
-              :key="pack.id"
-              class="bg-white rounded-xl border p-5 card-hover relative"
-              :class="pack.popular ? 'border-primary-300 ring-1 ring-primary-100' : 'border-gray-100'"
-            >
-              <!-- Popular badge -->
-              <div
-                v-if="pack.popular"
-                class="absolute -top-2.5 left-4 px-2.5 py-0.5 rounded-full bg-primary-600 text-white text-[10px] font-medium"
-              >
-                最受欢迎
-              </div>
 
-              <div class="flex items-start justify-between mb-3">
-                <div>
-                  <p class="font-bold text-gray-900 text-lg">{{ pack.name }}</p>
-                  <p class="text-xs text-gray-400 mt-0.5">{{ pack.tokens }}</p>
-                </div>
-                <div class="text-right">
-                  <p class="text-2xl font-bold gradient-text">{{ pack.price }}</p>
-                  <p class="text-xs text-gray-400 mt-0.5">{{ pack.unitPrice }}</p>
-                </div>
-              </div>
-
-              <div v-if="pack.originalPrice" class="mb-3">
-                <span class="text-xs text-gray-400 line-through">{{ pack.originalPrice }}</span>
-              </div>
-
-              <div class="space-y-1.5 mb-4">
-                <div
-                  v-for="feature in pack.features"
-                  :key="feature"
-                  class="flex items-center gap-2 text-xs text-gray-500"
-                >
-                  <UIcon name="i-lucide-check" class="w-3.5 h-3.5 text-green-500 shrink-0" />
-                  {{ feature }}
-                </div>
-              </div>
-
-              <button
-                class="w-full py-2 rounded-lg text-sm font-medium transition-all duration-200"
-                :class="pack.popular
-                  ? 'bg-primary-600 hover:bg-primary-700 text-white'
-                  : 'bg-gray-50 hover:bg-gray-100 text-gray-700 border border-gray-200'"
-              >
-                购买
-              </button>
+          <!-- Model Plans Tab -->
+          <div v-if="activeTab === 'model-plans'" class="grid grid-cols-2 gap-4">
+            <div v-if="modelPlans.length === 0" class="col-span-2 py-12 text-center">
+              <UIcon name="i-lucide-package-open" class="w-12 h-12 text-gray-300 mx-auto mb-3" />
+              <p class="text-sm text-gray-400">暂无模型套餐</p>
+              <p class="text-xs text-gray-300 mt-1">请先选择具体模型查看可用套餐</p>
             </div>
+            <PlanCard
+              v-for="plan in modelPlans"
+              :key="plan.id"
+              :plan="plan"
+              @buy="handleBuy"
+            />
+          </div>
+
+          <!-- App Plans Tab -->
+          <div v-if="activeTab === 'app-plans'" class="grid grid-cols-2 gap-4">
+            <div v-if="appPlans.length === 0" class="col-span-2 py-12 text-center">
+              <UIcon name="i-lucide-package-open" class="w-12 h-12 text-gray-300 mx-auto mb-3" />
+              <p class="text-sm text-gray-400">暂无应用套餐</p>
+              <p class="text-xs text-gray-300 mt-1">请先选择具体应用查看可用套餐</p>
+            </div>
+            <PlanCard
+              v-for="plan in appPlans"
+              :key="plan.id"
+              :plan="plan"
+              @buy="handleBuy"
+            />
           </div>
         </div>
       </div>
@@ -155,8 +198,8 @@ const maxUsage = Math.max(...usageTrend.map(d => d.used))
           <thead>
             <tr class="text-xs text-gray-400 border-b border-gray-100">
               <th class="text-left py-3 font-medium">时间</th>
-              <th class="text-left py-3 font-medium">充能包类型</th>
-              <th class="text-left py-3 font-medium">Token数</th>
+              <th class="text-left py-3 font-medium">套餐类型</th>
+              <th class="text-left py-3 font-medium">详情</th>
               <th class="text-left py-3 font-medium">金额</th>
               <th class="text-left py-3 font-medium">状态</th>
             </tr>
@@ -168,8 +211,8 @@ const maxUsage = Math.max(...usageTrend.map(d => d.used))
               class="border-b border-gray-50 last:border-0 hover:bg-gray-50/50 transition-colors"
             >
               <td class="py-3 text-xs font-mono text-gray-500">{{ record.time }}</td>
-              <td class="py-3 text-sm font-medium text-gray-900">{{ record.packName }}</td>
-              <td class="py-3 text-sm font-mono text-gray-600">{{ record.tokens }}</td>
+              <td class="py-3 text-sm font-medium text-gray-900">{{ record.planName }}</td>
+              <td class="py-3 text-sm font-mono text-gray-600">{{ record.detail }}</td>
               <td class="py-3 text-sm font-mono text-gray-900 font-medium">{{ record.amount }}</td>
               <td class="py-3">
                 <span
@@ -186,5 +229,13 @@ const maxUsage = Math.max(...usageTrend.map(d => d.used))
         </table>
       </div>
     </div>
+
+    <!-- Post-purchase guidance dialog -->
+    <PostPurchaseDialog
+      v-if="purchasedPlan"
+      :plan="purchasedPlan"
+      :open="showPostPurchase"
+      @close="showPostPurchase = false"
+    />
   </div>
 </template>
