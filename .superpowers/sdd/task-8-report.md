@@ -1,83 +1,102 @@
-# Task 8 Report: Marketplace Detail Page Direct Purchase Refactor
+# Task 8 Report: Upgrade Marketplace Listing Page
 
-## Summary
-
-Refactored the marketplace detail page right sidebar to support direct purchase with 3 action buttons, replacing the previous navigation-based flow that required users to jump to the console. Added 3 modal dialogs for charging pack selection, integration guide, and enterprise batch purchase.
-
-## Files Modified
-
-- `/Users/xiaoshao/Downloads/ai-platform/app/components/CapabilityDetail.vue` — Complete refactor of the right sidebar and addition of 3 modals
+## Status: DONE
 
 ## Changes Made
 
-### 8.1 Current Structure Analysis
+### 1. Rewrote `app/pages/marketplace/index.vue`
 
-The original `CapabilityDetail.vue` had:
-- A header with icon, name, badges, and action buttons (体验模型/开始对话 etc.) that navigated to `/dev/playground` or other console pages
-- A tab-based content area (overview, playground, pricing, chat, demo, integration, docs)
-- The overview tab's right sidebar contained a "Model Info Card" with pricing rows and two small buttons ("获取API Key" linking to `/dev/keys`, "立即体验" linking to `/dev/playground"), plus a "快速入口" card with links to console pages
-- The pricing tab had a "购买充能包" button linking to `/dev/packs`
+**Search Hero Section:**
+- Gradient background (primary-600 -> violet-800) with decorative blur circles
+- Large centered search input with magnifying glass icon
+- Hot tags row below search: 安全大模型, 威胁检测, 代码安全, 漏洞分析, 合规检查, 数据安全
+- Clicking a hot tag fills the search input
 
-### 8.2 Right Sidebar Refactor
+**Type Tabs + Subcategory Scroll:**
+- Replaced left sidebar (MarketplaceFilters) with horizontal layout
+- Capsule type tabs (全部/模型/应用) with counts, sticky at top
+- Horizontal scrollable subcategory tags below tabs
+- Subcategories adapt based on selected type (model types, app types, or combined)
+- Clicking a subcategory toggles it; clicking again deselects
 
-**Removed from header**: The top-right action buttons (体验模型, 开始对话, etc.) and the heart/favorite button were removed to consolidate all CTAs into the sidebar.
+**Featured Recommendations:**
+- 2 large cards with gradient backgrounds (primary-violet and red-rose-amber)
+- Show top 2 capabilities by rating
+- Display: icon, name, rating, call count, description
+- "快速接入" CTA button
+- Only visible when no search/filter active and on page 1
 
-**Replaced sidebar content** with a single unified card containing:
+**Sort Bar:**
+- 3 sort options: 热门, 最新, 价格 (new price sort added)
+- Price sort uses lowest plan price from getPlansForCapability
+- Results count displayed on left
 
-1. **Model name + rating + call count** — displayed at the top of the sidebar card
-2. **3 stacked action buttons** (prominent, full-width):
-   - **在线体验** — green button (`bg-green-500`), switches `activeTab` to 'playground' for models, 'chat' for chat apps, 'demo' for showcase apps
-   - **立即接入** — primary purple button (`bg-primary-600`), opens the integration guide modal
-   - **购买充能包** — outline-style button with purple border (`border-primary-200 bg-primary-50/50`), subtitle "体验包 ¥99 起", opens the charging pack selection modal
-3. **Pricing info** — directly visible (no tab needed), shows input/output prices for models
-4. **Enterprise-only section** (`v-if="currentUser.isEnterprise"`):
-   - **企业批量采购** button — purple outline, subtitle "专属折扣+统一结算", opens enterprise batch purchase modal
-5. **Tags and related info** — kept at the bottom of the sidebar card
+**Pagination:**
+- 12 items per page
+- Prev/next buttons with chevron icons
+- Page number buttons with active state (primary-600 bg)
+- Page resets to 1 when filters change
 
-### 8.3 Charging Pack Selection Modal
+**Quick Preview Slideover:**
+- USlideover component, right side, max-w-[420px]
+- Header with "快速预览" title and close button
+- Body: icon + name + rating + call count, description, tags, pricing info, features list
+- Footer: 3 action buttons (在线体验/立即接入/购买套餐) matching CapabilitySidebar pattern
 
-- Title: "选择充能包"
-- 4 pack cards from `chargingPacks` mock data, each showing:
-  - Pack name, token amount, price (with original price strikethrough if applicable)
-  - Unit price
-  - Feature tags with check icons
-  - "最受欢迎" badge on the popular pack
-  - [购买] button (primary for popular, outline for others)
-- Close button (X icon)
-- On purchase click: shows success alert "购买成功！充能包已到账", auto-closes after 2 seconds
+### 2. Upgraded `app/components/CapabilityCard.vue`
 
-### 8.4 Integration Guide Modal
+**Price Tag:**
+- Shows lowest plan price from modelPlans/appPlans via getPlansForCapability
+- Format: "¥999/月" for monthly, "¥9590/年" for annual
+- Falls back to "按量计费" when no plans exist
+- Displayed as a small badge next to the type name
 
-- Title: "接入引导"
-- Step 1: "创建API Key" — with a [前往创建] link button to `/console/keys/create`
-- Step 2: "安装SDK" — dark code block with `pip install qax-ai-sdk`, copy button
-- Step 3: "调用API" — dark code block with Python example using the current model's ID, copy button
-- Copy buttons show a check icon for 2 seconds after copying
-- Close button
+**Call Count Micro-badge:**
+- Shows callCount (models) or useCount (apps) with activity icon
+- Moved to bottom row alongside rating
 
-### 8.5 Enterprise Batch Purchase Modal
+**Favorite Heart Icon:**
+- Heart icon in top-right corner
+- Local toggle ref (isFavorited) - will be replaced by useFavorites() composable in Task 12
+- Red fill when favorited, gray outline when not
+- preventDefault + stopPropagation to avoid card navigation
 
-- Title: "企业批量采购"
-- Form fields: 预估月调用量 (UInput), 联系方式 (UInput)
-- [提交咨询] button — shows success alert "提交成功！我们将在1个工作日内联系您", auto-closes after 2 seconds
-- Info note: "企业客户享受专属折扣，我们将在1个工作日内联系您" (amber background)
-- Close button
+**Quick Preview Button:**
+- Eye icon button, appears on hover (opacity-0 -> group-hover:opacity-100)
+- Emits 'quickPreview' event with capability and type
+- Also appears in hover action bar at bottom
 
-### Additional Changes
+**Hover Effects:**
+- Card lifts: -translate-y-1 with enhanced shadow
+- Action bar slides up from bottom with gradient fade
+- Quick preview + action button visible on hover
+- Smooth transitions (duration-200)
 
-- **Pricing tab buttons** updated: "购买充能包" now calls `handleBuyPack()` instead of navigating to `/dev/packs`; "获取API Key" now calls `handleIntegration()` instead of navigating to `/dev/keys`
-- All modals use `Teleport to="body"` with backdrop overlay (`bg-black/50`)
-- Modals use `v-if` toggles for show/hide
-- Design patterns consistent: white cards, `rounded-xl`/`rounded-2xl`, `border-gray-100`
+**Other Changes:**
+- Removed old pricingText computed (replaced by priceTag)
+- Removed API Docs link from bottom row
+- Changed UButton color from 'accent' to 'secondary' (accent not a valid Nuxt UI color)
+- Added Plan type import and getPlansForCapability import
 
-## Data Dependencies
+## Build Verification
 
-- `chargingPacks` — imported from `~/data/mock` (4 packs: 体验包, 专业包, 企业包, 无限包)
-- `currentUser` — imported from `~/data/mock` (has `isEnterprise: true` for testing)
+- `nuxi typecheck`: No new type errors in modified files (pre-existing errors in other files unchanged)
+- `nuxi build`: Build completes successfully
 
-## Preserved Behavior
+## Commit
 
-- All tab-based content areas remain unchanged (overview, playground, pricing, chat, demo, integration, docs)
-- The overview tab's left column (description, features, tags) is unchanged
-- Related promotions banner is unchanged
-- Breadcrumb navigation in the parent page is unchanged
+- `3fe304b` feat: upgrade marketplace with search hero, featured cards, upgraded cards, pagination
+
+## Self-Review Notes
+
+1. **Duplicate price tag logic**: The `getPriceTag` function exists in both marketplace/index.vue and CapabilityCard.vue (as `priceTag` computed). This is acceptable since they serve different contexts (featured cards vs grid cards), but could be extracted to a shared utility in a future refactor.
+
+2. **Favorite is local-only**: The heart icon uses a local ref that resets on component re-render. This is intentional per the task spec ("for now just add the icon with a local toggle ref") and will be replaced by useFavorites() in Task 12.
+
+3. **Slideover width**: Used `:ui="{ content: 'max-w-[420px]' }"` to override the default `max-w-md` (448px) to 420px. This is a valid Nuxt UI slot class override.
+
+4. **MarketplaceFilters component**: The old sidebar filter component is no longer imported/used by the marketplace page. It still exists in the codebase and is used by the b/ variant pages. No deletion was performed.
+
+5. **Featured cards use navigateTo**: The featured card div uses @click="navigateTo(...)" which returns a route object. This works at runtime but the UButton @click.stop handler needed `void` prefix to satisfy TypeScript.
+
+6. **Subcategory scroll**: Uses a custom `.scrollbar-hide` CSS class for hiding the horizontal scrollbar while keeping scroll functionality.

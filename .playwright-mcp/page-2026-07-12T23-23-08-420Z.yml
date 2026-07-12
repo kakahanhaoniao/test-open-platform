@@ -1,0 +1,101 @@
+- generic [active] [ref=f20e1]:
+  - generic [ref=f20e2]:
+    - banner [ref=f20e3]:
+      - generic [ref=f20e4]:
+        - link "奇安信 AI 开放平台" [ref=f20e5] [cursor=pointer]:
+          - /url: /
+          - generic [ref=f20e8]:
+            - generic [ref=f20e9]: 奇安信
+            - generic [ref=f20e10]: AI 开放平台
+        - navigation [ref=f20e11]:
+          - link "首页" [ref=f20e12] [cursor=pointer]:
+            - /url: /
+          - link "能力市场" [ref=f20e13] [cursor=pointer]:
+            - /url: /marketplace
+          - link "优惠活动" [ref=f20e15] [cursor=pointer]:
+            - /url: /promotions
+        - generic [ref=f20e16]:
+          - button [ref=f20e17]
+          - link "企业工作台" [ref=f20e20] [cursor=pointer]:
+            - /url: /enterprise
+          - button [ref=f20e24] [cursor=pointer]
+    - main [ref=f20e26]:
+      - generic [ref=f20e28]:
+        - generic [ref=f20e29]:
+          - link "首页" [ref=f20e30] [cursor=pointer]:
+            - /url: /
+          - link "能力市场" [ref=f20e32] [cursor=pointer]:
+            - /url: /marketplace
+          - generic [ref=f20e34]: 奇安信安全大模型
+        - generic [ref=f20e38]:
+          - generic [ref=f20e39]:
+            - heading "奇安信安全大模型" [level=1] [ref=f20e40]
+            - generic [ref=f20e41]: 模型
+            - generic [ref=f20e42]: HOT
+          - paragraph [ref=f20e43]: 安全大模型
+          - generic [ref=f20e44]:
+            - generic [ref=f20e45]: "4.9"
+            - generic [ref=f20e48]: 1280万+ 调用
+            - generic [ref=f20e51]: 100B 参数
+        - generic [ref=f20e54]:
+          - generic [ref=f20e55]:
+            - generic [ref=f20e57]: 夏季安全嘉年华：限时5折
+            - link "了解详情" [ref=f20e58] [cursor=pointer]:
+              - /url: /promotions
+          - generic [ref=f20e59]:
+            - generic [ref=f20e61]: 企业版首发优惠：首发8折
+            - link "了解详情" [ref=f20e62] [cursor=pointer]:
+              - /url: /promotions
+        - generic [ref=f20e68]:
+          - generic [ref=f20e69]:
+            - heading "奇安信安全大模型" [level=3] [ref=f20e70]
+            - generic [ref=f20e71]:
+              - generic [ref=f20e72]: "4.9"
+              - generic [ref=f20e75]: 1280万+ 调用
+          - generic [ref=f20e79]:
+            - button "在线体验 打开Playground" [ref=f20e80]:
+              - generic [ref=f20e82]:
+                - generic [ref=f20e83]: 在线体验
+                - generic [ref=f20e84]: 打开Playground
+            - button "立即接入 获取API Key+SDK" [ref=f20e85]:
+              - generic [ref=f20e87]:
+                - generic [ref=f20e88]: 立即接入
+                - generic [ref=f20e89]: 获取API Key+SDK
+            - button "购买套餐 充能包/模型套餐/应用套餐" [ref=f20e90]:
+              - generic [ref=f20e92]:
+                - generic [ref=f20e93]: 购买套餐
+                - generic [ref=f20e94]: 充能包/模型套餐/应用套餐
+          - generic [ref=f20e96]:
+            - heading "定价信息" [level=4] [ref=f20e97]
+            - generic [ref=f20e98]:
+              - generic [ref=f20e99]: 输入价格
+              - generic [ref=f20e100]: ¥0.06/千Token
+            - generic [ref=f20e101]:
+              - generic [ref=f20e102]: 输出价格
+              - generic [ref=f20e103]: ¥0.12/千Token
+          - button "企业批量采购 专属折扣+统一结算" [ref=f20e106]:
+            - generic [ref=f20e108]:
+              - generic [ref=f20e109]: 企业批量采购
+              - generic [ref=f20e110]: 专属折扣+统一结算
+          - generic [ref=f20e112]:
+            - heading "标签" [level=4] [ref=f20e113]
+            - generic [ref=f20e114]:
+              - generic [ref=f20e115]: 大语言模型
+              - generic [ref=f20e116]: 安全分析
+              - generic [ref=f20e117]: 威胁检测
+              - generic [ref=f20e118]: 报告生成
+          - generic [ref=f20e119]:
+            - generic [ref=f20e120]:
+              - generic [ref=f20e121]: 参数规模
+              - generic [ref=f20e122]: 100B
+            - generic [ref=f20e123]:
+              - generic [ref=f20e124]: API端点
+              - generic [ref=f20e125]: /v1/chat/completions
+  - region "Notifications (F8)":
+    - list
+  - generic [ref=f20e126]:
+    - button "Toggle Nuxt DevTools" [ref=f20e127] [cursor=pointer]
+    - generic "Page load time" [ref=f20e131]:
+      - generic [ref=f20e132]: "29"
+      - generic [ref=f20e133]: ms
+    - button "Toggle Component Inspector" [ref=f20e135] [cursor=pointer]

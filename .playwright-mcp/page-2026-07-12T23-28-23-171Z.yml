@@ -1,0 +1,74 @@
+- generic [ref=f27e3]:
+  - complementary [ref=f27e4]:
+    - generic [ref=f27e5]: 奇安信AI · 运营后台
+    - link "返回前台" [ref=f27e11] [cursor=pointer]:
+      - /url: /
+    - navigation [ref=f27e14]:
+      - link "数据看板" [ref=f27e15] [cursor=pointer]:
+        - /url: /admin
+      - link "企业客户" [ref=f27e18] [cursor=pointer]:
+        - /url: /admin/enterprises
+      - link "模型管理" [ref=f27e21] [cursor=pointer]:
+        - /url: /admin/models
+      - link "应用管理" [ref=f27e25] [cursor=pointer]:
+        - /url: /admin/apps
+      - link "活动管理" [ref=f27e28] [cursor=pointer]:
+        - /url: /admin/activities
+      - link "订单管理" [ref=f27e31] [cursor=pointer]:
+        - /url: /admin/orders
+      - link "模板配置" [ref=f27e34] [cursor=pointer]:
+        - /url: /admin/templates
+    - generic [ref=f27e41]:
+      - paragraph [ref=f27e42]: 运营管理员
+      - paragraph [ref=f27e43]: admin@qianxin.com
+  - generic [ref=f27e45]:
+    - generic [ref=f27e46]:
+      - link "模型管理" [ref=f27e47] [cursor=pointer]:
+        - /url: /admin/models
+      - generic [ref=f27e49]: 奇安信安全大模型
+      - generic [ref=f27e51]: 模板配置
+    - generic [ref=f27e52]:
+      - heading "模型详情页模板配置" [level=1] [ref=f27e53]
+      - generic [ref=f27e54]:
+        - button "预览" [ref=f27e55]
+        - button "保存配置" [ref=f27e56]
+    - generic [ref=f27e57]:
+      - generic [ref=f27e59]:
+        - generic [ref=f27e60]:
+          - heading "模块列表" [level=2] [ref=f27e61]
+          - button "添加" [ref=f27e63]
+        - generic [ref=f27e65]:
+          - generic [ref=f27e66] [cursor=pointer]:
+            - paragraph [ref=f27e71]: 横幅
+            - button "隐藏模块" [ref=f27e72]
+            - button "删除模块" [ref=f27e74]
+          - generic [ref=f27e76] [cursor=pointer]:
+            - paragraph [ref=f27e81]: 介绍
+            - button "隐藏模块" [ref=f27e82]
+            - button "删除模块" [ref=f27e84]
+          - generic [ref=f27e86] [cursor=pointer]:
+            - paragraph [ref=f27e91]: 特性
+            - button "隐藏模块" [ref=f27e92]
+            - button "删除模块" [ref=f27e94]
+          - generic [ref=f27e96] [cursor=pointer]:
+            - paragraph [ref=f27e101]: 场景
+            - button "隐藏模块" [ref=f27e102]
+            - button "删除模块" [ref=f27e104]
+          - generic [ref=f27e106] [cursor=pointer]:
+            - paragraph [ref=f27e111]: 定价
+            - button "隐藏模块" [ref=f27e112]
+            - button "删除模块" [ref=f27e114]
+          - generic [ref=f27e116] [cursor=pointer]:
+            - paragraph [ref=f27e121]: 接入指南
+            - button "隐藏模块" [ref=f27e122]
+            - button "删除模块" [ref=f27e124]
+          - generic [ref=f27e126] [cursor=pointer]:
+            - paragraph [ref=f27e131]: 相关推荐
+            - button "隐藏模块" [ref=f27e132]
+            - button "删除模块" [ref=f27e134]
+      - generic [ref=f27e138]:
+        - heading "实时预览" [level=2] [ref=f27e139]
+        - generic [ref=f27e140]: 点击模块可选中编辑
+      - generic [ref=f27e144]:
+        - paragraph [ref=f27e146]: 请选择一个模块进行编辑
+        - paragraph [ref=f27e147]: 点击左侧列表或中间预览区

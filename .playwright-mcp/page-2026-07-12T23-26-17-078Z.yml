@@ -1,0 +1,220 @@
+- generic [active] [ref=f22e1]:
+  - generic [ref=f22e3]:
+    - complementary [ref=f22e4]:
+      - generic [ref=f22e5]: 奇安信AI · 运营后台
+      - link "返回前台" [ref=f22e11] [cursor=pointer]:
+        - /url: /
+      - navigation [ref=f22e14]:
+        - link "数据看板" [ref=f22e15] [cursor=pointer]:
+          - /url: /admin
+        - link "企业客户" [ref=f22e18] [cursor=pointer]:
+          - /url: /admin/enterprises
+        - link "模型管理" [ref=f22e21] [cursor=pointer]:
+          - /url: /admin/models
+        - link "应用管理" [ref=f22e25] [cursor=pointer]:
+          - /url: /admin/apps
+        - link "活动管理" [ref=f22e28] [cursor=pointer]:
+          - /url: /admin/activities
+        - link "订单管理" [ref=f22e31] [cursor=pointer]:
+          - /url: /admin/orders
+        - link "模板配置" [ref=f22e34] [cursor=pointer]:
+          - /url: /admin/templates
+      - generic [ref=f22e41]:
+        - paragraph [ref=f22e42]: 运营管理员
+        - paragraph [ref=f22e43]: admin@qianxin.com
+    - generic [ref=f22e45]:
+      - generic [ref=f22e46]:
+        - generic [ref=f22e47]:
+          - heading "模型管理" [level=1] [ref=f22e48]
+          - paragraph [ref=f22e49]: 管理平台所有AI安全模型的上下线与配置
+        - button "新增模型" [ref=f22e50]
+      - generic [ref=f22e53]:
+        - textbox "搜索模型名称..." [ref=f22e56]
+        - combobox [ref=f22e57]:
+          - option "全部类型" [selected]
+          - option "安全大模型"
+          - option "威胁检测"
+          - option "漏洞分析"
+          - option "合规检查"
+          - option "代码安全"
+          - option "数据安全"
+          - option "恶意软件"
+          - option "应急响应"
+          - option "钓鱼检测"
+          - option "日志分析"
+          - option "网络安全"
+          - option "通用模型"
+        - combobox [ref=f22e58]:
+          - option "全部状态" [selected]
+          - option "上线"
+          - option "下线"
+          - option "审核中"
+      - paragraph [ref=f22e60]: 共 10 个模型
+      - table [ref=f22e63]:
+        - rowgroup [ref=f22e64]:
+          - row [ref=f22e65]:
+            - columnheader "模型名称" [ref=f22e66]
+            - columnheader "类型" [ref=f22e67]
+            - columnheader "参数量" [ref=f22e68]
+            - columnheader "状态" [ref=f22e69]
+            - columnheader "调用量" [ref=f22e70]
+            - columnheader "操作" [ref=f22e71]
+        - rowgroup [ref=f22e72]:
+          - row [ref=f22e73]:
+            - cell [ref=f22e74]:
+              - generic [ref=f22e78]:
+                - paragraph [ref=f22e79]: 奇安信安全大模型
+                - paragraph [ref=f22e80]: 奇安信
+            - cell "安全大模型" [ref=f22e81]
+            - cell "100B" [ref=f22e82]
+            - cell "上线" [ref=f22e83]
+            - cell "1280万+" [ref=f22e84]
+            - cell [ref=f22e85]:
+              - generic [ref=f22e86]:
+                - button "编辑" [ref=f22e87]
+                - button "下线" [ref=f22e88]
+                - link "配置详情页" [ref=f22e89] [cursor=pointer]:
+                  - /url: /admin/models/qax-security-llm/template
+          - row [ref=f22e90]:
+            - cell [ref=f22e91]:
+              - generic [ref=f22e95]:
+                - paragraph [ref=f22e96]: 威胁检测模型 V3
+                - paragraph [ref=f22e97]: 奇安信
+            - cell "威胁检测" [ref=f22e98]
+            - cell "7B" [ref=f22e99]
+            - cell "上线" [ref=f22e100]
+            - cell "860万+" [ref=f22e101]
+            - cell [ref=f22e102]:
+              - generic [ref=f22e103]:
+                - button "编辑" [ref=f22e104]
+                - button "下线" [ref=f22e105]
+                - link "配置详情页" [ref=f22e106] [cursor=pointer]:
+                  - /url: /admin/models/threat-detect-v3/template
+          - row [ref=f22e107]:
+            - cell [ref=f22e108]:
+              - generic [ref=f22e112]:
+                - paragraph [ref=f22e113]: 漏洞分析专家
+                - paragraph [ref=f22e114]: 奇安信
+            - cell "漏洞分析" [ref=f22e115]
+            - cell "13B" [ref=f22e116]
+            - cell "上线" [ref=f22e117]
+            - cell "520万+" [ref=f22e118]
+            - cell [ref=f22e119]:
+              - generic [ref=f22e120]:
+                - button "编辑" [ref=f22e121]
+                - button "下线" [ref=f22e122]
+                - link "配置详情页" [ref=f22e123] [cursor=pointer]:
+                  - /url: /admin/models/vuln-analyzer-pro/template
+          - row [ref=f22e124]:
+            - cell [ref=f22e125]:
+              - generic [ref=f22e129]:
+                - paragraph [ref=f22e130]: 合规卫士
+                - paragraph [ref=f22e131]: 奇安信
+            - cell "合规检查" [ref=f22e132]
+            - cell "7B" [ref=f22e133]
+            - cell "上线" [ref=f22e134]
+            - cell "380万+" [ref=f22e135]
+            - cell [ref=f22e136]:
+              - generic [ref=f22e137]:
+                - button "编辑" [ref=f22e138]
+                - button "下线" [ref=f22e139]
+                - link "配置详情页" [ref=f22e140] [cursor=pointer]:
+                  - /url: /admin/models/compliance-guard/template
+          - row [ref=f22e141]:
+            - cell [ref=f22e142]:
+              - generic [ref=f22e146]:
+                - paragraph [ref=f22e147]: 代码安全扫描模型
+                - paragraph [ref=f22e148]: 奇安信
+            - cell "代码安全" [ref=f22e149]
+            - cell "13B" [ref=f22e150]
+            - cell "上线" [ref=f22e151]
+            - cell "720万+" [ref=f22e152]
+            - cell [ref=f22e153]:
+              - generic [ref=f22e154]:
+                - button "编辑" [ref=f22e155]
+                - button "下线" [ref=f22e156]
+                - link "配置详情页" [ref=f22e157] [cursor=pointer]:
+                  - /url: /admin/models/code-security-scan/template
+          - row [ref=f22e158]:
+            - cell [ref=f22e159]:
+              - generic [ref=f22e163]:
+                - paragraph [ref=f22e164]: 数据安全卫士
+                - paragraph [ref=f22e165]: 奇安信
+            - cell "数据安全" [ref=f22e166]
+            - cell "3B" [ref=f22e167]
+            - cell "上线" [ref=f22e168]
+            - cell "290万+" [ref=f22e169]
+            - cell [ref=f22e170]:
+              - generic [ref=f22e171]:
+                - button "编辑" [ref=f22e172]
+                - button "下线" [ref=f22e173]
+                - link "配置详情页" [ref=f22e174] [cursor=pointer]:
+                  - /url: /admin/models/data-guard-llm/template
+          - row [ref=f22e175]:
+            - cell [ref=f22e176]:
+              - generic [ref=f22e180]:
+                - paragraph [ref=f22e181]: 恶意软件分析模型
+                - paragraph [ref=f22e182]: 奇安信
+            - cell "恶意软件" [ref=f22e183]
+            - cell "5B" [ref=f22e184]
+            - cell "下线" [ref=f22e185]
+            - cell "670万+" [ref=f22e186]
+            - cell [ref=f22e187]:
+              - generic [ref=f22e188]:
+                - button "编辑" [ref=f22e189]
+                - button "上架" [ref=f22e190]
+                - link "配置详情页" [ref=f22e191] [cursor=pointer]:
+                  - /url: /admin/models/malware-analyzer/template
+          - row [ref=f22e192]:
+            - cell [ref=f22e193]:
+              - generic [ref=f22e197]:
+                - paragraph [ref=f22e198]: 应急响应模型
+                - paragraph [ref=f22e199]: 奇安信
+            - cell "应急响应" [ref=f22e200]
+            - cell "13B" [ref=f22e201]
+            - cell "下线" [ref=f22e202]
+            - cell "280万+" [ref=f22e203]
+            - cell [ref=f22e204]:
+              - generic [ref=f22e205]:
+                - button "编辑" [ref=f22e206]
+                - button "上架" [ref=f22e207]
+                - link "配置详情页" [ref=f22e208] [cursor=pointer]:
+                  - /url: /admin/models/incident-response/template
+          - row [ref=f22e209]:
+            - cell [ref=f22e210]:
+              - generic [ref=f22e214]:
+                - paragraph [ref=f22e215]: 钓鱼识别模型
+                - paragraph [ref=f22e216]: 奇安信
+            - cell "钓鱼检测" [ref=f22e217]
+            - cell "1.5B" [ref=f22e218]
+            - cell "审核中" [ref=f22e219]
+            - cell "340万+" [ref=f22e220]
+            - cell [ref=f22e221]:
+              - generic [ref=f22e222]:
+                - button "编辑" [ref=f22e223]
+                - button "通过" [ref=f22e224]
+                - link "配置详情页" [ref=f22e225] [cursor=pointer]:
+                  - /url: /admin/models/phishing-detect/template
+          - row [ref=f22e226]:
+            - cell [ref=f22e227]:
+              - generic [ref=f22e231]:
+                - paragraph [ref=f22e232]: 日志智能分析模型
+                - paragraph [ref=f22e233]: 奇安信
+            - cell "日志分析" [ref=f22e234]
+            - cell "3B" [ref=f22e235]
+            - cell "审核中" [ref=f22e236]
+            - cell "2100万+" [ref=f22e237]
+            - cell [ref=f22e238]:
+              - generic [ref=f22e239]:
+                - button "编辑" [ref=f22e240]
+                - button "通过" [ref=f22e241]
+                - link "配置详情页" [ref=f22e242] [cursor=pointer]:
+                  - /url: /admin/models/log-analyzer/template
+  - region "Notifications (F8)":
+    - list
+  - generic [ref=f22e243]:
+    - button "Toggle Nuxt DevTools" [ref=f22e244] [cursor=pointer]
+    - generic "Page load time" [ref=f22e248]:
+      - generic [ref=f22e249]: "27"
+      - generic [ref=f22e250]: ms
+    - button "Toggle Component Inspector" [ref=f22e252] [cursor=pointer]

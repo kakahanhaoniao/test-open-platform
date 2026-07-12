@@ -1,0 +1,234 @@
+- generic [active] [ref=f29e1]:
+  - generic [ref=f29e3]:
+    - complementary [ref=f29e4]:
+      - generic [ref=f29e5]: 奇安信AI · 运营后台
+      - link "返回前台" [ref=f29e11] [cursor=pointer]:
+        - /url: /
+      - navigation [ref=f29e14]:
+        - link "数据看板" [ref=f29e15] [cursor=pointer]:
+          - /url: /admin
+        - link "企业客户" [ref=f29e18] [cursor=pointer]:
+          - /url: /admin/enterprises
+        - link "模型管理" [ref=f29e21] [cursor=pointer]:
+          - /url: /admin/models
+        - link "应用管理" [ref=f29e24] [cursor=pointer]:
+          - /url: /admin/apps
+        - link "活动管理" [ref=f29e27] [cursor=pointer]:
+          - /url: /admin/activities
+        - link "订单管理" [ref=f29e30] [cursor=pointer]:
+          - /url: /admin/orders
+        - link "模板配置" [ref=f29e33] [cursor=pointer]:
+          - /url: /admin/templates
+      - generic [ref=f29e41]:
+        - paragraph [ref=f29e42]: 运营管理员
+        - paragraph [ref=f29e43]: admin@qianxin.com
+    - generic [ref=f29e45]:
+      - generic [ref=f29e46]:
+        - heading "模板配置" [level=1] [ref=f29e47]
+        - paragraph [ref=f29e48]: 集中管理所有详情页模板的配置与预览
+      - generic [ref=f29e49]:
+        - button "全部模板 (24)" [ref=f29e50]
+        - button "模型模板 (10)" [ref=f29e51]
+        - button "应用模板 (8)" [ref=f29e52]
+        - button "活动模板 (6)" [ref=f29e53]
+      - generic [ref=f29e54]:
+        - link "模型模板 编辑模板 奇安信安全大模型 2026-07-10" [ref=f29e55] [cursor=pointer]:
+          - /url: /admin/models/qax-security-llm/template
+          - generic [ref=f29e56]:
+            - generic [ref=f29e60]: 模型模板
+            - generic [ref=f29e61]: 编辑模板
+          - generic [ref=f29e63]:
+            - heading "奇安信安全大模型" [level=3] [ref=f29e64]
+            - generic [ref=f29e65]: 2026-07-10
+        - link "模型模板 编辑模板 威胁检测模型 V3 2026-07-10" [ref=f29e70] [cursor=pointer]:
+          - /url: /admin/models/threat-detect-v3/template
+          - generic [ref=f29e71]:
+            - generic [ref=f29e75]: 模型模板
+            - generic [ref=f29e76]: 编辑模板
+          - generic [ref=f29e78]:
+            - heading "威胁检测模型 V3" [level=3] [ref=f29e79]
+            - generic [ref=f29e80]: 2026-07-10
+        - link "模型模板 编辑模板 漏洞分析专家 2026-07-10" [ref=f29e85] [cursor=pointer]:
+          - /url: /admin/models/vuln-analyzer-pro/template
+          - generic [ref=f29e86]:
+            - generic [ref=f29e90]: 模型模板
+            - generic [ref=f29e91]: 编辑模板
+          - generic [ref=f29e93]:
+            - heading "漏洞分析专家" [level=3] [ref=f29e94]
+            - generic [ref=f29e95]: 2026-07-10
+        - link "模型模板 编辑模板 合规卫士 2026-07-10" [ref=f29e100] [cursor=pointer]:
+          - /url: /admin/models/compliance-guard/template
+          - generic [ref=f29e101]:
+            - generic [ref=f29e105]: 模型模板
+            - generic [ref=f29e106]: 编辑模板
+          - generic [ref=f29e108]:
+            - heading "合规卫士" [level=3] [ref=f29e109]
+            - generic [ref=f29e110]: 2026-07-10
+        - link "模型模板 编辑模板 代码安全扫描模型 2026-07-10" [ref=f29e115] [cursor=pointer]:
+          - /url: /admin/models/code-security-scan/template
+          - generic [ref=f29e116]:
+            - generic [ref=f29e120]: 模型模板
+            - generic [ref=f29e121]: 编辑模板
+          - generic [ref=f29e123]:
+            - heading "代码安全扫描模型" [level=3] [ref=f29e124]
+            - generic [ref=f29e125]: 2026-07-10
+        - link "模型模板 编辑模板 数据安全卫士 2026-07-10" [ref=f29e130] [cursor=pointer]:
+          - /url: /admin/models/data-guard-llm/template
+          - generic [ref=f29e131]:
+            - generic [ref=f29e135]: 模型模板
+            - generic [ref=f29e136]: 编辑模板
+          - generic [ref=f29e138]:
+            - heading "数据安全卫士" [level=3] [ref=f29e139]
+            - generic [ref=f29e140]: 2026-07-10
+        - link "模型模板 编辑模板 恶意软件分析模型 2026-07-10" [ref=f29e145] [cursor=pointer]:
+          - /url: /admin/models/malware-analyzer/template
+          - generic [ref=f29e146]:
+            - generic [ref=f29e150]: 模型模板
+            - generic [ref=f29e151]: 编辑模板
+          - generic [ref=f29e153]:
+            - heading "恶意软件分析模型" [level=3] [ref=f29e154]
+            - generic [ref=f29e155]: 2026-07-10
+        - link "模型模板 编辑模板 应急响应模型 2026-07-10" [ref=f29e160] [cursor=pointer]:
+          - /url: /admin/models/incident-response/template
+          - generic [ref=f29e161]:
+            - generic [ref=f29e165]: 模型模板
+            - generic [ref=f29e166]: 编辑模板
+          - generic [ref=f29e168]:
+            - heading "应急响应模型" [level=3] [ref=f29e169]
+            - generic [ref=f29e170]: 2026-07-10
+        - link "模型模板 编辑模板 钓鱼识别模型 2026-07-10" [ref=f29e175] [cursor=pointer]:
+          - /url: /admin/models/phishing-detect/template
+          - generic [ref=f29e176]:
+            - generic [ref=f29e180]: 模型模板
+            - generic [ref=f29e181]: 编辑模板
+          - generic [ref=f29e183]:
+            - heading "钓鱼识别模型" [level=3] [ref=f29e184]
+            - generic [ref=f29e185]: 2026-07-10
+        - link "模型模板 编辑模板 日志智能分析模型 2026-07-10" [ref=f29e190] [cursor=pointer]:
+          - /url: /admin/models/log-analyzer/template
+          - generic [ref=f29e191]:
+            - generic [ref=f29e195]: 模型模板
+            - generic [ref=f29e196]: 编辑模板
+          - generic [ref=f29e198]:
+            - heading "日志智能分析模型" [level=3] [ref=f29e199]
+            - generic [ref=f29e200]: 2026-07-10
+        - link "应用模板 编辑模板 智能安全运营中心 2026-07-09" [ref=f29e205] [cursor=pointer]:
+          - /url: /admin/apps/smart-soc/template
+          - generic [ref=f29e206]:
+            - generic [ref=f29e210]: 应用模板
+            - generic [ref=f29e211]: 编辑模板
+          - generic [ref=f29e213]:
+            - heading "智能安全运营中心" [level=3] [ref=f29e214]
+            - generic [ref=f29e215]: 2026-07-09
+        - link "应用模板 编辑模板 威胁情报助手 2026-07-09" [ref=f29e220] [cursor=pointer]:
+          - /url: /admin/apps/threat-intel-assistant/template
+          - generic [ref=f29e221]:
+            - generic [ref=f29e225]: 应用模板
+            - generic [ref=f29e226]: 编辑模板
+          - generic [ref=f29e228]:
+            - heading "威胁情报助手" [level=3] [ref=f29e229]
+            - generic [ref=f29e230]: 2026-07-09
+        - link "应用模板 编辑模板 漏洞扫描工具 2026-07-09" [ref=f29e235] [cursor=pointer]:
+          - /url: /admin/apps/vuln-scanner-tool/template
+          - generic [ref=f29e236]:
+            - generic [ref=f29e240]: 应用模板
+            - generic [ref=f29e241]: 编辑模板
+          - generic [ref=f29e243]:
+            - heading "漏洞扫描工具" [level=3] [ref=f29e244]
+            - generic [ref=f29e245]: 2026-07-09
+        - link "应用模板 编辑模板 安全态势感知大屏 2026-07-09" [ref=f29e250] [cursor=pointer]:
+          - /url: /admin/apps/security-knowledge-base/template
+          - generic [ref=f29e251]:
+            - generic [ref=f29e255]: 应用模板
+            - generic [ref=f29e256]: 编辑模板
+          - generic [ref=f29e258]:
+            - heading "安全态势感知大屏" [level=3] [ref=f29e259]
+            - generic [ref=f29e260]: 2026-07-09
+        - link "应用模板 编辑模板 AI代码审计助手 2026-07-09" [ref=f29e265] [cursor=pointer]:
+          - /url: /admin/apps/code-audit-assistant/template
+          - generic [ref=f29e266]:
+            - generic [ref=f29e270]: 应用模板
+            - generic [ref=f29e271]: 编辑模板
+          - generic [ref=f29e273]:
+            - heading "AI代码审计助手" [level=3] [ref=f29e274]
+            - generic [ref=f29e275]: 2026-07-09
+        - link "应用模板 编辑模板 应急响应剧本 2026-07-09" [ref=f29e280] [cursor=pointer]:
+          - /url: /admin/apps/incident-playbook/template
+          - generic [ref=f29e281]:
+            - generic [ref=f29e285]: 应用模板
+            - generic [ref=f29e286]: 编辑模板
+          - generic [ref=f29e288]:
+            - heading "应急响应剧本" [level=3] [ref=f29e289]
+            - generic [ref=f29e290]: 2026-07-09
+        - link "应用模板 编辑模板 零信任网关 2026-07-09" [ref=f29e295] [cursor=pointer]:
+          - /url: /admin/apps/zero-trust-gateway/template
+          - generic [ref=f29e296]:
+            - generic [ref=f29e300]: 应用模板
+            - generic [ref=f29e301]: 编辑模板
+          - generic [ref=f29e303]:
+            - heading "零信任网关" [level=3] [ref=f29e304]
+            - generic [ref=f29e305]: 2026-07-09
+        - link "应用模板 编辑模板 威胁情报平台 2026-07-09" [ref=f29e310] [cursor=pointer]:
+          - /url: /admin/apps/cti-platform/template
+          - generic [ref=f29e311]:
+            - generic [ref=f29e315]: 应用模板
+            - generic [ref=f29e316]: 编辑模板
+          - generic [ref=f29e318]:
+            - heading "威胁情报平台" [level=3] [ref=f29e319]
+            - generic [ref=f29e320]: 2026-07-09
+        - link "活动模板 编辑模板 夏季安全嘉年华 2026-07-08" [ref=f29e325] [cursor=pointer]:
+          - /url: /admin/activities/summer-security-carnival/template
+          - generic [ref=f29e326]:
+            - generic [ref=f29e330]: 活动模板
+            - generic [ref=f29e331]: 编辑模板
+          - generic [ref=f29e333]:
+            - heading "夏季安全嘉年华" [level=3] [ref=f29e334]
+            - generic [ref=f29e335]: 2026-07-08
+        - link "活动模板 编辑模板 企业版首发优惠 2026-07-08" [ref=f29e340] [cursor=pointer]:
+          - /url: /admin/activities/enterprise-launch-promo/template
+          - generic [ref=f29e341]:
+            - generic [ref=f29e345]: 活动模板
+            - generic [ref=f29e346]: 编辑模板
+          - generic [ref=f29e348]:
+            - heading "企业版首发优惠" [level=3] [ref=f29e349]
+            - generic [ref=f29e350]: 2026-07-08
+        - link "活动模板 编辑模板 威胁检测模型免费体验 2026-07-08" [ref=f29e355] [cursor=pointer]:
+          - /url: /admin/activities/threat-model-free-trial/template
+          - generic [ref=f29e356]:
+            - generic [ref=f29e360]: 活动模板
+            - generic [ref=f29e361]: 编辑模板
+          - generic [ref=f29e363]:
+            - heading "威胁检测模型免费体验" [level=3] [ref=f29e364]
+            - generic [ref=f29e365]: 2026-07-08
+        - link "活动模板 编辑模板 API集成挑战赛 2026-07-08" [ref=f29e370] [cursor=pointer]:
+          - /url: /admin/activities/api-integration-challenge/template
+          - generic [ref=f29e371]:
+            - generic [ref=f29e375]: 活动模板
+            - generic [ref=f29e376]: 编辑模板
+          - generic [ref=f29e378]:
+            - heading "API集成挑战赛" [level=3] [ref=f29e379]
+            - generic [ref=f29e380]: 2026-07-08
+        - link "活动模板 编辑模板 新客专享礼包 2026-07-08" [ref=f29e385] [cursor=pointer]:
+          - /url: /admin/activities/newcomer-welcome-pack/template
+          - generic [ref=f29e386]:
+            - generic [ref=f29e390]: 活动模板
+            - generic [ref=f29e391]: 编辑模板
+          - generic [ref=f29e393]:
+            - heading "新客专享礼包" [level=3] [ref=f29e394]
+            - generic [ref=f29e395]: 2026-07-08
+        - link "活动模板 编辑模板 代码安全限时特惠 2026-07-08" [ref=f29e400] [cursor=pointer]:
+          - /url: /admin/activities/code-security-flash-sale/template
+          - generic [ref=f29e401]:
+            - generic [ref=f29e405]: 活动模板
+            - generic [ref=f29e406]: 编辑模板
+          - generic [ref=f29e408]:
+            - heading "代码安全限时特惠" [level=3] [ref=f29e409]
+            - generic [ref=f29e410]: 2026-07-08
+  - region "Notifications (F8)":
+    - list
+  - generic [ref=f29e415]:
+    - button "Toggle Nuxt DevTools" [ref=f29e416] [cursor=pointer]
+    - generic "Page load time" [ref=f29e420]:
+      - generic [ref=f29e421]: "42"
+      - generic [ref=f29e422]: ms
+    - button "Toggle Component Inspector" [ref=f29e424] [cursor=pointer]

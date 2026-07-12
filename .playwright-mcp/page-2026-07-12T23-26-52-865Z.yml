@@ -1,0 +1,160 @@
+- generic [active] [ref=f23e1]:
+  - generic [ref=f23e3]:
+    - complementary [ref=f23e4]:
+      - generic [ref=f23e5]: 奇安信AI · 运营后台
+      - link "返回前台" [ref=f23e11] [cursor=pointer]:
+        - /url: /
+      - navigation [ref=f23e14]:
+        - link "数据看板" [ref=f23e15] [cursor=pointer]:
+          - /url: /admin
+        - link "企业客户" [ref=f23e19] [cursor=pointer]:
+          - /url: /admin/enterprises
+        - link "模型管理" [ref=f23e22] [cursor=pointer]:
+          - /url: /admin/models
+        - link "应用管理" [ref=f23e25] [cursor=pointer]:
+          - /url: /admin/apps
+        - link "活动管理" [ref=f23e28] [cursor=pointer]:
+          - /url: /admin/activities
+        - link "订单管理" [ref=f23e31] [cursor=pointer]:
+          - /url: /admin/orders
+        - link "模板配置" [ref=f23e34] [cursor=pointer]:
+          - /url: /admin/templates
+      - generic [ref=f23e41]:
+        - paragraph [ref=f23e42]: 运营管理员
+        - paragraph [ref=f23e43]: admin@qianxin.com
+    - generic [ref=f23e45]:
+      - generic [ref=f23e46]:
+        - heading "数据看板" [level=1] [ref=f23e47]
+        - paragraph [ref=f23e48]: 平台运营数据概览与实时监控
+      - generic [ref=f23e49]:
+        - generic [ref=f23e50]:
+          - paragraph [ref=f23e54]: "10"
+          - paragraph [ref=f23e55]: 模型总数
+        - generic [ref=f23e56]:
+          - paragraph [ref=f23e60]: "8"
+          - paragraph [ref=f23e61]: 应用总数
+        - generic [ref=f23e62]:
+          - paragraph [ref=f23e66]: "3"
+          - paragraph [ref=f23e67]: 活跃活动
+        - generic [ref=f23e68]:
+          - paragraph [ref=f23e72]: ¥128,560
+          - paragraph [ref=f23e73]: 本月收入
+        - generic [ref=f23e74]:
+          - paragraph [ref=f23e78]: 2,847万
+          - paragraph [ref=f23e79]: API调用量
+        - generic [ref=f23e80]:
+          - paragraph [ref=f23e84]: 15,832
+          - paragraph [ref=f23e85]: 注册用户数
+      - generic [ref=f23e86]:
+        - generic [ref=f23e87]:
+          - generic [ref=f23e88]:
+            - heading "API调用量趋势" [level=2] [ref=f23e89]
+            - generic [ref=f23e90]: 调用量(万次)
+          - generic [ref=f23e92]:
+            - generic [ref=f23e93]:
+              - generic [ref=f23e94]: "65"
+              - generic [ref=f23e97]: 1月
+            - generic [ref=f23e98]:
+              - generic [ref=f23e99]: "78"
+              - generic [ref=f23e102]: 2月
+            - generic [ref=f23e103]:
+              - generic [ref=f23e104]: "52"
+              - generic [ref=f23e107]: 3月
+            - generic [ref=f23e108]:
+              - generic [ref=f23e109]: "90"
+              - generic [ref=f23e112]: 4月
+            - generic [ref=f23e113]:
+              - generic [ref=f23e114]: "85"
+              - generic [ref=f23e117]: 5月
+            - generic [ref=f23e118]:
+              - generic [ref=f23e119]: "95"
+              - generic [ref=f23e122]: 6月
+            - generic [ref=f23e123]:
+              - generic [ref=f23e124]: "100"
+              - generic [ref=f23e127]: 7月
+        - generic [ref=f23e128]:
+          - heading "最近动态" [level=2] [ref=f23e129]
+          - generic [ref=f23e130]:
+            - generic [ref=f23e131]:
+              - generic [ref=f23e132]: 活动
+              - generic [ref=f23e133]:
+                - paragraph [ref=f23e134]: 夏季安全嘉年华活动上线
+                - paragraph [ref=f23e135]: 2小时前
+            - generic [ref=f23e136]:
+              - generic [ref=f23e137]: 模型
+              - generic [ref=f23e138]:
+                - paragraph [ref=f23e139]: 威胁检测模型V3审核通过
+                - paragraph [ref=f23e140]: 3小时前
+            - generic [ref=f23e141]:
+              - generic [ref=f23e142]: 应用
+              - generic [ref=f23e143]:
+                - paragraph [ref=f23e144]: AI代码审计助手新增上线
+                - paragraph [ref=f23e145]: 5小时前
+            - generic [ref=f23e146]:
+              - generic [ref=f23e147]: 定价
+              - generic [ref=f23e148]:
+                - paragraph [ref=f23e149]: 企业包充能包价格调整
+                - paragraph [ref=f23e150]: 1天前
+            - generic [ref=f23e151]:
+              - generic [ref=f23e152]: 模型
+              - generic [ref=f23e153]:
+                - paragraph [ref=f23e154]: 钓鱼识别模型参数更新
+                - paragraph [ref=f23e155]: 1天前
+      - generic [ref=f23e156]:
+        - generic [ref=f23e157]:
+          - heading "最近订单" [level=2] [ref=f23e158]
+          - link "查看全部 →" [ref=f23e159] [cursor=pointer]:
+            - /url: /admin/orders
+        - table [ref=f23e161]:
+          - rowgroup [ref=f23e162]:
+            - row [ref=f23e163]:
+              - columnheader "订单号" [ref=f23e164]
+              - columnheader "用户" [ref=f23e165]
+              - columnheader "类型" [ref=f23e166]
+              - columnheader "金额" [ref=f23e167]
+              - columnheader "状态" [ref=f23e168]
+              - columnheader "时间" [ref=f23e169]
+          - rowgroup [ref=f23e170]:
+            - row [ref=f23e171]:
+              - cell "ORD-20260711001" [ref=f23e172]
+              - cell "张三" [ref=f23e173]
+              - cell "充能包" [ref=f23e174]
+              - cell "¥399" [ref=f23e175]
+              - cell "已完成" [ref=f23e176]
+              - cell "2026-07-11 14:32" [ref=f23e177]
+            - row [ref=f23e178]:
+              - cell "ORD-20260711002" [ref=f23e179]
+              - cell "李四" [ref=f23e180]
+              - cell "模型调用" [ref=f23e181]
+              - cell "¥128" [ref=f23e182]
+              - cell "处理中" [ref=f23e183]
+              - cell "2026-07-11 13:15" [ref=f23e184]
+            - row [ref=f23e185]:
+              - cell "ORD-20260710003" [ref=f23e186]
+              - cell "王五" [ref=f23e187]
+              - cell "充能包" [ref=f23e188]
+              - cell "¥1,499" [ref=f23e189]
+              - cell "已完成" [ref=f23e190]
+              - cell "2026-07-10 18:45" [ref=f23e191]
+            - row [ref=f23e192]:
+              - cell "ORD-20260710004" [ref=f23e193]
+              - cell "赵六" [ref=f23e194]
+              - cell "应用订阅" [ref=f23e195]
+              - cell "¥99" [ref=f23e196]
+              - cell "已退款" [ref=f23e197]
+              - cell "2026-07-10 11:22" [ref=f23e198]
+            - row [ref=f23e199]:
+              - cell "ORD-20260709005" [ref=f23e200]
+              - cell "孙七" [ref=f23e201]
+              - cell "模型调用" [ref=f23e202]
+              - cell "¥56" [ref=f23e203]
+              - cell "已完成" [ref=f23e204]
+              - cell "2026-07-09 09:30" [ref=f23e205]
+  - region "Notifications (F8)":
+    - list
+  - generic [ref=f23e206]:
+    - button "Toggle Nuxt DevTools" [ref=f23e207] [cursor=pointer]
+    - generic "Page load time" [ref=f23e211]:
+      - generic [ref=f23e212]: "22"
+      - generic [ref=f23e213]: ms
+    - button "Toggle Component Inspector" [ref=f23e215] [cursor=pointer]

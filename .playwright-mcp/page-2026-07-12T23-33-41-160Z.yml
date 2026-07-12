@@ -1,0 +1,85 @@
+- generic [active] [ref=f35e1]:
+  - generic [ref=f35e2]:
+    - banner [ref=f35e3]:
+      - generic [ref=f35e4]:
+        - link "奇安信 AI 开放平台" [ref=f35e5] [cursor=pointer]:
+          - /url: /
+          - generic [ref=f35e8]:
+            - generic [ref=f35e9]: 奇安信
+            - generic [ref=f35e10]: AI 开放平台
+        - navigation [ref=f35e11]:
+          - link "首页" [ref=f35e12] [cursor=pointer]:
+            - /url: /
+          - link "能力市场" [ref=f35e13] [cursor=pointer]:
+            - /url: /marketplace
+          - link "优惠活动" [ref=f35e15] [cursor=pointer]:
+            - /url: /promotions
+        - generic [ref=f35e16]:
+          - button [ref=f35e17]
+          - link "企业工作台" [ref=f35e20] [cursor=pointer]:
+            - /url: /enterprise
+          - button [ref=f35e24] [cursor=pointer]
+    - main [ref=f35e26]:
+      - generic [ref=f35e28]:
+        - generic [ref=f35e29]:
+          - link "首页" [ref=f35e30] [cursor=pointer]:
+            - /url: /
+          - link "能力市场" [ref=f35e32] [cursor=pointer]:
+            - /url: /marketplace
+          - generic [ref=f35e34]: 智能安全运营中心
+        - generic [ref=f35e38]:
+          - generic [ref=f35e39]:
+            - heading "智能安全运营中心" [level=1] [ref=f35e40]
+            - generic [ref=f35e41]: 对话应用
+            - generic [ref=f35e42]: HOT
+          - paragraph [ref=f35e43]: 对话应用
+          - generic [ref=f35e44]:
+            - generic [ref=f35e45]: "4.9"
+            - generic [ref=f35e48]: 56万+ 用户
+        - generic [ref=f35e51]:
+          - generic [ref=f35e52]:
+            - generic [ref=f35e54]: 夏季安全嘉年华：限时5折
+            - link "了解详情" [ref=f35e55] [cursor=pointer]:
+              - /url: /promotions
+          - generic [ref=f35e56]:
+            - generic [ref=f35e58]: 企业版首发优惠：首发8折
+            - link "了解详情" [ref=f35e59] [cursor=pointer]:
+              - /url: /promotions
+        - generic [ref=f35e65]:
+          - generic [ref=f35e66]:
+            - heading "智能安全运营中心" [level=3] [ref=f35e67]
+            - generic [ref=f35e68]:
+              - generic [ref=f35e69]: "4.9"
+              - generic [ref=f35e72]: 56万+ 用户
+          - generic [ref=f35e76]:
+            - button "在线体验 打开Playground" [ref=f35e77]:
+              - generic [ref=f35e79]:
+                - generic [ref=f35e80]: 在线体验
+                - generic [ref=f35e81]: 打开Playground
+            - button "立即接入 获取API Key+SDK" [ref=f35e82]:
+              - generic [ref=f35e84]:
+                - generic [ref=f35e85]: 立即接入
+                - generic [ref=f35e86]: 获取API Key+SDK
+            - button "购买套餐 充能包/模型套餐/应用套餐" [ref=f35e87]:
+              - generic [ref=f35e89]:
+                - generic [ref=f35e90]: 购买套餐
+                - generic [ref=f35e91]: 充能包/模型套餐/应用套餐
+          - button "企业批量采购 专属折扣+统一结算" [ref=f35e94]:
+            - generic [ref=f35e96]:
+              - generic [ref=f35e97]: 企业批量采购
+              - generic [ref=f35e98]: 专属折扣+统一结算
+          - generic [ref=f35e100]:
+            - heading "标签" [level=4] [ref=f35e101]
+            - generic [ref=f35e102]:
+              - generic [ref=f35e103]: SOC
+              - generic [ref=f35e104]: 告警研判
+              - generic [ref=f35e105]: 事件关联
+              - generic [ref=f35e106]: 响应编排
+  - region "Notifications (F8)":
+    - list
+  - generic [ref=f35e107]:
+    - button "Toggle Nuxt DevTools" [ref=f35e108] [cursor=pointer]
+    - generic "Page load time" [ref=f35e112]:
+      - generic [ref=f35e113]: "30"
+      - generic [ref=f35e114]: ms
+    - button "Toggle Component Inspector" [ref=f35e116] [cursor=pointer]

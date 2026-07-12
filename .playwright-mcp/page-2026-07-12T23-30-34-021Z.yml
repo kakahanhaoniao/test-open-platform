@@ -1,0 +1,460 @@
+- generic [ref=f32e2]:
+  - banner [ref=f32e3]:
+    - generic [ref=f32e4]:
+      - link "奇安信 AI 开放平台" [ref=f32e5] [cursor=pointer]:
+        - /url: /
+        - generic [ref=f32e8]:
+          - generic [ref=f32e9]: 奇安信
+          - generic [ref=f32e10]: AI 开放平台
+      - navigation [ref=f32e11]:
+        - link "首页" [ref=f32e12] [cursor=pointer]:
+          - /url: /
+        - link "能力市场" [ref=f32e13] [cursor=pointer]:
+          - /url: /marketplace
+        - link "优惠活动" [ref=f32e15] [cursor=pointer]:
+          - /url: /promotions
+      - generic [ref=f32e16]:
+        - button [ref=f32e17]
+        - link "企业工作台" [ref=f32e20] [cursor=pointer]:
+          - /url: /enterprise
+        - button [ref=f32e24] [cursor=pointer]
+  - main [ref=f32e26]:
+    - generic [ref=f32e27]:
+      - generic [ref=f32e32]:
+        - generic [ref=f32e33]:
+          - heading "能力市场" [level=1] [ref=f32e34]
+          - paragraph [ref=f32e35]: 发现和接入安全AI能力，模型与应用统一发现
+        - textbox "搜索 安全大模型、威胁检测、代码安全..." [ref=f32e39]
+        - generic [ref=f32e40]:
+          - generic [ref=f32e41]: "热门:"
+          - button "安全大模型" [ref=f32e42]
+          - button "威胁检测" [ref=f32e43]
+          - button "代码安全" [ref=f32e44]
+          - button "漏洞分析" [ref=f32e45]
+          - button "合规检查" [ref=f32e46]
+          - button "数据安全" [ref=f32e47]
+      - generic [ref=f32e49]:
+        - generic [ref=f32e51]:
+          - button "全部 18" [ref=f32e52]
+          - button "模型 10" [ref=f32e53]
+          - button "应用 8" [ref=f32e54]
+        - generic [ref=f32e55]:
+          - button "全部" [ref=f32e56]
+          - button "安全大模型" [ref=f32e57]
+          - button "威胁检测" [ref=f32e58]
+          - button "漏洞分析" [ref=f32e59]
+          - button "合规检查" [ref=f32e60]
+          - button "代码安全" [ref=f32e61]
+          - button "数据安全" [ref=f32e62]
+          - button "恶意软件" [ref=f32e63]
+          - button "应急响应" [ref=f32e64]
+          - button "钓鱼检测" [ref=f32e65]
+          - button "日志分析" [ref=f32e66]
+          - button "网络安全" [ref=f32e67]
+          - button "通用模型" [ref=f32e68]
+          - button "对话应用" [ref=f32e69]
+          - button "工具应用" [ref=f32e70]
+          - button "链接应用" [ref=f32e71]
+          - button "展示应用" [ref=f32e72]
+      - generic [ref=f32e73]:
+        - generic [ref=f32e74]:
+          - generic [ref=f32e79] [cursor=pointer]:
+            - generic [ref=f32e82]:
+              - generic [ref=f32e83]:
+                - generic [ref=f32e84]: "精选推荐:"
+                - generic [ref=f32e85]: 奇安信安全大模型
+              - generic [ref=f32e86]:
+                - generic [ref=f32e87]: "4.9"
+                - generic [ref=f32e90]: 1280万+ 调用
+              - paragraph [ref=f32e93]: 基于千亿参数的安全领域大语言模型，深度融合奇安信20年安全知识库，支持威胁分析、安全问答、报告生成等多种安全场景
+            - button "快速接入" [ref=f32e94]
+          - generic [ref=f32e101] [cursor=pointer]:
+            - generic [ref=f32e104]:
+              - generic [ref=f32e105]:
+                - generic [ref=f32e106]: "精选推荐:"
+                - generic [ref=f32e107]: 智能安全运营中心
+              - generic [ref=f32e108]:
+                - generic [ref=f32e109]: "4.9"
+                - generic [ref=f32e112]: 56万+ 用户
+              - paragraph [ref=f32e115]: AI驱动的安全运营中心，集成告警聚合、威胁研判、自动化响应，将MTTR从小时级缩短至分钟级
+            - button "快速接入" [ref=f32e116]
+        - generic [ref=f32e119]:
+          - paragraph [ref=f32e120]: 共 18 个能力
+          - generic [ref=f32e121]:
+            - button "热门" [ref=f32e122]
+            - button "最新" [ref=f32e123]
+            - button "价格" [ref=f32e124]
+        - generic [ref=f32e125]:
+          - link "HOT 模型 奇安信安全大模型 安全大模型 ¥999/月 基于千亿参数的安全领域大语言模型，深度融合奇安信20年安全知识库，支持威胁分析、安全问答、报告生成等多种安全场景 大语言模型 安全分析 威胁检测 4.9 1280万+ 调用 体验 ¥999/月 体验" [ref=f32e126] [cursor=pointer]:
+            - /url: /marketplace/qax-security-llm
+            - generic [ref=f32e127]:
+              - generic [ref=f32e128]:
+                - generic [ref=f32e129]:
+                  - generic [ref=f32e130]: HOT
+                  - generic [ref=f32e131]: 模型
+                - button [ref=f32e132]
+              - generic [ref=f32e137]:
+                - heading "奇安信安全大模型" [level=3] [ref=f32e139]
+                - generic [ref=f32e140]:
+                  - paragraph [ref=f32e141]: 安全大模型
+                  - generic [ref=f32e142]: ¥999/月
+              - paragraph [ref=f32e143]: 基于千亿参数的安全领域大语言模型，深度融合奇安信20年安全知识库，支持威胁分析、安全问答、报告生成等多种安全场景
+              - generic [ref=f32e144]:
+                - generic [ref=f32e145]: 大语言模型
+                - generic [ref=f32e146]: 安全分析
+                - generic [ref=f32e147]: 威胁检测
+              - generic [ref=f32e148]:
+                - generic [ref=f32e149]:
+                  - generic [ref=f32e150]: "4.9"
+                  - generic [ref=f32e153]: 1280万+ 调用
+                - generic [ref=f32e156]:
+                  - button "快速预览" [ref=f32e157]
+                  - button "体验" [ref=f32e159]
+              - generic:
+                - generic:
+                  - generic: ¥999/月
+                  - generic:
+                    - button "快速预览"
+                    - button "体验"
+          - link "HOT 对话助手 智能安全运营中心 对话应用 按量计费 AI驱动的安全运营中心，集成告警聚合、威胁研判、自动化响应，将MTTR从小时级缩短至分钟级 SOC 告警研判 事件关联 4.9 56万+ 用户 对话 按量计费 对话" [ref=f32e162] [cursor=pointer]:
+            - /url: /marketplace/smart-soc
+            - generic [ref=f32e163]:
+              - generic [ref=f32e164]:
+                - generic [ref=f32e165]:
+                  - generic [ref=f32e166]: HOT
+                  - generic [ref=f32e167]: 对话助手
+                - button [ref=f32e168]
+              - generic [ref=f32e173]:
+                - heading "智能安全运营中心" [level=3] [ref=f32e175]
+                - generic [ref=f32e176]:
+                  - paragraph [ref=f32e177]: 对话应用
+                  - generic [ref=f32e178]: 按量计费
+              - paragraph [ref=f32e179]: AI驱动的安全运营中心，集成告警聚合、威胁研判、自动化响应，将MTTR从小时级缩短至分钟级
+              - generic [ref=f32e180]:
+                - generic [ref=f32e181]: SOC
+                - generic [ref=f32e182]: 告警研判
+                - generic [ref=f32e183]: 事件关联
+              - generic [ref=f32e184]:
+                - generic [ref=f32e185]:
+                  - generic [ref=f32e186]: "4.9"
+                  - generic [ref=f32e189]: 56万+ 用户
+                - generic [ref=f32e192]:
+                  - button "快速预览" [ref=f32e193]
+                  - button "对话" [ref=f32e195]
+              - generic:
+                - generic:
+                  - generic: 按量计费
+                  - generic:
+                    - button "快速预览"
+                    - button "对话"
+          - link "HOT 展示 安全态势感知大屏 展示应用 按量计费 实时安全态势可视化大屏，全球威胁地图、攻击链路追踪、资产风险热力图，一屏掌控全局安全态势 态势感知 可视化 大屏 4.9 28万+ 用户 查看 按量计费 查看" [ref=f32e198] [cursor=pointer]:
+            - /url: /marketplace/security-knowledge-base
+            - generic [ref=f32e199]:
+              - generic [ref=f32e200]:
+                - generic [ref=f32e201]:
+                  - generic [ref=f32e202]: HOT
+                  - generic [ref=f32e203]: 展示
+                - button [ref=f32e204]
+              - generic [ref=f32e209]:
+                - heading "安全态势感知大屏" [level=3] [ref=f32e211]
+                - generic [ref=f32e212]:
+                  - paragraph [ref=f32e213]: 展示应用
+                  - generic [ref=f32e214]: 按量计费
+              - paragraph [ref=f32e215]: 实时安全态势可视化大屏，全球威胁地图、攻击链路追踪、资产风险热力图，一屏掌控全局安全态势
+              - generic [ref=f32e216]:
+                - generic [ref=f32e217]: 态势感知
+                - generic [ref=f32e218]: 可视化
+                - generic [ref=f32e219]: 大屏
+              - generic [ref=f32e220]:
+                - generic [ref=f32e221]:
+                  - generic [ref=f32e222]: "4.9"
+                  - generic [ref=f32e225]: 28万+ 用户
+                - generic [ref=f32e228]:
+                  - button "快速预览" [ref=f32e229]
+                  - button "查看" [ref=f32e231]
+              - generic:
+                - generic:
+                  - generic: 按量计费
+                  - generic:
+                    - button "快速预览"
+                    - button "查看"
+          - link "HOT 模型 威胁检测模型 V3 威胁检测 ¥599/月 专注高级威胁识别，支持APT攻击链分析、恶意流量检测与IOC自动提取，检测率达99.2% APT检测 流量分析 IOC提取 4.8 860万+ 调用 体验 ¥599/月 体验" [ref=f32e234] [cursor=pointer]:
+            - /url: /marketplace/threat-detect-v3
+            - generic [ref=f32e235]:
+              - generic [ref=f32e236]:
+                - generic [ref=f32e237]:
+                  - generic [ref=f32e238]: HOT
+                  - generic [ref=f32e239]: 模型
+                - button [ref=f32e240]
+              - generic [ref=f32e245]:
+                - heading "威胁检测模型 V3" [level=3] [ref=f32e247]
+                - generic [ref=f32e248]:
+                  - paragraph [ref=f32e249]: 威胁检测
+                  - generic [ref=f32e250]: ¥599/月
+              - paragraph [ref=f32e251]: 专注高级威胁识别，支持APT攻击链分析、恶意流量检测与IOC自动提取，检测率达99.2%
+              - generic [ref=f32e252]:
+                - generic [ref=f32e253]: APT检测
+                - generic [ref=f32e254]: 流量分析
+                - generic [ref=f32e255]: IOC提取
+              - generic [ref=f32e256]:
+                - generic [ref=f32e257]:
+                  - generic [ref=f32e258]: "4.8"
+                  - generic [ref=f32e261]: 860万+ 调用
+                - generic [ref=f32e264]:
+                  - button "快速预览" [ref=f32e265]
+                  - button "体验" [ref=f32e267]
+              - generic:
+                - generic:
+                  - generic: ¥599/月
+                  - generic:
+                    - button "快速预览"
+                    - button "体验"
+          - link "HOT 模型 代码安全扫描模型 代码安全 ¥399/月 源代码安全审计模型，支持SAST/DAST分析、安全编码建议与漏洞模式识别 SAST 代码审计 安全编码 4.8 720万+ 调用 体验 ¥399/月 体验" [ref=f32e270] [cursor=pointer]:
+            - /url: /marketplace/code-security-scan
+            - generic [ref=f32e271]:
+              - generic [ref=f32e272]:
+                - generic [ref=f32e273]:
+                  - generic [ref=f32e274]: HOT
+                  - generic [ref=f32e275]: 模型
+                - button [ref=f32e276]
+              - generic [ref=f32e281]:
+                - heading "代码安全扫描模型" [level=3] [ref=f32e283]
+                - generic [ref=f32e284]:
+                  - paragraph [ref=f32e285]: 代码安全
+                  - generic [ref=f32e286]: ¥399/月
+              - paragraph [ref=f32e287]: 源代码安全审计模型，支持SAST/DAST分析、安全编码建议与漏洞模式识别
+              - generic [ref=f32e288]:
+                - generic [ref=f32e289]: SAST
+                - generic [ref=f32e290]: 代码审计
+                - generic [ref=f32e291]: 安全编码
+              - generic [ref=f32e292]:
+                - generic [ref=f32e293]:
+                  - generic [ref=f32e294]: "4.8"
+                  - generic [ref=f32e297]: 720万+ 调用
+                - generic [ref=f32e300]:
+                  - button "快速预览" [ref=f32e301]
+                  - button "体验" [ref=f32e303]
+              - generic:
+                - generic:
+                  - generic: ¥399/月
+                  - generic:
+                    - button "快速预览"
+                    - button "体验"
+          - link "NEW 模型 恶意软件分析模型 恶意软件 按量计费 深度恶意软件分析模型，支持静态/动态分析、家族分类、行为提取，覆盖500万+恶意样本知识库 恶意软件 沙箱分析 家族分类 4.8 670万+ 调用 体验 按量计费 体验" [ref=f32e306] [cursor=pointer]:
+            - /url: /marketplace/malware-analyzer
+            - generic [ref=f32e307]:
+              - generic [ref=f32e308]:
+                - generic [ref=f32e309]:
+                  - generic [ref=f32e310]: NEW
+                  - generic [ref=f32e311]: 模型
+                - button [ref=f32e312]
+              - generic [ref=f32e317]:
+                - heading "恶意软件分析模型" [level=3] [ref=f32e319]
+                - generic [ref=f32e320]:
+                  - paragraph [ref=f32e321]: 恶意软件
+                  - generic [ref=f32e322]: 按量计费
+              - paragraph [ref=f32e323]: 深度恶意软件分析模型，支持静态/动态分析、家族分类、行为提取，覆盖500万+恶意样本知识库
+              - generic [ref=f32e324]:
+                - generic [ref=f32e325]: 恶意软件
+                - generic [ref=f32e326]: 沙箱分析
+                - generic [ref=f32e327]: 家族分类
+              - generic [ref=f32e328]:
+                - generic [ref=f32e329]:
+                  - generic [ref=f32e330]: "4.8"
+                  - generic [ref=f32e333]: 670万+ 调用
+                - generic [ref=f32e336]:
+                  - button "快速预览" [ref=f32e337]
+                  - button "体验" [ref=f32e339]
+              - generic:
+                - generic:
+                  - generic: 按量计费
+                  - generic:
+                    - button "快速预览"
+                    - button "体验"
+          - link "HOT 对话助手 威胁情报助手 对话应用 按量计费 基于安全大模型的威胁情报对话助手，支持IOC查询、威胁画像、情报关联分析 威胁情报 对话 IOC 4.8 38万+ 用户 对话 按量计费 对话" [ref=f32e342] [cursor=pointer]:
+            - /url: /marketplace/threat-intel-assistant
+            - generic [ref=f32e343]:
+              - generic [ref=f32e344]:
+                - generic [ref=f32e345]:
+                  - generic [ref=f32e346]: HOT
+                  - generic [ref=f32e347]: 对话助手
+                - button [ref=f32e348]
+              - generic [ref=f32e353]:
+                - heading "威胁情报助手" [level=3] [ref=f32e355]
+                - generic [ref=f32e356]:
+                  - paragraph [ref=f32e357]: 对话应用
+                  - generic [ref=f32e358]: 按量计费
+              - paragraph [ref=f32e359]: 基于安全大模型的威胁情报对话助手，支持IOC查询、威胁画像、情报关联分析
+              - generic [ref=f32e360]:
+                - generic [ref=f32e361]: 威胁情报
+                - generic [ref=f32e362]: 对话
+                - generic [ref=f32e363]: IOC
+              - generic [ref=f32e364]:
+                - generic [ref=f32e365]:
+                  - generic [ref=f32e366]: "4.8"
+                  - generic [ref=f32e369]: 38万+ 用户
+                - generic [ref=f32e372]:
+                  - button "快速预览" [ref=f32e373]
+                  - button "对话" [ref=f32e375]
+              - generic:
+                - generic:
+                  - generic: 按量计费
+                  - generic:
+                    - button "快速预览"
+                    - button "对话"
+          - link "HOT 平台应用 威胁情报平台 链接应用 按量计费 企业级威胁情报管理平台，多源情报聚合、自动化关联分析、情报共享与协同，构建主动防御体系 威胁情报 平台 协同 4.8 28万+ 用户 使用 按量计费 使用" [ref=f32e378] [cursor=pointer]:
+            - /url: /marketplace/cti-platform
+            - generic [ref=f32e379]:
+              - generic [ref=f32e380]:
+                - generic [ref=f32e381]:
+                  - generic [ref=f32e382]: HOT
+                  - generic [ref=f32e383]: 平台应用
+                - button [ref=f32e384]
+              - generic [ref=f32e389]:
+                - heading "威胁情报平台" [level=3] [ref=f32e391]
+                - generic [ref=f32e392]:
+                  - paragraph [ref=f32e393]: 链接应用
+                  - generic [ref=f32e394]: 按量计费
+              - paragraph [ref=f32e395]: 企业级威胁情报管理平台，多源情报聚合、自动化关联分析、情报共享与协同，构建主动防御体系
+              - generic [ref=f32e396]:
+                - generic [ref=f32e397]: 威胁情报
+                - generic [ref=f32e398]: 平台
+                - generic [ref=f32e399]: 协同
+              - generic [ref=f32e400]:
+                - generic [ref=f32e401]:
+                  - generic [ref=f32e402]: "4.8"
+                  - generic [ref=f32e405]: 28万+ 用户
+                - generic [ref=f32e408]:
+                  - button "快速预览" [ref=f32e409]
+                  - button "使用" [ref=f32e411]
+              - generic:
+                - generic:
+                  - generic: 按量计费
+                  - generic:
+                    - button "快速预览"
+                    - button "使用"
+          - link "NEW 模型 漏洞分析专家 漏洞分析 按量计费 深度漏洞分析模型，支持CVE解读、PoC生成、修复方案推荐与风险评估，覆盖OWASP Top 10全类别 CVE分析 PoC生成 风险评估 4.7 520万+ 调用 体验 按量计费 体验" [ref=f32e414] [cursor=pointer]:
+            - /url: /marketplace/vuln-analyzer-pro
+            - generic [ref=f32e415]:
+              - generic [ref=f32e416]:
+                - generic [ref=f32e417]:
+                  - generic [ref=f32e418]: NEW
+                  - generic [ref=f32e419]: 模型
+                - button [ref=f32e420]
+              - generic [ref=f32e425]:
+                - heading "漏洞分析专家" [level=3] [ref=f32e427]
+                - generic [ref=f32e428]:
+                  - paragraph [ref=f32e429]: 漏洞分析
+                  - generic [ref=f32e430]: 按量计费
+              - paragraph [ref=f32e431]: 深度漏洞分析模型，支持CVE解读、PoC生成、修复方案推荐与风险评估，覆盖OWASP Top 10全类别
+              - generic [ref=f32e432]:
+                - generic [ref=f32e433]: CVE分析
+                - generic [ref=f32e434]: PoC生成
+                - generic [ref=f32e435]: 风险评估
+              - generic [ref=f32e436]:
+                - generic [ref=f32e437]:
+                  - generic [ref=f32e438]: "4.7"
+                  - generic [ref=f32e441]: 520万+ 调用
+                - generic [ref=f32e444]:
+                  - button "快速预览" [ref=f32e445]
+                  - button "体验" [ref=f32e447]
+              - generic:
+                - generic:
+                  - generic: 按量计费
+                  - generic:
+                    - button "快速预览"
+                    - button "体验"
+          - link "模型 应急响应模型 应急响应 按量计费 安全事件应急响应智能辅助模型，提供事件分级、处置建议、溯源分析、恢复方案等全流程支持 应急响应 事件处置 溯源分析 4.7 280万+ 调用 体验 按量计费 体验" [ref=f32e450] [cursor=pointer]:
+            - /url: /marketplace/incident-response
+            - generic [ref=f32e451]:
+              - generic [ref=f32e452]:
+                - generic [ref=f32e453]: 模型
+                - button [ref=f32e455]
+              - generic [ref=f32e460]:
+                - heading "应急响应模型" [level=3] [ref=f32e462]
+                - generic [ref=f32e463]:
+                  - paragraph [ref=f32e464]: 应急响应
+                  - generic [ref=f32e465]: 按量计费
+              - paragraph [ref=f32e466]: 安全事件应急响应智能辅助模型，提供事件分级、处置建议、溯源分析、恢复方案等全流程支持
+              - generic [ref=f32e467]:
+                - generic [ref=f32e468]: 应急响应
+                - generic [ref=f32e469]: 事件处置
+                - generic [ref=f32e470]: 溯源分析
+              - generic [ref=f32e471]:
+                - generic [ref=f32e472]:
+                  - generic [ref=f32e473]: "4.7"
+                  - generic [ref=f32e476]: 280万+ 调用
+                - generic [ref=f32e479]:
+                  - button "快速预览" [ref=f32e480]
+                  - button "体验" [ref=f32e482]
+              - generic:
+                - generic:
+                  - generic: 按量计费
+                  - generic:
+                    - button "快速预览"
+                    - button "体验"
+          - link "工具 漏洞扫描工具 工具应用 按量计费 一键式漏洞扫描工具，支持Web应用、主机、数据库等多目标扫描，自动生成修复建议与合规报告 漏洞扫描 自动化 合规 4.7 92万+ 用户 使用 按量计费 使用" [ref=f32e485] [cursor=pointer]:
+            - /url: /marketplace/vuln-scanner-tool
+            - generic [ref=f32e486]:
+              - generic [ref=f32e487]:
+                - generic [ref=f32e488]: 工具
+                - button [ref=f32e490]
+              - generic [ref=f32e495]:
+                - heading "漏洞扫描工具" [level=3] [ref=f32e497]
+                - generic [ref=f32e498]:
+                  - paragraph [ref=f32e499]: 工具应用
+                  - generic [ref=f32e500]: 按量计费
+              - paragraph [ref=f32e501]: 一键式漏洞扫描工具，支持Web应用、主机、数据库等多目标扫描，自动生成修复建议与合规报告
+              - generic [ref=f32e502]:
+                - generic [ref=f32e503]: 漏洞扫描
+                - generic [ref=f32e504]: 自动化
+                - generic [ref=f32e505]: 合规
+              - generic [ref=f32e506]:
+                - generic [ref=f32e507]:
+                  - generic [ref=f32e508]: "4.7"
+                  - generic [ref=f32e511]: 92万+ 用户
+                - generic [ref=f32e514]:
+                  - button "快速预览" [ref=f32e515]
+                  - button "使用" [ref=f32e517]
+              - generic:
+                - generic:
+                  - generic: 按量计费
+                  - generic:
+                    - button "快速预览"
+                    - button "使用"
+          - link "NEW 对话助手 AI代码审计助手 对话应用 按量计费 智能代码安全审计对话助手，上传代码即可获得安全分析，支持多种编程语言，精准定位安全漏洞 代码审计 对话 SAST 4.7 63万+ 用户 对话 按量计费 对话" [ref=f32e520] [cursor=pointer]:
+            - /url: /marketplace/code-audit-assistant
+            - generic [ref=f32e521]:
+              - generic [ref=f32e522]:
+                - generic [ref=f32e523]:
+                  - generic [ref=f32e524]: NEW
+                  - generic [ref=f32e525]: 对话助手
+                - button [ref=f32e526]
+              - generic [ref=f32e531]:
+                - heading "AI代码审计助手" [level=3] [ref=f32e533]
+                - generic [ref=f32e534]:
+                  - paragraph [ref=f32e535]: 对话应用
+                  - generic [ref=f32e536]: 按量计费
+              - paragraph [ref=f32e537]: 智能代码安全审计对话助手，上传代码即可获得安全分析，支持多种编程语言，精准定位安全漏洞
+              - generic [ref=f32e538]:
+                - generic [ref=f32e539]: 代码审计
+                - generic [ref=f32e540]: 对话
+                - generic [ref=f32e541]: SAST
+              - generic [ref=f32e542]:
+                - generic [ref=f32e543]:
+                  - generic [ref=f32e544]: "4.7"
+                  - generic [ref=f32e547]: 63万+ 用户
+                - generic [ref=f32e550]:
+                  - button "快速预览" [ref=f32e551]
+                  - button "对话" [ref=f32e553]
+              - generic:
+                - generic:
+                  - generic: 按量计费
+                  - generic:
+                    - button "快速预览"
+                    - button "对话"
+        - generic [ref=f32e556]:
+          - button [disabled] [ref=f32e557]
+          - button "1" [ref=f32e559]
+          - button "2" [ref=f32e560]
+          - button [ref=f32e561]

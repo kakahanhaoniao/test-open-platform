@@ -1,0 +1,206 @@
+- generic [active] [ref=f26e1]:
+  - generic [ref=f26e3]:
+    - complementary [ref=f26e4]:
+      - generic [ref=f26e5]: 奇安信AI · 运营后台
+      - link "返回前台" [ref=f26e11] [cursor=pointer]:
+        - /url: /
+      - navigation [ref=f26e14]:
+        - link "数据看板" [ref=f26e15] [cursor=pointer]:
+          - /url: /admin
+        - link "企业客户" [ref=f26e18] [cursor=pointer]:
+          - /url: /admin/enterprises
+        - link "模型管理" [ref=f26e21] [cursor=pointer]:
+          - /url: /admin/models
+        - link "应用管理" [ref=f26e24] [cursor=pointer]:
+          - /url: /admin/apps
+        - link "活动管理" [ref=f26e27] [cursor=pointer]:
+          - /url: /admin/activities
+        - link "订单管理" [ref=f26e30] [cursor=pointer]:
+          - /url: /admin/orders
+        - link "模板配置" [ref=f26e34] [cursor=pointer]:
+          - /url: /admin/templates
+      - generic [ref=f26e41]:
+        - paragraph [ref=f26e42]: 运营管理员
+        - paragraph [ref=f26e43]: admin@qianxin.com
+    - generic [ref=f26e45]:
+      - generic [ref=f26e46]:
+        - heading "订单管理" [level=1] [ref=f26e47]
+        - paragraph [ref=f26e48]: 查看与管理平台所有订单记录
+      - generic [ref=f26e49]:
+        - generic [ref=f26e50]:
+          - paragraph [ref=f26e51]: 总收入(已完成)
+          - paragraph [ref=f26e52]: ¥7,400
+        - generic [ref=f26e53]:
+          - paragraph [ref=f26e54]: 已完成订单
+          - paragraph [ref=f26e55]: "7"
+        - generic [ref=f26e56]:
+          - paragraph [ref=f26e57]: 处理中订单
+          - paragraph [ref=f26e58]: "2"
+        - generic [ref=f26e59]:
+          - paragraph [ref=f26e60]: 已退款
+          - paragraph [ref=f26e61]: "2"
+      - generic [ref=f26e63]:
+        - 'textbox "选择日期范围 (如: 2026-07-01 ~ 2026-07-11)" [ref=f26e66]'
+        - combobox [ref=f26e67]:
+          - option "全部状态" [selected]
+          - option "已完成"
+          - option "处理中"
+          - option "已退款"
+          - option "已取消"
+        - combobox [ref=f26e68]:
+          - option "全部类型" [selected]
+          - option "充能包"
+          - option "模型调用"
+          - option "应用订阅"
+      - paragraph [ref=f26e70]: 共 12 条订单
+      - table [ref=f26e73]:
+        - rowgroup [ref=f26e74]:
+          - row [ref=f26e75]:
+            - columnheader "订单号" [ref=f26e76]
+            - columnheader "用户" [ref=f26e77]
+            - columnheader "类型" [ref=f26e78]
+            - columnheader "详情" [ref=f26e79]
+            - columnheader "金额" [ref=f26e80]
+            - columnheader "状态" [ref=f26e81]
+            - columnheader "时间" [ref=f26e82]
+        - rowgroup [ref=f26e83]:
+          - row [ref=f26e84]:
+            - cell "ORD-20260711001" [ref=f26e85]
+            - cell [ref=f26e86]:
+              - generic [ref=f26e87]:
+                - paragraph [ref=f26e88]: 张三
+                - paragraph [ref=f26e89]: zhangsan@company.com
+            - cell "充能包" [ref=f26e90]
+            - cell "专业包 500万Token" [ref=f26e91]
+            - cell "¥399" [ref=f26e92]
+            - cell "已完成" [ref=f26e93]
+            - cell "2026-07-11 14:32:18" [ref=f26e94]
+          - row [ref=f26e95]:
+            - cell "ORD-20260711002" [ref=f26e96]
+            - cell [ref=f26e97]:
+              - generic [ref=f26e98]:
+                - paragraph [ref=f26e99]: 李四
+                - paragraph [ref=f26e100]: lisi@corp.cn
+            - cell "模型调用" [ref=f26e101]
+            - cell "安全大模型调用" [ref=f26e102]
+            - cell "¥128" [ref=f26e103]
+            - cell "处理中" [ref=f26e104]
+            - cell "2026-07-11 13:15:42" [ref=f26e105]
+          - row [ref=f26e106]:
+            - cell "ORD-20260710003" [ref=f26e107]
+            - cell [ref=f26e108]:
+              - generic [ref=f26e109]:
+                - paragraph [ref=f26e110]: 王五
+                - paragraph [ref=f26e111]: wangwu@tech.io
+            - cell "充能包" [ref=f26e112]
+            - cell "企业包 2000万Token" [ref=f26e113]
+            - cell "¥1,499" [ref=f26e114]
+            - cell "已完成" [ref=f26e115]
+            - cell "2026-07-10 18:45:33" [ref=f26e116]
+          - row [ref=f26e117]:
+            - cell "ORD-20260710004" [ref=f26e118]
+            - cell [ref=f26e119]:
+              - generic [ref=f26e120]:
+                - paragraph [ref=f26e121]: 赵六
+                - paragraph [ref=f26e122]: zhaoliu@sec.com
+            - cell "应用订阅" [ref=f26e123]
+            - cell "智能安全运营中心" [ref=f26e124]
+            - cell "¥99" [ref=f26e125]
+            - cell "已退款" [ref=f26e126]
+            - cell "2026-07-10 11:22:07" [ref=f26e127]
+          - row [ref=f26e128]:
+            - cell "ORD-20260709005" [ref=f26e129]
+            - cell [ref=f26e130]:
+              - generic [ref=f26e131]:
+                - paragraph [ref=f26e132]: 孙七
+                - paragraph [ref=f26e133]: sunqi@dev.net
+            - cell "模型调用" [ref=f26e134]
+            - cell "威胁检测模型V3" [ref=f26e135]
+            - cell "¥56" [ref=f26e136]
+            - cell "已完成" [ref=f26e137]
+            - cell "2026-07-09 09:30:55" [ref=f26e138]
+          - row [ref=f26e139]:
+            - cell "ORD-20260709006" [ref=f26e140]
+            - cell [ref=f26e141]:
+              - generic [ref=f26e142]:
+                - paragraph [ref=f26e143]: 周八
+                - paragraph [ref=f26e144]: zhouba@info.cn
+            - cell "充能包" [ref=f26e145]
+            - cell "体验包 100万Token" [ref=f26e146]
+            - cell "¥99" [ref=f26e147]
+            - cell "已完成" [ref=f26e148]
+            - cell "2026-07-09 08:12:44" [ref=f26e149]
+          - row [ref=f26e150]:
+            - cell "ORD-20260708007" [ref=f26e151]
+            - cell [ref=f26e152]:
+              - generic [ref=f26e153]:
+                - paragraph [ref=f26e154]: 吴九
+                - paragraph [ref=f26e155]: wujiu@safe.org
+            - cell "应用订阅" [ref=f26e156]
+            - cell "威胁情报助手" [ref=f26e157]
+            - cell "¥199" [ref=f26e158]
+            - cell "已完成" [ref=f26e159]
+            - cell "2026-07-08 16:48:21" [ref=f26e160]
+          - row [ref=f26e161]:
+            - cell "ORD-20260708008" [ref=f26e162]
+            - cell [ref=f26e163]:
+              - generic [ref=f26e164]:
+                - paragraph [ref=f26e165]: 郑十
+                - paragraph [ref=f26e166]: zhengshi@cyber.com
+            - cell "模型调用" [ref=f26e167]
+            - cell "漏洞分析专家" [ref=f26e168]
+            - cell "¥32" [ref=f26e169]
+            - cell "已取消" [ref=f26e170]
+            - cell "2026-07-08 14:33:19" [ref=f26e171]
+          - row [ref=f26e172]:
+            - cell "ORD-20260707009" [ref=f26e173]
+            - cell [ref=f26e174]:
+              - generic [ref=f26e175]:
+                - paragraph [ref=f26e176]: 陈明
+                - paragraph [ref=f26e177]: chenming@data.cn
+            - cell "充能包" [ref=f26e178]
+            - cell "无限包" [ref=f26e179]
+            - cell "¥4,999" [ref=f26e180]
+            - cell "已完成" [ref=f26e181]
+            - cell "2026-07-07 10:05:37" [ref=f26e182]
+          - row [ref=f26e183]:
+            - cell "ORD-20260707010" [ref=f26e184]
+            - cell [ref=f26e185]:
+              - generic [ref=f26e186]:
+                - paragraph [ref=f26e187]: 林华
+                - paragraph [ref=f26e188]: linhua@sec.io
+            - cell "模型调用" [ref=f26e189]
+            - cell "代码安全扫描模型" [ref=f26e190]
+            - cell "¥78" [ref=f26e191]
+            - cell "处理中" [ref=f26e192]
+            - cell "2026-07-07 09:22:15" [ref=f26e193]
+          - row [ref=f26e194]:
+            - cell "ORD-20260706011" [ref=f26e195]
+            - cell [ref=f26e196]:
+              - generic [ref=f26e197]:
+                - paragraph [ref=f26e198]: 黄强
+                - paragraph [ref=f26e199]: huangqiang@it.com
+            - cell "应用订阅" [ref=f26e200]
+            - cell "漏洞扫描工具" [ref=f26e201]
+            - cell "¥149" [ref=f26e202]
+            - cell "已完成" [ref=f26e203]
+            - cell "2026-07-06 17:55:42" [ref=f26e204]
+          - row [ref=f26e205]:
+            - cell "ORD-20260706012" [ref=f26e206]
+            - cell [ref=f26e207]:
+              - generic [ref=f26e208]:
+                - paragraph [ref=f26e209]: 刘芳
+                - paragraph [ref=f26e210]: liufang@corp.cn
+            - cell "充能包" [ref=f26e211]
+            - cell "专业包 500万Token" [ref=f26e212]
+            - cell "¥399" [ref=f26e213]
+            - cell "已退款" [ref=f26e214]
+            - cell "2026-07-06 11:18:33" [ref=f26e215]
+  - region "Notifications (F8)":
+    - list
+  - generic [ref=f26e216]:
+    - button "Toggle Nuxt DevTools" [ref=f26e217] [cursor=pointer]
+    - generic "Page load time" [ref=f26e221]:
+      - generic [ref=f26e222]: "22"
+      - generic [ref=f26e223]: ms
+    - button "Toggle Component Inspector" [ref=f26e225] [cursor=pointer]

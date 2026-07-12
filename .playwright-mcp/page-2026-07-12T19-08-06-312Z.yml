@@ -1,0 +1,202 @@
+- generic [active] [ref=f9e1]:
+  - generic [ref=f9e2]:
+    - banner [ref=f9e3]:
+      - generic [ref=f9e4]:
+        - link "奇安信 AI 开放平台" [ref=f9e5] [cursor=pointer]:
+          - /url: /
+          - generic [ref=f9e8]:
+            - generic [ref=f9e9]: 奇安信
+            - generic [ref=f9e10]: AI 开放平台
+        - navigation [ref=f9e11]:
+          - link "首页" [ref=f9e12] [cursor=pointer]:
+            - /url: /
+          - link "能力市场" [ref=f9e13] [cursor=pointer]:
+            - /url: /marketplace
+          - link "优惠活动" [ref=f9e14] [cursor=pointer]:
+            - /url: /promotions
+        - generic [ref=f9e16]:
+          - button [ref=f9e17]
+          - link "企业工作台" [ref=f9e20] [cursor=pointer]:
+            - /url: /enterprise
+          - button [ref=f9e24] [cursor=pointer]
+    - main [ref=f9e26]:
+      - generic [ref=f9e27]:
+        - generic [ref=f9e29]:
+          - heading "优惠活动" [level=1] [ref=f9e30]
+          - paragraph [ref=f9e31]: 精选优惠与活动，助力安全能力升级
+        - generic [ref=f9e32]:
+          - generic [ref=f9e34]:
+            - generic [ref=f9e37]:
+              - generic [ref=f9e38]:
+                - generic [ref=f9e39]: HOT
+                - generic [ref=f9e40]: 限时免费
+              - heading "威胁检测模型免费体验" [level=2] [ref=f9e41]
+              - paragraph [ref=f9e42]: 零成本体验APT检测能力
+            - generic [ref=f9e43]:
+              - generic [ref=f9e44]:
+                - generic [ref=f9e45]:
+                  - generic [ref=f9e46]: "18"
+                  - generic [ref=f9e48]: 天
+                - generic [ref=f9e49]: ":"
+                - generic [ref=f9e50]:
+                  - generic [ref=f9e51]: "04"
+                  - generic [ref=f9e53]: 时
+                - generic [ref=f9e54]: ":"
+                - generic [ref=f9e55]:
+                  - generic [ref=f9e56]: "51"
+                  - generic [ref=f9e58]: 分
+                - generic [ref=f9e59]: ":"
+                - generic [ref=f9e60]:
+                  - generic [ref=f9e61]: "53"
+                  - generic [ref=f9e63]: 秒
+              - link [ref=f9e64] [cursor=pointer]:
+                - /url: /promotions/threat-model-free-trial
+                - button "查看详情" [ref=f9e65]
+          - generic [ref=f9e68]:
+            - button "全部" [ref=f9e69]
+            - button "限时折扣" [ref=f9e70]
+            - button "免费体验" [ref=f9e71]
+            - button "新客专享" [ref=f9e72]
+            - button "企业优惠" [ref=f9e73]
+          - generic [ref=f9e74]:
+            - heading "热门活动" [level=2] [ref=f9e75]
+            - generic [ref=f9e76]:
+              - link "夏季安全嘉年华 AI安全能力全面升级 夏季安全嘉年华重磅来袭！奇安信AI开放平台推出限时优惠活动，安全大模型、威胁检测模型等核心能力全面降价，更有新用户专享礼包等你来领。 奇安信安全大模型 威胁检测模型 V3 代码安全扫描模型 限时5折 7月1日 - 8月31日 购买套餐" [ref=f9e77] [cursor=pointer]:
+                - /url: /promotions/summer-security-carnival
+                - generic [ref=f9e78]:
+                  - generic [ref=f9e81]:
+                    - generic [ref=f9e85]:
+                      - heading "夏季安全嘉年华" [level=3] [ref=f9e86]
+                      - paragraph [ref=f9e87]: AI安全能力全面升级
+                    - paragraph [ref=f9e88]: 夏季安全嘉年华重磅来袭！奇安信AI开放平台推出限时优惠活动，安全大模型、威胁检测模型等核心能力全面降价，更有新用户专享礼包等你来领。
+                    - generic [ref=f9e89]:
+                      - generic [ref=f9e90]: 奇安信安全大模型
+                      - generic [ref=f9e92]: 威胁检测模型 V3
+                      - generic [ref=f9e94]: 代码安全扫描模型
+                  - generic [ref=f9e96]:
+                    - generic [ref=f9e97]:
+                      - generic [ref=f9e98]: 限时5折
+                      - generic [ref=f9e99]: 7月1日 - 8月31日
+                    - button "购买套餐" [ref=f9e100]
+              - link "企业版首发优惠 企业级AI安全能力一站式接入 奇安信AI开放平台企业版正式发布！提供专属模型实例、SLA保障、私有化部署灵活、合规无忧。首发期间享受8折优惠，更有专属技术支持团队1对1服务。 奇安信安全大模型 智能安全运营中心 合规卫士 首发8折 6月15日 - 9月15日 购买套餐" [ref=f9e103] [cursor=pointer]:
+                - /url: /promotions/enterprise-launch-promo
+                - generic [ref=f9e104]:
+                  - generic [ref=f9e107]:
+                    - generic [ref=f9e111]:
+                      - heading "企业版首发优惠" [level=3] [ref=f9e112]
+                      - paragraph [ref=f9e113]: 企业级AI安全能力一站式接入
+                    - paragraph [ref=f9e114]: 奇安信AI开放平台企业版正式发布！提供专属模型实例、SLA保障、私有化部署灵活、合规无忧。首发期间享受8折优惠，更有专属技术支持团队1对1服务。
+                    - generic [ref=f9e115]:
+                      - generic [ref=f9e116]: 奇安信安全大模型
+                      - generic [ref=f9e118]: 智能安全运营中心
+                      - generic [ref=f9e120]: 合规卫士
+                  - generic [ref=f9e122]:
+                    - generic [ref=f9e123]:
+                      - generic [ref=f9e124]: 首发8折
+                      - generic [ref=f9e125]: 6月15日 - 9月15日
+                    - button "购买套餐" [ref=f9e126]
+              - link "威胁检测模型免费体验 零成本体验APT检测能力 限时开放威胁检测模型V3免费体验！无需充值即可使用APT攻击链分析、恶意流量检测等核心能力，每日赠送1000次免费调用额度。 威胁检测模型 V3 威胁情报助手 智能安全运营中心 限时免费 7月10日 - 7月31日 领取优惠" [ref=f9e129] [cursor=pointer]:
+                - /url: /promotions/threat-model-free-trial
+                - generic [ref=f9e130]:
+                  - generic [ref=f9e133]:
+                    - generic [ref=f9e137]:
+                      - heading "威胁检测模型免费体验" [level=3] [ref=f9e138]
+                      - paragraph [ref=f9e139]: 零成本体验APT检测能力
+                    - paragraph [ref=f9e140]: 限时开放威胁检测模型V3免费体验！无需充值即可使用APT攻击链分析、恶意流量检测等核心能力，每日赠送1000次免费调用额度。
+                    - generic [ref=f9e141]:
+                      - generic [ref=f9e142]: 威胁检测模型 V3
+                      - generic [ref=f9e144]: 威胁情报助手
+                      - generic [ref=f9e146]: 智能安全运营中心
+                  - generic [ref=f9e148]:
+                    - generic [ref=f9e149]:
+                      - generic [ref=f9e150]: 限时免费
+                      - generic [ref=f9e151]: 7月10日 - 7月31日
+                    - button "领取优惠" [ref=f9e152]
+          - generic [ref=f9e155]:
+            - heading "更多活动" [level=2] [ref=f9e156]
+            - generic [ref=f9e157]:
+              - link "API集成挑战赛 奖金池 NEW 用AI安全API构建创新应用 参与奇安信AI开放平台API集成挑战赛，使用平台API构建创新安全应用，赢取丰厚奖金与Token奖励！优秀作品将获得平台推荐与商业化支持。 奇安信安全大模型 威胁检测模型 V3 代码安全扫描模型 漏洞分析专家 一等奖5万元 二等奖3万元 三等奖2万元 优秀作品平台推荐 7月15日 - 10月15日 开发者大赛 奖金 API创新 领取优惠" [ref=f9e158] [cursor=pointer]:
+                - /url: /promotions/api-integration-challenge
+                - generic [ref=f9e162]:
+                  - generic [ref=f9e163]:
+                    - heading "API集成挑战赛" [level=3] [ref=f9e164]
+                    - generic [ref=f9e165]: 奖金池
+                    - generic [ref=f9e166]: NEW
+                  - paragraph [ref=f9e167]: 用AI安全API构建创新应用
+                  - paragraph [ref=f9e168]: 参与奇安信AI开放平台API集成挑战赛，使用平台API构建创新安全应用，赢取丰厚奖金与Token奖励！优秀作品将获得平台推荐与商业化支持。
+                  - generic [ref=f9e169]:
+                    - generic [ref=f9e170]: 奇安信安全大模型
+                    - generic [ref=f9e172]: 威胁检测模型 V3
+                    - generic [ref=f9e174]: 代码安全扫描模型
+                    - generic [ref=f9e176]: 漏洞分析专家
+                  - generic [ref=f9e178]:
+                    - generic [ref=f9e179]: 一等奖5万元
+                    - generic [ref=f9e182]: 二等奖3万元
+                    - generic [ref=f9e185]: 三等奖2万元
+                    - generic [ref=f9e188]: 优秀作品平台推荐
+                  - generic [ref=f9e191]:
+                    - generic [ref=f9e192]:
+                      - generic [ref=f9e193]: 7月15日 - 10月15日
+                      - generic [ref=f9e196]:
+                        - generic [ref=f9e197]: 开发者大赛
+                        - generic [ref=f9e198]: 奖金
+                        - generic [ref=f9e199]: API创新
+                    - button "领取优惠" [ref=f9e200]
+              - link "新客专享礼包 新客8折 首次注册即享专属优惠 新用户注册即享专属优惠礼包！包含免费Token额度、模型体验券及首单折扣，助您快速上手AI安全能力。 奇安信安全大模型 威胁检测模型 V3 漏洞分析专家 500万Token免费额度 首单8折优惠 3天VIP体验 1对1入门指导 1月1日 - 12月31日 新用户 首单优惠 免费Token 领取优惠" [ref=f9e203] [cursor=pointer]:
+                - /url: /promotions/newcomer-welcome-pack
+                - generic [ref=f9e207]:
+                  - generic [ref=f9e208]:
+                    - heading "新客专享礼包" [level=3] [ref=f9e209]
+                    - generic [ref=f9e210]: 新客8折
+                  - paragraph [ref=f9e211]: 首次注册即享专属优惠
+                  - paragraph [ref=f9e212]: 新用户注册即享专属优惠礼包！包含免费Token额度、模型体验券及首单折扣，助您快速上手AI安全能力。
+                  - generic [ref=f9e213]:
+                    - generic [ref=f9e214]: 奇安信安全大模型
+                    - generic [ref=f9e216]: 威胁检测模型 V3
+                    - generic [ref=f9e218]: 漏洞分析专家
+                  - generic [ref=f9e220]:
+                    - generic [ref=f9e221]: 500万Token免费额度
+                    - generic [ref=f9e224]: 首单8折优惠
+                    - generic [ref=f9e227]: 3天VIP体验
+                    - generic [ref=f9e230]: 1对1入门指导
+                  - generic [ref=f9e233]:
+                    - generic [ref=f9e234]:
+                      - generic [ref=f9e235]: 1月1日 - 12月31日
+                      - generic [ref=f9e238]:
+                        - generic [ref=f9e239]: 新用户
+                        - generic [ref=f9e240]: 首单优惠
+                        - generic [ref=f9e241]: 免费Token
+                    - button "领取优惠" [ref=f9e242]
+              - link "代码安全限时特惠 限时7折 NEW 代码审计能力限时7折 代码安全扫描模型限时7折优惠！支持SAST/DAST分析、安全编码建议与漏洞模式识别，助力DevSecOps落地。 代码安全扫描模型 AI代码审计助手 代码安全扫描7折 代码审计首月半价 CI/CD免费集成 漏洞报告导出 7月20日 - 8月20日 限时折扣 代码安全 DevSecOps 购买套餐" [ref=f9e245] [cursor=pointer]:
+                - /url: /promotions/code-security-flash-sale
+                - generic [ref=f9e249]:
+                  - generic [ref=f9e250]:
+                    - heading "代码安全限时特惠" [level=3] [ref=f9e251]
+                    - generic [ref=f9e252]: 限时7折
+                    - generic [ref=f9e253]: NEW
+                  - paragraph [ref=f9e254]: 代码审计能力限时7折
+                  - paragraph [ref=f9e255]: 代码安全扫描模型限时7折优惠！支持SAST/DAST分析、安全编码建议与漏洞模式识别，助力DevSecOps落地。
+                  - generic [ref=f9e256]:
+                    - generic [ref=f9e257]: 代码安全扫描模型
+                    - generic [ref=f9e259]: AI代码审计助手
+                  - generic [ref=f9e261]:
+                    - generic [ref=f9e262]: 代码安全扫描7折
+                    - generic [ref=f9e265]: 代码审计首月半价
+                    - generic [ref=f9e268]: CI/CD免费集成
+                    - generic [ref=f9e271]: 漏洞报告导出
+                  - generic [ref=f9e274]:
+                    - generic [ref=f9e275]:
+                      - generic [ref=f9e276]: 7月20日 - 8月20日
+                      - generic [ref=f9e279]:
+                        - generic [ref=f9e280]: 限时折扣
+                        - generic [ref=f9e281]: 代码安全
+                        - generic [ref=f9e282]: DevSecOps
+                    - button "购买套餐" [ref=f9e283]
+  - region "Notifications (F8)":
+    - list
+  - generic [ref=f9e286]:
+    - button "Toggle Nuxt DevTools" [ref=f9e287] [cursor=pointer]
+    - generic "Page load time" [ref=f9e291]:
+      - generic [ref=f9e292]: "41"
+      - generic [ref=f9e293]: ms
+    - button "Toggle Component Inspector" [ref=f9e295] [cursor=pointer]

@@ -1,0 +1,198 @@
+- generic [active] [ref=f10e1]:
+  - generic [ref=f10e3]:
+    - complementary [ref=f10e4]:
+      - generic [ref=f10e5]:
+        - generic [ref=f10e9]:
+          - paragraph [ref=f10e10]: 张明
+          - paragraph [ref=f10e11]: zhangming@qianxin.com
+        - link "企业空间" [ref=f10e12] [cursor=pointer]:
+          - /url: /enterprise
+      - link "返回市场" [ref=f10e16] [cursor=pointer]:
+        - /url: /
+      - navigation [ref=f10e19]:
+        - generic [ref=f10e20]:
+          - paragraph [ref=f10e21]: 核心功能
+          - generic [ref=f10e22]:
+            - link "使用看板" [ref=f10e23] [cursor=pointer]:
+              - /url: /console
+            - link "API Key" [ref=f10e26] [cursor=pointer]:
+              - /url: /console/keys
+            - link "调用日志" [ref=f10e29] [cursor=pointer]:
+              - /url: /console/logs
+            - link "调用统计" [ref=f10e32] [cursor=pointer]:
+              - /url: /console/stats
+            - link "充能包" [ref=f10e35] [cursor=pointer]:
+              - /url: /console/packs
+        - generic [ref=f10e39]:
+          - paragraph [ref=f10e40]: 账户管理
+          - generic [ref=f10e41]:
+            - link "账单中心" [ref=f10e42] [cursor=pointer]:
+              - /url: /console/billing
+            - link "个人设置" [ref=f10e45] [cursor=pointer]:
+              - /url: /console/settings
+        - generic [ref=f10e48]:
+          - paragraph [ref=f10e49]: 开发资源
+          - generic [ref=f10e50]:
+            - link "API文档" [ref=f10e51] [cursor=pointer]:
+              - /url: /console/docs
+            - link "应用集成" [ref=f10e54] [cursor=pointer]:
+              - /url: /console/integrations
+      - button "退出登录" [ref=f10e58]
+    - generic [ref=f10e61]:
+      - generic [ref=f10e62]:
+        - heading "套餐管理" [level=1] [ref=f10e63]
+        - paragraph [ref=f10e64]: 管理Token余额，购买套餐，查看使用记录
+      - generic [ref=f10e67]:
+        - generic [ref=f10e68]:
+          - generic [ref=f10e69]:
+            - paragraph [ref=f10e70]: 当前余额
+            - generic [ref=f10e71]:
+              - generic [ref=f10e72]: 4,850,000
+              - generic [ref=f10e73]: Token
+          - generic [ref=f10e74]:
+            - generic [ref=f10e75]:
+              - paragraph [ref=f10e76]: 已使用
+              - paragraph [ref=f10e77]: 10,150,000
+            - generic [ref=f10e79]:
+              - paragraph [ref=f10e80]: 过期时间
+              - paragraph [ref=f10e81]: 2026-12-31
+        - generic [ref=f10e83]:
+          - generic [ref=f10e84]: 使用进度
+          - generic [ref=f10e85]: 67.7%
+      - generic [ref=f10e88]:
+        - generic [ref=f10e89]:
+          - heading "使用趋势" [level=3] [ref=f10e90]
+          - paragraph [ref=f10e91]: 近6月Token消耗(万)
+          - generic [ref=f10e92]:
+            - generic [ref=f10e93]:
+              - generic [ref=f10e94]: "180"
+              - generic [ref=f10e96]: 2月
+            - generic [ref=f10e97]:
+              - generic [ref=f10e98]: "320"
+              - generic [ref=f10e100]: 3月
+            - generic [ref=f10e101]:
+              - generic [ref=f10e102]: "450"
+              - generic [ref=f10e104]: 4月
+            - generic [ref=f10e105]:
+              - generic [ref=f10e106]: "520"
+              - generic [ref=f10e108]: 5月
+            - generic [ref=f10e109]:
+              - generic [ref=f10e110]: "680"
+              - generic [ref=f10e112]: 6月
+            - generic [ref=f10e113]:
+              - generic [ref=f10e114]: "550"
+              - generic [ref=f10e116]: 7月
+        - generic [ref=f10e117]:
+          - tablist [ref=f10e119]:
+            - tab "充能包" [selected] [ref=f10e121]
+            - tab "模型套餐" [ref=f10e124]
+            - tab "应用套餐" [ref=f10e127]
+          - generic [ref=f10e130]:
+            - generic [ref=f10e131]:
+              - paragraph [ref=f10e136]: 体验包
+              - generic [ref=f10e137]: 100万Token
+              - generic [ref=f10e140]:
+                - generic [ref=f10e141]: ¥
+                - generic [ref=f10e142]: "99"
+              - generic [ref=f10e143]:
+                - generic [ref=f10e144]: 基础模型调用
+                - generic [ref=f10e146]: 标准响应速度
+                - generic [ref=f10e148]: 社区技术支持
+              - button "购买" [ref=f10e150]
+            - generic [ref=f10e151]:
+              - generic [ref=f10e152]: 限时优惠
+              - paragraph [ref=f10e157]: 专业包
+              - generic [ref=f10e158]: 500万Token
+              - generic [ref=f10e160]:
+                - generic [ref=f10e161]:
+                  - generic [ref=f10e162]: ¥
+                  - generic [ref=f10e163]: "399"
+                - generic [ref=f10e164]: ¥495
+              - generic [ref=f10e165]:
+                - generic [ref=f10e166]: 全模型调用
+                - generic [ref=f10e168]: 优先响应速度
+                - generic [ref=f10e170]: 工单技术支持
+                - generic [ref=f10e172]: API调用统计
+              - button "购买" [ref=f10e174]
+            - generic [ref=f10e175]:
+              - generic [ref=f10e176]: 限时优惠
+              - paragraph [ref=f10e181]: 企业包
+              - generic [ref=f10e182]: 2000万Token
+              - generic [ref=f10e184]:
+                - generic [ref=f10e185]:
+                  - generic [ref=f10e186]: ¥
+                  - generic [ref=f10e187]: 1,499
+                - generic [ref=f10e188]: ¥1,980
+              - generic [ref=f10e189]:
+                - generic [ref=f10e190]: 全模型调用
+                - generic [ref=f10e192]: 最高响应速度
+                - generic [ref=f10e194]: 1对1技术支持
+                - generic [ref=f10e196]: API调用统计
+                - generic [ref=f10e198]: 专属模型实例
+                - generic [ref=f10e200]: SLA保障
+              - button "购买" [ref=f10e202]
+            - generic [ref=f10e203]:
+              - paragraph [ref=f10e208]: 无限包
+              - generic [ref=f10e209]: 无限Token
+              - generic [ref=f10e212]:
+                - generic [ref=f10e213]: ¥
+                - generic [ref=f10e214]: 4,999
+              - generic [ref=f10e215]:
+                - generic [ref=f10e216]: 全模型无限调用
+                - generic [ref=f10e218]: 最高响应速度
+                - generic [ref=f10e220]: 专属技术团队
+                - generic [ref=f10e222]: 高级API统计
+                - generic [ref=f10e224]: 专属模型实例
+                - generic [ref=f10e226]: 99.9% SLA
+                - generic [ref=f10e228]: 私有化部署选项
+              - button "购买" [ref=f10e230]
+      - generic [ref=f10e231]:
+        - heading "购买记录" [level=3] [ref=f10e232]
+        - table [ref=f10e233]:
+          - rowgroup [ref=f10e234]:
+            - row [ref=f10e235]:
+              - columnheader "时间" [ref=f10e236]
+              - columnheader "套餐类型" [ref=f10e237]
+              - columnheader "详情" [ref=f10e238]
+              - columnheader "金额" [ref=f10e239]
+              - columnheader "状态" [ref=f10e240]
+          - rowgroup [ref=f10e241]:
+            - row [ref=f10e242]:
+              - cell "2026-07-08 14:30" [ref=f10e243]
+              - cell "专业包" [ref=f10e244]
+              - cell "500万Token" [ref=f10e245]
+              - cell "¥399" [ref=f10e246]
+              - cell "已完成" [ref=f10e247]
+            - row [ref=f10e249]:
+              - cell "2026-06-15 10:20" [ref=f10e250]
+              - cell "体验包" [ref=f10e251]
+              - cell "100万Token" [ref=f10e252]
+              - cell "¥99" [ref=f10e253]
+              - cell "已完成" [ref=f10e254]
+            - row [ref=f10e256]:
+              - cell "2026-05-22 09:15" [ref=f10e257]
+              - cell "安全大模型专业版" [ref=f10e258]
+              - cell "月度订阅" [ref=f10e259]
+              - cell "¥999" [ref=f10e260]
+              - cell "已完成" [ref=f10e261]
+            - row [ref=f10e263]:
+              - cell "2026-04-10 16:45" [ref=f10e264]
+              - cell "威胁检测助手专业版" [ref=f10e265]
+              - cell "月度订阅" [ref=f10e266]
+              - cell "¥299" [ref=f10e267]
+              - cell "已完成" [ref=f10e268]
+            - row [ref=f10e270]:
+              - cell "2026-03-01 11:30" [ref=f10e271]
+              - cell "体验包" [ref=f10e272]
+              - cell "100万Token" [ref=f10e273]
+              - cell "¥99" [ref=f10e274]
+              - cell "已过期" [ref=f10e275]
+  - button "快速创建 API Key" [ref=f10e277]
+  - region "Notifications (F8)":
+    - list
+  - generic [ref=f10e279]:
+    - button "Toggle Nuxt DevTools" [ref=f10e280] [cursor=pointer]
+    - generic "Page load time" [ref=f10e284]:
+      - generic [ref=f10e285]: "34"
+      - generic [ref=f10e286]: ms
+    - button "Toggle Component Inspector" [ref=f10e288] [cursor=pointer]

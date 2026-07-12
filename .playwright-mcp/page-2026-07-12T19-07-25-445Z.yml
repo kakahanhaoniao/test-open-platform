@@ -1,0 +1,112 @@
+- generic [ref=f7e3]:
+  - complementary [ref=f7e4]:
+    - generic [ref=f7e5]:
+      - generic [ref=f7e9]:
+        - paragraph [ref=f7e10]: 奇安信安全团队
+        - paragraph [ref=f7e11]: 管理员 · 6名成员
+      - link "个人空间" [ref=f7e12] [cursor=pointer]:
+        - /url: /console
+    - link "返回市场" [ref=f7e16] [cursor=pointer]:
+      - /url: /
+    - navigation [ref=f7e19]:
+      - generic [ref=f7e20]:
+        - paragraph [ref=f7e21]: 核心管理
+        - generic [ref=f7e22]:
+          - link "企业概览" [ref=f7e23] [cursor=pointer]:
+            - /url: /enterprise
+          - link "成员管理" [ref=f7e26] [cursor=pointer]:
+            - /url: /enterprise/members
+          - link "调用监控" [ref=f7e29] [cursor=pointer]:
+            - /url: /enterprise/monitor
+          - link "日志审计" [ref=f7e33] [cursor=pointer]:
+            - /url: /enterprise/logs
+      - generic [ref=f7e36]:
+        - paragraph [ref=f7e37]: 资源与账务
+        - generic [ref=f7e38]:
+          - link "企业充能包" [ref=f7e39] [cursor=pointer]:
+            - /url: /enterprise/packs
+          - link "企业账单" [ref=f7e42] [cursor=pointer]:
+            - /url: /enterprise/billing
+          - link "企业设置" [ref=f7e45] [cursor=pointer]:
+            - /url: /enterprise/settings
+    - button "退出登录" [ref=f7e49]
+  - generic [ref=f7e53]:
+    - generic [ref=f7e54]:
+      - generic [ref=f7e55]:
+        - heading "调用监控" [level=1] [ref=f7e56]
+        - paragraph [ref=f7e57]: 全企业实时API调用监控与异常告警
+      - generic [ref=f7e58]: 实时监控中
+    - generic [ref=f7e61]:
+      - generic [ref=f7e62]:
+        - generic [ref=f7e63]: +12%
+        - paragraph [ref=f7e68]: 今日调用
+        - paragraph [ref=f7e69]: 47,236
+        - paragraph [ref=f7e70]: vs昨日
+      - generic [ref=f7e71]:
+        - paragraph [ref=f7e75]: 实时QPS
+        - paragraph [ref=f7e76]: 347/s
+        - paragraph [ref=f7e77]: 当前峰值
+      - generic [ref=f7e78]:
+        - generic [ref=f7e79]: "-0.1%"
+        - paragraph [ref=f7e84]: 错误率
+        - paragraph [ref=f7e85]: 0.3%
+      - generic [ref=f7e86]:
+        - generic [ref=f7e87]: "-5ms"
+        - paragraph [ref=f7e92]: 平均延迟
+        - paragraph [ref=f7e93]: 128ms
+    - generic [ref=f7e95]:
+      - generic [ref=f7e96]:
+        - heading "实时调用流量" [level=3] [ref=f7e97]
+        - generic [ref=f7e98]: LIVE
+      - generic [ref=f7e100]:
+        - button "5s" [ref=f7e101]
+        - button "30s" [ref=f7e102]
+        - button "1min" [ref=f7e103]
+    - generic [ref=f7e105]:
+      - generic [ref=f7e108]:
+        - heading "模型调用分布" [level=3] [ref=f7e109]
+        - paragraph [ref=f7e110]: 今日各模型调用量占比
+      - generic [ref=f7e113]:
+        - generic [ref=f7e114]:
+          - heading "成员调用排行" [level=3] [ref=f7e115]
+          - paragraph [ref=f7e116]: 今日调用量Top 6
+        - link "成员管理" [ref=f7e117] [cursor=pointer]:
+          - /url: /enterprise/members
+    - generic [ref=f7e120]:
+      - generic [ref=f7e121]:
+        - generic [ref=f7e122]:
+          - heading "异常告警" [level=3] [ref=f7e123]
+          - generic [ref=f7e124]: 1 严重
+        - link "查看全部" [ref=f7e125] [cursor=pointer]:
+          - /url: /enterprise/logs
+      - generic [ref=f7e127]:
+        - generic [ref=f7e128]:
+          - generic [ref=f7e130]:
+            - paragraph [ref=f7e131]: 合规卫士接口返回500错误
+            - paragraph [ref=f7e132]: 5分钟前
+          - link "查看详情" [ref=f7e133] [cursor=pointer]:
+            - /url: /enterprise/logs
+        - generic [ref=f7e134]:
+          - generic [ref=f7e136]:
+            - paragraph [ref=f7e137]: 安全大模型触发频率限制(429)
+            - paragraph [ref=f7e138]: 23分钟前
+          - link "查看详情" [ref=f7e139] [cursor=pointer]:
+            - /url: /enterprise/logs
+        - generic [ref=f7e140]:
+          - generic [ref=f7e142]:
+            - paragraph [ref=f7e143]: 威胁检测模型请求频率超限
+            - paragraph [ref=f7e144]: 1小时前
+          - link "查看详情" [ref=f7e145] [cursor=pointer]:
+            - /url: /enterprise/logs
+        - generic [ref=f7e146]:
+          - generic [ref=f7e148]:
+            - paragraph [ref=f7e149]: 代码安全扫描模型服务已恢复
+            - paragraph [ref=f7e150]: 2小时前
+          - link "查看详情" [ref=f7e151] [cursor=pointer]:
+            - /url: /enterprise/logs
+        - generic [ref=f7e152]:
+          - generic [ref=f7e154]:
+            - paragraph [ref=f7e155]: 漏洞分析专家服务已恢复
+            - paragraph [ref=f7e156]: 3小时前
+          - link "查看详情" [ref=f7e157] [cursor=pointer]:
+            - /url: /enterprise/logs

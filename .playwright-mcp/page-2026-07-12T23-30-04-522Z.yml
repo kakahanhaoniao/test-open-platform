@@ -1,0 +1,155 @@
+- generic [ref=f31e3]:
+  - complementary [ref=f31e4]:
+    - generic [ref=f31e5]:
+      - generic [ref=f31e9]:
+        - paragraph [ref=f31e10]: 奇安信安全团队
+        - paragraph [ref=f31e11]: 管理员 · 6名成员
+      - link "个人空间" [ref=f31e12] [cursor=pointer]:
+        - /url: /console
+    - link "返回市场" [ref=f31e16] [cursor=pointer]:
+      - /url: /
+    - navigation [ref=f31e19]:
+      - generic [ref=f31e20]:
+        - paragraph [ref=f31e21]: 核心管理
+        - generic [ref=f31e22]:
+          - link "企业概览" [ref=f31e23] [cursor=pointer]:
+            - /url: /enterprise
+          - link "成员管理" [ref=f31e27] [cursor=pointer]:
+            - /url: /enterprise/members
+          - link "调用监控" [ref=f31e30] [cursor=pointer]:
+            - /url: /enterprise/monitor
+          - link "日志审计" [ref=f31e33] [cursor=pointer]:
+            - /url: /enterprise/logs
+      - generic [ref=f31e36]:
+        - paragraph [ref=f31e37]: 资源与账务
+        - generic [ref=f31e38]:
+          - link "企业充能包" [ref=f31e39] [cursor=pointer]:
+            - /url: /enterprise/packs
+          - link "企业账单" [ref=f31e42] [cursor=pointer]:
+            - /url: /enterprise/billing
+          - link "企业设置" [ref=f31e45] [cursor=pointer]:
+            - /url: /enterprise/settings
+    - button "退出登录" [ref=f31e49]
+  - generic [ref=f31e52]:
+    - generic [ref=f31e57]:
+      - generic [ref=f31e58]:
+        - heading "企业概览" [level=1] [ref=f31e59]
+        - generic [ref=f31e60]: · 奇安信安全团队
+      - generic [ref=f31e61]:
+        - generic [ref=f31e62]: 服务正常
+        - generic [ref=f31e64]: 已认证
+    - generic [ref=f31e66]:
+      - generic [ref=f31e67]:
+        - generic [ref=f31e68]: 成员数
+        - generic [ref=f31e72]:
+          - generic [ref=f31e73]: "6"
+          - generic [ref=f31e74]: 人
+        - paragraph [ref=f31e75]: 活跃5，待邀请1
+      - generic [ref=f31e76]:
+        - generic [ref=f31e77]: 活跃Key数
+        - generic [ref=f31e81]:
+          - generic [ref=f31e82]: "12"
+          - generic [ref=f31e83]: 个
+      - generic [ref=f31e84]:
+        - generic [ref=f31e85]: 本月调用
+        - generic [ref=f31e89]:
+          - generic [ref=f31e90]: 47,200
+          - generic [ref=f31e91]: 次
+      - generic [ref=f31e92]:
+        - generic [ref=f31e93]: 本月消耗
+        - generic [ref=f31e97]: ¥12,860
+    - generic [ref=f31e101]:
+      - heading "调用趋势" [level=3] [ref=f31e102]
+      - paragraph [ref=f31e103]: 近7天企业API调用量统计
+    - generic [ref=f31e105]:
+      - link [ref=f31e106] [cursor=pointer]:
+        - /url: /enterprise/members
+        - paragraph [ref=f31e111]: 邀请成员
+        - paragraph [ref=f31e112]: 邀请新成员加入团队
+      - link [ref=f31e113] [cursor=pointer]:
+        - /url: /enterprise/packs
+        - paragraph [ref=f31e118]: 购买充能包
+        - paragraph [ref=f31e119]: 补充Token调用额度
+      - link [ref=f31e120] [cursor=pointer]:
+        - /url: /enterprise/monitor
+        - paragraph [ref=f31e125]: 查看监控
+        - paragraph [ref=f31e126]: 实时调用监控与告警
+      - link [ref=f31e127] [cursor=pointer]:
+        - /url: /enterprise/settings
+        - paragraph [ref=f31e132]: 管理设置
+        - paragraph [ref=f31e133]: 企业信息与告警配置
+    - generic [ref=f31e134]:
+      - generic [ref=f31e135]:
+        - generic [ref=f31e136]:
+          - generic [ref=f31e137]:
+            - heading "成员预览" [level=3] [ref=f31e138]
+            - paragraph [ref=f31e139]: 团队成员活跃度概览
+          - link "查看全部成员" [ref=f31e140] [cursor=pointer]:
+            - /url: /enterprise/members
+        - generic [ref=f31e142]:
+          - generic [ref=f31e143]:
+            - generic [ref=f31e144]: 张
+            - generic [ref=f31e145]:
+              - generic [ref=f31e146]:
+                - generic [ref=f31e147]: 张明
+                - generic [ref=f31e148]: 管理员
+              - paragraph [ref=f31e149]: zhangming@qianxin.com
+            - generic [ref=f31e150]:
+              - paragraph [ref=f31e151]: ¥4,780
+              - generic [ref=f31e152]: 活跃
+          - generic [ref=f31e154]:
+            - generic [ref=f31e155]: 李
+            - generic [ref=f31e156]:
+              - generic [ref=f31e157]:
+                - generic [ref=f31e158]: 李芳
+                - generic [ref=f31e159]: 开发者
+              - paragraph [ref=f31e160]: lifang@qianxin.com
+            - generic [ref=f31e161]:
+              - paragraph [ref=f31e162]: ¥3,240
+              - generic [ref=f31e163]: 活跃
+          - generic [ref=f31e165]:
+            - generic [ref=f31e166]: 王
+            - generic [ref=f31e167]:
+              - generic [ref=f31e168]:
+                - generic [ref=f31e169]: 王磊
+                - generic [ref=f31e170]: 开发者
+              - paragraph [ref=f31e171]: wanglei@qianxin.com
+            - generic [ref=f31e172]:
+              - paragraph [ref=f31e173]: ¥2,580
+              - generic [ref=f31e174]: 活跃
+          - generic [ref=f31e176]:
+            - generic [ref=f31e177]: 陈
+            - generic [ref=f31e178]:
+              - generic [ref=f31e179]:
+                - generic [ref=f31e180]: 陈静
+                - generic [ref=f31e181]: 财务
+              - paragraph [ref=f31e182]: chenjing@qianxin.com
+            - generic [ref=f31e183]:
+              - paragraph [ref=f31e184]: ¥0
+              - generic [ref=f31e185]: 活跃
+          - generic [ref=f31e187]:
+            - generic [ref=f31e188]: 赵
+            - generic [ref=f31e189]:
+              - generic [ref=f31e190]:
+                - generic [ref=f31e191]: 赵伟
+                - generic [ref=f31e192]: 只读
+              - paragraph [ref=f31e193]: zhaowei@qianxin.com
+            - generic [ref=f31e194]:
+              - paragraph [ref=f31e195]: ¥380
+              - generic [ref=f31e196]: 活跃
+      - generic [ref=f31e198]:
+        - generic [ref=f31e199]:
+          - generic [ref=f31e200]:
+            - heading "异常告警" [level=3] [ref=f31e201]
+            - paragraph [ref=f31e202]: 最近服务异常与恢复通知
+          - generic [ref=f31e203]: 1 严重
+        - generic [ref=f31e204]:
+          - generic [ref=f31e207]:
+            - paragraph [ref=f31e208]: 合规卫士接口返回500错误
+            - paragraph [ref=f31e209]: 5分钟前
+          - generic [ref=f31e212]:
+            - paragraph [ref=f31e213]: 安全大模型触发频率限制(429)
+            - paragraph [ref=f31e214]: 23分钟前
+          - generic [ref=f31e217]:
+            - paragraph [ref=f31e218]: 威胁检测模型请求频率超限
+            - paragraph [ref=f31e219]: 1小时前

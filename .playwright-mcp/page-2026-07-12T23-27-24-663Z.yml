@@ -1,0 +1,182 @@
+- generic [active] [ref=f24e1]:
+  - generic [ref=f24e3]:
+    - complementary [ref=f24e4]:
+      - generic [ref=f24e5]: 奇安信AI · 运营后台
+      - link "返回前台" [ref=f24e11] [cursor=pointer]:
+        - /url: /
+      - navigation [ref=f24e14]:
+        - link "数据看板" [ref=f24e15] [cursor=pointer]:
+          - /url: /admin
+        - link "企业客户" [ref=f24e18] [cursor=pointer]:
+          - /url: /admin/enterprises
+        - link "模型管理" [ref=f24e21] [cursor=pointer]:
+          - /url: /admin/models
+        - link "应用管理" [ref=f24e24] [cursor=pointer]:
+          - /url: /admin/apps
+        - link "活动管理" [ref=f24e28] [cursor=pointer]:
+          - /url: /admin/activities
+        - link "订单管理" [ref=f24e31] [cursor=pointer]:
+          - /url: /admin/orders
+        - link "模板配置" [ref=f24e34] [cursor=pointer]:
+          - /url: /admin/templates
+      - generic [ref=f24e41]:
+        - paragraph [ref=f24e42]: 运营管理员
+        - paragraph [ref=f24e43]: admin@qianxin.com
+    - generic [ref=f24e45]:
+      - generic [ref=f24e46]:
+        - generic [ref=f24e47]:
+          - heading "应用管理" [level=1] [ref=f24e48]
+          - paragraph [ref=f24e49]: 管理平台所有应用的上下线与配置
+        - button "新增应用" [ref=f24e50]
+      - generic [ref=f24e53]:
+        - textbox "搜索应用名称..." [ref=f24e56]
+        - combobox [ref=f24e57]:
+          - option "全部类型" [selected]
+          - option "对话应用"
+          - option "工具应用"
+          - option "链接应用"
+          - option "展示应用"
+        - combobox [ref=f24e58]:
+          - option "全部状态" [selected]
+          - option "上线"
+          - option "下线"
+          - option "审核中"
+      - paragraph [ref=f24e60]: 共 8 个应用
+      - table [ref=f24e63]:
+        - rowgroup [ref=f24e64]:
+          - row [ref=f24e65]:
+            - columnheader "应用名称" [ref=f24e66]
+            - columnheader "应用类型" [ref=f24e67]
+            - columnheader "状态" [ref=f24e68]
+            - columnheader "使用量" [ref=f24e69]
+            - columnheader "评分" [ref=f24e70]
+            - columnheader "操作" [ref=f24e71]
+        - rowgroup [ref=f24e72]:
+          - row [ref=f24e73]:
+            - cell [ref=f24e74]:
+              - generic [ref=f24e78]:
+                - paragraph [ref=f24e79]: 智能安全运营中心
+                - paragraph [ref=f24e80]: AI驱动的安全运营中心，集成告警聚合、威胁研判、自动化响应，将MTTR从小时级缩短至分钟级
+            - cell "对话" [ref=f24e81]
+            - cell "上线" [ref=f24e82]
+            - cell "56万+" [ref=f24e83]
+            - cell "4.9" [ref=f24e84]
+            - cell [ref=f24e88]:
+              - generic [ref=f24e89]:
+                - button "编辑" [ref=f24e90]
+                - button "下线" [ref=f24e91]
+                - link "配置详情页" [ref=f24e92] [cursor=pointer]:
+                  - /url: /admin/apps/smart-soc/template
+          - row [ref=f24e93]:
+            - cell [ref=f24e94]:
+              - generic [ref=f24e98]:
+                - paragraph [ref=f24e99]: 威胁情报助手
+                - paragraph [ref=f24e100]: 基于安全大模型的威胁情报对话助手，支持IOC查询、威胁画像、情报关联分析
+            - cell "对话" [ref=f24e101]
+            - cell "上线" [ref=f24e102]
+            - cell "38万+" [ref=f24e103]
+            - cell "4.8" [ref=f24e104]
+            - cell [ref=f24e108]:
+              - generic [ref=f24e109]:
+                - button "编辑" [ref=f24e110]
+                - button "下线" [ref=f24e111]
+                - link "配置详情页" [ref=f24e112] [cursor=pointer]:
+                  - /url: /admin/apps/threat-intel-assistant/template
+          - row [ref=f24e113]:
+            - cell [ref=f24e114]:
+              - generic [ref=f24e118]:
+                - paragraph [ref=f24e119]: 漏洞扫描工具
+                - paragraph [ref=f24e120]: 一键式漏洞扫描工具，支持Web应用、主机、数据库等多目标扫描，自动生成修复建议与合规报告
+            - cell "工具" [ref=f24e121]
+            - cell "上线" [ref=f24e122]
+            - cell "92万+" [ref=f24e123]
+            - cell "4.7" [ref=f24e124]
+            - cell [ref=f24e128]:
+              - generic [ref=f24e129]:
+                - button "编辑" [ref=f24e130]
+                - button "下线" [ref=f24e131]
+                - link "配置详情页" [ref=f24e132] [cursor=pointer]:
+                  - /url: /admin/apps/vuln-scanner-tool/template
+          - row [ref=f24e133]:
+            - cell [ref=f24e134]:
+              - generic [ref=f24e138]:
+                - paragraph [ref=f24e139]: 安全态势感知大屏
+                - paragraph [ref=f24e140]: 实时安全态势可视化大屏，全球威胁地图、攻击链路追踪、资产风险热力图，一屏掌控全局安全态势
+            - cell "展示" [ref=f24e141]
+            - cell "上线" [ref=f24e142]
+            - cell "28万+" [ref=f24e143]
+            - cell "4.9" [ref=f24e144]
+            - cell [ref=f24e148]:
+              - generic [ref=f24e149]:
+                - button "编辑" [ref=f24e150]
+                - button "下线" [ref=f24e151]
+                - link "配置详情页" [ref=f24e152] [cursor=pointer]:
+                  - /url: /admin/apps/security-knowledge-base/template
+          - row [ref=f24e153]:
+            - cell [ref=f24e154]:
+              - generic [ref=f24e158]:
+                - paragraph [ref=f24e159]: AI代码审计助手
+                - paragraph [ref=f24e160]: 智能代码安全审计对话助手，上传代码即可获得安全分析，支持多种编程语言，精准定位安全漏洞
+            - cell "对话" [ref=f24e161]
+            - cell "上线" [ref=f24e162]
+            - cell "63万+" [ref=f24e163]
+            - cell "4.7" [ref=f24e164]
+            - cell [ref=f24e168]:
+              - generic [ref=f24e169]:
+                - button "编辑" [ref=f24e170]
+                - button "下线" [ref=f24e171]
+                - link "配置详情页" [ref=f24e172] [cursor=pointer]:
+                  - /url: /admin/apps/code-audit-assistant/template
+          - row [ref=f24e173]:
+            - cell [ref=f24e174]:
+              - generic [ref=f24e178]:
+                - paragraph [ref=f24e179]: 应急响应剧本
+                - paragraph [ref=f24e180]: 预置50+应急响应剧本，覆盖勒索软件、数据泄露、DDoS等常见场景，一键启动标准化处置流程
+            - cell "工具" [ref=f24e181]
+            - cell "下线" [ref=f24e182]
+            - cell "47万+" [ref=f24e183]
+            - cell "4.5" [ref=f24e184]
+            - cell [ref=f24e188]:
+              - generic [ref=f24e189]:
+                - button "编辑" [ref=f24e190]
+                - button "上架" [ref=f24e191]
+                - link "配置详情页" [ref=f24e192] [cursor=pointer]:
+                  - /url: /admin/apps/incident-playbook/template
+          - row [ref=f24e193]:
+            - cell [ref=f24e194]:
+              - generic [ref=f24e198]:
+                - paragraph [ref=f24e199]: 零信任网关
+                - paragraph [ref=f24e200]: AI增强的零信任安全网关，持续身份验证、微隔离、动态访问控制，保护混合办公环境
+            - cell "外链" [ref=f24e201]
+            - cell "下线" [ref=f24e202]
+            - cell "32万+" [ref=f24e203]
+            - cell "4.6" [ref=f24e204]
+            - cell [ref=f24e208]:
+              - generic [ref=f24e209]:
+                - button "编辑" [ref=f24e210]
+                - button "上架" [ref=f24e211]
+                - link "配置详情页" [ref=f24e212] [cursor=pointer]:
+                  - /url: /admin/apps/zero-trust-gateway/template
+          - row [ref=f24e213]:
+            - cell [ref=f24e214]:
+              - generic [ref=f24e218]:
+                - paragraph [ref=f24e219]: 威胁情报平台
+                - paragraph [ref=f24e220]: 企业级威胁情报管理平台，多源情报聚合、自动化关联分析、情报共享与协同，构建主动防御体系
+            - cell "外链" [ref=f24e221]
+            - cell "审核中" [ref=f24e222]
+            - cell "28万+" [ref=f24e223]
+            - cell "4.8" [ref=f24e224]
+            - cell [ref=f24e228]:
+              - generic [ref=f24e229]:
+                - button "编辑" [ref=f24e230]
+                - button "通过" [ref=f24e231]
+                - link "配置详情页" [ref=f24e232] [cursor=pointer]:
+                  - /url: /admin/apps/cti-platform/template
+  - region "Notifications (F8)":
+    - list
+  - generic [ref=f24e233]:
+    - button "Toggle Nuxt DevTools" [ref=f24e234] [cursor=pointer]
+    - generic "Page load time" [ref=f24e238]:
+      - generic [ref=f24e239]: "28"
+      - generic [ref=f24e240]: ms
+    - button "Toggle Component Inspector" [ref=f24e242] [cursor=pointer]

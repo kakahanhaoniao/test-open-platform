@@ -1,0 +1,201 @@
+- generic [active] [ref=f8e1]:
+  - generic [ref=f8e3]:
+    - complementary [ref=f8e4]:
+      - generic [ref=f8e5]:
+        - generic [ref=f8e9]:
+          - paragraph [ref=f8e10]: 张明
+          - paragraph [ref=f8e11]: zhangming@qianxin.com
+        - link "企业空间" [ref=f8e12] [cursor=pointer]:
+          - /url: /enterprise
+      - link "返回市场" [ref=f8e16] [cursor=pointer]:
+        - /url: /
+      - navigation [ref=f8e19]:
+        - generic [ref=f8e20]:
+          - paragraph [ref=f8e21]: 核心功能
+          - generic [ref=f8e22]:
+            - link "使用看板" [ref=f8e23] [cursor=pointer]:
+              - /url: /console
+            - link "API Key" [ref=f8e26] [cursor=pointer]:
+              - /url: /console/keys
+            - link "调用日志" [ref=f8e29] [cursor=pointer]:
+              - /url: /console/logs
+            - link "调用统计" [ref=f8e32] [cursor=pointer]:
+              - /url: /console/stats
+            - link "充能包" [ref=f8e36] [cursor=pointer]:
+              - /url: /console/packs
+        - generic [ref=f8e39]:
+          - paragraph [ref=f8e40]: 账户管理
+          - generic [ref=f8e41]:
+            - link "账单中心" [ref=f8e42] [cursor=pointer]:
+              - /url: /console/billing
+            - link "个人设置" [ref=f8e45] [cursor=pointer]:
+              - /url: /console/settings
+        - generic [ref=f8e48]:
+          - paragraph [ref=f8e49]: 开发资源
+          - generic [ref=f8e50]:
+            - link "API文档" [ref=f8e51] [cursor=pointer]:
+              - /url: /console/docs
+            - link "应用集成" [ref=f8e54] [cursor=pointer]:
+              - /url: /console/integrations
+      - button "退出登录" [ref=f8e58]
+    - generic [ref=f8e61]:
+      - generic [ref=f8e62]:
+        - generic [ref=f8e63]:
+          - heading "调用统计" [level=1] [ref=f8e64]
+          - paragraph [ref=f8e65]: 查看API调用详情、模型使用分布与错误日志
+        - generic [ref=f8e66]:
+          - button "今日" [ref=f8e67]
+          - button "7天" [ref=f8e68]
+          - button "30天" [ref=f8e69]
+          - button "自定义" [ref=f8e70]
+      - generic [ref=f8e71]:
+        - generic [ref=f8e76]:
+          - paragraph [ref=f8e77]: 总调用次数
+          - paragraph [ref=f8e78]: 24,514
+        - generic [ref=f8e85]:
+          - paragraph [ref=f8e86]: 成功率
+          - paragraph [ref=f8e87]: 99.64%
+        - generic [ref=f8e94]:
+          - paragraph [ref=f8e95]: 平均延迟
+          - paragraph [ref=f8e96]: 248ms
+      - generic [ref=f8e101]:
+        - heading "每日调用量" [level=3] [ref=f8e102]
+        - paragraph [ref=f8e103]: 过去7天的API调用统计
+      - generic [ref=f8e108]:
+        - generic [ref=f8e111]:
+          - heading "Token消耗分布" [level=3] [ref=f8e112]
+          - paragraph [ref=f8e113]: 各模型Token消耗占比
+        - generic [ref=f8e120]:
+          - heading "延迟分布" [level=3] [ref=f8e121]
+          - paragraph [ref=f8e122]: P50 / P95 / P99 延迟趋势
+      - generic [ref=f8e127]:
+        - generic [ref=f8e129]:
+          - heading "模型调用分布" [level=3] [ref=f8e130]
+          - paragraph [ref=f8e131]: 各模型的调用次数、Token消耗与费用
+        - table [ref=f8e132]:
+          - rowgroup [ref=f8e133]:
+            - row [ref=f8e134]:
+              - columnheader "模型" [ref=f8e135]
+              - columnheader "调用次数" [ref=f8e136]
+              - columnheader "Token消耗" [ref=f8e137]
+              - columnheader "费用" [ref=f8e138]
+              - columnheader "占比" [ref=f8e139]
+          - rowgroup [ref=f8e140]:
+            - row [ref=f8e141]:
+              - cell [ref=f8e142]:
+                - link "奇安信安全大模型" [ref=f8e143] [cursor=pointer]:
+                  - /url: /marketplace/qax-security-llm
+              - cell "12,840" [ref=f8e144]
+              - cell "5,240,000" [ref=f8e145]
+              - cell "¥478.32" [ref=f8e146]
+              - cell "45%" [ref=f8e147]
+            - row [ref=f8e152]:
+              - cell [ref=f8e153]:
+                - link "威胁检测模型 V3" [ref=f8e154] [cursor=pointer]:
+                  - /url: /marketplace/threat-detect-v3
+              - cell "8,650" [ref=f8e155]
+              - cell "2,890,000" [ref=f8e156]
+              - cell "¥216.75" [ref=f8e157]
+              - cell "30%" [ref=f8e158]
+            - row [ref=f8e163]:
+              - cell [ref=f8e164]:
+                - link "代码安全扫描模型" [ref=f8e165] [cursor=pointer]:
+                  - /url: /marketplace/code-security-scan
+              - cell "5,200" [ref=f8e166]
+              - cell "1,780,000" [ref=f8e167]
+              - cell "¥142.40" [ref=f8e168]
+              - cell "18%" [ref=f8e169]
+            - row [ref=f8e174]:
+              - cell [ref=f8e175]:
+                - link "漏洞分析专家" [ref=f8e176] [cursor=pointer]:
+                  - /url: /marketplace/vuln-analyzer-pro
+              - cell "2,400" [ref=f8e177]
+              - cell "960,000" [ref=f8e178]
+              - cell "¥57.60" [ref=f8e179]
+              - cell "8%" [ref=f8e180]
+            - row [ref=f8e185]:
+              - cell [ref=f8e186]:
+                - link "合规卫士" [ref=f8e187] [cursor=pointer]:
+                  - /url: /marketplace/compliance-guard
+              - cell "1,200" [ref=f8e188]
+              - cell "480,000" [ref=f8e189]
+              - cell "¥28.80" [ref=f8e190]
+              - cell "4%" [ref=f8e191]
+            - row [ref=f8e196]:
+              - cell [ref=f8e197]:
+                - link "日志智能分析模型" [ref=f8e198] [cursor=pointer]:
+                  - /url: /marketplace/log-analyzer
+              - cell "800" [ref=f8e199]
+              - cell "320,000" [ref=f8e200]
+              - cell "¥12.80" [ref=f8e201]
+              - cell "3%" [ref=f8e202]
+      - generic [ref=f8e207]:
+        - generic [ref=f8e208]:
+          - generic [ref=f8e209]:
+            - heading "错误日志" [level=3] [ref=f8e210]
+            - paragraph [ref=f8e211]: 最近的API调用错误记录
+          - button "导出日志" [ref=f8e212]
+        - table [ref=f8e214]:
+          - rowgroup [ref=f8e215]:
+            - row [ref=f8e216]:
+              - columnheader "时间" [ref=f8e217]
+              - columnheader "模型" [ref=f8e218]
+              - columnheader "接口" [ref=f8e219]
+              - columnheader "错误码" [ref=f8e220]
+              - columnheader "错误信息" [ref=f8e221]
+              - columnheader "Request ID" [ref=f8e222]
+          - rowgroup [ref=f8e223]:
+            - row [ref=f8e224]:
+              - cell "07/11 14:23:05" [ref=f8e225]
+              - cell [ref=f8e226]:
+                - link "合规卫士" [ref=f8e227] [cursor=pointer]:
+                  - /url: /marketplace/compliance-guard
+              - cell "/v1/compliance/check" [ref=f8e228]
+              - cell "500" [ref=f8e229]
+              - cell "Internal Server Error" [ref=f8e231]
+              - cell "req-8f3e2d1c" [ref=f8e232]
+            - row [ref=f8e233]:
+              - cell "07/11 13:45:12" [ref=f8e234]
+              - cell [ref=f8e235]:
+                - link "奇安信安全大模型" [ref=f8e236] [cursor=pointer]:
+                  - /url: /marketplace/qax-security-llm
+              - cell "/v1/chat/completions" [ref=f8e237]
+              - cell "429" [ref=f8e238]
+              - cell "Rate limit exceeded" [ref=f8e240]
+              - cell "req-4b5a6f7e" [ref=f8e241]
+            - row [ref=f8e242]:
+              - cell "07/11 11:30:08" [ref=f8e243]
+              - cell [ref=f8e244]:
+                - link "威胁检测模型 V3" [ref=f8e245] [cursor=pointer]:
+                  - /url: /marketplace/threat-detect-v3
+              - cell "/v1/threat/detect" [ref=f8e246]
+              - cell "400" [ref=f8e247]
+              - cell "Invalid request body" [ref=f8e249]
+              - cell "req-c9b8a7f6" [ref=f8e250]
+            - row [ref=f8e251]:
+              - cell "07/10 22:15:33" [ref=f8e252]
+              - cell [ref=f8e253]:
+                - link "代码安全扫描模型" [ref=f8e254] [cursor=pointer]:
+                  - /url: /marketplace/code-security-scan
+              - cell "/v1/code/scan" [ref=f8e255]
+              - cell "401" [ref=f8e256]
+              - cell "Invalid API key" [ref=f8e258]
+              - cell "req-e5d4c3b2" [ref=f8e259]
+            - row [ref=f8e260]:
+              - cell "07/10 19:08:21" [ref=f8e261]
+              - cell [ref=f8e262]:
+                - link "漏洞分析专家" [ref=f8e263] [cursor=pointer]:
+                  - /url: /marketplace/vuln-analyzer-pro
+              - cell "/v1/vuln/analyze" [ref=f8e264]
+              - cell "503" [ref=f8e265]
+              - cell "Service temporarily unavailable" [ref=f8e267]
+              - cell "req-a3f2e1d0" [ref=f8e268]
+  - button "快速创建 API Key" [ref=f8e269]
+  - region "Notifications (F8)":
+    - list
+  - generic [ref=f8e271]:
+    - button "Toggle Nuxt DevTools" [ref=f8e272] [cursor=pointer]
+    - generic "Page load time" [ref=f8e276]:
+      - generic [ref=f8e277]: "28"
+      - generic [ref=f8e278]: ms
+    - button "Toggle Component Inspector" [ref=f8e280] [cursor=pointer]

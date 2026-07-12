@@ -1,103 +1,56 @@
-# Task 10 Completion Report: Portal Homepage Refactor & Route Cleanup
+# Task 10: Upgrade Promotions Page + Add Activity Detail Page
 
-## Summary
+## Status: COMPLETE
 
-Completed the final cleanup task of the dual-track architecture redesign: refactored the Portal homepage, simplified Console billing, deleted old workspace pages, and updated TopNav for dual auth states.
+## Commit
+`1e4f581` feat: upgrade promotions page + add activity detail page with related capabilities
 
-## Changes Made
+## Changes Summary
 
-### 10.1 Refactored Portal Homepage (`app/pages/index.vue`)
+### 1. Updated Activity Interface (`app/data/mock.ts`)
+- Added `category` field: `'限时折扣' | '免费体验' | '新客专享' | '企业优惠'`
+- Added `detailMd?: string` for markdown activity descriptions
+- Added `faq?: { question: string; answer: string }[]` for FAQ data
+- Added `relatedCapabilityIds?: string[]` to link activities to models/apps
+- Added `discountPlans?: { planId: string; discountPrice: number }[]` for discounted pricing
 
-**Before**: Market homepage with hero, stats, promotions strip, featured capabilities, new arrivals, and CTA section. Mixed marketing and marketplace content.
+### 2. Updated Existing Activity Data
+All 4 existing activities updated with:
+- `category` assigned (限时折扣, 企业优惠, 免费体验, 新客专享)
+- `detailMd` populated with rich markdown content (headings, lists, tables)
+- `faq` populated with 2-3 Q&A pairs each
+- `relatedCapabilityIds` linked to relevant models/apps
+- `discountPlans` linked to existing modelPlans/appPlans with discount prices
 
-**After**: Proper marketing/landing page (引流落地页) for unauthenticated users with the following sections:
+### 3. Added 2 New Activities
+- **新客专享礼包** (`newcomer-welcome-pack`) - category: 新客专享
+- **代码安全限时特惠** (`code-security-flash-sale`) - category: 限时折扣
 
-1. **Hero section** (light gradient bg):
-   - Badge: "AI安全能力统一市场"
-   - Title: "安全AI能力 一站式获取"
-   - Subtitle from spec
-   - Two CTAs: [探索能力市场 -> /marketplace] (primary) + [企业咨询 -> /marketplace] (outline)
+### 4. Upgraded Promotions Index Page (`app/pages/promotions/index.vue`)
+- **Countdown banner**: Live countdown timer for the hottest activity (updates every second)
+- **Category filter**: 5-button filter (全部/限时折扣/免费体验/新客专享/企业优惠)
+- **Related capability tags**: Shows linked capability names + icons on hot cards and list cards
+- **Updated CTAs**: "领取优惠" for free/newcomer categories, "购买套餐" for paid categories
+- **NuxtLink navigation**: All cards link to `/promotions/[id]` detail page
+- **Empty state**: Shows when no activities match selected category
 
-2. **Stats bar**: 18+ AI安全能力 / 1亿+ 累计调用 / 5000+ 企业客户 / 100万+ 安全事件处理
+### 5. Created Activity Detail Page (`app/pages/promotions/[id].vue`)
+- **Top banner**: Full-width gradient banner with activity icon, title, subtitle, discount badge, date range, description, and CTA buttons
+- **Markdown description**: Renders `detailMd` using markdown-it with styled prose
+- **Related capabilities section**: 2-column grid of capability cards linking to marketplace detail pages, with type badges and pricing
+- **Discount plans section**: Shows plans with original price, discounted price, and savings amount
+- **Sidebar with**: Activity info, rules list, collapsible FAQ, gradient CTA card
+- **CTA buttons**: "立即领取" / "购买优惠套餐" based on activity category
+- **404 handling**: Throws 404 if activity ID not found
 
-3. **Capability preview**: 4 hot model/app cards from mock data, each links to `/marketplace/[id]` via CapabilityCard component
-
-4. **Enterprise section** (bg-gray-50):
-   - Title: "企业专属方案"
-   - 4 feature cards: 统一采购 / 成员管理 / 用量管控 / 专属折扣
-   - CTA: [了解企业方案 -> /marketplace]
-
-5. **Trust section**: 3 customer testimonial cards with company name, quote, person info
-
-6. **Pricing preview**: 3 pricing tiers (个人版/团队版/企业版) with [查看完整定价 -> /marketplace]
-
-7. **CTA section**: Gradient banner with [免费注册] + [联系销售]
-
-8. **Footer**: 4-column layout with brand, product links, developer resources, contact info
-
-**Removed**: Promotions strip, new arrivals section, floating capability cards in hero. Replaced with proper marketing landing page structure.
-
-### 10.2 Updated TopNav (`app/components/TopNav.vue`)
-
-Added dual auth state support:
-- **Unauthenticated users**: Show "登录" (ghost) + "免费注册" (primary) buttons
-- **Authenticated users**: Show "企业工作台"/"用户控制台" button + user avatar dropdown menu
-- User menu dynamically includes "企业工作台" link for enterprise users
-- Removed old hardcoded user menu items that pointed to `/portal/profile` and `/portal`
-
-### 10.3 Simplified Console Billing (`app/pages/console/billing/index.vue`)
-
-**Removed**:
-- Enterprise view/tab switcher (activeTab ref, enterprise/personal toggle)
-- Enterprise summary cards (企业本月消费, 成员数, 企业Token消耗)
-- Member cost distribution section
-- Enterprise billing table
-- Member cost detail table
-- Imports of `currentUser`, `members`, `organization` (no longer needed)
-
-**Kept**:
-- Summary cards (本月消费/上月消费/同比)
-- Monthly spending trend chart
-- Billing table (personal)
-- Recharge records
-
-**Fixed**: TypeScript errors for possibly undefined array access by using computed properties with safety checks.
-
-### 10.4 Deleted Old Workspace Pages
-
-Deleted 4 files (enterprise functionality moved to `/enterprise/*`):
-- `app/pages/console/workspace/index.vue`
-- `app/pages/console/workspace/members.vue`
-- `app/pages/console/workspace/packs.vue`
-- `app/pages/console/workspace/settings.vue`
-
-Also removed the empty `app/pages/console/workspace/` directory.
-
-### 10.5 Fixed Cross-Reference
-
-Updated `app/pages/console/index.vue` line 348: Changed link from `/console/workspace` to `/enterprise/members` for the member ranking section's "成员管理" link.
-
-### 10.6 TypeScript Verification
-
-Ran `npx nuxi typecheck`. All errors in modified files are resolved. Remaining errors are pre-existing in other files (legacy `/b/` variant, portal pages, enterprise pages, etc.) and not caused by this task.
+## Build Verification
+- `npx nuxi build` passed successfully
+- Fixed Tailwind v4 scoped style issue: replaced `@apply` directives with plain CSS properties in the detail page's `<style scoped>` block
 
 ## Files Modified
+- `app/data/mock.ts` - Activity interface + data (6 activities)
+- `app/pages/promotions/index.vue` - Upgraded listing page
+- `app/pages/promotions/[id].vue` - New detail page
 
-| File | Action |
-|------|--------|
-| `app/pages/index.vue` | Rewritten as Portal landing page |
-| `app/components/TopNav.vue` | Added dual auth state (login/register vs user menu) |
-| `app/pages/console/billing/index.vue` | Simplified to personal-only billing |
-| `app/pages/console/index.vue` | Fixed workspace link to enterprise/members |
-| `app/pages/console/workspace/index.vue` | Deleted |
-| `app/pages/console/workspace/members.vue` | Deleted |
-| `app/pages/console/workspace/packs.vue` | Deleted |
-| `app/pages/console/workspace/settings.vue` | Deleted |
-
-## Design Decisions
-
-- Used `TopNav` (not `PortalNav`) for the Portal homepage since `/` is classified as a market route in `app.vue` and gets the TopNav layout automatically
-- The hero section uses a light gradient background (from-white via-primary-50/30 to-accent-50/20) instead of the dark deep-block style from the old portal page, matching the spec's "light gradient bg" requirement
-- Pricing tiers renamed from 体验包/专业包/企业包 to 个人版/团队版/企业版 per spec
-- All CTA links point to `/marketplace` as the primary conversion destination
-- The "免费注册" CTA in the bottom banner still links to `/portal/register` for the registration flow
+## Concerns
+- None. Build passes, all features implemented per spec.

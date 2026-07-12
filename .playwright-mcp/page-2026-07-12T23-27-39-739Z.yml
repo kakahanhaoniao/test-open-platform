@@ -1,0 +1,139 @@
+- generic [active] [ref=f25e1]:
+  - generic [ref=f25e3]:
+    - complementary [ref=f25e4]:
+      - generic [ref=f25e5]: 奇安信AI · 运营后台
+      - link "返回前台" [ref=f25e11] [cursor=pointer]:
+        - /url: /
+      - navigation [ref=f25e14]:
+        - link "数据看板" [ref=f25e15] [cursor=pointer]:
+          - /url: /admin
+        - link "企业客户" [ref=f25e18] [cursor=pointer]:
+          - /url: /admin/enterprises
+        - link "模型管理" [ref=f25e21] [cursor=pointer]:
+          - /url: /admin/models
+        - link "应用管理" [ref=f25e24] [cursor=pointer]:
+          - /url: /admin/apps
+        - link "活动管理" [ref=f25e27] [cursor=pointer]:
+          - /url: /admin/activities
+        - link "订单管理" [ref=f25e31] [cursor=pointer]:
+          - /url: /admin/orders
+        - link "模板配置" [ref=f25e34] [cursor=pointer]:
+          - /url: /admin/templates
+      - generic [ref=f25e41]:
+        - paragraph [ref=f25e42]: 运营管理员
+        - paragraph [ref=f25e43]: admin@qianxin.com
+    - generic [ref=f25e45]:
+      - generic [ref=f25e46]:
+        - generic [ref=f25e47]:
+          - heading "活动管理" [level=1] [ref=f25e48]
+          - paragraph [ref=f25e49]: 管理平台营销活动的创建、配置与上下线
+        - button "创建活动" [ref=f25e50]
+      - textbox "搜索活动名称..." [ref=f25e56]
+      - paragraph [ref=f25e58]: 共 6 个活动
+      - table [ref=f25e61]:
+        - rowgroup [ref=f25e62]:
+          - row [ref=f25e63]:
+            - columnheader "活动名称" [ref=f25e64]
+            - columnheader "折扣" [ref=f25e65]
+            - columnheader "状态" [ref=f25e66]
+            - columnheader "时间范围" [ref=f25e67]
+            - columnheader "操作" [ref=f25e68]
+        - rowgroup [ref=f25e69]:
+          - row [ref=f25e70]:
+            - cell [ref=f25e71]:
+              - generic [ref=f25e75]:
+                - paragraph [ref=f25e76]: 夏季安全嘉年华
+                - paragraph [ref=f25e77]: AI安全能力全面升级
+            - cell "5折" [ref=f25e78]
+            - cell "进行中" [ref=f25e79]
+            - cell [ref=f25e80]:
+              - paragraph [ref=f25e81]: 2026-07-01 ~ 2026-08-31
+            - cell [ref=f25e82]:
+              - generic [ref=f25e83]:
+                - button "编辑" [ref=f25e84]
+                - button "结束" [ref=f25e85]
+                - link "配置详情页" [ref=f25e86] [cursor=pointer]:
+                  - /url: /admin/activities/summer-security-carnival/template
+          - row [ref=f25e87]:
+            - cell [ref=f25e88]:
+              - generic [ref=f25e92]:
+                - paragraph [ref=f25e93]: 企业版首发优惠
+                - paragraph [ref=f25e94]: 企业级AI安全能力一站式接入
+            - cell "8折" [ref=f25e95]
+            - cell "进行中" [ref=f25e96]
+            - cell [ref=f25e97]:
+              - paragraph [ref=f25e98]: 2026-06-15 ~ 2026-09-15
+            - cell [ref=f25e99]:
+              - generic [ref=f25e100]:
+                - button "编辑" [ref=f25e101]
+                - button "结束" [ref=f25e102]
+                - link "配置详情页" [ref=f25e103] [cursor=pointer]:
+                  - /url: /admin/activities/enterprise-launch-promo/template
+          - row [ref=f25e104]:
+            - cell [ref=f25e105]:
+              - generic [ref=f25e109]:
+                - paragraph [ref=f25e110]: 威胁检测模型免费体验
+                - paragraph [ref=f25e111]: 零成本体验APT检测能力
+            - cell "免费" [ref=f25e112]
+            - cell "进行中" [ref=f25e113]
+            - cell [ref=f25e114]:
+              - paragraph [ref=f25e115]: 2026-07-10 ~ 2026-07-31
+            - cell [ref=f25e116]:
+              - generic [ref=f25e117]:
+                - button "编辑" [ref=f25e118]
+                - button "结束" [ref=f25e119]
+                - link "配置详情页" [ref=f25e120] [cursor=pointer]:
+                  - /url: /admin/activities/threat-model-free-trial/template
+          - row [ref=f25e121]:
+            - cell [ref=f25e122]:
+              - generic [ref=f25e126]:
+                - paragraph [ref=f25e127]: API集成挑战赛
+                - paragraph [ref=f25e128]: 用AI安全API构建创新应用
+            - cell "¥10万" [ref=f25e129]
+            - cell "未开始" [ref=f25e130]
+            - cell [ref=f25e131]:
+              - paragraph [ref=f25e132]: 2026-07-15 ~ 2026-10-15
+            - cell [ref=f25e133]:
+              - generic [ref=f25e134]:
+                - button "编辑" [ref=f25e135]
+                - button "提前开始" [ref=f25e136]
+                - link "配置详情页" [ref=f25e137] [cursor=pointer]:
+                  - /url: /admin/activities/api-integration-challenge/template
+          - row [ref=f25e138]:
+            - cell [ref=f25e139]:
+              - generic [ref=f25e143]:
+                - paragraph [ref=f25e144]: 新客专享礼包
+                - paragraph [ref=f25e145]: 首次注册即享专属优惠
+            - cell "8折" [ref=f25e146]
+            - cell "进行中" [ref=f25e147]
+            - cell [ref=f25e148]:
+              - paragraph [ref=f25e149]: 2026-01-01 ~ 2026-12-31
+            - cell [ref=f25e150]:
+              - generic [ref=f25e151]:
+                - button "编辑" [ref=f25e152]
+                - button "结束" [ref=f25e153]
+                - link "配置详情页" [ref=f25e154] [cursor=pointer]:
+                  - /url: /admin/activities/newcomer-welcome-pack/template
+          - row [ref=f25e155]:
+            - cell [ref=f25e156]:
+              - generic [ref=f25e160]:
+                - paragraph [ref=f25e161]: 代码安全限时特惠
+                - paragraph [ref=f25e162]: 代码审计能力限时7折
+            - cell "7折" [ref=f25e163]
+            - cell "未开始" [ref=f25e164]
+            - cell [ref=f25e165]:
+              - paragraph [ref=f25e166]: 2026-07-20 ~ 2026-08-20
+            - cell [ref=f25e167]:
+              - generic [ref=f25e168]:
+                - button "编辑" [ref=f25e169]
+                - button "提前开始" [ref=f25e170]
+                - link "配置详情页" [ref=f25e171] [cursor=pointer]:
+                  - /url: /admin/activities/code-security-flash-sale/template
+  - region "Notifications (F8)":
+    - list
+  - generic [ref=f25e172]:
+    - button "Toggle Nuxt DevTools" [ref=f25e173] [cursor=pointer]
+    - generic "Page load time" [ref=f25e177]:
+      - generic [ref=f25e178]: "19"
+      - generic [ref=f25e179]: ms
+    - button "Toggle Component Inspector" [ref=f25e181] [cursor=pointer]

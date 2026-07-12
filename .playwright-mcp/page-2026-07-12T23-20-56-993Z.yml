@@ -1,0 +1,358 @@
+- generic [ref=f18e2]:
+  - banner [ref=f18e3]:
+    - generic [ref=f18e4]:
+      - link "奇安信 AI 开放平台" [ref=f18e5] [cursor=pointer]:
+        - /url: /
+        - generic [ref=f18e8]:
+          - generic [ref=f18e9]: 奇安信
+          - generic [ref=f18e10]: AI 开放平台
+      - navigation [ref=f18e11]:
+        - link "首页" [ref=f18e12] [cursor=pointer]:
+          - /url: /
+        - link "能力市场" [ref=f18e14] [cursor=pointer]:
+          - /url: /marketplace
+        - link "优惠活动" [ref=f18e15] [cursor=pointer]:
+          - /url: /promotions
+      - generic [ref=f18e16]:
+        - button [ref=f18e17]
+        - link "企业工作台" [ref=f18e20] [cursor=pointer]:
+          - /url: /enterprise
+        - button [ref=f18e24] [cursor=pointer]
+  - main [ref=f18e26]:
+    - generic [ref=f18e27]:
+      - generic [ref=f18e33]:
+        - generic [ref=f18e34]: AI安全能力统一市场
+        - heading "安全AI能力 一站式获取" [level=1] [ref=f18e37]
+        - paragraph [ref=f18e38]: 奇安信AI开放平台汇聚安全大模型、智能应用与专业工具，统一市场、按需选用，让安全能力触手可及。
+        - generic [ref=f18e39]:
+          - link "探索能力市场" [ref=f18e40] [cursor=pointer]:
+            - /url: /marketplace
+          - link "企业咨询" [ref=f18e43] [cursor=pointer]:
+            - /url: mailto:enterprise@qianxin.ai
+        - generic [ref=f18e46]:
+          - generic [ref=f18e47]: 等保三级认证
+          - generic [ref=f18e49]: 数据安全合规
+          - generic [ref=f18e51]: 99.9% SLA保障
+      - generic [ref=f18e55]:
+        - generic [ref=f18e59]:
+          - paragraph [ref=f18e60]: 18+
+          - paragraph [ref=f18e61]: AI安全能力
+        - generic [ref=f18e65]:
+          - paragraph [ref=f18e66]: 1亿+
+          - paragraph [ref=f18e67]: 累计调用
+        - generic [ref=f18e71]:
+          - paragraph [ref=f18e72]: 5000+
+          - paragraph [ref=f18e73]: 企业客户
+        - generic [ref=f18e77]:
+          - paragraph [ref=f18e78]: 100万+
+          - paragraph [ref=f18e79]: 安全事件处理
+      - generic [ref=f18e83]:
+        - generic [ref=f18e84]:
+          - generic [ref=f18e85]: 热门能力
+          - heading "最受欢迎的安全AI能力" [level=2] [ref=f18e88]
+          - paragraph [ref=f18e89]: 精选热门安全大模型与智能应用，助力您的安全运营更智能、更高效
+        - generic [ref=f18e90]:
+          - generic [ref=f18e92]:
+            - generic [ref=f18e98]:
+              - generic [ref=f18e99]:
+                - heading "奇安信安全大模型" [level=3] [ref=f18e100]
+                - generic [ref=f18e101]: 模型
+                - generic [ref=f18e102]: HOT
+              - generic [ref=f18e103]:
+                - generic [ref=f18e104]: 100B 参数
+                - generic [ref=f18e106]: "4.9"
+                - generic [ref=f18e108]: 1280万+
+              - paragraph [ref=f18e110]: 基于千亿参数的安全领域大语言模型，深度融合奇安信20年安全知识库，支持威胁分析、安全问答、报告生成等多种安全场景
+              - generic [ref=f18e111]:
+                - generic [ref=f18e112]: 大语言模型
+                - generic [ref=f18e113]: 安全分析
+                - generic [ref=f18e114]: 威胁检测
+              - link "快速体验" [ref=f18e115] [cursor=pointer]:
+                - /url: /marketplace/qax-security-llm
+            - generic [ref=f18e123]:
+              - generic [ref=f18e124]:
+                - heading "威胁检测模型 V3" [level=3] [ref=f18e125]
+                - generic [ref=f18e126]: 模型
+                - generic [ref=f18e127]: HOT
+              - generic [ref=f18e128]:
+                - generic [ref=f18e129]: 7B 参数
+                - generic [ref=f18e131]: "4.8"
+                - generic [ref=f18e133]: 860万+
+              - paragraph [ref=f18e135]: 专注高级威胁识别，支持APT攻击链分析、恶意流量检测与IOC自动提取，检测率达99.2%
+              - generic [ref=f18e136]:
+                - generic [ref=f18e137]: APT检测
+                - generic [ref=f18e138]: 流量分析
+                - generic [ref=f18e139]: IOC提取
+              - link "快速体验" [ref=f18e140] [cursor=pointer]:
+                - /url: /marketplace/threat-detect-v3
+            - generic [ref=f18e148]:
+              - generic [ref=f18e149]:
+                - heading "代码安全扫描模型" [level=3] [ref=f18e150]
+                - generic [ref=f18e151]: 模型
+                - generic [ref=f18e152]: HOT
+              - generic [ref=f18e153]:
+                - generic [ref=f18e154]: 13B 参数
+                - generic [ref=f18e156]: "4.8"
+                - generic [ref=f18e158]: 720万+
+              - paragraph [ref=f18e160]: 源代码安全审计模型，支持SAST/DAST分析、安全编码建议与漏洞模式识别
+              - generic [ref=f18e161]:
+                - generic [ref=f18e162]: SAST
+                - generic [ref=f18e163]: 代码审计
+                - generic [ref=f18e164]: 安全编码
+              - link "快速体验" [ref=f18e165] [cursor=pointer]:
+                - /url: /marketplace/code-security-scan
+            - generic [ref=f18e173]:
+              - generic [ref=f18e174]:
+                - heading "智能安全运营中心" [level=3] [ref=f18e175]
+                - generic [ref=f18e176]: 应用
+                - generic [ref=f18e177]: HOT
+              - generic [ref=f18e178]:
+                - generic [ref=f18e179]: "4.9"
+                - generic [ref=f18e181]: 56万+
+              - paragraph [ref=f18e183]: AI驱动的安全运营中心，集成告警聚合、威胁研判、自动化响应，将MTTR从小时级缩短至分钟级
+              - generic [ref=f18e184]:
+                - generic [ref=f18e185]: SOC
+                - generic [ref=f18e186]: 告警研判
+                - generic [ref=f18e187]: 事件关联
+              - link "快速体验" [ref=f18e188] [cursor=pointer]:
+                - /url: /marketplace/smart-soc
+          - generic [ref=f18e191]:
+            - button [ref=f18e192]
+            - button [ref=f18e193]
+            - button [ref=f18e194]
+            - button [ref=f18e195]
+        - link "查看全部能力 →" [ref=f18e197] [cursor=pointer]:
+          - /url: /marketplace
+      - generic [ref=f18e201]:
+        - generic [ref=f18e202]:
+          - generic [ref=f18e203]: 安全能力矩阵
+          - heading "全域安全能力覆盖" [level=2] [ref=f18e206]
+          - paragraph [ref=f18e207]: 六大安全领域，18+专业AI能力，构建全方位智能安全防护体系
+        - generic [ref=f18e208]:
+          - link "网络安全 3 项能力 代表模型：日志智能分析模型 查看能力" [ref=f18e209] [cursor=pointer]:
+            - /url: /marketplace?type=network
+            - generic [ref=f18e213]:
+              - heading "网络安全" [level=3] [ref=f18e214]
+              - generic [ref=f18e215]: 3 项能力
+              - paragraph [ref=f18e217]: 代表模型：日志智能分析模型
+            - generic [ref=f18e218]: 查看能力
+          - link "威胁检测 5 项能力 代表模型：威胁检测模型 V3 查看能力" [ref=f18e221] [cursor=pointer]:
+            - /url: /marketplace?type=threat
+            - generic [ref=f18e225]:
+              - heading "威胁检测" [level=3] [ref=f18e226]
+              - generic [ref=f18e227]: 5 项能力
+              - paragraph [ref=f18e229]: 代表模型：威胁检测模型 V3
+            - generic [ref=f18e230]: 查看能力
+          - link "漏洞分析 4 项能力 代表模型：漏洞分析专家 查看能力" [ref=f18e233] [cursor=pointer]:
+            - /url: /marketplace?type=vulnerability
+            - generic [ref=f18e237]:
+              - heading "漏洞分析" [level=3] [ref=f18e238]
+              - generic [ref=f18e239]: 4 项能力
+              - paragraph [ref=f18e241]: 代表模型：漏洞分析专家
+            - generic [ref=f18e242]: 查看能力
+          - link "合规审计 3 项能力 代表模型：合规卫士 查看能力" [ref=f18e245] [cursor=pointer]:
+            - /url: /marketplace?type=compliance
+            - generic [ref=f18e249]:
+              - heading "合规审计" [level=3] [ref=f18e250]
+              - generic [ref=f18e251]: 3 项能力
+              - paragraph [ref=f18e253]: 代表模型：合规卫士
+            - generic [ref=f18e254]: 查看能力
+          - link "代码安全 4 项能力 代表模型：代码安全扫描模型 查看能力" [ref=f18e257] [cursor=pointer]:
+            - /url: /marketplace?type=code
+            - generic [ref=f18e261]:
+              - heading "代码安全" [level=3] [ref=f18e262]
+              - generic [ref=f18e263]: 4 项能力
+              - paragraph [ref=f18e265]: 代表模型：代码安全扫描模型
+            - generic [ref=f18e266]: 查看能力
+          - link "应急响应 3 项能力 代表模型：应急响应模型 查看能力" [ref=f18e269] [cursor=pointer]:
+            - /url: /marketplace?type=incident
+            - generic [ref=f18e273]:
+              - heading "应急响应" [level=3] [ref=f18e274]
+              - generic [ref=f18e275]: 3 项能力
+              - paragraph [ref=f18e277]: 代表模型：应急响应模型
+            - generic [ref=f18e278]: 查看能力
+      - generic [ref=f18e282]:
+        - generic [ref=f18e283]:
+          - generic [ref=f18e284]: 企业专属
+          - heading "企业专属方案" [level=2] [ref=f18e287]
+          - paragraph [ref=f18e288]: 为企业客户提供统一采购、成员管理、用量管控与专属折扣，让团队协作更高效
+          - generic [ref=f18e289]: 已服务5000+企业客户
+        - generic [ref=f18e292]:
+          - generic [ref=f18e296]:
+            - paragraph [ref=f18e299]: 5000+
+            - heading "企业客户" [level=3] [ref=f18e300]
+            - paragraph [ref=f18e301]: 集中采购AI安全能力，统一结算与管理，简化企业采购流程
+          - generic [ref=f18e305]:
+            - paragraph [ref=f18e308]: 50万+
+            - heading "开发者用户" [level=3] [ref=f18e309]
+            - paragraph [ref=f18e310]: 灵活的成员邀请与角色权限管理，支持管理员、开发者、财务等多种角色
+          - generic [ref=f18e314]:
+            - paragraph [ref=f18e317]: 1亿+
+            - heading "API调用" [level=3] [ref=f18e318]
+            - paragraph [ref=f18e319]: 实时监控成员API调用量与Token消耗，设置用量上限与告警阈值
+          - generic [ref=f18e323]:
+            - paragraph [ref=f18e326]: 30%
+            - heading "专属折扣" [level=3] [ref=f18e327]
+            - paragraph [ref=f18e328]: 企业客户享受专属批量折扣，充能包单价更低，性价比更高
+        - link "了解企业方案" [ref=f18e330] [cursor=pointer]:
+          - /url: /enterprise
+      - generic [ref=f18e334]:
+        - generic [ref=f18e335]:
+          - generic [ref=f18e336]: 客户信赖
+          - heading "深受行业领军者信赖" [level=2] [ref=f18e339]
+          - paragraph [ref=f18e340]: 从金融到能源，从政府到互联网，数百家企业选择奇安信AI开放平台
+        - generic [ref=f18e341]:
+          - generic [ref=f18e342]:
+            - paragraph [ref=f18e345]: 奇安信AI开放平台的安全大模型帮助我们实现了威胁研判自动化，安全运营效率提升了300%，MTTR从4小时缩短至30分钟。
+            - generic [ref=f18e355]:
+              - paragraph [ref=f18e356]: 张明
+              - paragraph [ref=f18e357]: 信息安全总监 · 某大型金融机构
+          - generic [ref=f18e358]:
+            - paragraph [ref=f18e361]: 威胁检测模型的APT攻击链分析能力非常强大，帮助我们发现了多起高级持续性威胁，有效保障了国家关键基础设施安全运行。
+            - generic [ref=f18e371]:
+              - paragraph [ref=f18e372]: 李伟
+              - paragraph [ref=f18e373]: 安全运营负责人 · 某能源企业
+          - generic [ref=f18e374]:
+            - paragraph [ref=f18e377]: 代码安全扫描模型深度集成到我们的DevSecOps流程中，上线前漏洞发现率提升了85%，大幅降低了安全风险和修复成本。
+            - generic [ref=f18e387]:
+              - paragraph [ref=f18e388]: 王芳
+              - paragraph [ref=f18e389]: 技术架构师 · 某政府单位
+      - generic [ref=f18e393]:
+        - generic [ref=f18e394]:
+          - generic [ref=f18e395]: 灵活定价
+          - heading "选择适合您的方案" [level=2] [ref=f18e398]
+          - paragraph [ref=f18e399]: 从个人开发者到大型企业，我们提供灵活的定价方案满足不同需求
+        - generic [ref=f18e400]:
+          - button "充能包" [ref=f18e401]
+          - button "模型套餐" [ref=f18e402]
+          - button "应用套餐" [ref=f18e403]
+        - generic [ref=f18e404]:
+          - generic [ref=f18e405]:
+            - heading "体验包" [level=3] [ref=f18e406]
+            - paragraph [ref=f18e407]: 100万Token
+            - generic [ref=f18e408]: ¥99
+            - paragraph [ref=f18e409]: ¥0.099/千Token
+            - list [ref=f18e411]:
+              - listitem [ref=f18e412]: 基础模型调用
+              - listitem [ref=f18e414]: 标准响应速度
+              - listitem [ref=f18e416]: 社区技术支持
+            - link "选择方案" [ref=f18e418] [cursor=pointer]:
+              - /url: /console/packs
+          - generic [ref=f18e420]:
+            - generic [ref=f18e421]: 最受欢迎
+            - heading "专业包" [level=3] [ref=f18e423]
+            - paragraph [ref=f18e424]: 500万Token
+            - generic [ref=f18e425]: ¥399¥495
+            - paragraph [ref=f18e426]: ¥0.080/千Token
+            - list [ref=f18e428]:
+              - listitem [ref=f18e429]: 全模型调用
+              - listitem [ref=f18e431]: 优先响应速度
+              - listitem [ref=f18e433]: 工单技术支持
+              - listitem [ref=f18e435]: API调用统计
+            - link "立即购买" [ref=f18e437] [cursor=pointer]:
+              - /url: /console/packs
+          - generic [ref=f18e439]:
+            - heading "企业包" [level=3] [ref=f18e440]
+            - paragraph [ref=f18e441]: 2000万Token
+            - generic [ref=f18e442]: ¥1,499¥1,980
+            - paragraph [ref=f18e443]: ¥0.075/千Token
+            - list [ref=f18e445]:
+              - listitem [ref=f18e446]: 全模型调用
+              - listitem [ref=f18e448]: 最高响应速度
+              - listitem [ref=f18e450]: 1对1技术支持
+              - listitem [ref=f18e452]: API调用统计
+              - listitem [ref=f18e454]: 专属模型实例
+              - listitem [ref=f18e456]: SLA保障
+            - link "选择方案" [ref=f18e458] [cursor=pointer]:
+              - /url: /console/packs
+        - link "查看完整定价" [ref=f18e461] [cursor=pointer]:
+          - /url: /portal/pricing
+      - generic [ref=f18e465]:
+        - generic [ref=f18e466]:
+          - generic [ref=f18e467]: 快速接入
+          - heading "3步开启安全AI之旅" [level=2] [ref=f18e470]
+          - paragraph [ref=f18e471]: 简单三步，即刻接入专业安全AI能力
+        - generic [ref=f18e473]:
+          - generic [ref=f18e474]:
+            - generic [ref=f18e475]:
+              - generic [ref=f18e476]: "1"
+              - generic [ref=f18e478]:
+                - heading "注册账号" [level=3] [ref=f18e481]
+                - paragraph [ref=f18e482]: 免费注册奇安信AI开放平台账号，即刻获得体验包
+            - generic [ref=f18e483]:
+              - generic [ref=f18e484]: "2"
+              - generic [ref=f18e486]:
+                - heading "获取Key" [level=3] [ref=f18e489]
+                - paragraph [ref=f18e490]: 在控制台创建API Key，一键获取调用凭证
+            - generic [ref=f18e491]:
+              - generic [ref=f18e492]: "3"
+              - generic [ref=f18e494]:
+                - heading "调用API" [level=3] [ref=f18e497]
+                - paragraph [ref=f18e498]: 按照文档指引，快速集成安全AI能力
+            - link "立即开始" [ref=f18e500] [cursor=pointer]:
+              - /url: /console/keys/create
+          - generic [ref=f18e503]:
+            - generic [ref=f18e504]: Terminal
+            - code [ref=f18e512]: "curl https://api.qianxin.ai/v1/chat/completions \\ -H \"Authorization: Bearer YOUR_API_KEY\" \\ -H \"Content-Type: application/json\" \\ -d '{ \"model\": \"qax-security-llm\", \"messages\": [ {\"role\": \"user\", \"content\": \"分析这段日志中的异常行为\"} ] }'"
+      - generic [ref=f18e519]:
+        - generic [ref=f18e520]:
+          - heading "开始使用安全AI能力" [level=2] [ref=f18e521]
+          - paragraph [ref=f18e522]: 注册即可获得体验包，探索全部安全AI能力。无需信用卡，即刻开启智能安全之旅。
+        - generic [ref=f18e523]:
+          - link "免费注册" [ref=f18e524] [cursor=pointer]:
+            - /url: /portal/register
+          - link "联系销售" [ref=f18e527] [cursor=pointer]:
+            - /url: mailto:enterprise@qianxin.ai
+      - generic [ref=f18e531]:
+        - generic [ref=f18e532]:
+          - generic [ref=f18e533]:
+            - generic [ref=f18e537]:
+              - generic [ref=f18e538]: 奇安信
+              - generic [ref=f18e539]: AI 开放平台
+            - paragraph [ref=f18e540]: 以AI之力，守护数字世界安全。奇安信AI开放平台提供一站式AI安全能力服务。
+          - generic [ref=f18e541]:
+            - heading "产品能力" [level=4] [ref=f18e542]
+            - list [ref=f18e543]:
+              - listitem [ref=f18e544]:
+                - link "安全大模型" [ref=f18e545] [cursor=pointer]:
+                  - /url: /marketplace
+              - listitem [ref=f18e546]:
+                - link "威胁检测" [ref=f18e547] [cursor=pointer]:
+                  - /url: /marketplace
+              - listitem [ref=f18e548]:
+                - link "漏洞分析" [ref=f18e549] [cursor=pointer]:
+                  - /url: /marketplace
+              - listitem [ref=f18e550]:
+                - link "代码安全" [ref=f18e551] [cursor=pointer]:
+                  - /url: /marketplace
+          - generic [ref=f18e552]:
+            - heading "开发者资源" [level=4] [ref=f18e553]
+            - list [ref=f18e554]:
+              - listitem [ref=f18e555]:
+                - link "API文档" [ref=f18e556] [cursor=pointer]:
+                  - /url: /console/docs
+              - listitem [ref=f18e557]:
+                - link "SDK下载" [ref=f18e558] [cursor=pointer]:
+                  - /url: /console/docs
+              - listitem [ref=f18e559]:
+                - link "开发者指南" [ref=f18e560] [cursor=pointer]:
+                  - /url: /console/docs
+              - listitem [ref=f18e561]:
+                - link "帮助中心" [ref=f18e562] [cursor=pointer]:
+                  - /url: /console
+          - generic [ref=f18e563]:
+            - heading "联系我们" [level=4] [ref=f18e564]
+            - list [ref=f18e565]:
+              - listitem [ref=f18e566]:
+                - link "公司介绍" [ref=f18e567] [cursor=pointer]:
+                  - /url: mailto:enterprise@qianxin.ai
+              - listitem [ref=f18e568]:
+                - link "隐私政策" [ref=f18e569] [cursor=pointer]:
+                  - /url: mailto:enterprise@qianxin.ai
+              - listitem [ref=f18e570]:
+                - link "服务条款" [ref=f18e571] [cursor=pointer]:
+                  - /url: mailto:enterprise@qianxin.ai
+              - listitem [ref=f18e572]:
+                - link "联系销售" [ref=f18e573] [cursor=pointer]:
+                  - /url: mailto:enterprise@qianxin.ai
+        - generic [ref=f18e574]: © 2026 奇安信科技集团股份有限公司. 保留所有权利.
