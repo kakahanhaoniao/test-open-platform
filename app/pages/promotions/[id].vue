@@ -154,7 +154,9 @@ function formatPrice(price: number) {
               <UIcon name="i-lucide-file-text" class="w-5 h-5 text-primary-500" />
               活动详情
             </h2>
-            <div class="prose prose-sm max-w-none text-gray-600" v-html="renderedDetail" />
+            <ClientOnly>
+              <div class="prose prose-sm max-w-none text-gray-600" v-html="renderedDetail" />
+            </ClientOnly>
           </section>
 
           <!-- Related Capabilities -->

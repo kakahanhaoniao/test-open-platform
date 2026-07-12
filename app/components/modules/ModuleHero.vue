@@ -46,12 +46,14 @@ const bgStyle = computed(() => props.module.props?.bgStyle || 'light')
         {{ title }}
       </h2>
 
-      <div
-        v-if="description"
-        class="text-lg mb-8 prose max-w-none mx-auto"
-        :class="bgStyle === 'dark' ? 'text-white/70 prose-invert' : 'text-gray-600'"
-        v-html="md.render(description)"
-      />
+      <ClientOnly>
+        <div
+          v-if="description"
+          class="text-lg mb-8 prose max-w-none mx-auto"
+          :class="bgStyle === 'dark' ? 'text-white/70 prose-invert' : 'text-gray-600'"
+          v-html="md.render(description)"
+        />
+      </ClientOnly>
 
       <div v-if="buttons.length" class="flex flex-wrap justify-center gap-4">
         <UButton

@@ -176,13 +176,15 @@ print(response.choices[0].message.content)`
       <div class="flex gap-6">
         <!-- Left column: module rendering -->
         <div data-module-area class="flex-1 min-w-0 space-y-6">
-          <ModuleRenderer
-            v-for="mod in visibleModules"
-            :key="mod.id"
-            :module="mod"
-            :capability="capability"
-            :capability-type="capabilityType"
-          />
+          <ClientOnly>
+            <ModulesModuleRenderer
+              v-for="mod in visibleModules"
+              :key="mod.id"
+              :module="mod"
+              :capability="capability"
+              :capability-type="capabilityType"
+            />
+          </ClientOnly>
         </div>
 
         <!-- Right column: sticky sidebar -->

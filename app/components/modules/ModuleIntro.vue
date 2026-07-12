@@ -41,10 +41,12 @@ const image = computed(() => props.module.props?.image || '')
 
     <!-- Center layout -->
     <div v-if="layout === 'center'" class="max-w-3xl mx-auto">
-      <div
-        class="prose prose-gray max-w-none mb-6"
-        v-html="md.render(body)"
-      />
+      <ClientOnly>
+        <div
+          class="prose prose-gray max-w-none mb-6"
+          v-html="md.render(body)"
+        />
+      </ClientOnly>
       <img
         v-if="image"
         :src="image"
@@ -56,10 +58,12 @@ const image = computed(() => props.module.props?.image || '')
     <!-- Left-right layout: text left + image right -->
     <div v-else-if="layout === 'left-right'" class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
       <div>
-        <div
-          class="prose prose-gray max-w-none"
-          v-html="md.render(body)"
-        />
+        <ClientOnly>
+          <div
+            class="prose prose-gray max-w-none"
+            v-html="md.render(body)"
+          />
+        </ClientOnly>
       </div>
       <div v-if="image">
         <img
@@ -86,10 +90,12 @@ const image = computed(() => props.module.props?.image || '')
         <UIcon name="i-lucide-image" class="w-12 h-12 text-gray-300" />
       </div>
       <div class="order-1 md:order-2">
-        <div
-          class="prose prose-gray max-w-none"
-          v-html="md.render(body)"
-        />
+        <ClientOnly>
+          <div
+            class="prose prose-gray max-w-none"
+            v-html="md.render(body)"
+          />
+        </ClientOnly>
       </div>
     </div>
   </div>

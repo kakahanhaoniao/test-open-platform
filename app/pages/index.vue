@@ -251,8 +251,10 @@ const testimonials = [
   <div>
     <!-- Hero Section with Canvas Animation -->
     <section class="relative overflow-hidden bg-gradient-to-br from-white via-primary-50/30 to-accent-50/20">
-      <!-- Canvas particle animation -->
-      <canvas ref="heroCanvas" class="absolute inset-0 pointer-events-none z-0" />
+      <!-- Canvas particle animation (client-only to avoid hydration mismatch) -->
+      <ClientOnly>
+        <canvas ref="heroCanvas" class="absolute inset-0 pointer-events-none z-0" />
+      </ClientOnly>
 
       <!-- Grid / Circuit pattern background -->
       <div class="absolute inset-0 hero-grid pointer-events-none z-0" />
