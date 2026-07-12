@@ -362,15 +362,13 @@ print(response.choices[0].message.content)`
         <div class="relative bg-white rounded-2xl shadow-2xl w-full max-w-xl mx-4 max-h-[90vh] overflow-y-auto">
           <!-- Header -->
           <div class="flex items-center justify-between px-6 py-5 border-b border-gray-100">
-            <div class="flex items-center justify-between">
-              <h2 class="text-lg font-bold text-gray-900">接入引导</h2>
-              <button
-                class="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-gray-100 transition-colors"
-                @click="showIntegrationModal = false"
-              >
-                <UIcon name="i-lucide-x" class="w-5 h-5 text-gray-400" />
-              </button>
-            </div>
+            <h2 class="text-lg font-bold text-gray-900">接入引导</h2>
+            <button
+              class="w-8 h-8 rounded-lg flex items-center justify-center hover:bg-gray-100 transition-colors"
+              @click="showIntegrationModal = false"
+            >
+              <UIcon name="i-lucide-x" class="w-5 h-5 text-gray-400" />
+            </button>
           </div>
 
           <!-- Steps -->
