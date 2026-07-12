@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { activities, models, apps } from '~/data/mock'
+import { activities, models, apps, getDefaultTemplate } from '~/data/mock'
+import type { PageTemplate, TemplateModule, ModuleType } from '~/data/mock'
 
 const route = useRoute()
 const activityId = route.params.id as string
@@ -7,13 +8,109 @@ const activity = activities.find(a => a.id === activityId)
 
 useHead({ title: `${activity?.title || '活动'} 模板配置 - 奇安信AI运营后台` })
 
+// Load template from localStorage or use default
+const storageKey = `admin-template-${activityId}`
+const savedTemplate = typeof localStorage !== 'undefined' ? localStorage.getItem(storageKey) : null
+
+// Activity templates use 'model' as base type since there's no 'activity' targetType
+const template = reactive<PageTemplate>(
+  savedTemplate
+    ? JSON.parse(savedTemplate)
+    : {
+        id: `tpl-${activityId}`,
+        targetType: 'model' as const,
+        targetId: activityId,
+        theme: { bgStyle: 'light' as const },
+        modules: [
+          {
+            id: 'mod-banner-1',
+            type: 'banner' as ModuleType,
+            visible: true,
+            order: 1,
+            props: {
+              gradient: activity?.gradient || 'from-primary-700 via-primary-600 to-accent-500',
+              title: activity?.title || '',
+              subtitle: activity?.subtitle || '',
+              badge: activity?.discount || '',
+              ctaText: activity?.ctaText || '立即参与'
+            },
+            spacing: { top: 'md' as const, bottom: 'md' as const },
+            background: 'white' as const
+          },
+          {
+            id: 'mod-intro-2',
+            type: 'intro' as ModuleType,
+            visible: true,
+            order: 2,
+            props: {
+              title: '活动详情',
+              body: activity?.description || ''
+            },
+            spacing: { top: 'md' as const, bottom: 'md' as const },
+            background: 'white' as const
+          },
+          {
+            id: 'mod-advantages-3',
+            type: 'advantages' as ModuleType,
+            visible: true,
+            order: 3,
+            props: {
+              title: '活动权益',
+              items: (activity?.benefits || []).map((b: string) => ({
+                advantage: b,
+                traditional: ''
+              }))
+            },
+            spacing: { top: 'md' as const, bottom: 'md' as const },
+            background: 'white' as const
+          },
+          {
+            id: 'mod-related-4',
+            type: 'related' as ModuleType,
+            visible: true,
+            order: 4,
+            props: {
+              title: '关联能力',
+              maxCount: 4,
+              ids: activity?.relatedCapabilityIds || []
+            },
+            spacing: { top: 'md' as const, bottom: 'md' as const },
+            background: 'white' as const
+          }
+        ]
+      }
+)
+
+const selectedModuleId = ref<string | null>(null)
+const showAddMenu = ref(false)
+
+const selectedModule = computed(() =>
+  template.modules.find(m => m.id === selectedModuleId.value) || null
+)
+
+// Activity-specific config
+const activityConfig = reactive({
+  // Related capability selector
+  relatedModelIds: activity?.relatedCapabilityIds?.filter(id => models.some(m => m.id === id)) || [],
+  relatedAppIds: (activity?.relatedCapabilityIds || []).filter(id => apps.some(a => a.id === id)),
+  // Discount plan config
+  enableDiscount: !!(activity?.discountPlans?.length),
+  discountPlans: activity?.discountPlans || [],
+  // Countdown toggle
+  enableCountdown: true,
+  countdownEndDate: activity?.endDate || '',
+  // Visual config
+  gradient: activity?.gradient || 'from-primary-700 via-primary-600 to-accent-500',
+  bgPattern: 'none' as string
+})
+
 const gradientPresets = [
-  { label: '紫蓝渐变', value: 'from-primary-700 via-primary-600 to-accent-500', colors: ['#6D28D9', '#7C3AED', '#14B8A6'] },
-  { label: '深紫渐变', value: 'from-deep-800 via-primary-800 to-primary-600', colors: ['#563C71', '#5B21B6', '#7C3AED'] },
-  { label: '红紫渐变', value: 'from-red-700 via-red-600 to-primary-500', colors: ['#B91C1C', '#DC2626', '#8B5CF6'] },
-  { label: '青紫渐变', value: 'from-accent-700 via-accent-600 to-primary-500', colors: ['#0F766E', '#0D9488', '#8B5CF6'] },
-  { label: '蓝紫渐变', value: 'from-blue-700 via-blue-600 to-primary-500', colors: ['#1D4ED8', '#2563EB', '#8B5CF6'] },
-  { label: '橙紫渐变', value: 'from-orange-700 via-orange-600 to-primary-500', colors: ['#C2410C', '#EA580C', '#8B5CF6'] }
+  { label: '紫蓝渐变', value: 'from-primary-700 via-primary-600 to-accent-500' },
+  { label: '深紫渐变', value: 'from-deep-800 via-primary-800 to-primary-600' },
+  { label: '红紫渐变', value: 'from-red-700 via-red-600 to-primary-500' },
+  { label: '青紫渐变', value: 'from-accent-700 via-accent-600 to-primary-500' },
+  { label: '蓝紫渐变', value: 'from-blue-700 via-blue-600 to-primary-500' },
+  { label: '橙紫渐变', value: 'from-orange-700 via-orange-600 to-primary-500' }
 ]
 
 const bgPatterns = [
@@ -23,53 +120,136 @@ const bgPatterns = [
   { label: '波纹', value: 'waves' }
 ]
 
-const discountTypes = [
-  { value: 'discount', label: '折扣' },
-  { value: 'free', label: '免费' },
-  { value: 'bonus', label: '奖金' }
+// Module type metadata
+const moduleTypeLabels: Record<ModuleType, string> = {
+  banner: '横幅',
+  hero: '英雄区',
+  intro: '介绍',
+  features: '特性',
+  advantages: '优势对比',
+  scenarios: '场景',
+  tabs: '标签页',
+  carousel: '轮播',
+  cards: '卡片',
+  steps: '步骤',
+  pricing: '定价',
+  integration: '接入指南',
+  related: '相关推荐'
+}
+
+const moduleTypeIcons: Record<ModuleType, string> = {
+  banner: 'i-lucide-image',
+  hero: 'i-lucide-sparkles',
+  intro: 'i-lucide-file-text',
+  features: 'i-lucide-layers',
+  advantages: 'i-lucide-git-compare',
+  scenarios: 'i-lucide-layout-grid',
+  tabs: 'i-lucide-columns',
+  carousel: 'i-lucide-gallery-horizontal-end',
+  cards: 'i-lucide-square-stack',
+  steps: 'i-lucide-list-ordered',
+  pricing: 'i-lucide-tag',
+  integration: 'i-lucide-plug',
+  related: 'i-lucide-link'
+}
+
+const allModuleTypes: ModuleType[] = [
+  'banner', 'hero', 'intro', 'features', 'advantages',
+  'scenarios', 'tabs', 'carousel', 'cards', 'steps',
+  'pricing', 'integration', 'related'
 ]
 
-const form = reactive({
-  name: activity?.title || '',
-  subtitle: activity?.subtitle || '',
-  description: activity?.description || '',
-  icon: activity?.icon || 'i-lucide-gift',
-  // 优惠配置
-  discountType: 'discount',
-  discountValue: activity?.discount || '',
-  // 视觉配置
-  gradient: activity?.gradient || 'from-primary-700 via-primary-600 to-accent-500',
-  bgPattern: 'none',
-  // 关联内容
-  relatedModels: [models[0]?.id || ''],
-  relatedApps: [apps[0]?.id || ''],
-  // 活动规则
-  rules: activity?.rules ? [...activity.rules] : [''],
-  // 活动权益
-  benefits: activity?.benefits ? [...activity.benefits] : [''],
-  // CTA配置
-  ctaText: activity?.ctaText || '立即参与',
-  ctaLink: ''
-})
+// Drag state
+const dragIndex = ref<number | null>(null)
+const dragOverIndex = ref<number | null>(null)
 
-function addRule() {
-  form.rules.push('')
+function onDragStart(index: number) {
+  dragIndex.value = index
 }
 
-function removeRule(index: number) {
-  form.rules.splice(index, 1)
+function onDragOver(index: number, e: DragEvent) {
+  e.preventDefault()
+  dragOverIndex.value = index
 }
 
-function addBenefit() {
-  form.benefits.push('')
+function onDrop(index: number) {
+  if (dragIndex.value === null || dragIndex.value === index) {
+    dragIndex.value = null
+    dragOverIndex.value = null
+    return
+  }
+  const modules = [...template.modules]
+  const [moved] = modules.splice(dragIndex.value, 1)
+  modules.splice(index, 0, moved)
+  modules.forEach((m, i) => { m.order = i + 1 })
+  template.modules = modules
+  dragIndex.value = null
+  dragOverIndex.value = null
 }
 
-function removeBenefit(index: number) {
-  form.benefits.splice(index, 1)
+function onDragEnd() {
+  dragIndex.value = null
+  dragOverIndex.value = null
+}
+
+function selectModule(id: string) {
+  selectedModuleId.value = id
+}
+
+function toggleVisibility(mod: TemplateModule) {
+  mod.visible = !mod.visible
+}
+
+function addModule(type: ModuleType) {
+  const order = template.modules.length + 1
+  const newModule: TemplateModule = {
+    id: `mod-${type}-${Date.now()}`,
+    type,
+    visible: true,
+    order,
+    props: {},
+    spacing: { top: 'md', bottom: 'md' },
+    background: 'white'
+  }
+  template.modules.push(newModule)
+  selectedModuleId.value = newModule.id
+  showAddMenu.value = false
+}
+
+function removeModule(id: string) {
+  const index = template.modules.findIndex(m => m.id === id)
+  if (index !== -1) {
+    template.modules.splice(index, 1)
+    if (selectedModuleId.value === id) {
+      selectedModuleId.value = null
+    }
+  }
+}
+
+function updateModule(updated: TemplateModule) {
+  const index = template.modules.findIndex(m => m.id === updated.id)
+  if (index !== -1) {
+    template.modules[index] = updated
+  }
+}
+
+function addDiscountPlan() {
+  activityConfig.discountPlans.push({ planId: '', discountPrice: 0 })
+}
+
+function removeDiscountPlan(index: number) {
+  activityConfig.discountPlans.splice(index, 1)
 }
 
 function saveTemplate() {
+  if (typeof localStorage !== 'undefined') {
+    localStorage.setItem(storageKey, JSON.stringify(template))
+  }
   alert('模板配置已保存')
+}
+
+function onClickOutside() {
+  showAddMenu.value = false
 }
 </script>
 
@@ -102,350 +282,275 @@ function saveTemplate() {
           </div>
         </div>
 
-        <!-- Two-column layout -->
-        <div class="grid grid-cols-1 xl:grid-cols-5 gap-6">
-          <!-- Left: Live Preview -->
-          <div class="xl:col-span-2">
-            <div class="bg-white rounded-xl border border-gray-100 p-4 sticky top-6">
-              <div class="flex items-center justify-between mb-4">
-                <h2 class="text-sm font-semibold text-gray-700">实时预览</h2>
-                <span class="text-xs text-gray-400">活动卡片 + 详情页效果</span>
-              </div>
-              <!-- Activity card preview -->
-              <div class="rounded-xl overflow-hidden mb-4">
-                <div :class="['bg-gradient-to-r p-5 text-white', form.gradient]">
-                  <div class="flex items-center gap-2 mb-2">
-                    <UIcon :name="form.icon" class="w-5 h-5" />
-                    <span class="text-sm font-bold">{{ form.name || '活动名称' }}</span>
-                  </div>
-                  <p class="text-white/80 text-xs mb-3">{{ form.subtitle || '活动副标题' }}</p>
-                  <div class="flex items-center justify-between">
-                    <span class="px-3 py-1 bg-white/20 rounded-full text-sm font-bold">{{ form.discountValue || '优惠' }}</span>
-                    <span class="text-xs text-white/70">{{ form.ctaText }}</span>
+        <!-- Three-column layout -->
+        <div class="flex gap-4 items-start">
+          <!-- Left: Module list (w-60) -->
+          <div class="w-60 shrink-0">
+            <div class="bg-white rounded-xl border border-gray-100 overflow-hidden sticky top-6">
+              <div class="flex items-center justify-between px-4 py-3 border-b border-gray-100">
+                <h2 class="text-sm font-semibold text-gray-700">模块列表</h2>
+                <div class="relative">
+                  <button
+                    class="flex items-center gap-1 px-2 py-1 text-xs text-primary-600 hover:bg-primary-50 rounded-lg transition-colors"
+                    @click="showAddMenu = !showAddMenu"
+                  >
+                    <UIcon name="i-lucide-plus" class="w-3.5 h-3.5" />
+                    添加
+                  </button>
+                  <div
+                    v-if="showAddMenu"
+                    class="absolute right-0 top-full mt-1 w-44 bg-white rounded-lg border border-gray-200 shadow-lg z-20 py-1 max-h-80 overflow-y-auto"
+                    @click.stop
+                  >
+                    <button
+                      v-for="type in allModuleTypes"
+                      :key="type"
+                      class="flex items-center gap-2 w-full px-3 py-2 text-sm text-gray-700 hover:bg-primary-50 hover:text-primary-600 transition-colors"
+                      @click="addModule(type)"
+                    >
+                      <UIcon :name="moduleTypeIcons[type]" class="w-4 h-4" />
+                      {{ moduleTypeLabels[type] }}
+                    </button>
                   </div>
                 </div>
               </div>
-              <!-- Activity detail preview -->
-              <div class="border border-gray-200 rounded-lg overflow-hidden bg-[#FAFAFA]">
-                <div :class="['bg-gradient-to-r p-4 text-white', form.gradient]">
-                  <div class="flex items-center gap-2 mb-1">
-                    <UIcon :name="form.icon" class="w-4 h-4" />
-                    <span class="text-sm font-bold">{{ form.name || '活动名称' }}</span>
+              <div class="max-h-[calc(100vh-220px)] overflow-y-auto">
+                <div
+                  v-for="(mod, index) in template.modules"
+                  :key="mod.id"
+                  class="flex items-center gap-2 px-3 py-2.5 border-b border-gray-50 cursor-pointer transition-all duration-150"
+                  :class="[
+                    selectedModuleId === mod.id
+                      ? 'bg-primary-50 border-l-2 border-l-primary-500'
+                      : 'hover:bg-gray-50 border-l-2 border-l-transparent',
+                    dragOverIndex === index && dragIndex !== index ? 'border-t-2 border-t-primary-400' : '',
+                    !mod.visible ? 'opacity-50' : ''
+                  ]"
+                  draggable="true"
+                  @dragstart="onDragStart(index)"
+                  @dragover="onDragOver(index, $event)"
+                  @drop="onDrop(index)"
+                  @dragend="onDragEnd"
+                  @click="selectModule(mod.id)"
+                >
+                  <UIcon name="i-lucide-grip-vertical" class="w-4 h-4 text-gray-300 shrink-0 cursor-grab" />
+                  <div class="w-6 h-6 rounded flex items-center justify-center shrink-0"
+                    :class="selectedModuleId === mod.id ? 'bg-primary-100' : 'bg-gray-100'"
+                  >
+                    <UIcon :name="moduleTypeIcons[mod.type]" class="w-3.5 h-3.5"
+                      :class="selectedModuleId === mod.id ? 'text-primary-600' : 'text-gray-500'"
+                    />
                   </div>
-                  <p class="text-white/80 text-xs">{{ form.subtitle }}</p>
+                  <div class="flex-1 min-w-0">
+                    <p class="text-xs font-medium truncate"
+                      :class="selectedModuleId === mod.id ? 'text-primary-700' : 'text-gray-700'"
+                    >
+                      {{ mod.title || moduleTypeLabels[mod.type] }}
+                    </p>
+                  </div>
+                  <button
+                    class="p-0.5 rounded hover:bg-gray-200 transition-colors"
+                    :title="mod.visible ? '隐藏模块' : '显示模块'"
+                    @click.stop="toggleVisibility(mod)"
+                  >
+                    <UIcon
+                      :name="mod.visible ? 'i-lucide-eye' : 'i-lucide-eye-off'"
+                      class="w-3.5 h-3.5"
+                      :class="mod.visible ? 'text-gray-400' : 'text-gray-300'"
+                    />
+                  </button>
+                  <button
+                    class="p-0.5 rounded hover:bg-red-50 hover:text-red-500 transition-colors text-gray-300"
+                    title="删除模块"
+                    @click.stop="removeModule(mod.id)"
+                  >
+                    <UIcon name="i-lucide-trash-2" class="w-3.5 h-3.5" />
+                  </button>
                 </div>
-                <div class="p-3 space-y-3">
-                  <div>
-                    <h4 class="text-xs font-semibold text-gray-700 mb-1">活动描述</h4>
-                    <p class="text-xs text-gray-500 line-clamp-2">{{ form.description || '暂无描述' }}</p>
-                  </div>
-                  <div>
-                    <h4 class="text-xs font-semibold text-gray-700 mb-1">活动权益</h4>
-                    <div class="space-y-0.5">
-                      <div
-                        v-for="(b, i) in form.benefits.filter(Boolean).slice(0, 3)"
-                        :key="i"
-                        class="flex items-center gap-1.5"
-                      >
-                        <UIcon name="i-lucide-gift" class="w-3 h-3 text-primary-500" />
-                        <span class="text-xs text-gray-600">{{ b }}</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div>
-                    <h4 class="text-xs font-semibold text-gray-700 mb-1">活动规则</h4>
-                    <div class="space-y-0.5">
-                      <div
-                        v-for="(r, i) in form.rules.filter(Boolean).slice(0, 2)"
-                        :key="i"
-                        class="flex items-center gap-1.5"
-                      >
-                        <UIcon name="i-lucide-info" class="w-3 h-3 text-gray-400" />
-                        <span class="text-xs text-gray-500">{{ r }}</span>
-                      </div>
-                    </div>
-                  </div>
+
+                <div
+                  v-if="template.modules.length === 0"
+                  class="text-center py-8 text-gray-400"
+                >
+                  <UIcon name="i-lucide-layout-template" class="w-8 h-8 mx-auto mb-2 opacity-50" />
+                  <p class="text-xs">暂无模块</p>
                 </div>
               </div>
             </div>
           </div>
 
-          <!-- Right: Configuration Form -->
-          <div class="xl:col-span-3 space-y-6">
-            <!-- 基本信息 -->
-            <div class="bg-white rounded-xl border border-gray-100 p-6">
-              <h2 class="text-base font-semibold text-gray-900 mb-1">基本信息</h2>
-              <p class="text-xs text-gray-400 mb-5">配置活动的基本展示信息</p>
-              <div class="space-y-4">
-                <div>
-                  <label class="block text-sm font-medium text-gray-700 mb-1">活动名称</label>
-                  <input
-                    v-model="form.name"
-                    type="text"
-                    class="w-full px-3 py-2 rounded-lg border border-gray-200 text-sm focus:outline-none focus:border-primary-300 focus:ring-2 focus:ring-primary-100 transition-all"
-                  >
-                </div>
-                <div>
-                  <label class="block text-sm font-medium text-gray-700 mb-1">副标题</label>
-                  <input
-                    v-model="form.subtitle"
-                    type="text"
-                    class="w-full px-3 py-2 rounded-lg border border-gray-200 text-sm focus:outline-none focus:border-primary-300 focus:ring-2 focus:ring-primary-100 transition-all"
-                  >
-                </div>
-                <div>
-                  <label class="block text-sm font-medium text-gray-700 mb-1">活动描述</label>
-                  <textarea
-                    v-model="form.description"
-                    rows="3"
-                    class="w-full px-3 py-2 rounded-lg border border-gray-200 text-sm focus:outline-none focus:border-primary-300 focus:ring-2 focus:ring-primary-100 transition-all resize-none"
-                  />
-                </div>
-                <div>
-                  <label class="block text-sm font-medium text-gray-700 mb-1">图标</label>
-                  <input
-                    v-model="form.icon"
-                    type="text"
-                    placeholder="i-lucide-gift"
-                    class="w-full px-3 py-2 rounded-lg border border-gray-200 text-sm focus:outline-none focus:border-primary-300 focus:ring-2 focus:ring-primary-100 transition-all"
-                  >
-                </div>
-              </div>
-            </div>
+          <!-- Center: Template Preview (flex-1) -->
+          <div class="flex-1 min-w-0">
+            <AdminTemplatePreview
+              :modules="template.modules"
+              :selected-module-id="selectedModuleId"
+              :capability="activity"
+              capability-type="model"
+              @select-module="selectModule"
+            />
+          </div>
 
-            <!-- 优惠配置 -->
-            <div class="bg-white rounded-xl border border-gray-100 p-6">
-              <h2 class="text-base font-semibold text-gray-900 mb-1">优惠配置</h2>
-              <p class="text-xs text-gray-400 mb-5">设置活动优惠类型与折扣值</p>
-              <div class="space-y-4">
-                <div>
-                  <label class="block text-sm font-medium text-gray-700 mb-1">折扣类型</label>
-                  <div class="flex gap-3">
-                    <label
-                      v-for="dt in discountTypes"
-                      :key="dt.value"
-                      class="flex items-center gap-2 px-4 py-2 rounded-lg border cursor-pointer transition-all"
-                      :class="form.discountType === dt.value ? 'border-primary-300 bg-primary-50 text-primary-700' : 'border-gray-200 text-gray-600 hover:border-gray-300'"
-                    >
-                      <input
-                        v-model="form.discountType"
-                        type="radio"
-                        :value="dt.value"
-                        class="w-4 h-4 text-primary-600 focus:ring-primary-500"
-                      >
-                      <span class="text-sm">{{ dt.label }}</span>
-                    </label>
-                  </div>
-                </div>
-                <div>
-                  <label class="block text-sm font-medium text-gray-700 mb-1">折扣值</label>
-                  <input
-                    v-model="form.discountValue"
-                    type="text"
-                    placeholder="如: 5折, 免费, ¥10万"
-                    class="w-full px-3 py-2 rounded-lg border border-gray-200 text-sm focus:outline-none focus:border-primary-300 focus:ring-2 focus:ring-primary-100 transition-all"
-                  >
-                </div>
-              </div>
-            </div>
+          <!-- Right: Module Editor + Activity-specific config (w-80) -->
+          <div class="w-80 shrink-0 space-y-4">
+            <!-- Activity-specific config panel -->
+            <div class="bg-white rounded-xl border border-gray-100 p-4 sticky top-6">
+              <h3 class="text-sm font-semibold text-gray-900 mb-3 pb-2 border-b border-gray-100">活动专属配置</h3>
 
-            <!-- 视觉配置 -->
-            <div class="bg-white rounded-xl border border-gray-100 p-6">
-              <h2 class="text-base font-semibold text-gray-900 mb-1">视觉配置</h2>
-              <p class="text-xs text-gray-400 mb-5">配置活动卡片的视觉风格</p>
-              <div class="space-y-4">
+              <!-- Related capability selector -->
+              <div class="space-y-3 mb-4">
                 <div>
-                  <label class="block text-sm font-medium text-gray-700 mb-2">渐变色选择</label>
-                  <div class="grid grid-cols-3 gap-3">
-                    <button
-                      v-for="preset in gradientPresets"
-                      :key="preset.value"
-                      class="rounded-lg p-3 border-2 transition-all text-left"
-                      :class="form.gradient === preset.value ? 'border-primary-500 ring-2 ring-primary-200' : 'border-gray-100 hover:border-gray-200'"
-                      @click="form.gradient = preset.value"
-                    >
-                      <div :class="['h-6 rounded bg-gradient-to-r mb-2', preset.value]" />
-                      <p class="text-xs text-gray-600">{{ preset.label }}</p>
-                    </button>
-                  </div>
-                </div>
-                <div>
-                  <label class="block text-sm font-medium text-gray-700 mb-2">背景图案</label>
-                  <div class="flex gap-3">
-                    <button
-                      v-for="pattern in bgPatterns"
-                      :key="pattern.value"
-                      class="px-4 py-2 rounded-lg border text-sm transition-all"
-                      :class="form.bgPattern === pattern.value ? 'border-primary-300 bg-primary-50 text-primary-700' : 'border-gray-200 text-gray-600 hover:border-gray-300'"
-                      @click="form.bgPattern = pattern.value"
-                    >
-                      {{ pattern.label }}
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- 关联内容 -->
-            <div class="bg-white rounded-xl border border-gray-100 p-6">
-              <h2 class="text-base font-semibold text-gray-900 mb-1">关联内容</h2>
-              <p class="text-xs text-gray-400 mb-5">选择活动关联的模型与应用</p>
-              <div class="space-y-4">
-                <div>
-                  <label class="block text-sm font-medium text-gray-700 mb-2">关联模型</label>
-                  <div class="space-y-2 max-h-40 overflow-y-auto">
+                  <label class="text-xs font-medium text-gray-600 mb-1.5 block">关联模型</label>
+                  <div class="space-y-1.5 max-h-32 overflow-y-auto">
                     <label
                       v-for="m in models"
                       :key="m.id"
-                      class="flex items-center gap-2 p-2 rounded-lg border border-gray-100 hover:border-primary-200 transition-all cursor-pointer"
+                      class="flex items-center gap-2 p-1.5 rounded border border-gray-100 hover:border-primary-200 transition-all cursor-pointer"
                     >
                       <input
-                        v-model="form.relatedModels"
+                        v-model="activityConfig.relatedModelIds"
                         type="checkbox"
                         :value="m.id"
-                        class="w-4 h-4 rounded border-gray-300 text-primary-600 focus:ring-primary-500"
+                        class="w-3.5 h-3.5 rounded border-gray-300 text-primary-600 focus:ring-primary-500"
                       >
-                      <span class="text-sm text-gray-700">{{ m.name }}</span>
+                      <span class="text-xs text-gray-700 truncate">{{ m.name }}</span>
                     </label>
                   </div>
                 </div>
                 <div>
-                  <label class="block text-sm font-medium text-gray-700 mb-2">关联应用</label>
-                  <div class="space-y-2 max-h-40 overflow-y-auto">
+                  <label class="text-xs font-medium text-gray-600 mb-1.5 block">关联应用</label>
+                  <div class="space-y-1.5 max-h-32 overflow-y-auto">
                     <label
                       v-for="a in apps"
                       :key="a.id"
-                      class="flex items-center gap-2 p-2 rounded-lg border border-gray-100 hover:border-primary-200 transition-all cursor-pointer"
+                      class="flex items-center gap-2 p-1.5 rounded border border-gray-100 hover:border-primary-200 transition-all cursor-pointer"
                     >
                       <input
-                        v-model="form.relatedApps"
+                        v-model="activityConfig.relatedAppIds"
                         type="checkbox"
                         :value="a.id"
-                        class="w-4 h-4 rounded border-gray-300 text-primary-600 focus:ring-primary-500"
+                        class="w-3.5 h-3.5 rounded border-gray-300 text-primary-600 focus:ring-primary-500"
                       >
-                      <span class="text-sm text-gray-700">{{ a.name }}</span>
+                      <span class="text-xs text-gray-700 truncate">{{ a.name }}</span>
                     </label>
                   </div>
                 </div>
               </div>
-            </div>
 
-            <!-- 活动规则 -->
-            <div class="bg-white rounded-xl border border-gray-100 p-6">
-              <div class="flex items-center justify-between mb-1">
-                <h2 class="text-base font-semibold text-gray-900">活动规则</h2>
-                <button
-                  class="flex items-center gap-1 px-3 py-1.5 text-xs text-primary-600 hover:bg-primary-50 rounded-lg transition-colors"
-                  @click="addRule"
-                >
-                  <UIcon name="i-lucide-plus" class="w-3 h-3" />
-                  添加规则
-                </button>
-              </div>
-              <p class="text-xs text-gray-400 mb-5">配置活动参与规则说明</p>
-              <div class="space-y-2">
-                <div
-                  v-for="(rule, index) in form.rules"
-                  :key="index"
-                  class="flex items-center gap-2"
-                >
-                  <span class="text-xs text-gray-400 w-6 shrink-0">{{ index + 1 }}.</span>
-                  <input
-                    v-model="form.rules[index]"
-                    type="text"
-                    class="flex-1 px-3 py-2 rounded-lg border border-gray-200 text-sm focus:outline-none focus:border-primary-300 focus:ring-2 focus:ring-primary-100 transition-all"
-                    :placeholder="`规则 ${index + 1}`"
+              <!-- Discount plan config -->
+              <div class="mb-4">
+                <div class="flex items-center justify-between mb-2">
+                  <label class="text-xs font-medium text-gray-600">优惠方案配置</label>
+                  <UToggle v-model="activityConfig.enableDiscount" />
+                </div>
+                <div v-if="activityConfig.enableDiscount" class="space-y-2">
+                  <div
+                    v-for="(plan, i) in activityConfig.discountPlans"
+                    :key="i"
+                    class="flex items-center gap-2"
                   >
+                    <UInput
+                      :model-value="plan.planId"
+                      placeholder="方案ID"
+                      size="sm"
+                      class="flex-1"
+                      @update:model-value="activityConfig.discountPlans[i].planId = $event"
+                    />
+                    <UInput
+                      :model-value="plan.discountPrice"
+                      placeholder="优惠价"
+                      size="sm"
+                      type="number"
+                      class="w-20"
+                      @update:model-value="activityConfig.discountPlans[i].discountPrice = Number($event)"
+                    />
+                    <button
+                      class="p-1 text-gray-400 hover:text-red-500 rounded"
+                      @click="removeDiscountPlan(i)"
+                    >
+                      <UIcon name="i-lucide-x" class="w-3.5 h-3.5" />
+                    </button>
+                  </div>
                   <button
-                    class="p-1.5 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded transition-colors"
-                    @click="removeRule(index)"
+                    class="flex items-center gap-1 text-xs text-primary-600 hover:text-primary-700"
+                    @click="addDiscountPlan"
                   >
-                    <UIcon name="i-lucide-x" class="w-4 h-4" />
+                    <UIcon name="i-lucide-plus" class="w-3 h-3" />
+                    添加优惠方案
+                  </button>
+                </div>
+              </div>
+
+              <!-- Countdown toggle -->
+              <div class="mb-4">
+                <div class="flex items-center justify-between mb-2">
+                  <label class="text-xs font-medium text-gray-600">倒计时</label>
+                  <UToggle v-model="activityConfig.enableCountdown" />
+                </div>
+                <div v-if="activityConfig.enableCountdown">
+                  <UInput
+                    v-model="activityConfig.countdownEndDate"
+                    type="date"
+                    size="sm"
+                    placeholder="截止日期"
+                  />
+                </div>
+              </div>
+
+              <!-- Visual config -->
+              <div class="mb-4">
+                <label class="text-xs font-medium text-gray-600 mb-2 block">渐变色选择</label>
+                <div class="grid grid-cols-3 gap-2">
+                  <button
+                    v-for="preset in gradientPresets"
+                    :key="preset.value"
+                    class="rounded-lg p-2 border-2 transition-all text-left"
+                    :class="activityConfig.gradient === preset.value ? 'border-primary-500 ring-1 ring-primary-200' : 'border-gray-100 hover:border-gray-200'"
+                    @click="activityConfig.gradient = preset.value"
+                  >
+                    <div :class="['h-4 rounded bg-gradient-to-r mb-1', preset.value]" />
+                    <p class="text-[10px] text-gray-500 leading-tight">{{ preset.label }}</p>
+                  </button>
+                </div>
+              </div>
+
+              <div>
+                <label class="text-xs font-medium text-gray-600 mb-2 block">背景图案</label>
+                <div class="flex gap-2">
+                  <button
+                    v-for="pattern in bgPatterns"
+                    :key="pattern.value"
+                    class="px-3 py-1.5 rounded-lg border text-xs transition-all"
+                    :class="activityConfig.bgPattern === pattern.value ? 'border-primary-300 bg-primary-50 text-primary-700' : 'border-gray-200 text-gray-600 hover:border-gray-300'"
+                    @click="activityConfig.bgPattern = pattern.value"
+                  >
+                    {{ pattern.label }}
                   </button>
                 </div>
               </div>
             </div>
 
-            <!-- 活动权益 -->
-            <div class="bg-white rounded-xl border border-gray-100 p-6">
-              <div class="flex items-center justify-between mb-1">
-                <h2 class="text-base font-semibold text-gray-900">活动权益</h2>
-                <button
-                  class="flex items-center gap-1 px-3 py-1.5 text-xs text-primary-600 hover:bg-primary-50 rounded-lg transition-colors"
-                  @click="addBenefit"
-                >
-                  <UIcon name="i-lucide-plus" class="w-3 h-3" />
-                  添加权益
-                </button>
+            <!-- Module editor -->
+            <div class="bg-white rounded-xl border border-gray-100 p-4 max-h-[calc(100vh-500px)] overflow-y-auto">
+              <template v-if="selectedModule">
+                <AdminModuleEditor
+                  :module="selectedModule"
+                  @update:module="updateModule"
+                />
+              </template>
+              <div v-else class="text-center py-8 text-gray-400">
+                <UIcon name="i-lucide-mouse-pointer-click" class="w-8 h-8 mx-auto mb-2 opacity-50" />
+                <p class="text-sm">请选择模块编辑</p>
               </div>
-              <p class="text-xs text-gray-400 mb-5">配置活动可享受的权益列表</p>
-              <div class="space-y-2">
-                <div
-                  v-for="(benefit, index) in form.benefits"
-                  :key="index"
-                  class="flex items-center gap-2"
-                >
-                  <UIcon name="i-lucide-gift" class="w-4 h-4 text-primary-400 shrink-0" />
-                  <input
-                    v-model="form.benefits[index]"
-                    type="text"
-                    class="flex-1 px-3 py-2 rounded-lg border border-gray-200 text-sm focus:outline-none focus:border-primary-300 focus:ring-2 focus:ring-primary-100 transition-all"
-                    :placeholder="`权益 ${index + 1}`"
-                  >
-                  <button
-                    class="p-1.5 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded transition-colors"
-                    @click="removeBenefit(index)"
-                  >
-                    <UIcon name="i-lucide-x" class="w-4 h-4" />
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <!-- CTA配置 -->
-            <div class="bg-white rounded-xl border border-gray-100 p-6">
-              <h2 class="text-base font-semibold text-gray-900 mb-1">CTA配置</h2>
-              <p class="text-xs text-gray-400 mb-5">配置活动行动号召按钮</p>
-              <div class="grid grid-cols-2 gap-4">
-                <div>
-                  <label class="block text-sm font-medium text-gray-700 mb-1">按钮文字</label>
-                  <input
-                    v-model="form.ctaText"
-                    type="text"
-                    placeholder="立即参与"
-                    class="w-full px-3 py-2 rounded-lg border border-gray-200 text-sm focus:outline-none focus:border-primary-300 focus:ring-2 focus:ring-primary-100 transition-all"
-                  >
-                </div>
-                <div>
-                  <label class="block text-sm font-medium text-gray-700 mb-1">跳转链接</label>
-                  <input
-                    v-model="form.ctaLink"
-                    type="text"
-                    placeholder="/market/xxx"
-                    class="w-full px-3 py-2 rounded-lg border border-gray-200 text-sm focus:outline-none focus:border-primary-300 focus:ring-2 focus:ring-primary-100 transition-all"
-                  >
-                </div>
-              </div>
-            </div>
-
-            <!-- Bottom actions -->
-            <div class="flex items-center justify-end gap-3 pt-4 pb-8">
-              <button class="px-6 py-2.5 border border-gray-200 text-gray-600 rounded-lg text-sm hover:bg-gray-50 transition-colors">
-                取消
-              </button>
-              <button class="px-6 py-2.5 border border-primary-200 text-primary-600 rounded-lg text-sm hover:bg-primary-50 transition-colors">
-                预览
-              </button>
-              <button
-                class="px-6 py-2.5 bg-primary-600 text-white rounded-lg text-sm font-medium hover:bg-primary-700 transition-colors"
-                @click="saveTemplate"
-              >
-                保存配置
-              </button>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+
+  <div
+    v-if="showAddMenu"
+    class="fixed inset-0 z-10"
+    @click="onClickOutside"
+  />
 </template>
