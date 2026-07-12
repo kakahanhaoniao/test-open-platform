@@ -85,6 +85,7 @@ function onDrop(index: number) {
   }
   const modules = [...template.modules]
   const [moved] = modules.splice(dragIndex.value, 1)
+  if (!moved) return
   modules.splice(index, 0, moved)
   // Reassign order
   modules.forEach((m, i) => { m.order = i + 1 })

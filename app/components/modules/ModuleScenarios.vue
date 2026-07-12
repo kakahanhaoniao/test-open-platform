@@ -34,14 +34,18 @@ const defaultIcons = [
   'i-lucide-globe'
 ]
 
-const defaultItems = [
+const defaultItems: Array<{ icon?: string; title: string; description: string; image?: string }> = [
   { icon: 'i-lucide-building-2', title: '企业安全运营', description: '提升SOC运营效率，实现告警自动研判与响应' },
   { icon: 'i-lucide-shield', title: '威胁检测防御', description: '精准识别APT攻击，自动提取IOC指标' },
   { icon: 'i-lucide-monitor', title: '安全合规审计', description: '自动化合规检查，生成整改建议报告' },
   { icon: 'i-lucide-globe', title: '态势感知分析', description: '全局安全态势可视化，实时威胁监控预警' }
 ]
 
-const items = computed(() => props.module.props?.items?.length ? props.module.props.items : defaultItems)
+const items = computed(() => {
+  const raw = props.module.props?.items
+  if (Array.isArray(raw) && raw.length) return raw as Array<{ icon?: string; title: string; description: string; image?: string }>
+  return defaultItems
+})
 </script>
 
 <template>

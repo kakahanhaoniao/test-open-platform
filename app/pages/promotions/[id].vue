@@ -127,13 +127,13 @@ function formatPrice(price: number) {
               <UButton
                 :label="activity.category === '免费体验' || activity.category === '新客专享' ? '立即领取' : '购买优惠套餐'"
                 icon="i-lucide-gift"
-                color="white"
+                color="neutral"
                 size="xl"
               />
               <UButton
                 label="咨询客服"
                 icon="i-lucide-message-circle"
-                color="white"
+                color="neutral"
                 variant="outline"
                 size="md"
                 class="border-white/30 text-white hover:bg-white/10"
@@ -319,7 +319,7 @@ function formatPrice(price: number) {
             <UButton
               :label="activity.category === '免费体验' || activity.category === '新客专享' ? '立即领取' : '购买优惠套餐'"
               icon="i-lucide-gift"
-              color="white"
+              color="neutral"
               block
               size="lg"
             />

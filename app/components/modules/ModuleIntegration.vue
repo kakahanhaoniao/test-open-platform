@@ -56,7 +56,9 @@ const steps = computed(() => {
   if (useDefault.value) {
     return defaultSteps.value
   }
-  return props.module.props?.steps || []
+  const raw = props.module.props?.steps
+  if (Array.isArray(raw) && raw.length) return raw as Array<{ icon?: string; title: string; description: string; link?: string; code?: string }>
+  return []
 })
 
 function copyCode(code: string) {

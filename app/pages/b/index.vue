@@ -234,7 +234,7 @@ const stats = [
             <UButton
               label="免费注册"
               icon="i-lucide-rocket"
-              color="white"
+              color="neutral"
               size="xl"
             />
             <UButton

@@ -68,7 +68,7 @@ function closeInviteDialog() {
 }
 
 function copyInviteLink() {
-  if (process.client && navigator.clipboard) {
+  if (import.meta.client && navigator.clipboard) {
     navigator.clipboard.writeText(inviteLink.value)
   }
 }

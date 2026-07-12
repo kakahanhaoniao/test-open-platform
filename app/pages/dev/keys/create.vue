@@ -15,7 +15,7 @@ const modelGroups = computed(() => {
     if (!groups[model.typeName]) {
       groups[model.typeName] = []
     }
-    groups[model.typeName].push(model)
+    groups[model.typeName]!.push(model)
   }
   return groups
 })

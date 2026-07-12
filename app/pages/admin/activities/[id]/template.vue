@@ -180,6 +180,7 @@ function onDrop(index: number) {
   }
   const modules = [...template.modules]
   const [moved] = modules.splice(dragIndex.value, 1)
+  if (!moved) return
   modules.splice(index, 0, moved)
   modules.forEach((m, i) => { m.order = i + 1 })
   template.modules = modules
@@ -453,7 +454,7 @@ function onClickOutside() {
                       placeholder="方案ID"
                       size="sm"
                       class="flex-1"
-                      @update:model-value="activityConfig.discountPlans[i].planId = $event"
+                      @update:model-value="activityConfig.discountPlans[i]!.planId = $event"
                     />
                     <UInput
                       :model-value="plan.discountPrice"
@@ -461,7 +462,7 @@ function onClickOutside() {
                       size="sm"
                       type="number"
                       class="w-20"
-                      @update:model-value="activityConfig.discountPlans[i].discountPrice = Number($event)"
+                      @update:model-value="activityConfig.discountPlans[i]!.discountPrice = Number($event)"
                     />
                     <button
                       class="p-1 text-gray-400 hover:text-red-500 rounded"

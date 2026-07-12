@@ -96,15 +96,17 @@ function addItem(key: string, template: Record<string, any>) {
   updateProp(key, items)
 }
 
-function removeItem(key: string, index: number) {
+function removeItem(key: string, index: number | string) {
+  const idx = Number(index)
   const items = [...(moduleProps.value[key] || [])]
-  items.splice(index, 1)
+  items.splice(idx, 1)
   updateProp(key, items)
 }
 
-function updateItem(key: string, index: number, field: string, value: any) {
+function updateItem(key: string, index: number | string, field: string, value: any) {
+  const idx = Number(index)
   const items = [...(moduleProps.value[key] || [])]
-  items[index] = { ...items[index], [field]: value }
+  items[idx] = { ...items[idx], [field]: value }
   updateProp(key, items)
 }
 
@@ -114,15 +116,17 @@ function addTab() {
   updateProp('tabs', tabs)
 }
 
-function removeTab(index: number) {
+function removeTab(index: number | string) {
+  const idx = Number(index)
   const tabs = [...(moduleProps.value.tabs || [])]
-  tabs.splice(index, 1)
+  tabs.splice(idx, 1)
   updateProp('tabs', tabs)
 }
 
-function updateTabName(index: number, name: string) {
+function updateTabName(index: number | string, name: string) {
+  const idx = Number(index)
   const tabs = [...(moduleProps.value.tabs || [])]
-  tabs[index] = { ...tabs[index], name }
+  tabs[idx] = { ...tabs[idx], name }
   updateProp('tabs', tabs)
 }
 
@@ -140,14 +144,14 @@ const bgOptions = [
   { label: '主题浅色', value: 'primary-light' }
 ]
 
-function updateSpacing(key: 'top' | 'bottom', value: string) {
+function updateSpacing(key: 'top' | 'bottom', value: any) {
   emit('update:module', {
     ...props.module,
     spacing: { ...props.module.spacing, [key]: value }
   })
 }
 
-function updateBackground(value: string) {
+function updateBackground(value: any) {
   emit('update:module', { ...props.module, background: value as TemplateModule['background'] })
 }
 
@@ -161,15 +165,17 @@ function addRelatedId() {
   updateProp('ids', ids)
 }
 
-function removeRelatedId(index: number) {
+function removeRelatedId(index: number | string) {
+  const idx = Number(index)
   const ids = [...(moduleProps.value.ids || [])]
-  ids.splice(index, 1)
+  ids.splice(idx, 1)
   updateProp('ids', ids)
 }
 
-function updateRelatedId(index: number, value: string) {
+function updateRelatedId(index: number | string, value: string) {
+  const idx = Number(index)
   const ids = [...(moduleProps.value.ids || [])]
-  ids[index] = value
+  ids[idx] = value
   updateProp('ids', ids)
 }
 </script>
@@ -416,7 +422,7 @@ function updateRelatedId(index: number, value: string) {
               class="p-2.5 rounded-lg border border-gray-100 bg-gray-50/50 space-y-2"
             >
               <div class="flex items-center justify-between">
-                <span class="text-xs text-gray-400">#{{ i + 1 }}</span>
+                <span class="text-xs text-gray-400">#{{ Number(i) + 1 }}</span>
                 <button
                   class="p-1 text-gray-400 hover:text-red-500 rounded"
                   @click="removeItem('items', i)"
@@ -478,7 +484,7 @@ function updateRelatedId(index: number, value: string) {
               class="p-2.5 rounded-lg border border-gray-100 bg-gray-50/50 space-y-2"
             >
               <div class="flex items-center justify-between">
-                <span class="text-xs text-gray-400">#{{ i + 1 }}</span>
+                <span class="text-xs text-gray-400">#{{ Number(i) + 1 }}</span>
                 <button
                   class="p-1 text-gray-400 hover:text-red-500 rounded"
                   @click="removeItem('items', i)"
@@ -543,7 +549,7 @@ function updateRelatedId(index: number, value: string) {
               class="p-2.5 rounded-lg border border-gray-100 bg-gray-50/50 space-y-2"
             >
               <div class="flex items-center justify-between">
-                <span class="text-xs text-gray-400">#{{ i + 1 }}</span>
+                <span class="text-xs text-gray-400">#{{ Number(i) + 1 }}</span>
                 <button
                   class="p-1 text-gray-400 hover:text-red-500 rounded"
                   @click="removeItem('items', i)"
@@ -604,7 +610,7 @@ function updateRelatedId(index: number, value: string) {
               <UIcon name="i-lucide-grip-vertical" class="w-4 h-4 text-gray-300 shrink-0 cursor-grab" />
               <UInput
                 :model-value="tab.name"
-                :placeholder="`标签 ${i + 1}`"
+                :placeholder="`标签 ${Number(i) + 1}`"
                 size="sm"
                 class="flex-1"
                 @update:model-value="updateTabName(i, $event)"
@@ -656,7 +662,7 @@ function updateRelatedId(index: number, value: string) {
               class="p-2.5 rounded-lg border border-gray-100 bg-gray-50/50 space-y-2"
             >
               <div class="flex items-center justify-between">
-                <span class="text-xs text-gray-400">#{{ i + 1 }}</span>
+                <span class="text-xs text-gray-400">#{{ Number(i) + 1 }}</span>
                 <button
                   class="p-1 text-gray-400 hover:text-red-500 rounded"
                   @click="removeItem('items', i)"
@@ -728,7 +734,7 @@ function updateRelatedId(index: number, value: string) {
               class="p-2.5 rounded-lg border border-gray-100 bg-gray-50/50 space-y-2"
             >
               <div class="flex items-center justify-between">
-                <span class="text-xs text-gray-400">#{{ i + 1 }}</span>
+                <span class="text-xs text-gray-400">#{{ Number(i) + 1 }}</span>
                 <button
                   class="p-1 text-gray-400 hover:text-red-500 rounded"
                   @click="removeItem('items', i)"
@@ -798,7 +804,7 @@ function updateRelatedId(index: number, value: string) {
               class="p-2.5 rounded-lg border border-gray-100 bg-gray-50/50 space-y-2"
             >
               <div class="flex items-center justify-between">
-                <span class="text-xs text-gray-400">#{{ i + 1 }}</span>
+                <span class="text-xs text-gray-400">#{{ Number(i) + 1 }}</span>
                 <button
                   class="p-1 text-gray-400 hover:text-red-500 rounded"
                   @click="removeItem('items', i)"
@@ -864,7 +870,7 @@ function updateRelatedId(index: number, value: string) {
               class="p-2.5 rounded-lg border border-gray-100 bg-gray-50/50 space-y-2"
             >
               <div class="flex items-center justify-between">
-                <span class="text-xs text-gray-400">#{{ i + 1 }}</span>
+                <span class="text-xs text-gray-400">#{{ Number(i) + 1 }}</span>
                 <button
                   class="p-1 text-gray-400 hover:text-red-500 rounded"
                   @click="removeItem('plans', i)"
@@ -926,7 +932,7 @@ function updateRelatedId(index: number, value: string) {
               class="p-2.5 rounded-lg border border-gray-100 bg-gray-50/50 space-y-2"
             >
               <div class="flex items-center justify-between">
-                <span class="text-xs text-gray-400">#{{ i + 1 }}</span>
+                <span class="text-xs text-gray-400">#{{ Number(i) + 1 }}</span>
                 <button
                   class="p-1 text-gray-400 hover:text-red-500 rounded"
                   @click="removeItem('steps', i)"

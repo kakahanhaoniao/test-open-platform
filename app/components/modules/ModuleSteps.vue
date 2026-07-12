@@ -41,7 +41,11 @@ const defaultItems = [
   { icon: 'i-lucide-check-circle', title: '开始使用', description: '体验AI安全能力' }
 ]
 
-const items = computed(() => props.module.props?.items?.length ? props.module.props.items : defaultItems)
+const items = computed(() => {
+  const raw = props.module.props?.items
+  if (Array.isArray(raw) && raw.length) return raw as Array<{ icon?: string; title: string; description: string }>
+  return defaultItems
+})
 </script>
 
 <template>

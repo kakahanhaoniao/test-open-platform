@@ -9,7 +9,7 @@ let initialized = false
 export function useFavorites() {
   // Load from localStorage on first use (client only)
   onMounted(() => {
-    if (process.client && !initialized) {
+    if (import.meta.client && !initialized) {
       initialized = true
       const stored = localStorage.getItem(STORAGE_KEY)
       if (stored) {
@@ -23,7 +23,7 @@ export function useFavorites() {
   })
 
   function save() {
-    if (process.client) {
+    if (import.meta.client) {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(favorites.value))
     }
   }

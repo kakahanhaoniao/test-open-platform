@@ -112,7 +112,7 @@ function initCanvas() {
   }
 }
 
-let cleanupCanvas: (() => void) | null = null
+let cleanupCanvas: (() => void) | null | undefined = null
 
 onMounted(() => {
   cleanupCanvas = initCanvas()

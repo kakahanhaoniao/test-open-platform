@@ -105,21 +105,21 @@ const app = computed(() => !isModel.value ? props.capability as App : null)
           v-else-if="app?.type === 'chat'"
           label="开始对话"
           icon="i-lucide-message-circle"
-          color="accent"
+          color="secondary"
           size="lg"
         />
         <UButton
           v-else-if="app?.type === 'showcase'"
           label="查看演示"
           icon="i-lucide-eye"
-          color="accent"
+          color="secondary"
           size="lg"
         />
         <UButton
           v-else
           label="立即使用"
           icon="i-lucide-arrow-right"
-          color="accent"
+          color="secondary"
           size="lg"
           trailing
         />
@@ -264,7 +264,7 @@ const app = computed(() => !isModel.value ? props.capability as App : null)
             <UButton
               :label="app.type === 'chat' ? '开始对话' : '立即使用'"
               :icon="app.type === 'chat' ? 'i-lucide-message-circle' : 'i-lucide-arrow-right'"
-              color="accent"
+              color="secondary"
               block
               size="sm"
             />
@@ -320,7 +320,7 @@ const app = computed(() => !isModel.value ? props.capability as App : null)
           </div>
           <div class="flex gap-2">
             <UInput placeholder="输入你的问题..." class="flex-1" size="lg" />
-            <UButton icon="i-lucide-send" color="accent" size="lg" />
+            <UButton icon="i-lucide-send" color="secondary" size="lg" />
           </div>
         </div>
       </div>

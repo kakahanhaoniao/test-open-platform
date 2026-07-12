@@ -81,7 +81,7 @@ function isExpiringSoon(endDate: string) {
                 <UButton
                   :label="activity.ctaText"
                   icon="i-lucide-arrow-right"
-                  color="white"
+                  color="neutral"
                   size="sm"
                   trailing
                 />

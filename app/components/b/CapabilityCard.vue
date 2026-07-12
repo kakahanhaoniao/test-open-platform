@@ -143,7 +143,7 @@ const hotOrNew = computed(() => {
           :label="actionLabel"
           :icon="actionIcon"
           size="xs"
-          :color="isModel ? 'primary' : 'accent'"
+          :color="isModel ? 'primary' : 'secondary'"
           variant="subtle"
           trailing
           class="shrink-0"

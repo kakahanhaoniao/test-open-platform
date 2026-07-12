@@ -295,13 +295,13 @@ console.log(response.choices[0].message.content);`
               <div>
                 <p class="text-xs font-medium text-gray-500 mb-2">安装</p>
                 <div class="bg-gray-900 rounded-lg p-4">
-                  <code class="font-mono text-xs text-green-400">{{ sdkInstallCommands[sdkTab].install }}</code>
+                  <code class="font-mono text-xs text-green-400">{{ sdkInstallCommands[sdkTab]?.install }}</code>
                 </div>
               </div>
               <div>
                 <p class="text-xs font-medium text-gray-500 mb-2">示例代码</p>
                 <div class="bg-gray-900 rounded-lg p-4 overflow-x-auto">
-                  <pre class="font-mono text-xs text-gray-300 whitespace-pre-wrap">{{ sdkInstallCommands[sdkTab].example }}</pre>
+                  <pre class="font-mono text-xs text-gray-300 whitespace-pre-wrap">{{ sdkInstallCommands[sdkTab]?.example }}</pre>
                 </div>
               </div>
             </div>

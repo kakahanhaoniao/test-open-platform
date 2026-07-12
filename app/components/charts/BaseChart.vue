@@ -38,7 +38,10 @@ function handleClick(params: any) {
 
 onMounted(() => {
   if (chartRef.value) {
-    chartRef.value.bind('click', handleClick)
+    const chartInstance = (chartRef.value as any).chart || chartRef.value
+    if (chartInstance && typeof chartInstance.bind === 'function') {
+      chartInstance.bind('click', handleClick)
+    }
   }
 })
 

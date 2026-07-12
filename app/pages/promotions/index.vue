@@ -159,7 +159,7 @@ function getCtaLabel(activity: typeof activities[0]): string {
               <UButton
                 label="查看详情"
                 icon="i-lucide-arrow-right"
-                color="white"
+                color="neutral"
                 size="lg"
                 trailing
               />
@@ -239,7 +239,7 @@ function getCtaLabel(activity: typeof activities[0]): string {
                 <UButton
                   :label="getCtaLabel(activity)"
                   icon="i-lucide-arrow-right"
-                  color="white"
+                  color="neutral"
                   size="sm"
                   trailing
                 />

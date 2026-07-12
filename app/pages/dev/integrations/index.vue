@@ -82,7 +82,7 @@ const integrationSteps = [
     code: `from qax_ai import QAXClient
 
 client = QAXClient(
-    api_key="${API_KEY}",
+    api_key="YOUR_API_KEY",
     base_url="https://api.qianxin.ai"
 )`
   },

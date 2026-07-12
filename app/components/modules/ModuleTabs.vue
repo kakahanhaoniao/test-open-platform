@@ -55,7 +55,7 @@ const activeModules = computed(() => {
         :class="activeTab === i
           ? 'border-primary-600 text-primary-600'
           : 'border-transparent text-gray-500 hover:text-gray-700'"
-        @click="activeTab = i"
+        @click="activeTab = Number(i)"
       >
         {{ tab.name }}
       </button>

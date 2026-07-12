@@ -111,7 +111,7 @@ const handleLogin = () => {
               color="neutral"
               block
               size="lg"
-              @click="navigateTo('/console')"
+              @click="() => { navigateTo('/console') }"
             />
             <UButton
               label="钉钉"
@@ -120,7 +120,7 @@ const handleLogin = () => {
               color="neutral"
               block
               size="lg"
-              @click="navigateTo('/console')"
+              @click="() => { navigateTo('/console') }"
             />
           </div>
 
