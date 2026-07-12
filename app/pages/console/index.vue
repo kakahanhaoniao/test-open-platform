@@ -1,10 +1,21 @@
 <script setup lang="ts">
-import { currentUser, members, organization, models } from '~/data/mock'
+import { currentUser, members, organization, models, apps } from '~/data/mock'
 import { useChartTheme } from '~/composables/useChartTheme'
+import { useFavorites } from '~/composables/useFavorites'
 
 useHead({ title: '使用看板 - 奇安信AI开放平台' })
 
 const theme = useChartTheme()
+const { favorites, isFavorite } = useFavorites()
+
+// Favorited capabilities
+const favoritedCapabilities = computed(() => {
+  const allItems = [
+    ...models.map(m => ({ ...m, _type: 'model' as const })),
+    ...apps.map(a => ({ ...a, _type: 'app' as const }))
+  ]
+  return allItems.filter(item => isFavorite(item.id))
+})
 
 // Personal data (current user only)
 const personalMember = members.find(m => m.id === 'm1')!
@@ -152,6 +163,44 @@ const quickActions = [
                 </span>
               </div>
             </div>
+          </div>
+        </div>
+
+        <!-- My Favorites Section -->
+        <div v-if="favoritedCapabilities.length > 0" class="bg-white rounded-xl border border-gray-100 p-6 mb-6">
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center gap-2">
+              <UIcon name="i-lucide-heart" class="w-5 h-5 text-red-500 fill-red-500" />
+              <h3 class="font-semibold text-gray-900">我的收藏</h3>
+              <span class="text-xs text-gray-400">{{ favoritedCapabilities.length }} 个能力</span>
+            </div>
+            <NuxtLink to="/marketplace" class="text-xs text-primary-600 hover:text-primary-700 font-medium flex items-center gap-1">
+              浏览更多
+              <UIcon name="i-lucide-arrow-right" class="w-3.5 h-3.5" />
+            </NuxtLink>
+          </div>
+          <div class="grid grid-cols-4 gap-3">
+            <NuxtLink
+              v-for="cap in favoritedCapabilities"
+              :key="cap.id"
+              :to="`/marketplace/${cap.id}`"
+              class="flex items-center gap-3 p-3 rounded-xl border border-gray-100 hover:border-primary-200 hover:bg-primary-50/30 transition-all group"
+            >
+              <div
+                class="w-9 h-9 rounded-lg flex items-center justify-center shrink-0"
+                :class="cap._type === 'model' ? 'bg-primary-50' : 'bg-accent-50'"
+              >
+                <UIcon
+                  :name="cap.icon"
+                  class="w-4.5 h-4.5"
+                  :class="cap._type === 'model' ? 'text-primary-600' : 'text-accent-600'"
+                />
+              </div>
+              <div class="min-w-0 flex-1">
+                <p class="text-sm font-medium text-gray-900 group-hover:text-primary-700 truncate">{{ cap.name }}</p>
+                <p class="text-[11px] text-gray-400">{{ cap._type === 'model' ? '模型' : '应用' }}</p>
+              </div>
+            </NuxtLink>
           </div>
         </div>
 

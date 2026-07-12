@@ -27,6 +27,11 @@ const isMarketRoute = computed(() => {
   return false
 })
 
+const showQuickCreateKey = computed(() => {
+  const path = route.path
+  return path.startsWith('/console') || path.startsWith('/enterprise')
+})
+
 useHead({
   meta: [
     { name: 'viewport', content: 'width=device-width, initial-scale=1' }
@@ -52,6 +57,9 @@ useSeoMeta({
 
 <template>
   <UApp>
+    <!-- QuickCreateKey FAB (console/enterprise routes only) -->
+    <QuickCreateKey v-if="showQuickCreateKey" />
+
     <!-- Full-width routes: portal, admin, console, enterprise, legacy /b -->
     <template v-if="isFullWidthRoute">
       <NuxtPage />

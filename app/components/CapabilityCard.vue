@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { Model, App, Plan } from '~/data/mock'
 import { modelPlans, appPlans, getPlansForCapability } from '~/data/mock'
+import { useFavorites } from '~/composables/useFavorites'
 
 const props = defineProps<{
   capability: Model | App
@@ -14,8 +15,8 @@ const emit = defineEmits<{
 
 const isModel = computed(() => props.capabilityType === 'model')
 
-// Local favorite toggle (useFavorites composable will be created in Task 12)
-const isFavorited = ref(false)
+// Favorites via composable (persisted to localStorage)
+const { toggleFavorite: toggleFav, isFavorite } = useFavorites()
 
 // Price tag: find lowest plan price for this capability
 const priceTag = computed(() => {
@@ -75,10 +76,10 @@ const hotOrNew = computed(() => {
   return null
 })
 
-function toggleFavorite(e: Event) {
+function onToggleFavorite(e: Event) {
   e.preventDefault()
   e.stopPropagation()
-  isFavorited.value = !isFavorited.value
+  toggleFav(props.capability.id)
 }
 
 function onQuickPreview(e: Event) {
@@ -112,13 +113,13 @@ function onQuickPreview(e: Event) {
         </div>
         <button
           class="p-1.5 rounded-lg hover:bg-gray-50 transition-colors"
-          :class="isFavorited ? 'text-red-500' : 'text-gray-300 hover:text-red-400'"
-          @click="toggleFavorite"
+          :class="isFavorite(capability.id) ? 'text-red-500' : 'text-gray-300 hover:text-red-400'"
+          @click="onToggleFavorite"
         >
           <UIcon
-            :name="isFavorited ? 'i-lucide-heart' : 'i-lucide-heart'"
+            :name="isFavorite(capability.id) ? 'i-lucide-heart' : 'i-lucide-heart'"
             class="w-4 h-4"
-            :class="isFavorited ? 'fill-red-500' : ''"
+            :class="isFavorite(capability.id) ? 'fill-red-500' : ''"
           />
         </button>
       </div>
