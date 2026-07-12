@@ -1,104 +1,71 @@
-# Task 4 Report: Enterprise Call Monitoring Page
+# Task 4 Report: Create 13 Module Rendering Components
 
 ## Status: DONE
 
-## What was implemented
+## Summary
 
-Created the enterprise call monitoring page (`/enterprise/monitor`) -- the most important page for enterprise admins at a security company.
+Created 14 Vue components (13 module renderers + 1 dispatcher) in `app/components/modules/`. Each component accepts `TemplateModule` + `capability` + `capabilityType` props and renders the appropriate UI based on module type and configuration.
 
-### Files Created
+## Files Created
 
-1. **`/Users/xiaoshao/Downloads/ai-platform/app/pages/enterprise/monitor.vue`** -- The main monitoring page
-2. **`/Users/xiaoshao/Downloads/ai-platform/app/components/EnterpriseSidebar.vue`** -- Enterprise workspace sidebar (required by the page)
+All files in `/Users/xiaoshao/Downloads/ai-platform/app/components/modules/`:
 
-### Files Modified
+1. **ModuleBanner.vue** - Gradient/image background hero with title, subtitle, badge, CTA button
+2. **ModuleHero.vue** - Centered layout with MD-rendered description and button group
+3. **ModuleIntro.vue** - Title + MD body + optional image with left-right/center/right-left layouts
+4. **ModuleFeatures.vue** - Feature list with icons in grid (3-col) or list layout
+5. **ModuleAdvantages.vue** - Two-column comparison: our advantages (green check) vs traditional (gray x)
+6. **ModuleScenarios.vue** - Scenario cards in grid or horizontal scroll carousel layout
+7. **ModuleTabs.vue** - Tab headers with recursive child module rendering via ModuleRenderer
+8. **ModuleCarousel.vue** - CSS scroll-snap carousel with prev/next buttons and optional autoplay
+9. **ModuleCards.vue** - Card grid with configurable columns (2/3/4)
+10. **ModuleSteps.vue** - Numbered step circles with connecting lines, vertical or horizontal direction
+11. **ModulePricing.vue** - Per-token pricing display for models + plan cards from getPlansForCapability
+12. **ModuleIntegration.vue** - 3-step integration guide with code blocks and copy button
+13. **ModuleRelated.vue** - Auto-match by tags or ID lookup, renders small capability cards
+14. **ModuleRenderer.vue** - Dispatcher component that maps module type to the correct component
 
-1. **`/Users/xiaoshao/Downloads/ai-platform/app/app.vue`** -- Added `/enterprise` route to `isFullWidthRoute` computed property so enterprise pages render with their own layout (sidebar managed by each page)
+## Technical Details
 
----
+### Common Pattern
+All 13 module components follow the same pattern:
+- `<script setup lang="ts">` with `TemplateModule` type import
+- Props: `{ module: TemplateModule; capability: any; capabilityType: 'model' | 'app' }`
+- Spacing class mapping: `{ xs: 'py-2', sm: 'py-4', md: 'py-8', lg: 'py-12' }`
+- Background class mapping: `{ white: 'bg-white', gray: 'bg-gray-50', 'primary-light': 'bg-primary-50' }`
+- Wrapper div with `[spacingTop, spacingBottom, bgClass]`
 
-## Page Structure
+### Key Features
+- **Markdown rendering**: ModuleHero and ModuleIntro use `markdown-it` for MD content
+- **Mock data fallbacks**: Components generate reasonable defaults from capability data when `module.props.items` is empty
+- **Recursive rendering**: ModuleTabs uses ModuleRenderer to render child modules
+- **CSS scroll-snap**: ModuleCarousel and ModuleScenarios (carousel mode) use scroll-snap for lightweight implementation
+- **Code copy**: ModuleIntegration has a copy-to-clipboard button for code blocks
+- **Tag-based matching**: ModuleRelated auto-matches capabilities by overlapping tags with scoring
 
-The page follows the established pattern: `<EnterpriseSidebar />` + content area with `ml-60`.
+### Data Imports
+- ModulePricing imports: `chargingPacks`, `modelPlans`, `appPlans`, `getPlansForCapability`
+- ModuleRelated imports: `models`, `apps`
 
-### 1. Four Real-time Metric Cards (grid grid-cols-4)
+## Build Verification
 
-| Card | Value | Change | Icon | Background |
-|------|-------|--------|------|------------|
-| 今日调用 | 47,236 | +12% vs昨日 | i-lucide-activity | bg-blue-50 |
-| 实时QPS | 347/s | 当前峰值 | i-lucide-gauge | bg-purple-50 |
-| 错误率 | 0.3% | -0.1% | i-lucide-alert-triangle | bg-amber-50 |
-| 平均延迟 | 128ms | -5ms | i-lucide-clock | bg-green-50 |
+```
+npx nuxi build -> Build complete! (9.89 MB total, 3.08 MB gzip)
+```
 
-Each card has: icon in colored background, value in bold mono font, change indicator with trend icon (up/down), and hover lift effect via `card-hover` class.
+No errors or warnings.
 
-### 2. Real-time Call Flow Chart (the hero section)
+## Commit
 
-- Title "实时调用流量" with LIVE pulse indicator (green dot with `animate-pulse`)
-- Refresh rate selector: 3 buttons (5s / 30s / 1min) with active state styling
-- **CSS-based stacked area chart** rendering `monitorMetrics.realtimeSeries` (60 data points):
-  - Each time point rendered as a vertical column div
-  - Calls distributed proportionally across models using `modelDistribution` ratios
-  - Each model segment gets its own color from the distribution data
-  - Columns are flush (no gap) for area chart effect
-  - Y-axis labels (max, half, 0) on the left
-  - X-axis time labels every 10 points
-  - Grid lines for visual reference
-  - Hover: crosshair cursor, vertical highlight line, tooltip showing time + calls + errors
-  - Chart legend below with color dots + model names
-- Tooltip: dark background, shows time (mono), calls count, error count (red)
+- SHA: 1d139f1
+- Message: `feat: add 13 module rendering components for template system`
+- Files: 14 files changed, 1348 insertions(+)
 
-### 3. Dual-column Layout (grid grid-cols-2)
+## Self-Review Notes
 
-**Left: 模型调用分布 (Donut/Ring Chart)**
-- CSS `conic-gradient` on a circular div (w-44 h-44)
-- White center circle (w-28 h-28) showing total call count
-- Legend below: color dot + model name + call count for each model
-- Uses `monitorMetrics.modelDistribution` data with colors: #7C3AED, #EF4444, #3B82F6, #6366F1, #10B981
-
-**Right: 成员调用排行 (Horizontal Bar Chart)**
-- Top 6 members from `monitorMetrics.memberRanking`
-- Each entry: rank badge (top 3 highlighted) + name + call count
-- Horizontal bar with width proportional to max calls
-- Gradient colors: primary-500/400/300/200 for rank
-- Link to /enterprise/members
-
-### 4. Anomaly Alerts Section
-
-- Title "异常告警" with red badge showing severe alert count
-- 5 alerts matching the console dashboard alerts data:
-  - 1 red (500 error), 2 amber (429 rate limits), 2 green (service recovered)
-- Each alert: severity icon + message + time + "查看详情" link to /enterprise/logs
-- Color-coded left borders: red-500, amber-500, green-500
-- Background colors: red-50, amber-50, green-50
-
-### EnterpriseSidebar Component
-
-Created as a prerequisite since no enterprise sidebar existed. Follows the spec (Section 2.2):
-- White background with purple active state
-- Top: "返回市场" link + logo area ("奇安信AI / 企业工作台")
-- Navigation groups: "核心功能" (概览/成员/监控/日志) + "资源与财务" (充能包/账单/设置)
-- Active indicator: 3px purple left bar + bg-primary-50 + text-primary-700
-- Bottom: user dropdown with "个人空间" link (to /console), "企业设置", "退出登录"
-- Uses `currentUser` and `organization` from mock data
-
-### Data Sources
-
-All data imported from `~/data/mock`:
-- `monitorMetrics` -- realtimeSeries, modelDistribution, memberRanking, todayCalls, realtimeQPS, errorRate, avgLatency
-- `models` -- imported for context (available for future enhancements)
-- `members` -- imported for context (available for future enhancements)
-
-### Animations & Interactions
-
-- LIVE pulse indicator: green dot with Tailwind `animate-pulse`
-- "实时监控中" badge with pulsing green dot
-- Metric cards: hover lift via `card-hover` class (translateY -2px + shadow)
-- Chart columns: hover highlight with vertical line + subtle background
-- Tooltip: fade transition (100ms enter, 75ms leave)
-- Bar chart: `transition-all duration-500` for width animation
-- User dropdown: scale + opacity transition
-
-### Page Title
-
-`useHead({ title: '调用监控 - 奇安信AI开放平台' })` as specified.
+1. All components use Tailwind utility classes only (no inline styles for colors/spacing)
+2. All components use `<UIcon name="i-lucide-xxx" />` for icons
+3. Chinese UI text throughout (default titles, button labels, etc.)
+4. `module.props` accessed with optional chaining throughout
+5. ModuleRenderer provides the dispatch layer needed by ModuleTabs for recursive rendering
+6. The spacing/background mapping is duplicated across components - could be extracted to a composable in a future refactor, but kept inline per task spec for simplicity

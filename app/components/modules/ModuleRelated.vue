@@ -80,7 +80,7 @@ const relatedCapabilities = computed(() => {
 })
 
 function getLink(cap: any): string {
-  return cap._type === 'model' ? `/models/${cap.id}` : `/apps/${cap.id}`
+  return `/marketplace/${cap.id}`
 }
 </script>
 

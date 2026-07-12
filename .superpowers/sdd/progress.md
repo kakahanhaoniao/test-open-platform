@@ -13,3 +13,7 @@
 - Task 9: complete (Admin企业客户 - /admin/enterprises + /admin/enterprises/[id])
 - Task 10: complete (Portal首页重构+清理 - index.vue合并Portal+TopNav双状态+billing简化+workspace删除)
 - Task 11: complete (产品质量审计+修复 - 数据一致性+CTA修复+UX修复+模拟刷新+个人/企业数据分离)
+- Task 1: complete (ECharts+BaseChart - install echarts/vue-echarts/markdown-it, create useChartTheme+BaseChart, review clean, minor: click handler race condition noted for later fix)
+- Task 2: complete (Plan interface+mock data - Plan/modelPlans/appPlans/getPlansForCapability, fix: ChargingPack→Plan adapter with parsePrice/parseTokens, review approved after fix)
+- Task 3: complete (PageTemplate/TemplateModule interfaces + getDefaultTemplate + defaultTemplates, review approved, note: defaultTemplates only covers chat app type)
+- Task 4: complete (13 module components + ModuleRenderer dispatcher, review approved, minor: unused imports in ModulePricing, dynamic gradient JIT concern noted)

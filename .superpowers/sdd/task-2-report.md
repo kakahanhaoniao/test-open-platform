@@ -1,58 +1,46 @@
-# Task 2 Report: Dual-Track Architecture Restructuring
+# Task 2 Report: Add Plan interface + mock data for three-tier plan system
 
-## Summary
-
-Restructured the app architecture to support the dual-track (个人工作台 /console + 企业工作台 /enterprise) design by creating the EnterpriseSidebar, updating ConsoleSidebar, updating AdminSidebar, and verifying app.vue route detection.
+## Status: DONE
 
 ## Changes Made
 
-### 2.1 EnterpriseSidebar (Created/Rewritten)
-**File**: `app/components/enterprise/EnterpriseSidebar.vue`
+**File modified:** `app/data/mock.ts`
 
-- Replaced the old logo-area + bottom-dropdown layout with the spec-compliant design:
-  - **Top: Enterprise identity block** with purple icon (i-lucide-building-2), organization name "奇安信安全团队", role label "管理员 · 6名成员", and "个人空间 →" NuxtLink to `/console`
-  - "← 返回市场" link to `/`
-  - **核心管理** group: 企业概览, 成员管理, 调用监控, 日志审计
-  - **资源与账务** group: 企业充能包, 企业账单, 企业设置
-  - **Bottom**: 退出登录 button (replaced the old dropdown mechanism)
-- Removed the user dropdown (userDropdownOpen, userDropdownRef, onDocumentClick) since the spec calls for a simple logout button at bottom
-- Group labels updated from "核心功能"/"资源与财务" to "核心管理"/"资源与账务" per spec
+### 1. Added Plan interface (after ChargingPack interface)
+- New `Plan` interface with `type: 'pack' | 'model-plan' | 'app-plan'` discriminated union field
+- Includes `targetId`, `billingCycle`, `price` (number), `includedTokens`, `includedCalls`, `icon`, `gradient`, `badge` fields
 
-### 2.2 ConsoleSidebar (Updated)
-**File**: `app/components/console/ConsoleSidebar.vue`
+### 2. Added `type: 'pack'` to ChargingPack interface and data
+- Added `type: 'pack'` field to the `ChargingPack` interface definition
+- Added `type: 'pack' as const` to all 4 charging pack entries (pack-starter, pack-pro, pack-enterprise, pack-unlimited)
 
-- **Moved user info block from bottom to TOP** (醒目位置):
-  - Top block now shows: avatar + name "张明" + email + "企业空间 →" link to `/enterprise` (only shown when `currentUser.isEnterprise`)
-- **Added "调用日志" nav item** (i-lucide-scroll-text, to: /console/logs) in the 核心功能 group
-- **Removed "企业空间" nav item** from the 账户管理 group (it was previously at `/console/workspace` with `enterpriseOnly: true`)
-- **Replaced bottom dropdown** with simple 退出登录 button (removed userDropdownOpen, userDropdownRef, onDocumentClick, and the entire dropdown Transition block)
-- Removed the old "返回市场" + logo area at top, replaced with user identity block + "返回市场" link
+### 3. Added modelPlans array (4 entries)
+- `mp-security-pro` -> targetId: `qax-security-llm` (monthly, 999)
+- `mp-security-annual` -> targetId: `qax-security-llm` (annual, 9590)
+- `mp-threat-pro` -> targetId: `threat-detect-v3` (monthly, 599)
+- `mp-code-pro` -> targetId: `code-security-scan` (monthly, 399)
 
-### 2.3 app.vue Route Detection (Already Updated)
-**File**: `app/app.vue`
+### 4. Added appPlans array (3 entries)
+- `ap-threat-assistant` -> targetId: `app-threat-assistant` (monthly, 299)
+- `ap-code-scan` -> targetId: `app-code-scan` (monthly, 199)
+- `ap-compliance` -> targetId: `app-compliance` (monthly, 249)
 
-- `/enterprise` was already present in the `isFullWidthRoute` computed property (added in a prior task)
-- No changes needed; enterprise pages render their own EnterpriseSidebar
+### 5. Added getPlansForCapability helper function
+- Returns `{ packs: ChargingPack[]; modelPlans: Plan[]; appPlans: Plan[] }`
+- Filters modelPlans and appPlans by `targetId === capabilityId`
 
-### 2.4 AdminSidebar (Updated)
-**File**: `app/components/admin/AdminSidebar.vue`
+## Deviations from Task Brief
 
-- Added "企业客户" nav item (i-lucide-building-2, to: /admin/enterprises) after "数据看板" in the navItems array
+1. **ChargingPack interface updated**: Added `type: 'pack'` to the ChargingPack interface itself (not just the data). The brief only mentioned adding `type: 'pack' as const` to the data entries, but without the interface field, TypeScript reports `TS2353: Object literal may only specify known properties`.
 
-### Cleanup
-- Removed duplicate `app/components/EnterpriseSidebar.vue` (old location) that was causing a Nuxt component name collision warning with `app/components/enterprise/EnterpriseSidebar.vue`
+2. **getPlansForCapability return type**: Changed `packs: Plan[]` to `packs: ChargingPack[]`. The brief's version used `chargingPacks.map(p => ({ ...p, type: 'pack' as const }))` and claimed the result was `Plan[]`, but ChargingPack has `price: string` and `tokens: string` while Plan has `price: number` and no `tokens` field -- they are fundamentally different shapes. Using `ChargingPack[]` is type-safe and avoids a cast.
 
-## Verification
+## Type Safety Verification
 
-- `nuxi prepare` runs successfully with no duplicate component warnings
-- `nuxi typecheck` shows only pre-existing type errors (in portal, market, enterprise/monitor pages) unrelated to sidebar changes
-- All sidebar components follow the same patterns: `useRoute()` for active state, consistent styling classes, light theme (white bg) for Console/Enterprise sidebars, dark theme (#0C0A1A) for AdminSidebar
+- `npx nuxi typecheck` shows zero errors in `app/data/mock.ts`
+- All pre-existing errors in other files are unrelated to this change
+- No consuming components (ChargingPackCard, CapabilityDetail, models/[id]) broke from the added `type` field on ChargingPack
 
-## Files Modified
-- `app/components/enterprise/EnterpriseSidebar.vue` (rewritten)
-- `app/components/console/ConsoleSidebar.vue` (rewritten)
-- `app/components/admin/AdminSidebar.vue` (edited - added nav item)
-- `app/components/EnterpriseSidebar.vue` (deleted - duplicate)
+## Commit
 
-## Files Verified (No Changes Needed)
-- `app/app.vue` (already had `/enterprise` in route detection)
+- `f0b7693` feat: add Plan interface + model/app plan mock data for three-tier plan system

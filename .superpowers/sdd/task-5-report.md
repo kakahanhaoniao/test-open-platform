@@ -1,92 +1,46 @@
-# Task 5 Report: Enterprise Log Audit Page
+# Task 5 Report: Refactor marketplace detail page to use template rendering
 
 ## Status: DONE
 
-## What was implemented
+## Summary
 
-Created the enterprise log audit page at `/enterprise/logs` with search, filtering, trend charts, expandable log details, and export functionality, per spec Section 4.2.
+Refactored the marketplace detail page (`/marketplace/[id]`) from a hardcoded tab-based layout (via `CapabilityDetail.vue`) to a dynamic template-based module rendering system with a two-column layout.
 
-## Files Created
+## Changes Made
 
-### 1. `app/pages/enterprise/logs.vue` (new)
+### 1. Created `app/components/CapabilitySidebar.vue`
+- Extracted the sticky right panel from `CapabilityDetail.vue` into a standalone component
+- Includes: capability name, rating, call count, 3 action buttons (体验/接入/购买), pricing summary, tags, model-specific info, enterprise batch purchase
+- Uses `defineEmits` for all actions (`tryNow`, `integration`, `buyPack`, `enterprisePurchase`) instead of managing state internally
+- Imports `currentUser` from mock data for conditional enterprise rendering
 
-Full-featured log audit page with all 6 required sections:
+### 2. Rewrote `app/pages/marketplace/[id].vue`
+- **Template lookup**: Uses `getDefaultTemplate(targetType, targetId, appType)` to get the page template
+- **Module rendering**: Iterates `template.modules.filter(m => m.visible).sort(by order)` and renders each via `<ModuleRenderer>`
+- **Two-column layout**: Left column (flex-1) for modules, right column (w-80, sticky top-8) for CapabilitySidebar
+- **Preserved features**:
+  - Breadcrumb navigation
+  - Header with icon, name, badges (HOT/NEW), rating, call count, parameters
+  - Related promotions banner
+  - Related capabilities section at bottom
+  - All 3 modals: charging pack selection, integration guide, enterprise batch purchase
+  - Copy-to-clipboard for code snippets
+  - Not-found state
+- **Action handling**: The "体验" button now scrolls to the first interactive module instead of switching tabs (since tabs no longer exist)
 
-**1. Search bar** (prominent, at top):
-- Large search input (h-12) with `i-lucide-search` icon
-- Placeholder: "搜索关键词、API Key、模型名、成员名..."
-- v-model bound to `searchQuery` ref
-- Real-time result count shown when search is active
-- Filters across memberName, modelName, apiKey, requestId, and errorMessage fields
+### 3. `CapabilityDetail.vue` was NOT deleted
+- The old component still exists but is no longer imported by the detail page
+- It can be safely removed in a cleanup pass
 
-**2. Filter row** (below search):
-- Time range selector: buttons for 今天/7天/30天/自定义 (default: 今天)
-- Model filter: dropdown populated dynamically from callLogs data
-- Member filter: dropdown populated dynamically from callLogs data
-- Status filter: dropdown with 全部/200/400/429/500
-- "清除筛选" button appears when any filter is active
-- All filters feed into `filteredLogs` computed property
-- Page resets to 1 when any filter changes
+## Build Verification
+- `nuxi typecheck`: No errors in our files (pre-existing errors in other files are unrelated)
+- `nuxi build`: Successful, no new errors introduced
 
-**3. Call volume trend chart**:
-- Title: "调用量趋势" with dynamic log count subtitle
-- Aggregation toggle: 按小时/按天/按周 (default: 按小时)
-- CSS stacked bar chart: green (200) at bottom, amber (429) middle, red (500) on top
-- Legend with color-coded status indicators
-- Dynamic: updates when filters change (computed from filteredLogs)
-- Empty state when no data matches
+## Commits
+1. `f087c38` - feat: refactor detail page to template-based module rendering
+2. `325c7ae` - fix: remove duplicate flex wrapper in integration modal header
 
-**4. Log list table**:
-- Columns: 时间 | 成员 | 模型 | API Key | 状态码 | 延迟 | Token | 费用
-- Each row is clickable -- expands detail panel below
-- Status code badges: 200=green, 400=amber, 429=orange, 500=red
-- Latency color: <100ms=green, 100-500ms=amber, >500ms=red
-- Monospace font for timestamps, API keys, token counts, costs
-- Pagination: 20 per page, prev/next buttons with disabled states
-- Empty state with search-x icon when no results
-
-**5. Expanded row detail** (v-if per row):
-- Request ID (monospace)
-- Full API Key (partially masked, monospace)
-- Prompt/Completion/Total token breakdown (color-coded)
-- Error message (if status != 200, red monospace in red-50 box)
-- Request body preview (mock JSON in dark code block, green text)
-- Response body preview (mock JSON -- dark code block for success, red-950 for errors)
-
-**6. Export buttons** (bottom right):
-- "导出 CSV" button with file-spreadsheet icon
-- "导出 JSON" button with file-json icon
-- Mock -- shows toast notification "导出成功" on click
-- Toast auto-dismisses after 2 seconds with slide-up animation
-
-## Files Modified
-
-### 2. `app/app.vue` (modified)
-
-Added `/enterprise` to the `isFullWidthRoute` computed property so enterprise pages handle their own layout (sidebar + content) rather than falling through to the PlatformSidebar layout.
-
-## Data Sources
-
-- `callLogs` from `~/data/mock` (50 entries, including 5 error logs)
-- `models` from `~/data/mock` (imported for filter options)
-- `members` from `~/data/mock` (imported for filter options)
-- `CallLog` type imported for TypeScript typing
-
-## Key Implementation Details
-
-- `searchQuery` ref for the search bar
-- `filterModel`, `filterMember`, `filterStatus`, `filterTimeRange` refs for filters
-- `filteredLogs` computed: chains all filters (search -> time range -> model -> member -> status)
-- `paginatedLogs` computed: slices filteredLogs for current page (20 per page)
-- `currentPage` ref for pagination, auto-resets on filter change via watch
-- `trendData` computed: groups filteredLogs by hour/day/week with status breakdown
-- `expandedRowId` ref: tracks which row is expanded (only one at a time)
-- Toast notification system with `toastMessage`/`toastVisible` refs and Transition
-
-## Design Consistency
-
-- Uses `<EnterpriseSidebar />` component (already existed at `app/components/EnterpriseSidebar.vue`)
-- Layout: sidebar + `ml-60` content area, matching console pages pattern
-- Color scheme: white cards with gray-100 borders, primary-600 active states
-- Same button styles, badge styles, and typography as existing console pages
-- `useHead({ title: '日志审计 - 奇安信AI开放平台' })` set correctly
+## Concerns
+- The `handleTryNow` function uses `document.querySelector` to scroll to interactive modules. This works but relies on module components adding `data-module-type` attributes, which the current module components may not have. If no matching element is found, the button simply does nothing (graceful degradation).
+- The old `CapabilityDetail.vue` component is now unused but was not deleted per the task spec (which only said to modify it, not remove it). A cleanup pass should remove it.
+- The `related` module type in the template may duplicate the "Related Capabilities" section already rendered at the bottom of the page. This could be addressed by either removing the bottom section or filtering out the `related` module type from the template modules.

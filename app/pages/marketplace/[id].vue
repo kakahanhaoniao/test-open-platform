@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { Model, App } from '~/data/mock'
-import { models, apps, getModelById, getAppById, getDefaultTemplate, activities, chargingPacks, currentUser } from '~/data/mock'
+import { getModelById, getAppById, getDefaultTemplate, activities, chargingPacks, currentUser } from '~/data/mock'
 
 const route = useRoute()
 const id = computed(() => route.params.id as string)
@@ -35,21 +35,6 @@ useHead({
   title: capability.value ? `${capability.value.name} - 奇安信AI开放平台` : '能力详情 - 奇安信AI开放平台'
 })
 
-// Related capabilities (same type or category)
-const relatedCapabilities = computed(() => {
-  if (!capability.value) return []
-  if (capabilityType.value === 'model') {
-    return models
-      .filter(m => m.id !== id.value && m.type === modelData.value?.type)
-      .slice(0, 3)
-      .map(m => ({ ...m, _type: 'model' as const }))
-  }
-  return apps
-    .filter(a => a.id !== id.value && a.type === appData.value?.type)
-    .slice(0, 3)
-    .map(a => ({ ...a, _type: 'app' as const }))
-})
-
 // Related promotions
 const relatedPromos = computed(() => {
   return activities.filter(a => a.hot || a.new).slice(0, 2)
@@ -67,11 +52,9 @@ const copiedStep = ref<number | null>(null)
 
 // Action: open playground/chat (for sidebar button)
 function handleTryNow() {
-  // In template-based rendering, the playground/chat module is already visible
-  // Scroll to the first interactive module
-  const el = document.querySelector('[data-module-type="playground"], [data-module-type="chat"], [data-module-type="demo"]')
-  if (el) {
-    el.scrollIntoView({ behavior: 'smooth', block: 'center' })
+  const moduleArea = document.querySelector('[data-module-area]')
+  if (moduleArea) {
+    moduleArea.scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
 }
 
@@ -209,7 +192,7 @@ print(response.choices[0].message.content)`
       <!-- Two-column layout: modules + sidebar -->
       <div class="flex gap-6">
         <!-- Left column: module rendering -->
-        <div class="flex-1 min-w-0 space-y-6">
+        <div data-module-area class="flex-1 min-w-0 space-y-6">
           <ModuleRenderer
             v-for="mod in visibleModules"
             :key="mod.id"
@@ -234,18 +217,6 @@ print(response.choices[0].message.content)`
         </div>
       </div>
 
-      <!-- Related Capabilities -->
-      <div v-if="relatedCapabilities.length" class="mt-12">
-        <h2 class="text-lg font-bold text-gray-900 mb-5">相关能力</h2>
-        <div class="grid grid-cols-4 gap-4">
-          <CapabilityCard
-            v-for="cap in relatedCapabilities"
-            :key="cap.id"
-            :capability="cap"
-            :capability-type="cap._type"
-          />
-        </div>
-      </div>
     </div>
 
     <!-- Not Found -->
